@@ -3,4 +3,6 @@
 Also interesting was working directory and staging area (finally I understand how it works, thanks girls from Udacity).
 ## Test_1
 ### 1.1 Linux Command Line Basics
->![Screenshot](test_1/test_1.1.png)
+![Screenshot](test_1/test_1.1.png)
+### 1.2 Configuring Linux Web Servers
+![Screenshot](test_1/test_1.2.png)
