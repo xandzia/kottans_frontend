@@ -8,3 +8,5 @@ Also interesting was working directory and staging area (finally I understand ho
 ![Screenshot](task_1/test_1.2.png)
 ### 1.3 Networking for Web Developers
 ![Screenshot](task_1/test_1.3.png)
+## Task_2
+![Screenshot](task_2/test_2.png)
