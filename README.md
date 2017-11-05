@@ -9,4 +9,6 @@ Also interesting was working directory and staging area (finally I understand ho
 ### 1.3 Networking for Web Developers
 ![Screenshot](task_1/test_1.3.png)
 ## Task_2
+### 2.0 Version Control with Git
+- It was new to me "tag" in Git
 ![Screenshot](task_2/test_2.png)
