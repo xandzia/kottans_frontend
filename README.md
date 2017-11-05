@@ -14,4 +14,7 @@ Also interesting was working directory and staging area (finally I understand ho
 ## Task_2
 ### 2.0 Version Control with Git
 - "tag" in Git - something new
+- one thing you intend to use in the future - write commits correctly
 ![Screenshot](task_2/test_2.png)
+### 2.1 GitHub & Collaboration
+![Screenshot](task_2/test_2.1.png)
