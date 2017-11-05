@@ -6,7 +6,7 @@ Also interesting was working directory and staging area (finally I understand ho
 - ok
 ![Screenshot](task_1/test_1.1.png)
 ### 1.2 Configuring Linux Web Servers
-- ok
+- I was impressed with vagrant, the way to manage virtual machines.
 ![Screenshot](task_1/test_1.2.png)
 ### 1.3 Networking for Web Developers
 - I become more aware of networking. All the information was new to me
