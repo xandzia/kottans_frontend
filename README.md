@@ -18,3 +18,6 @@ Also interesting was working directory and staging area (finally I understand ho
 ![Screenshot](task_2/test_2.png)
 ### 2.1 GitHub & Collaboration
 ![Screenshot](task_2/test_2.1.png)
+## Task_3
+- Ctrl+O, Ctrl+R in browser -AWESOME!!!
+- CSS selectors ('+', '~'), pseudo-elements (::selection), HSLA(hue, saturation, lightness, alpha channel) in background-color etc.
