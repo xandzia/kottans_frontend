@@ -22,12 +22,12 @@ Also interesting was working directory and staging area (finally I understand ho
 - Ctrl+O, Ctrl+R in browser -AWESOME!!!
 - CSS selectors ('+', '~'), pseudo-elements (::selection), HSLA(hue, saturation, lightness, alpha channel) in background-color etc.
 ## Task_4
-####Something new:
+#### Something new:
 - [device pixel ratio](https://stackoverflow.com/questions/8785643/what-exactly-is-device-pixel-ratio) (logical pixels
 (Device Independent Pixels. example:'1600px') + physical pixels(Hardware Pixels. ex:'800px') = device pixel ratio '2'), device-aspect-ratio.
 - simulators, emulators (mobile debugging using the development tools on a desktop machine)
 - CSS: resolution, orientation
 - font boosting
-####Surprised:
+#### Surprised:
 - the instructor of the course has a good low voice timbre. it was nice listening
-####Flexbox is good
+#### Flexbox is good
