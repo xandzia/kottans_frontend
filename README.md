@@ -30,4 +30,5 @@ Also interesting was working directory and staging area (finally I understand ho
 - font boosting
 #### Surprised:
 - the instructor of the course has a good low voice timbre. it was nice listening
-#### Flexbox is good
+#### Try not to use !important
+![Screenshot](task_1/important.jpeg)
