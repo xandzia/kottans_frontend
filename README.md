@@ -21,6 +21,7 @@ Also interesting was working directory and staging area (finally I understand ho
 ## Task_3
 - Ctrl+O, Ctrl+R in browser -AWESOME!!!
 - CSS selectors ('+', '~'), pseudo-elements (::selection), HSLA(hue, saturation, lightness, alpha channel) in background-color etc.
+![Screenshot](task_3/test_3.png)
 ## Task_4
 #### Something new:
 - [device pixel ratio](https://stackoverflow.com/questions/8785643/what-exactly-is-device-pixel-ratio) (logical pixels
@@ -30,5 +31,9 @@ Also interesting was working directory and staging area (finally I understand ho
 - font boosting
 #### Surprised:
 - the instructor of the course has a good low voice timbre. it was nice listening
-#### Try not to use !important
+#### Thing you intend to use in the future:
+- Try not to use !important
 ![Screenshot](task_1/important.jpeg)
+![Screenshot](task_4/test_4.png)
+## Task_5
+- I always were confusing which logical operation gives true ( && or || ) when one of the argument is false. Now I cleary know it :)
