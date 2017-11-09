@@ -37,3 +37,14 @@ Also interesting was working directory and staging area (finally I understand ho
 - ![Screenshot](task_4/test_4.png)
 ## Task_5
 - I always were confusing which logical operation gives true ( && or || ) when one of the argument is false. Now I cleary know it :)
+- Notes: 
+```
+condition ? ( do this if TRUE ) : ( do that if FALSE);
+
+for ( start; stop; step ) {
+  // do this thing
+}
+
+Increment i++
+decrement i--
+```
