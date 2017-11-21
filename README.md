@@ -21,7 +21,7 @@ Also interesting was working directory and staging area (finally I understand ho
 ## Task_3
 - Ctrl+O, Ctrl+R in browser -AWESOME!!!
 - CSS selectors ('+', '~'), pseudo-elements (::selection), HSLA(hue, saturation, lightness, alpha channel) in background-color etc.
-- ![Screenshot](task_3/test_3.png)
+- [Screenshot "Intro to HTML & CSS"](https://github.com/xandzia/kottans_frontend/blob/master/task_3/test_3.png)
 ## Task_4
 #### Something new:
 - [device pixel ratio](https://stackoverflow.com/questions/8785643/what-exactly-is-device-pixel-ratio) (logical pixels
@@ -34,7 +34,7 @@ Also interesting was working directory and staging area (finally I understand ho
 #### Thing you intend to use in the future:
 - Try not to use !important
 - ![Screenshot](task_1/important.jpeg)
-- ![Screenshot](task_4/test_4.png)
+- [Screenshot "Responsive Web Design Fundamentals"](https://github.com/xandzia/kottans_frontend/blob/master/task_4/test_4.png)
 ## Task_5
 - I always were confusing which logical operation gives true ( && or || ) when one of the argument is false. Now I cleary know it :)
 - Notes: 
@@ -47,8 +47,9 @@ for ( start; stop; step ) {
 
 ```
 -It was hard but fantastic, especially when I stuck at task "triangle". but after 2 hour it shown me really happiness. The next tasks were easily. It is one of the best course.
-- ![Screenshot](task_5/task_5.png)
+- [Screenshot "Intro to JS"](https://github.com/xandzia/kottans_frontend/blob/master/task_5/task_5.png)
 - About extra materials: it's a fact that I couldn't remember all of this, but now something is possible, and I know the place where I can find one.
 ## Task_6
 - Scopes, closures, "this", prototypes, Classes - ok, but pseudoclassical Patterns, Subclasses, Superclass are difficult for me. I need to watch the course one more time.
 - About project Frogger: it was useful and a little hard for me. Honestly,  something I looked up on Google.
+- [Screenshot "Object Oriented JS"](https://github.com/xandzia/kottans_frontend/blob/master/task_6/task_6.png)
