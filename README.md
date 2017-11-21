@@ -48,5 +48,7 @@ for ( start; stop; step ) {
 ```
 -It was hard but fantastic, especially when I stuck at task "triangle". but after 2 hour it shown me really happiness. The next tasks were easily. It is one of the best course.
 - ![Screenshot](task_5/task_5.png)
-## Task_6
 - About extra materials: it's a fact that I couldn't remember all of this, but now something is possible, and I know the place where I can find one.
+## Task_6
+- Scopes, closures, "this", prototypes, Classes - ok, but pseudoclassical Patterns, Subclasses, Superclass are difficult for me. I need to watch the course one more time.
+- About project Frogger: it was useful and a little hard for me. Honestly,  something I looked up on Google.
