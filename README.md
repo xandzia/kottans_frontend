@@ -53,3 +53,6 @@ for ( start; stop; step ) {
 - Scopes, closures, "this", prototypes, Classes - ok, but pseudoclassical Patterns, Subclasses, Superclass are difficult for me. I need to watch the course one more time.
 - About project Frogger: it was useful and a little hard for me. Honestly,  something I looked up on Google.
 - [Screenshot "Object Oriented JS"](https://github.com/xandzia/kottans_frontend/blob/master/task_6/task_6.png)
+## Task_7
+- It was very funny course,especially then animated gif shows you was it correct or incorrect after checking the quiz. I understood about Service Worker, about IndexedDB in common. The details in code leaved me many questions. I am coming back to read the books "You dont know JS" ...
+- [Screenshot "Offline Web Applications"](https://github.com/xandzia/kottans_frontend/blob/master/task_7/task_7.png)
