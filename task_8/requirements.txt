@@ -1,0 +1,6 @@
+Django==2.0rc1
+zappa
+zappa-django-utils
+djangorestframework
+django-storages
+django-webpack-loader

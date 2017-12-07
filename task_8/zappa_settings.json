@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "aws_region": "eu-west-1",
+    "profile_name": "default",
+    "s3_bucket": "joystick-zappa",
+    "keep_warm": false,
+
+    "project_name": "joystick",
+    "runtime": "python3.6",
+    "django_settings": "joystick.settings",
+    "environment_variables": {
+      "S3SQLITE": "True"
+    }
+  }
+}

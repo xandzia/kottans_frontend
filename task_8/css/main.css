@@ -1,0 +1,36 @@
+.wrapper {
+  min-width: 600px;
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; }
+
+.container {
+  perspective: 700px; }
+  .container .card {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+    width: 200px;
+    height: 200px; }
+    .container .card figure {
+      width: 200px;
+      height: 200px;
+      margin: 0;
+      position: absolute;
+      backface-visibility: hidden; }
+  .container .card:hover {
+    transform: rotateY(180deg); }
+
+.back {
+  background-color: black;
+  transform: rotateY(180deg); }
+
+.front {
+  background-color: pink; }
+
+/*# sourceMappingURL=main.css.map */

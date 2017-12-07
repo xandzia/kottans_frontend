@@ -1,0 +1,14 @@
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django App Setup Hello World</title>
+</head>
+<body>
+    <div id="root">
+    </div>
+</body>
+{% render_bundle 'main' %}
+</html>

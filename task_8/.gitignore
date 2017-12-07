@@ -1,0 +1,5 @@
+sqlite.db
+.idea
+__pycache__/
+node_modules/
+webpack-stats.json
