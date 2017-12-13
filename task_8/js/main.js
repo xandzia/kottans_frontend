@@ -1,3 +1,13 @@
+//images array
+var imagesArray = ['applejack.png', 'boss.png', 'flattershai.png', 'pinkie.png', 'rainbawdash.png', 'rarity.png'];
+
+//copy array, random
+imagesArray = imagesArray.concat(imagesArray);
+imagesArray.sort(function() {
+    return 0.5 - Math.random()     
+});
+
+
 // create 1 card in html
 function createCards(img) {
     
@@ -6,17 +16,21 @@ function createCards(img) {
     fig.className = 'container';
     
     
-    fig.innerHTML = '<div class="card"><figure class="front"></figure><figure class="back">'+img+'</figure></div>';
+//    fig.innerHTML = '<div class="card"><figure class="front"></figure><figure class="back"><img src="img/'+img+'"></figure></div>';
+    
+    //********test part******
+    
+        fig.innerHTML = '<div class="card"><figure class="front"><img src="img/'+img+'"></figure></div>';
     //wrap.appendChild;
+    
+    //********end test part*****
     
     wrap.appendChild(fig);
 };
 
-//create 12cards
+//create 12 cards
 for(var i = 0; i<12; i++) {
-    createCards(i);
+    createCards(imagesArray[i]);
     console.log(i);
 }
 
-//createCards();
-//console.log(createCards())
