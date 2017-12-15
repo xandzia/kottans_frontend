@@ -19,8 +19,7 @@ function createCards(img) {
 //    fig.innerHTML = '<div class="card"><figure class="front"></figure><figure class="back"><img src="img/'+img+'"></figure></div>';
     
     //********test part******
-    
-        fig.innerHTML = '<div class="card"><figure class="front"><img src="img/'+img+'"></figure></div>';
+        fig.innerHTML = '<div class="card" onclick="flip(event)"><figure class="back"><img src="img/'+img+'"></figure><figure class="front"><img src="img/front_v5.png"></figure></div>';
     //wrap.appendChild;
     
     //********end test part*****
@@ -34,3 +33,7 @@ for(var i = 0; i<12; i++) {
     console.log(i);
 }
 
+//animate card
+function flip(event) {
+    event.currentTarget.setAttribute('style', 'transform: rotateY(180deg);');
+}

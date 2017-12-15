@@ -23,8 +23,6 @@
       margin: 0;
       position: absolute;
       backface-visibility: hidden; }
-  .container .card:hover {
-    transform: rotateY(180deg); }
 
 .back {
   transform: rotateY(180deg); }

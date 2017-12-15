@@ -26,9 +26,6 @@
             backface-visibility: hidden; //https://css-tricks.com/almanac/properties/b/backface-visibility/
           }
         }
-        .card:hover {
-            transform: rotateY(180deg);
-        }
     }
 
 .back {
