@@ -42,7 +42,6 @@ function flip(card, val) {
     //animate card
     event.currentTarget.setAttribute('style', 'transform: rotateY(180deg);');
     
-    
     if ( flipped.length < 2 ) {
         if ( flipped.length === 0 ) {
             //add flipped card to array flipped 
@@ -51,24 +50,37 @@ function flip(card, val) {
         } else if ( flipped.length === 1 ) {
             flipped.push(val);
             numberOfImgs.push(card.id);
+                    var card1 = document.getElementById(numberOfImgs[0]);
+                    var card2 = document.getElementById(numberOfImgs[1]);
             if ( flipped[0] === flipped[1] ) {
-                flippedImg = flipped + 2;
+                setTimeout(function(){
+                    card1.setAttribute('style', 'visibility: hidden;');
+                    card2.setAttribute('style', 'visibility: hidden;')
+                }, 500);
+                flippedImg = flippedImg + 2;
                 //empty arrays
                 flipped = [];
                 numberOfImgs = [];
                 if ( flippedImg === imagesArray.length ) {
-                    alert ('You won');
-                    newGame();
+                    setTimeout(function (){
+                       var remove = document.getElementsByClassName('container');
+                        for (var i = remove.length; i--; ) {
+                           remove[i].remove();
+                        }
+                        alert('You won');
+                        newGame();
+                    }, 700);
                 }
             } else {
+                function backAgain() {
                 //no match is made
-                    var card1 = document.getElementById(numberOfImgs[0]);
-                    var card2 = document.getElementById(numberOfImgs[1]);
-                    card1.setAttribute('style', 'transform: rotateY(-180deg);');
-                    card2.setAttribute('style', 'transform: rotateY(-180deg);');
+                    card1.setAttribute('style', 'transform: rotateY(0deg);');
+                    card2.setAttribute('style', 'transform: rotateY(0deg);');
                     //clear arrays
                     flipped = [];
                     numberOfImgs = [];
+                }
+                setTimeout(backAgain, 500);
             }
         }
     }  
