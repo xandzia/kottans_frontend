@@ -35,3 +35,12 @@
 .front {
     //background-color: pink;
 }
+canvas {
+    position: absolute;
+    z-index: 0;
+}
+
+button {
+    position: absolute;
+    z-index: 1;
+}

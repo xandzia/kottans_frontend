@@ -5,12 +5,17 @@ var flipped = [];
 var numberOfImgs = []; //ids
 var flippedImg = 0;
 
+// Confetti Generator https://www.npmjs.com/package/confetti-js
+var confettiSettings = { target: 'my-canvas' };
+var confetti = new ConfettiGenerator(confettiSettings);
+
 //copy array, random
 imagesArray = imagesArray.concat(imagesArray);
 
 
 //create 12 cards
 function newGame() {
+    confetti.clear();
     flippedImg = 0;
     
     imagesArray.sort(function() {
@@ -40,7 +45,7 @@ function newGame() {
 //action by click
 function flip(card, val) {
     //animate card
-    event.currentTarget.setAttribute('style', 'transform: rotateY(180deg);');
+    setTimeout(event.currentTarget.setAttribute('style', 'transform: rotateY(180deg);'), 400);
     
     if ( flipped.length < 2 ) {
         if ( flipped.length === 0 ) {
@@ -56,7 +61,7 @@ function flip(card, val) {
                 setTimeout(function(){
                     card1.setAttribute('style', 'visibility: hidden;');
                     card2.setAttribute('style', 'visibility: hidden;')
-                }, 500);
+                }, 400);
                 flippedImg = flippedImg + 2;
                 //empty arrays
                 flipped = [];
@@ -67,23 +72,27 @@ function flip(card, val) {
                         for (var i = remove.length; i--; ) {
                            remove[i].remove();
                         }
-                        alert('You won');
-                        newGame();
+                        //confirm('You won');
+                        //newGame();
                     }, 700);
+                        confetti.render();
                 }
             } else {
                 function backAgain() {
-                //no match is made
+                    //no match is made
                     card1.setAttribute('style', 'transform: rotateY(0deg);');
                     card2.setAttribute('style', 'transform: rotateY(0deg);');
-                    //clear arrays
-                    flipped = [];
-                    numberOfImgs = [];
                 }
-                setTimeout(backAgain, 500);
+                //clear arrays
+                flipped = [];
+                numberOfImgs = [];
+                setTimeout(backAgain, 400);
             }
         }
     }  
-}
+};
 
 newGame();
+
+
+

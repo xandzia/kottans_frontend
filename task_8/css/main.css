@@ -27,4 +27,12 @@
 .back {
   transform: rotateY(180deg); }
 
+canvas {
+  position: absolute;
+  z-index: 0; }
+
+button {
+  position: absolute;
+  z-index: 1; }
+
 /*# sourceMappingURL=main.css.map */
