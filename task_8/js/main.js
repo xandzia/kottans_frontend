@@ -5,6 +5,8 @@ var flipped = [];
 var numberOfImgs = []; //ids
 var flippedImg = 0;
 
+var button = document.getElementsByTagName('button')[0];
+
 // Confetti Generator https://www.npmjs.com/package/confetti-js
 var confettiSettings = { target: 'my-canvas' };
 var confetti = new ConfettiGenerator(confettiSettings);
@@ -16,7 +18,11 @@ imagesArray = imagesArray.concat(imagesArray);
 //create 12 cards
 function newGame() {
     confetti.clear();
+    
+    button.setAttribute('style', 'display: none;');
+    
     flippedImg = 0;
+    
     
     imagesArray.sort(function() {
         return 0.5 - Math.random()
@@ -74,6 +80,7 @@ function flip(card, val) {
                         }
                         //confirm('You won');
                         //newGame();
+                        button.setAttribute('style', 'display: block;');
                     }, 700);
                         confetti.render();
                 }
