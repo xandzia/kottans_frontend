@@ -16,7 +16,7 @@ imagesArray = imagesArray.concat(imagesArray);
 
 
 //create 12 cards
-(function newGame() {
+function newGame() {
     confetti.clear();
     
     button.setAttribute('style', 'display: none;');
@@ -38,7 +38,7 @@ imagesArray = imagesArray.concat(imagesArray);
         wrap.appendChild(fig);
     }
     
-}());
+};
 
 //action by click
 function flip(card, val) {
@@ -53,9 +53,11 @@ function flip(card, val) {
         } else if ( flipped.length === 1 ) {
             flipped.push(val);
             numberOfImgs.push(card.id);
-                    let card1 = document.getElementById(numberOfImgs[0]);
-                    let card2 = document.getElementById(numberOfImgs[1]);
-            if ( flipped[0] === flipped[1] ) {
+            
+            const card1 = document.getElementById(numberOfImgs[0]);
+            const card2 = document.getElementById(numberOfImgs[1]);
+            
+            if ( flipped[0] === flipped[1] && numberOfImgs[0] != numberOfImgs[1] ) {
                 setTimeout( () => {
                     card1.setAttribute('style', 'visibility: hidden;');
                     card2.setAttribute('style', 'visibility: hidden;')
@@ -64,19 +66,21 @@ function flip(card, val) {
                 //empty arrays
                 flipped = [];
                 numberOfImgs = [];
+                
                 if ( flippedImg === imagesArray.length ) {
-                        confetti.render();
+                    confetti.render();
+                    
                     setTimeout( () => {
-                       const remove = document.getElementsByClassName('container');
+                        const remove = document.getElementsByClassName('container');
                         for (let i = remove.length; i--; ) {
-                           remove[i].remove();
+                            remove[i].remove();
                         }
-                        //alert('You won');
+                            //alert('You won');
                         button.setAttribute('style', 'display: block;');
                     }, 1000);
                 }
             } else {
-                () => {
+                function backAgain() {
                     //no match is made
                     card1.setAttribute('style', 'transform: rotateY(0deg);');
                     card2.setAttribute('style', 'transform: rotateY(0deg);');
@@ -89,3 +93,4 @@ function flip(card, val) {
         }
     }  
 }
+newGame();
