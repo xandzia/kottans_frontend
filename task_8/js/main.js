@@ -45,7 +45,8 @@ function newGame() {
 //action by click
 function flip(card, val) {
     //animate card
-    setTimeout(event.currentTarget.setAttribute('style', 'transform: rotateY(180deg);'), 400);
+    setTimeout(card.setAttribute('style', 'transform: rotateY(180deg);'), 400);
+    card.removeAttribute('onclick');
     
     if ( flipped.length < 2 ) {
         if ( flipped.length === 0 ) {
