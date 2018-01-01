@@ -15,6 +15,7 @@ let confetti = new ConfettiGenerator(confettiSettings);
 imagesArray = imagesArray.concat(imagesArray);
 
 
+
 //create 12 cards
 function newGame() {
     confetti.clear();
@@ -34,12 +35,13 @@ function newGame() {
         
         fig.className = 'container';
         fig.innerHTML = '<div id="'+i+'" class="card" onclick="flip(this, \''+imagesArray[i]+'\')"><figure class="back"><img src="img/'+imagesArray[i]+'"></figure><figure class="front"><img src="img/front_v5.png"></figure></div>';
+                                 
+//                                 fig.innerHTML = '<div id="'+i+'" class="card"><figure class="back"><img src="img/'+imagesArray[i]+'"></figure><figure class="front"><img src="img/front_v5.png"></figure></div>';
 
         wrap.appendChild(fig);
     }
     
 };
-
 //action by click
 function flip(card, val) {
     //animate card
@@ -94,3 +96,6 @@ function flip(card, val) {
     }  
 }
 newGame();
+
+//for button "new game"
+document.getElementById('but').addEventListener('click', newGame);

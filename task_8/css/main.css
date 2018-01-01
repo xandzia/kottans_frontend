@@ -1,6 +1,5 @@
 .wrapper {
-  min-width: 600px;
-  max-width: 1000px;
+  width: 980px;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -9,7 +8,8 @@
   align-items: center; }
 
 .container {
-  perspective: 700px; }
+  perspective: 700px;
+  margin: 0.1em; }
   .container .card {
     transition: transform 0.6s;
     transform-style: preserve-3d;
@@ -34,6 +34,24 @@ canvas {
 button {
   position: absolute;
   z-index: 1;
-  display: none; }
+  display: none;
+  top: 45%;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0.7em 1em;
+  text-align: center;
+  width: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #634ca0;
+  color: white; }
+  button:hover {
+    background: #4f3c7f;
+    box-shadow: 0px 1px 1px #1f1731; }
+
+h1 {
+  text-align: center;
+  color: #644ca0;
+  text-transform: capitalize; }
 
 /*# sourceMappingURL=main.css.map */
