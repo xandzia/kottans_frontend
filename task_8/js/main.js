@@ -46,7 +46,7 @@ function newGame() {
 function flip(card, val) {
     //animate card
     setTimeout(card.setAttribute('style', 'transform: rotateY(180deg);'), 400);
-    card.removeAttribute('onclick');
+    card.style.pointerEvents = 'none';
     
     if ( flipped.length < 2 ) {
         if ( flipped.length === 0 ) {
@@ -92,6 +92,7 @@ function flip(card, val) {
                 flipped = [];
                 numberOfImgs = [];
                 setTimeout(backAgain, 400);
+                card.style.pointerEvents = 'auto';
             }
         }
     }  
