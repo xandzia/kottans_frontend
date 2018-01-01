@@ -62,3 +62,7 @@ for ( start; stop; step ) {
 ### [Offline Web Applications](https://www.udacity.com/course/offline-web-applications--ud899)
 - It was very funny course,especially then animated gif shows you was it correct or incorrect after checking the quiz. I understood about Service Worker, about IndexedDB in common. The details in code leaved me many questions. I am coming back to read the books "You dont know JS" ...
 - [Screenshot "Offline Web Applications"](https://github.com/xandzia/kottans_frontend/blob/master/task_7/task_7.png)
+## Task_8
+### [Memory Pair Game Demo](https://xandzia.github.io/kottans_frontend/task_8/index.html)
+- [source](https://github.com/xandzia/kottans_frontend/tree/master/task_8)
+- A long trip, but I have done. I don't remember how much I rewrote js-code to find a better solution. It was too much. This task taught me to use dev tools, debugger, breakpoints and feel happy when Pony's fans play my game)
