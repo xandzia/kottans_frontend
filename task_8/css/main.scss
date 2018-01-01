@@ -46,7 +46,8 @@ canvas {
 button {
     position: absolute;
     z-index: 1;
-    display: none;
+    visibility: hidden;
+    left: 50%;
     top: 45%;
     font-weight: bold;
     font-size: 18px;

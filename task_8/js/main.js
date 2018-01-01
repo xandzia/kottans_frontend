@@ -46,6 +46,7 @@ function newGame() {
 function flip(card, val) {
     //animate card
     setTimeout(card.setAttribute('style', 'transform: rotateY(180deg);'), 400);
+    //turn off "onclick"
     card.style.pointerEvents = 'none';
     
     if ( flipped.length < 2 ) {
@@ -73,13 +74,13 @@ function flip(card, val) {
                 if ( flippedImg === imagesArray.length ) {
                     confetti.render();
                     
-                    setTimeout( () => {
                         const remove = document.getElementsByClassName('container');
                         for (let i = remove.length; i--; ) {
                             remove[i].remove();
                         }
+                    setTimeout( () => {
                             //alert('You won');
-                        button.setAttribute('style', 'display: block;');
+                        button.setAttribute('style', 'visibility: visible;');
                     }, 1000);
                 }
             } else {
@@ -92,6 +93,7 @@ function flip(card, val) {
                 flipped = [];
                 numberOfImgs = [];
                 setTimeout(backAgain, 400);
+                //turn on "onclick"
                 card.style.pointerEvents = 'auto';
             }
         }
