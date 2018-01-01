@@ -1,9 +1,12 @@
 $bg-color: #634ca0;
 $fg-color: darken($bg-color,7%);
 
-.wrapper {
+header,
+main {
     width: 980px;
     margin: auto;
+}
+.wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -47,7 +50,6 @@ button {
     position: absolute;
     z-index: 1;
     visibility: hidden;
-    left: 50%;
     top: 45%;
     font-weight: bold;
     font-size: 18px;
@@ -66,5 +68,6 @@ button {
 h1 {
     text-align: center;
     color: #644ca0;
+    font-size: 3em;
     text-transform: capitalize;
 }
