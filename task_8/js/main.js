@@ -1,11 +1,10 @@
-//images array
 let imagesArray = ['applejack.png', 'boss.png', 'flattershai.png', 'pinkie.png', 'rainbawdash.png', 'rarity.png'];
 
 let flipped = [];
 let numberOfImgs = []; //ids
 let flippedImg = 0;
 
-const button = document.getElementsByTagName('button')[0];
+const button = document.getElementById('but');
 
 // Confetti Generator https://www.npmjs.com/package/confetti-js
 const confettiSettings = { target: 'my-canvas' };

@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  padding: 0; }
+
 header,
 main {
   width: 980px;
@@ -57,5 +61,36 @@ h1 {
   color: #644ca0;
   font-size: 3em;
   text-transform: capitalize; }
+
+@media screen and (max-width: 980px) {
+  header,
+  main,
+  img {
+    width: 100%; }
+
+  img {
+    width: 100%; }
+
+  .container .card,
+  .container .card figure {
+    width: 20vw;
+    height: 20vw; }
+
+  h1 {
+    font-size: 2.5em; } }
+@media screen and (max-width: 470px) {
+  h1 {
+    font-size: 2em; } }
+@media screen and (max-height: 470px) {
+  h1 {
+    font-size: 2em; }
+
+  main {
+    width: 58%; } }
+@media screen and (orientation: landscape) {
+  .container .card,
+  .container .card figure {
+    width: 20vh;
+    height: 20vh; } }
 
 /*# sourceMappingURL=main.css.map */
