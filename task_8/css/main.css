@@ -62,14 +62,18 @@ h1 {
   font-size: 3em;
   text-transform: capitalize; }
 
+.card.flip2 {
+  transform: rotateY(0deg); }
+
+.card.flip {
+  transform: rotateY(180deg); }
+
 @media screen and (max-width: 980px) {
   header,
   main,
   img {
-    width: 100%; }
-
-  img {
-    width: 100%; }
+    width: auto;
+    height: 100%; }
 
   .container .card,
   .container .card figure {

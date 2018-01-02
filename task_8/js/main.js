@@ -19,8 +19,6 @@ imagesArray = imagesArray.concat(imagesArray);
 function newGame() {
     confetti.clear();
     
-    button.setAttribute('style', 'display: none;');
-    
     flippedImg = 0;
     
     imagesArray.sort(function() {
@@ -34,12 +32,11 @@ function newGame() {
         
         fig.className = 'container';
         fig.innerHTML = '<div id="'+i+'" class="card" onclick="flip(this, \''+imagesArray[i]+'\')"><figure class="back"><img src="img/'+imagesArray[i]+'"></figure><figure class="front"><img src="img/front_v5.png"></figure></div>';
-                                 
+//                                 
 //                                 fig.innerHTML = '<div id="'+i+'" class="card"><figure class="back"><img src="img/'+imagesArray[i]+'"></figure><figure class="front"><img src="img/front_v5.png"></figure></div>';
 
         wrap.appendChild(fig);
     }
-    
 };
 //action by click
 function flip(card, val) {
@@ -50,7 +47,7 @@ function flip(card, val) {
     
     if ( flipped.length < 2 ) {
         if ( flipped.length === 0 ) {
-            //add flipped card to array flipped 
+            //add flipped card to array 'flipped' 
             flipped.push(val);
             numberOfImgs.push(card.id);
         } else if ( flipped.length === 1 ) {
