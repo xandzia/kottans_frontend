@@ -19,7 +19,7 @@ main {
   margin: 0.1em; }
   .container .card {
     transition: transform 0.6s;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     position: relative;
     cursor: pointer;
     width: 200px;
@@ -29,10 +29,13 @@ main {
       height: 200px;
       margin: 0;
       position: absolute;
-      backface-visibility: hidden; }
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden; }
 
 .back {
-  transform: rotateY(180deg); }
+  -webkit-transform: rotateY(180deg); }
 
 canvas {
   position: absolute;
@@ -62,11 +65,11 @@ h1 {
   font-size: 3em;
   text-transform: capitalize; }
 
-.card.flip2 {
-  transform: rotateY(0deg); }
-
-.card.flip {
+.flip {
   transform: rotateY(180deg); }
+
+.flip2 {
+  transform: rotateY(0deg); }
 
 @media screen and (max-width: 980px) {
   header,

@@ -52,12 +52,12 @@ function hide(elem) {
 
 function flip(card) {
     console.log("flip1");
-    //card.style.transform = 'rotateY(180deg)';
-    card.classList.add("flip");
+    card.setAttribute('style', 'transform: rotateY(180deg);');
+    
 }
 function flip2(card) {
     console.log("flip2");
-    card.classList.add("flip2");
+    card.setAttribute('style', 'transform: rotateY(0deg);');
     
 }
 
