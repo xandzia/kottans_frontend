@@ -19,6 +19,8 @@ imagesArray = imagesArray.concat(imagesArray);
 function newGame() {
     confetti.clear();
     
+    button.setAttribute('style', 'display: none;');
+    
     flippedImg = 0;
     
     imagesArray.sort(function() {
