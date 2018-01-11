@@ -66,3 +66,7 @@ for ( start; stop; step ) {
 ### [Memory Pair Game Demo](https://xandzia.github.io/kottans_frontend/task_8/index.html)
 - [source](https://github.com/xandzia/kottans_frontend/tree/master/task_8)
 - A long trip, but I have done. I don't remember how much I rewrote js-code to find a better solution. It was too much. This task taught me to use dev tools, debugger, breakpoints and feel happy when Pony's fans play my game)
+## Task_9
+### [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884)
+- nothing new to me, except I planned to read the book High Performance Browser Networking ILYA GRIGORIK
+- [Screenshot "Website Performance Optimization"](https://github.com/xandzia/kottans_frontend/blob/master/task_9/test_9.png)
