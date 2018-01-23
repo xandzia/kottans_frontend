@@ -5,19 +5,87 @@
 * {
   box-sizing: border-box; }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -26,8 +94,17 @@ time, mark, audio, video {
   vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block; }
 
 body {
@@ -36,14 +113,18 @@ body {
   background-color: #eceef4;
   counter-reset: section; }
 
-ol, ul {
+ol,
+ul {
   list-style: none; }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none; }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none; }
 
@@ -56,13 +137,13 @@ table {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1280px;
+  max-width: 940px;
   counter-reset: section; }
 
 /*********** HEADER *************/
 header {
   display: flex;
-  max-width: 80%;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin: 60px auto; }
@@ -91,10 +172,11 @@ main {
   font-size: 0.8em;
   font-weight: 600; }
 
-.order-header {
-  border: 1px solid #dbdbe3;
-  display: flex; }
-  .order-header .left-header {
+.order-top {
+  border-bottom: 1px solid #dbdbe3;
+  display: flex;
+  flex-wrap: wrap; }
+  .order-top .left-top {
     width: 70%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -102,28 +184,28 @@ main {
     padding-left: 3%;
     display: flex;
     justify-content: space-between; }
-  .order-header .right-header {
+  .order-top .right-top {
     width: 30%;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 3%;
     padding-left: 3%;
     border-left: 1px solid #dbdbe3; }
-    .order-header .right-header h2 {
+    .order-top .right-top h2 {
       margin-bottom: 25px;
       text-transform: uppercase;
       color: #6e768f; }
-      .order-header .right-header h2 .fa-life-ring {
+      .order-top .right-top h2 .fa-life-ring {
         margin-right: 5px; }
-    .order-header .right-header p {
+    .order-top .right-top p {
       font-size: 0.7em;
       margin-left: 26px;
       line-height: 1.5;
       margin-bottom: 15px; }
-    .order-header .right-header address {
+    .order-top .right-top address {
       display: inline-block;
       margin-left: 26px; }
-      .order-header .right-header address a {
+      .order-top .right-top address a {
         font-size: 0.7em;
         color: #6e768f;
         font-weight: 600; }
@@ -194,19 +276,21 @@ a {
     border: 1px solid #c9d0e1;
     margin-bottom: 50px;
     width: 48%; }
-  .type-of-doc section {
+  .type-of-doc fieldset {
     margin-bottom: 50px; }
-    .type-of-doc section label {
+    .type-of-doc fieldset input {
+      opacity: 0; }
+    .type-of-doc fieldset label {
       display: inline-block;
       position: relative;
       margin: 10px; }
-    .type-of-doc section .img-wrapper {
+    .type-of-doc fieldset .img-wrapper {
       position: relative;
       z-index: 1;
       border: 3px solid transparent;
       border-radius: 3px;
       z-index: 1; }
-    .type-of-doc section .doc-img {
+    .type-of-doc fieldset .doc-img {
       width: 245px;
       height: 200px; }
 
@@ -360,12 +444,15 @@ a {
 
 .two-section {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 50px;
   margin-right: 50px;
   justify-content: space-between; }
 
 .choose-tone {
   width: 40%; }
+  .choose-tone input {
+    opacity: 0; }
   .choose-tone .fa {
     margin-right: 10px; }
 
@@ -373,7 +460,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
   width: 210px;
   height: 60px;
   border: 1px solid #dbdbe3;
@@ -457,7 +543,10 @@ a {
   justify-content: flex-start; }
 
 .payment-method {
-  margin-top: 60px; }
+  margin-top: 60px;
+  display: flex; }
+  .payment-method input {
+    opacity: 0; }
   .payment-method label {
     display: inline-block;
     border: 1px solid #dbdbe3;
@@ -465,7 +554,6 @@ a {
     background: #f7f7fa;
     color: #a5abc5;
     width: 190px;
-    margin-right: 20px;
     vertical-align: middle;
     text-align: center;
     cursor: pointer; }
@@ -475,7 +563,8 @@ a {
       width: 100px; }
 
 .credit-card-fields {
-  margin-top: 40px; }
+  margin-top: 40px;
+  display: flex; }
   .credit-card-fields .input-wrap {
     display: inline-block;
     margin-right: 30px; }
@@ -491,6 +580,7 @@ a {
 
 .order-confirm {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-bottom: 60px; }
@@ -547,16 +637,14 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 10px; }
 
 /*********** CHECK *************/
-input[name=title]:checked +
-.img-wrapper,
+input[name=title]:checked + .img-wrapper,
 input[name=desired-tone]:checked + label,
 input[name=payment-method]:checked + label {
   border: 3px solid #76a7e1;
   border-radius: 3px;
   position: relative; }
 
-input[name=title]:checked +
-.img-wrapper:after,
+input[name=title]:checked + .img-wrapper:after,
 input[name=desired-tone]:checked + .tone::after,
 input[name=payment-method]:checked + label::after {
   font-family: "FontAwesome";
@@ -611,12 +699,13 @@ footer {
   font-size: 0.8em; }
   footer .wrapper {
     display: flex;
+    flex-wrap: wrap;
     line-height: 1.2;
     justify-content: space-between; }
     footer .wrapper .about,
     footer .wrapper .address,
     footer .wrapper .social {
-      width: 25%; }
+      flex-basis: 25%; }
     footer .wrapper .logo-dark {
       width: 90px; }
   footer h3 {
@@ -628,5 +717,67 @@ footer {
   footer .about p {
     margin-left: 20px;
     font-style: italic; }
+
+@media all and (max-width: 780px) {
+  .header-section::before {
+    margin-left: -30px; }
+
+  .order-top .left-top,
+  .order-top .right-top {
+    width: 100%; }
+  .order-top .left-top {
+    flex-direction: column; }
+  .order-top .right-top {
+    border: none;
+    border-top: 1px solid #dbdbe3; }
+
+  .left-btn-group table {
+    margin: 0 auto; }
+
+  .choose-ton,
+  .urgent {
+    width: 100%; }
+
+  .urgent {
+    margin-top: 40px; }
+
+  .urgent .range-wrapper {
+    margin-left: 0px; }
+
+  footer .wrapper .about,
+  footer .wrapper .address,
+  footer .wrapper .social {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 20px; }
+  footer .wrapper .logo-dark {
+    margin: 20px auto; }
+
+  .input-wrapper-double,
+  .payment-method,
+  .credit-card-fields {
+    flex-direction: column; }
+
+  .hidden {
+    display: none; }
+
+  .btn-group {
+    flex-direction: row; } }
+@media all and (max-width: 453px) {
+  header {
+    flex-direction: column; }
+
+  .left-btn-group tbody {
+    display: flex; }
+    .left-btn-group tbody tr {
+      display: flex;
+      flex-direction: column; }
+    .left-btn-group tbody tr:nth-child(2) {
+      display: flex;
+      text-align: right;
+      /* justify-content: flex-end; */
+      flex-direction: column; }
+      .left-btn-group tbody tr:nth-child(2) td {
+        padding: 8px; } }
 
 /*# sourceMappingURL=style.css.map */

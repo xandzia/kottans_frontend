@@ -18,15 +18,15 @@
 </head>
 
 <body>
-    <header  class="wrapper">
+    <header class="wrapper">
         <a href="#" class="nav-button"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Go back</a>
-		<img src="img/logo.png" alt="logo">
-		<a href="#" class="nav-button"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Sign in</a>
+        <img src="img/logo.png" alt="logo">
+        <a href="#" class="nav-button"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Sign in</a>
     </header>
-    <main  class="wrapper">
+    <main class="wrapper">
         <form action="#">
-            <section class="order-header">
-                <section class="left-header">
+            <div class="order-top">
+                <section class="left-top">
                     <div class="left-btn-group">
                         <h2 class="h2-header">
                             <i class="fa fa-shopping-bag" aria-hidden=true></i> Your order
@@ -41,7 +41,7 @@
                             <tr>
                                 <td>2 documents</td>
                                 <td>2 languages</td>
-                                <td value='USD:696.06'>$ 696.06</td>
+                                <td>$ 696.06</td>
                                 <td>48 hours*</td>
                             </tr>
                         </table>
@@ -51,84 +51,84 @@
                         <button class="order-but nocolor">print a quote</button>
                     </div>
                 </section>
-                
-                <section class="right-header">
+
+                <section class="right-top">
                     <h2 class="h2-header">
                         <i class="fa fa-life-ring" aria-hidden="true"></i> Help center
                     </h2>
                     <p>If you need assistance while placing your order, contact one of our beloved Project Manager by phone or email.</p>
                     <address>
-                        <a href="tel:+971(0)555 555">+971(0)555 555</a>
+                        <a href="tel:+971(0)555555">+971(0)555 555</a>
                         <a href="mailto:help@qtest.com">help@qtest.com</a>
                     </address>
                 </section>
-            </section>
-           
+            </div>
+
             <section class="type-of-doc">
                 <h1>select what you want to translate</h1>
                 <hr>
-                <section>
+                <fieldset>
                     <label for="type_1">
-                          <input type="radio" id="type_1" name="title" value="Website" hidden />
-                          <figure class="img-wrapper">
-                               <img src="img/website.jpg" class="doc-img">
-                            </figure>
+                          <input type="radio" id="type_1" name="title" value="Website" />
+                          <div class="img-wrapper">
+                               <img src="img/website.jpg" class="doc-img" alt="imgage of Website">
+                            </div>
                     </label>
                     <label for="type_2">
-                          <input type="radio" id="type_2" name="title" value="Documents" checked hidden />
-                            <figure class="img-wrapper">
-                               <img src="img/document.jpg" class="doc-img">
-                            </figure>
+                          <input type="radio" id="type_2" name="title" value="Documents" checked />
+                            <div class="img-wrapper">
+                               <img src="img/document.jpg" class="doc-img" alt="imgage of Documents">
+                            </div>
                     </label>
                     <label for="type_3">
-                          <input type="radio" id="type_3" name="title" value="Social-Account" hidden />
-                            <figure class="img-wrapper">
-                               <img src="img/social.jpg" class="doc-img">
-                            </figure>
+                          <input type="radio" id="type_3" name="title" value="Social-Account" />
+                            <div class="img-wrapper">
+                               <img src="img/social.jpg" class="doc-img" alt="imgage of Social-Account">
+                            </div>
                     </label>
-                </section>
+                </fieldset>
             </section>
-            
+
             <section class="upload-docs">
                 <h2 class='header-section'>Upload your documents <small>(Doc, Docx, Text, Pdf, Markdown)</small></h2>
-					<button class="upload-but">
+                <button class="upload-but">
 					    <i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file
 					    <input type="file">
 				    </button>
-					<fieldset class="upload-table">
-						<table>
-							<tr>
-                                <th>File name</th>
-                                <th>File size</th>
-                                <th>Number of words</th>
-                                <th>Remove</th>
-                            </tr>
-							<tr>
-                                <td><i class="fa fa-file-text" aria-hidden="true"></i>business_operation.docx</td>
-                                <td>78kb</td>
-                                <td value="words:842">842</td>
-								<td><button class="trash">
+                <fieldset class="upload-table">
+                    <table>
+                        <tr>
+                            <th>File name</th>
+                            <th class="hidden">File size</th>
+                            <th class="hidden">Number of words</th>
+                            <th>Remove</th>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-text" aria-hidden="true"></i>business_operation.docx</td>
+                            <td class="hidden">78kb</td>
+                            <td value="words:842" class="hidden">842</td>
+                            <td><button class="trash">
 								        <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
 								    </button>
-                                </td>
-                            </tr>
-							<tr>
-                                <td><i class="fa fa-file-text" aria-hidden="true"></i>business_financial.docx</td>
-                                <td>26kb</td>
-                                <td value="words:842">2,326</td>
-								<td><button class="trash">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-text" aria-hidden="true"></i>business_financial.docx</td>
+                            <td class="hidden">26kb</td>
+                            <td value="words:842" class="hidden">2,326</td>
+                            <td><button class="trash">
 								        <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
 								    </button>
-                                </td>
-                            </tr>
-						</table>
-					</fieldset>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
             </section>
-            
+
             <section class="choose-lang">
-					<h2 class="header-section">Choose your languages pairing</h2>
-					<div class="lang-holder">
-						<label>From
+                <h2 class="header-section">Choose your languages pairing</h2>
+                <div class="lang-holder">
+                    <label>From
 							<select>
 								<option>English</option>
 								<option>Spain</option>
@@ -136,9 +136,9 @@
 								<option>Russian</option>
 							</select>
 						</label>
-					</div>
-					<div class="lang-holder">
-						<label>To
+                </div>
+                <div class="lang-holder">
+                    <label>To
 							<select>
 								<option>English</option>
 								<option>Spain</option>
@@ -146,7 +146,7 @@
 								<option>Russian</option>
 							</select>
 						</label>
-						<label>
+                    <label>
 							<select>
 								<option>English</option>
 								<option>Spain</option>
@@ -154,88 +154,83 @@
 								<option>Russian</option>
 							</select>
 						</label>
-							<button class="trash">
+                    <button class="trash">
 							    <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
 							 </button>
-						<button class="add">
+                    <button class="add">
 						    <i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD
 				        </button>
-					</div>
+                </div>
             </section>
-            
+
             <section class="two-section">
                 <section class="choose-tone">
                     <h2 class="header-section">Select your desired tone</h2>
-                        <input type="radio" name="desired-tone" value="website" id="friendly" hidden>
-					    <label class="tone" for="friendly">
+                    <input type="radio" name="desired-tone" value="website" id="friendly">
+                    <label class="tone" for="friendly">
 					    <i class="fa fa-comments" aria-hidden="true"></i> Friendly / Casual</label>
-					    <input type="radio" name="desired-tone" value="document" id="corporate" hidden checked>
-					    <label class="tone" for="corporate"><i class="fa fa-briefcase" aria-hidden="true"></i> Corporate / Pro</label>
-					    <input type="radio" name="desired-tone" value="social" id="formal" hidden>
-					    <label class="tone" for="formal"><i class="fa fa-bullhorn" aria-hidden="true"></i> Media / Formal</label>
+                    <input type="radio" name="desired-tone" value="document" id="corporate" checked>
+                    <label class="tone" for="corporate"><i class="fa fa-briefcase" aria-hidden="true"></i> Corporate / Pro</label>
+                    <input type="radio" name="desired-tone" value="social" id="formal">
+                    <label class="tone" for="formal"><i class="fa fa-bullhorn" aria-hidden="true"></i> Media / Formal</label>
                 </section>
                 <section class="urgent">
                     <h2 class="header-section">Tell us how urgent this job is</h2>
-						<div class="range-wrapper">
-							<input type="range" min="1" max="3" step="1"/>
-							<div class="list">
-								<label for="urgent">I got time</label>
-								<label class="orange" for="urgent">Average</label>
-								<label for="urgent">Yesterday</label>
-							</div>		
-							<legend for="urgent">
-								<h3>
-								    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-								    &nbsp;Timeline info
-								</h3>
-								<p>With an <em>avarage</em> timeline setup, our expert translator can take a reasonable amount of time perfecting your translating</p>
-							</legend>
-						</div>
+                    <div class="range-wrapper">
+                        <input type="range" min="1" max="3" step="1" />
+                        <div class="list">
+                            <label for="urgent">I got time</label>
+                            <label class="orange" for="urgent">Average</label>
+                            <label for="urgent">Yesterday</label>
+                        </div>
+                        <legend for="urgent">
+                            <h3>
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i> &nbsp;Timeline info
+                            </h3>
+                            <p>With an <em>avarage</em> timeline setup, our expert translator can take a reasonable amount of time perfecting your translating</p>
+                        </legend>
+                    </div>
                 </section>
             </section>
-            
+
             <section class="payment">
                 <h2 class="header-section">Sign up and choose a payment method</h2>
-				<small>Already have an account with us? <a href="#">Sign in.</a></small>
-				<div class="input-wrapper">
-					<label class="input-field-label" for="full-name">Full name</label>
-					<br>
-					<input type="text" maxlength="30" class="input-field" id="full-name" required
-					value="Methieu Mayer"/>
-					<span></span>
-				</div>
+                <small>Already have an account with us? <a href="#">Sign in.</a></small>
+                <div class="input-wrapper">
+                    <label class="input-field-label" for="full-name">Full name</label>
+                    <br>
+                    <input type="text" maxlength="30" class="input-field" id="full-name" required value="Methieu Mayer" />
+                    <span></span>
+                </div>
                 <div class="input-wrapper-double">
-				    <div class="input-wrapper">
-				        <label class="input-field-label" for="email">Email address</label>
-				        <br>
-				        <input type="email" class="input-field" id="email" required value="mathieu@mail.com"
-				        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-				        <span></span>
-				    </div>
-				    <div class="input-wrapper">
-				        <label class="input-field-label" for="password">Choose a password</label>
-				        <br>
-				        <input type="password" required class="input-field" id="password" pattern="[^]{6,}$">
-				        <span></span>
-				    </div>
-				</div>
-				<div class="payment-method-warapper">
-					<section class="payment-method">
-						<input type="radio" name="payment-method" value="credit_card" id="credit-card"  required hidden checked>
-						<label for="credit-card"><img src="img/master.png" alt="mastercard"></label>
-						<input type="radio" name="payment-method" value="paypal" id="paypal" required hidden>
-						<label for="paypal"><img src="img/pp.png" alt="paypal"></label>
-						<input type="radio"  name="payment-method" value="amazon" id="amazon" required hidden>
-						<label for="amazon"><img src="img/amazon.png" alt="amazon"></label>
-					</section>
-					<div class="credit-card-fields">
+                    <div class="input-wrapper">
+                        <label class="input-field-label" for="email">Email address</label>
+                        <br>
+                        <input type="email" class="input-field" id="email" required value="mathieu@mail.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <span></span>
+                    </div>
+                    <div class="input-wrapper">
+                        <label class="input-field-label" for="password">Choose a password</label>
+                        <br>
+                        <input type="password" required class="input-field" id="password" pattern="[^]{6,}$">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="payment-method-warapper">
+                    <section class="payment-method">
+                        <input type="radio" name="payment-method" value="credit_card" id="credit-card" required checked>
+                        <label for="credit-card"><img src="img/master.png" alt="mastercard"></label>
+                        <input type="radio" name="payment-method" value="paypal" id="paypal" required>
+                        <label for="paypal"><img src="img/pp.png" alt="paypal"></label>
+                        <input type="radio" name="payment-method" value="amazon" id="amazon" required>
+                        <label for="amazon"><img src="img/amazon.png" alt="amazon"></label>
+                    </section>
+                    <div class="credit-card-fields">
                         <div class="input-wrap">
                             <label for="card-number" class="input-field-label">Card number</label>
                             <br>
-                            <input required id="card-number" type="text" class="input-field"
-                                    pattern="^(?:4[0-9]{12}(?:[0-9]{3})?)|(?:5[1-5][0-9]{14})$"
-                                    maxlength="16" placeholder="1234567891234567">
-                        </div> 
+                            <input required id="card-number" type="text" class="input-field" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?)|(?:5[1-5][0-9]{14})$" maxlength="16" placeholder="1234567891234567">
+                        </div>
                         <div class="input-wrap">
                             <label for="expiry" class="input-field-label">Expiry date</label>
                             <br>
@@ -244,50 +239,49 @@
                         <div class="input-wrap">
                             <label for="cvv" class="input-field-label">Code</label>
                             <br>
-                            <input required class="input-field" id="cvv" type="password" maxlength="3" class="input-field-label"
-                                    pattern="^[0-9]{3,4}$">
+                            <input required class="input-field" id="cvv" type="password" maxlength="3" class="input-field-label" pattern="^[0-9]{3,4}$">
                         </div>
-					</div>
-				</div>
+                    </div>
+                </div>
             </section>
-            
+
             <section class="order-confirm">
-				<input type="checkbox" id="agree-terms" required>
-				<label for="agree-terms">I agree to the <a href="#">Terms and Conditions</a></label>
-				<input type="submit" value="place order" class="order-but color"/>
-				<button class="order-but nocolor">Print a quoute</button>
-			</section>
+                <label for="agree-terms">
+				    <input type="checkbox" id="agree-terms" required>
+				    I agree to the <a href="#">Terms and Conditions</a></label>
+                <input type="submit" value="place order" class="order-but color" />
+                <button class="order-but nocolor">Print a quoute</button>
+            </section>
         </form>
     </main>
-    
+
     <footer>
         <div class="wrapper">
-			    <section class="about">
-			        <h3><i class="fa fa-heart-o footer-symbol" aria-hidden="true"></i>WHAT WE DO</h3>
-			        <p>We provide a full range of language services including content development,
-			                        document, website and social media account accounts translation.</p>
-			    </section>
-			    <section class="adress">
-			        <h3><i class="fa fa-compass footer-symbol" aria-hidden="true"></i>OUR MAIN OFFICE</h3>
-			        <address>
+            <section class="about">
+                <h3><i class="fa fa-heart-o footer-symbol" aria-hidden="true"></i>WHAT WE DO</h3>
+                <p>We provide a full range of language services including content development, document, website and social media account accounts translation.</p>
+            </section>
+            <section class="address">
+                <h3><i class="fa fa-compass footer-symbol" aria-hidden="true"></i>OUR MAIN OFFICE</h3>
+                <address>
 			                        Dubai, UAE <br>
 			                        P.O. Box: 502735 <br>
 			                        Phone: <a href="tel:+9710555555" class="phone">+971 (0) 555 555</a>
 			                    </address>
-			    </section>
-			    <section class="social">
-			        <h3><i class="fa fa-share-alt" aria-hidden="true"></i>CONNECT WITH US</h3>
-			        <address>
+            </section>
+            <section class="social">
+                <h3><i class="fa fa-share-alt" aria-hidden="true"></i>CONNECT WITH US</h3>
+                <address>
 			                        <ul>
 			                            <li><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook
 			                            <li><i class="fa fa-twitter" aria-hidden="true"></i> Twitter
 			                            <li><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
 			                        </ul>
 			                    </address>
-			    </section>
-			    <a href="#" class="logo-dark"><img src=./img/logo_black.png alt=logo /></a>
-			</div>
-	</footer>
+            </section>
+            <a href="#" class="logo-dark"><img src=./img/logo_black.png alt=logo /></a>
+        </div>
+    </footer>
 </body>
 
 </html>
