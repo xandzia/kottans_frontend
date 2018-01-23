@@ -326,6 +326,8 @@ a {
 .upload-but {
   width: 200px;
   height: 50px;
+  padding: 8px;
+  text-align: center;
   cursor: pointer;
   border: 1px solid #dbdbe3;
   background-color: #f7f7fa;
@@ -334,7 +336,7 @@ a {
   line-height: 30px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: .8em;
+  font-size: .7em;
   position: relative;
   overflow: hidden;
   margin-bottom: 40px; }
@@ -477,22 +479,22 @@ a {
     justify-content: center;
     flex-direction: column;
     margin-left: -60px; }
-    .urgent .range-wrapper legend {
+    .urgent .range-wrapper .range {
       border: 1px solid #c9d0e1;
       padding: 20px;
       margin-top: 20px;
       background-color: #f7f7fa; }
-      .urgent .range-wrapper legend h3 {
+      .urgent .range-wrapper .range h3 {
         color: #6e768f;
         text-transform: uppercase;
         font-size: 0.8em;
         font-weight: 600;
         line-height: 40px; }
-      .urgent .range-wrapper legend p {
+      .urgent .range-wrapper .range p {
         font-size: 0.8em;
         margin-left: 20px;
         line-height: 1.5; }
-        .urgent .range-wrapper legend p em {
+        .urgent .range-wrapper .range p em {
           text-transform: uppercase;
           color: #edbe75;
           font-weight: 600; }
