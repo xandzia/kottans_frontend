@@ -347,27 +347,26 @@ a {
   margin-right: 13%;
   margin-top: 40px;
   border: 1px solid #c9d0e1;
-  border-radius: 2px; }
-  .upload-table table {
-    text-align: left; }
-    .upload-table table th {
-      padding: 7px;
-      text-transform: uppercase;
-      color: #a5abc5;
-      font-size: 0.7em;
-      white-space: nowrap;
-      letter-spacing: 1px;
-      width: 15%;
-      font-weight: bold; }
-    .upload-table table th:first-of-type {
-      width: 25%; }
-    .upload-table table td {
-      padding: 7px;
-      font-size: 0.8em;
-      white-space: nowrap;
-      width: 15%; }
-    .upload-table table .fa-file-text {
-      padding-right: 10px; }
+  border-radius: 2px;
+  text-align: left; }
+  .upload-table th {
+    padding: 7px;
+    text-transform: uppercase;
+    color: #a5abc5;
+    font-size: 0.7em;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    width: 15%;
+    font-weight: bold; }
+  .upload-table th:first-of-type {
+    width: 25%; }
+  .upload-table td {
+    padding: 7px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    width: 15%; }
+  .upload-table .fa-file-text {
+    padding-right: 10px; }
 
 .trash {
   border: none;

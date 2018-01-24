@@ -46,7 +46,7 @@
                     </div>
                     <div class="btn-group">
                         <button class="order-but color" type="submit">place order</button>
-                        <button class="order-but nocolor">print a quote</button>
+                        <button type="button" class="order-but nocolor">print a quote</button>
                     </div>
                 </section>
                 <section class="right-top">
@@ -73,8 +73,8 @@
             <section class="upload-docs">
                 <h2 class='header-section'>Upload your documents <small>(Doc, Docx, Text, Pdf, Markdown)</small></h2>
                 <input type="file" id="upload" accept=".doc, .docx, .text, .pdf, .markdown">
-                <label tabindex="0" for="upload" class="upload-but"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file</label>
-                <fieldset class="upload-table">
+                <label for="upload" class="upload-but"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file</label>
+                <div class="upload-table">
                     <table>
                         <tr>
                             <th>File name</th>
@@ -86,7 +86,7 @@
                             <td><i class="fa fa-file-text" aria-hidden="true"></i>business_operation.docx</td>
                             <td class="hidden">78kb</td>
                             <td class="hidden">842</td>
-                            <td><button class="trash">
+                            <td><button type="button" class="trash">
 								        <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
 								    </button>
                             </td>
@@ -95,13 +95,13 @@
                             <td><i class="fa fa-file-text" aria-hidden="true"></i>business_financial.docx</td>
                             <td class="hidden">26kb</td>
                             <td class="hidden">2,326</td>
-                            <td><button class="trash">
+                            <td><button type="button" class="trash">
 								        <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
 								    </button>
                             </td>
                         </tr>
                     </table>
-                </fieldset>
+                </div>
             </section>
             <section class="choose-lang">
                 <h2 class="header-section">Choose your languages pairing</h2>
@@ -132,8 +132,8 @@
 								<option>Russian</option>
 							</select>
 				    </label>
-                    <button class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
-                    <button class="add"><i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD</button>
+                    <button type="button" class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
+                    <button type="button" class="add"><i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD</button>
                 </div>
             </section>
             <section class="two-section">
@@ -217,7 +217,7 @@
                 <label for="agree-terms">
 				<input type="checkbox" id="agree-terms" required>I agree to the <a href="#">Terms and Conditions</a></label>
                 <input type="submit" value="place order" class="order-but color" />
-                <button class="order-but nocolor">Print a quoute</button>
+                <button type="button" class="order-but nocolor">Print a quoute</button>
             </div>
         </form>
     </main>
