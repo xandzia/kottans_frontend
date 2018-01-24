@@ -326,6 +326,7 @@ a {
         label {
             display: inline-block;
             position: relative;
+            border: 3px solid transparent;
             margin: 10px;
         }
         .doc-img {
@@ -388,8 +389,12 @@ a {
         position: absolute;
         width: 1px;
         height: 1px;
+        left: -1px;
         overflow: hidden;
     }
+.upload-docs input[type=file]:focus + .upload-but {
+    outline: 4px auto #5e9ed6;
+}
 .upload-table {
     padding-right: 5%;
     padding-left: 5%;
