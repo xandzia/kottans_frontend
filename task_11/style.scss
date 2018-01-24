@@ -154,7 +154,7 @@ table {
 
 /*********** HEADER *************/
 
-header {
+.wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -810,6 +810,7 @@ footer {
         display: flex;
         flex-wrap: wrap;
         line-height: 1.2;
+        margin: 0 auto;
         justify-content: space-between;
         .about,
         .address,

@@ -141,13 +141,13 @@ table {
   counter-reset: section; }
 
 /*********** HEADER *************/
-header {
+.wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin: 60px auto; }
-  header .nav-button {
+  .wrapper .nav-button {
     font-size: 0.8em;
     font-weight: 600;
     padding: 20px 37px;
@@ -694,6 +694,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     line-height: 1.2;
+    margin: 0 auto;
     justify-content: space-between; }
     footer .wrapper .about,
     footer .wrapper .address,

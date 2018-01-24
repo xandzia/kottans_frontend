@@ -19,18 +19,16 @@
 
 <body>
     <header class="wrapper">
-        <a href="#" class="nav-button"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Go back</a>
-        <a href="nocss.html"><img src="img/logo.png" alt="logo"></a>
-        <a href="#" class="nav-button"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Sign in</a>
+        <a aria-label="go back" href="#" class="nav-button"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Go back</a>
+        <a aria-label="go to nocss.html" href="nocss.html"><img src="img/logo.png" alt="logo"></a>
+        <a aria-label="sing ig" href="#" class="nav-button"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Sign in</a>
     </header>
     <main class="wrapper">
         <form action="#">
-            <div class="order-top">
+            <header class="order-top">
                 <section class="left-top">
                     <div class="left-btn-group">
-                        <h2 class="h2-header">
-                            <i class="fa fa-shopping-bag" aria-hidden=true></i> Your order
-                        </h2>
+                        <h2 class="h2-header"><i class="fa fa-shopping-bag" aria-hidden=true></i> Your order</h2>
                         <table>
                             <tr>
                                 <th>Items</th>
@@ -51,44 +49,31 @@
                         <button class="order-but nocolor">print a quote</button>
                     </div>
                 </section>
-
                 <section class="right-top">
-                    <h2 class="h2-header">
-                        <i class="fa fa-life-ring" aria-hidden="true"></i> Help center
-                    </h2>
+                    <h2 class="h2-header"><i class="fa fa-life-ring" aria-hidden="true"></i> Help center</h2>
                     <p>If you need assistance while placing your order, contact one of our beloved Project Manager by phone or email.</p>
                     <address>
-                        <a href="tel:+971(0)555555">+971(0)555 555</a>
-                        <a href="mailto:help@qtest.com">help@qtest.com</a>
+                        <a aria-label="call help-center" href="tel:+971(0)555555">+971(0)555 555</a>
+                        <a aria-label="email help-center" href="mailto:help@qtest.com">help@qtest.com</a>
                     </address>
                 </section>
-            </div>
-
+            </header>
             <section class="type-of-doc">
                 <h1>select what you want to translate</h1>
                 <hr>
                 <fieldset>
                     <input type="radio" id="type_1" name="title" value="Website" />
-                    <label for="type_1">
-                            <img src="img/website.jpg" class="doc-img" alt="imgage of Website">
-                    </label>
+                    <label for="type_1"><img src="img/website.jpg" class="doc-img" alt="imgage of Website"></label>
                     <input type="radio" id="type_2" name="title" value="Documents" checked />
-                    <label for="type_2" class="type-of-doc-label">
-                            <img src="img/document.jpg" class="doc-img" alt="imgage of Documents">
-                    </label>
+                    <label for="type_2" class="type-of-doc-label"><img src="img/document.jpg" class="doc-img" alt="imgage of Documents"></label>
                     <input type="radio" id="type_3" name="title" value="Social-Account" />
-                    <label for="type_3">
-                            <img src="img/social.jpg" class="doc-img" alt="imgage of Social-Account">
-                    </label>
+                    <label for="type_3"><img src="img/social.jpg" class="doc-img" alt="imgage of Social-Account"></label>
                 </fieldset>
             </section>
-
             <section class="upload-docs">
                 <h2 class='header-section'>Upload your documents <small>(Doc, Docx, Text, Pdf, Markdown)</small></h2>
                 <input type="file" id="upload" accept=".doc, .docx, .text, .pdf, .markdown">
-                <label for="upload" class="upload-but">
-                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file
-                </label>
+                <label tabindex="0" for="upload" class="upload-but"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file</label>
                 <fieldset class="upload-table">
                     <table>
                         <tr>
@@ -118,7 +103,6 @@
                     </table>
                 </fieldset>
             </section>
-
             <section class="choose-lang">
                 <h2 class="header-section">Choose your languages pairing</h2>
                 <div class="lang-holder">
@@ -139,7 +123,7 @@
 								<option>Ukrainian</option>
 								<option>Russian</option>
 							</select>
-						</label>
+				    </label>
                     <label>
 							<select>
 								<option>English</option>
@@ -147,20 +131,16 @@
 								<option>Ukrainian</option>
 								<option>Russian</option>
 							</select>
-				</label>
+				    </label>
                     <button class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
-                    <button class="add">
-						    <i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD
-				        </button>
+                    <button class="add"><i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD</button>
                 </div>
             </section>
-
             <section class="two-section">
                 <fieldset class="choose-tone">
                     <h2 class="header-section">Select your desired tone</h2>
                     <input type="radio" name="desired-tone" value="website" id="friendly">
-                    <label class="tone" for="friendly">
-					    <i class="fa fa-comments" aria-hidden="true"></i> Friendly / Casual</label>
+                    <label class="tone" for="friendly"><i class="fa fa-comments" aria-hidden="true"></i> Friendly / Casual</label>
                     <input type="radio" name="desired-tone" value="document" id="corporate" checked>
                     <label class="tone" for="corporate"><i class="fa fa-briefcase" aria-hidden="true"></i> Corporate / Pro</label>
                     <input type="radio" name="desired-tone" value="social" id="formal">
@@ -176,15 +156,12 @@
                             <label for="urgent">Yesterday</label>
                         </div>
                         <div class="range">
-                            <h3>
-                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i> &nbsp;Timeline info
-                            </h3>
+                            <h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> &nbsp;Timeline info</h3>
                             <p>With an <em>avarage</em> timeline setup, our expert translator can take a reasonable amount of time perfecting your translating</p>
                         </div>
                     </div>
                 </section>
             </section>
-
             <section class="payment">
                 <h2 class="header-section">Sign up and choose a payment method</h2>
                 <small>Already have an account with us? <a href="#">Sign in.</a></small>
@@ -236,17 +213,14 @@
                     </fieldset>
                 </div>
             </section>
-
             <div class="order-confirm">
                 <label for="agree-terms">
-				    <input type="checkbox" id="agree-terms" required>
-				    I agree to the <a href="#">Terms and Conditions</a></label>
+				<input type="checkbox" id="agree-terms" required>I agree to the <a href="#">Terms and Conditions</a></label>
                 <input type="submit" value="place order" class="order-but color" />
                 <button class="order-but nocolor">Print a quoute</button>
             </div>
         </form>
     </main>
-
     <footer>
         <div class="wrapper">
             <section class="about">
@@ -256,20 +230,20 @@
             <section class="address">
                 <h3><i class="fa fa-compass footer-symbol" aria-hidden="true"></i>OUR MAIN OFFICE</h3>
                 <address>
-			                        Dubai, UAE <br>
-			                        P.O. Box: 502735 <br>
-			                        Phone: <a href="tel:+9710555555" class="phone">+971 (0) 555 555</a>
-			                    </address>
+			         Dubai, UAE <br>
+			         P.O. Box: 502735 <br>
+			         Phone: <a aria-label="call main office" href="tel:+9710555555" class="phone">+971 (0) 555 555</a>
+			     </address>
             </section>
             <section class="social">
                 <h3><i class="fa fa-share-alt" aria-hidden="true"></i>CONNECT WITH US</h3>
                 <address>
-			                        <ul>
-                                        <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-			                        </ul>
-			                    </address>
+			         <ul>
+                        <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+			         </ul>
+			     </address>
             </section>
             <a href="#" class="logo-dark"><img src=./img/logo_black.png alt=logo /></a>
         </div>
