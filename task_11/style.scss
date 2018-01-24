@@ -317,8 +317,10 @@ a {
 
     }
     fieldset {
+        position: relative;
         input {
             opacity: 0;
+            position: absolute;
         }
         margin-bottom: 50px;
         label {
@@ -326,16 +328,9 @@ a {
             position: relative;
             margin: 10px;
         }
-        .img-wrapper {
-            position: relative;
-            z-index: 1;
-            border: 3px solid transparent;
-            border-radius: 3px;
-            z-index: 1;
-        }
         .doc-img {
             width: 245px;
-            height: 200px;
+            height: auto;
         }
     }
 }
@@ -375,10 +370,7 @@ a {
 }
 
 .upload-but {
-    width: 200px;
-    height: 50px;
-    padding: 8px;
-    text-align: center;
+    padding: 15px 25px;
     cursor: pointer;
     border: 1px solid #dbdbe3;
     background-color: #f7f7fa;
@@ -388,29 +380,23 @@ a {
     text-transform: uppercase;
     font-weight: bold;
     font-size: .7em;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 40px;
     .fa-cloud-upload {
         margin-right: 6px;
     }
-    input[type=file] {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-    }
 }
-
+.upload-docs input[type=file] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
 .upload-table {
     padding-right: 5%;
     padding-left: 5%;
     padding-bottom: 2%;
     padding-top: 2%;
     margin-right: 13%;
+    margin-top: 40px;
     border: 1px solid #c9d0e1;
     border-radius: 2px;
     table {
@@ -636,9 +622,10 @@ a {
 
 .payment-method {
     margin-top: 60px;
-    display: flex;
+    position: relative;
     input {
         opacity: 0;
+        position: absolute;
     }
     label {
         display: inline-block;
@@ -647,6 +634,8 @@ a {
         background: #f7f7fa;
         color: #a5abc5;
         width: 190px;
+        margin-bottom: 10px;
+        margin-right: 10px;
         vertical-align: middle;
         text-align: center;
         cursor: pointer;
@@ -660,7 +649,6 @@ a {
 
 .credit-card-fields {
     margin-top: 40px;
-    display: flex;
     .input-wrap {
         display: inline-block;
         margin-right: 30px;
@@ -748,7 +736,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 /*********** CHECK *************/
 
-input[name=title]:checked + .img-wrapper,
+input[name=title]:checked + label,
 input[name=desired-tone]:checked + label,
 input[name=payment-method]:checked + label {
     border: 3px solid #76a7e1;
@@ -756,7 +744,7 @@ input[name=payment-method]:checked + label {
     position: relative;
 }
 
-input[name=title]:checked + .img-wrapper:after,
+input[name=title]:checked + label:after,
 input[name=desired-tone]:checked + .tone::after,
 input[name=payment-method]:checked + label::after {
     font-family: "FontAwesome";
@@ -867,7 +855,7 @@ footer {
     .left-btn-group table {
         margin: 0 auto;
     }
-    .choose-ton,
+    .choose-tone,
     .urgent {
         width: 100%;
     }
@@ -876,6 +864,7 @@ footer {
     }
     .urgent .range-wrapper {
         margin-left: 0px;
+        margin-right: 10px;
     }
     footer .wrapper {
         .about,
@@ -924,5 +913,13 @@ footer {
             }
 
         }
+    }
+    .add {
+        border: none;
+        background: transparent;
+        padding: 0px;
+    }
+    .two-section {
+        margin-right: 0px;
     }
 }

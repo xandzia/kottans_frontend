@@ -68,33 +68,27 @@
                 <h1>select what you want to translate</h1>
                 <hr>
                 <fieldset>
+                    <input type="radio" id="type_1" name="title" value="Website" />
                     <label for="type_1">
-                          <input type="radio" id="type_1" name="title" value="Website" />
-                          <div class="img-wrapper">
-                               <img src="img/website.jpg" class="doc-img" alt="imgage of Website">
-                            </div>
+                            <img src="img/website.jpg" class="doc-img" alt="imgage of Website">
                     </label>
-                    <label for="type_2">
-                          <input type="radio" id="type_2" name="title" value="Documents" checked />
-                            <div class="img-wrapper">
-                               <img src="img/document.jpg" class="doc-img" alt="imgage of Documents">
-                            </div>
+                    <input type="radio" id="type_2" name="title" value="Documents" checked />
+                    <label for="type_2" class="type-of-doc-label">
+                            <img src="img/document.jpg" class="doc-img" alt="imgage of Documents">
                     </label>
+                    <input type="radio" id="type_3" name="title" value="Social-Account" />
                     <label for="type_3">
-                          <input type="radio" id="type_3" name="title" value="Social-Account" />
-                            <div class="img-wrapper">
-                               <img src="img/social.jpg" class="doc-img" alt="imgage of Social-Account">
-                            </div>
+                            <img src="img/social.jpg" class="doc-img" alt="imgage of Social-Account">
                     </label>
                 </fieldset>
             </section>
 
             <section class="upload-docs">
                 <h2 class='header-section'>Upload your documents <small>(Doc, Docx, Text, Pdf, Markdown)</small></h2>
-                <div class="upload-but">
-					    <i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file
-					    <input type="file">
-				    </div>
+                <input type="file" id="upload" accept=".doc, .docx, .text, .pdf, .markdown">
+                <label for="upload" class="upload-but">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload a new file
+                </label>
                 <fieldset class="upload-table">
                     <table>
                         <tr>
@@ -153,10 +147,8 @@
 								<option>Ukrainian</option>
 								<option>Russian</option>
 							</select>
-						</label>
-                    <button class="trash">
-							    <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
-							 </button>
+				</label>
+                    <button class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
                     <button class="add">
 						    <i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD
 				        </button>
@@ -164,7 +156,7 @@
             </section>
 
             <section class="two-section">
-                <section class="choose-tone">
+                <fieldset class="choose-tone">
                     <h2 class="header-section">Select your desired tone</h2>
                     <input type="radio" name="desired-tone" value="website" id="friendly">
                     <label class="tone" for="friendly">
@@ -173,7 +165,7 @@
                     <label class="tone" for="corporate"><i class="fa fa-briefcase" aria-hidden="true"></i> Corporate / Pro</label>
                     <input type="radio" name="desired-tone" value="social" id="formal">
                     <label class="tone" for="formal"><i class="fa fa-bullhorn" aria-hidden="true"></i> Media / Formal</label>
-                </section>
+                </fieldset>
                 <section class="urgent">
                     <h2 class="header-section">Tell us how urgent this job is</h2>
                     <div class="range-wrapper">
@@ -217,15 +209,15 @@
                     </div>
                 </div>
                 <div class="payment-method-warapper">
-                    <section class="payment-method">
+                    <fieldset class="payment-method">
                         <input type="radio" name="payment-method" value="credit_card" id="credit-card" required checked>
                         <label for="credit-card"><img src="img/master.png" alt="mastercard"></label>
                         <input type="radio" name="payment-method" value="paypal" id="paypal" required>
                         <label for="paypal"><img src="img/pp.png" alt="paypal"></label>
                         <input type="radio" name="payment-method" value="amazon" id="amazon" required>
                         <label for="amazon"><img src="img/amazon.png" alt="amazon"></label>
-                    </section>
-                    <div class="credit-card-fields">
+                    </fieldset>
+                    <fieldset class="credit-card-fields">
                         <div class="input-wrap">
                             <label for="card-number" class="input-field-label">Card number</label>
                             <br>
@@ -241,17 +233,17 @@
                             <br>
                             <input required id="cvv" type="password" maxlength="3" class="input-field" pattern="^[0-9]{3,4}$">
                         </div>
-                    </div>
+                    </fieldset>
                 </div>
             </section>
 
-            <section class="order-confirm">
+            <div class="order-confirm">
                 <label for="agree-terms">
 				    <input type="checkbox" id="agree-terms" required>
 				    I agree to the <a href="#">Terms and Conditions</a></label>
                 <input type="submit" value="place order" class="order-but color" />
                 <button class="order-but nocolor">Print a quoute</button>
-            </section>
+            </div>
         </form>
     </main>
 
