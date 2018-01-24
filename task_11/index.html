@@ -19,9 +19,9 @@
 
 <body>
     <header class="wrapper">
-        <a aria-label="go back" href="#" class="nav-button"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Go back</a>
+        <a href="#" class="nav-button"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Go back</a>
         <a aria-label="go to nocss.html" href="nocss.html"><img src="img/logo.png" alt="logo"></a>
-        <a aria-label="sing ig" href="#" class="nav-button"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Sign in</a>
+        <a href="#" class="nav-button"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Sign in</a>
     </header>
     <main class="wrapper">
         <form action="#">
@@ -86,18 +86,14 @@
                             <td><i class="fa fa-file-text" aria-hidden="true"></i>business_operation.docx</td>
                             <td class="hidden">78kb</td>
                             <td class="hidden">842</td>
-                            <td><button type="button" class="trash">
-								        <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
-								    </button>
+                            <td><button aria-label="delete document" type="button" class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-file-text" aria-hidden="true"></i>business_financial.docx</td>
                             <td class="hidden">26kb</td>
                             <td class="hidden">2,326</td>
-                            <td><button type="button" class="trash">
-								        <i class="fa fa-trash file-symbol" aria-hidden="true"></i>
-								    </button>
+                            <td><button aria-label="delete document" type="button" class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </table>
@@ -132,7 +128,7 @@
 								<option>Russian</option>
 							</select>
 				    </label>
-                    <button type="button" class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
+                    <button aria-label="delete language" type="button" class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
                     <button type="button" class="add"><i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD</button>
                 </div>
             </section>
@@ -245,7 +241,7 @@
 			         </ul>
 			     </address>
             </section>
-            <a href="#" class="logo-dark"><img src=./img/logo_black.png alt=logo /></a>
+            <a aria-label="link to main site" href="#" class="logo-dark"><img src=./img/logo_black.png alt="dark logo" /></a>
         </div>
     </footer>
 </body>
