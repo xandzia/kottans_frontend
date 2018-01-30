@@ -3,17 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <!--    Define keywords for search engines:-->
     <meta name="keywords" content="HTML, CSS, FORM">
-    <!--    Define a description of the web page:-->
     <meta name="description" content="the form which including several widgets">
-    <!--    Define the author of a page:-->
     <meta name="author" content="Anna Ste">
-    <!--   Setting the viewport to make website look good on all devices: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/e90d552187.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Form</title>
 </head>
 
@@ -28,7 +24,7 @@
             <header class="order-top">
                 <section class="left-top">
                     <div class="left-btn-group">
-                        <h2 class="h2-header"><i class="fa fa-shopping-bag" aria-hidden=true></i> Your order</h2>
+                       <h2 class="h2-header"><i class="fa fa-shopping-bag" aria-hidden=true></i> Your order</h2>
                         <table>
                             <tr>
                                 <th>Items</th>
@@ -103,30 +99,30 @@
                 <h2 class="header-section">Choose your languages pairing</h2>
                 <div class="lang-holder">
                     <label>From
-							<select>
-								<option>English</option>
-								<option>Spain</option>
-								<option>Ukrainian</option>
-								<option>Russian</option>
-							</select>
-						</label>
+                        <select>
+				            <option>English</option>
+				            <option>Spain</option>
+				            <option>Ukrainian</option>
+				            <option>Russian</option>
+				        </select>
+				    </label>
                 </div>
                 <div class="lang-holder">
                     <label>To
-							<select>
-								<option>English</option>
-								<option>Spain</option>
-								<option>Ukrainian</option>
-								<option>Russian</option>
-							</select>
+                        <select>
+				            <option>English</option>
+				            <option>Spain</option>
+				            <option>Ukrainian</option>
+				            <option>Russian</option>
+				        </select>
 				    </label>
                     <label>
-							<select>
-								<option>English</option>
-								<option>Spain</option>
-								<option>Ukrainian</option>
-								<option>Russian</option>
-							</select>
+				        <select>
+				            <option>English</option>
+				            <option>Spain</option>
+				            <option>Ukrainian</option>
+				            <option>Russian</option>
+				        </select>
 				    </label>
                     <button aria-label="delete language" type="button" class="trash"><i class="fa fa-trash file-symbol" aria-hidden="true"></i></button>
                     <button type="button" class="add"><i class="fa fa-plus file-symbol" aria-hidden="true"></i>ADD</button>
@@ -192,19 +188,19 @@
                     </fieldset>
                     <fieldset class="credit-card-fields">
                         <div class="input-wrap">
-                            <label for="card-number" class="input-field-label">Card number</label>
-                            <br>
-                            <input required id="card-number" type="text" class="input-field" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?)|(?:5[1-5][0-9]{14})$" maxlength="16" placeholder="1234567891234567">
+                           <label for="card-number" class="input-field-label">Card number</label>
+                           <br>
+                           <input required id="card-number" type="text" class="input-field" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?)|(?:5[1-5][0-9]{14})$" maxlength="16" placeholder="1234567891234567" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                         </div>
                         <div class="input-wrap">
-                            <label for="expiry" class="input-field-label">Expiry date</label>
-                            <br>
-                            <input id="expiry" type="date" class="input-field" required/>
+                           <label for="expiry" class="input-field-label">Expiry date</label>
+                           <br>
+                           <input id="expiry" type="date" class="input-field" required/>
                         </div>
                         <div class="input-wrap">
-                            <label for="cvv" class="input-field-label">Code</label>
-                            <br>
-                            <input required id="cvv" type="password" maxlength="3" class="input-field" pattern="^[0-9]{3,4}$">
+                           <label for="cvv" class="input-field-label">Code</label>
+                           <br>
+                           <input required id="cvv" type="password" maxlength="3" class="input-field" pattern="^[0-9]{3,4}$">
                         </div>
                     </fieldset>
                 </div>
@@ -213,7 +209,7 @@
                 <label for="agree-terms">
 				<input type="checkbox" id="agree-terms" required>I agree to the <a href="#">Terms and Conditions</a></label>
                 <input type="submit" value="place order" class="order-but color" />
-                <button type="button" class="order-but nocolor">Print a quoute</button>
+                <button type="button" class="order-but nocolor" onclick="window.print()">Print a quoute</button>
             </div>
         </form>
     </main>
@@ -233,13 +229,11 @@
             </section>
             <section class="social">
                 <h3><i class="fa fa-share-alt" aria-hidden="true"></i>CONNECT WITH US</h3>
-                <address>
-			         <ul>
+                    <ul>
                         <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
                         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
                         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
 			         </ul>
-			     </address>
             </section>
             <a aria-label="link to main site" href="#" class="logo-dark"><img src=./img/logo_black.png alt="dark logo" /></a>
         </div>
