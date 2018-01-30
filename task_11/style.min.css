@@ -532,7 +532,8 @@ small a:hover {
     width: 150px;
     color: #8a92b4;
     margin-left: 10px;
-    -webkit-appearance: none
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .lang-holder label::after {
@@ -757,7 +758,7 @@ footer h3 {
 }
 
 input[type=range]::after,
-input[type=range]:before {
+input[type=range]::before {
     height: 10px;
     border-radius: 10px;
     content: '';
@@ -780,20 +781,43 @@ input[type=range]:before {
 
 input[type=range] {
     -webkit-appearance: none;
+    -moz-appearance: none;
     width: 90%;
+    height: 10px;
     margin-left: 20px;
     position: relative
 }
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
+    -moz-appearance: none;
     width: 25px;
     height: 25px;
-    border-radius: 20px;
+    border-radius: 50%;
     background: #edbe75;
     margin-top: -8px;
     z-index: 2;
     position: relative
+}
+
+input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #edbe75;
+    margin-top: -8px;
+    z-index: 2;
+    position: relative
+}
+input[type=range]::-ms-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90%;
+    background: #eff0f6;
+    height: 10px;
+    border-radius: 10px
 }
 
 input[type=range]:before {
@@ -802,33 +826,30 @@ input[type=range]:before {
 
 input[type=range]::-webkit-slider-runnable-track {
     -webkit-appearance: none;
+    -moz-appearance: none;
     width: 90%;
     background: #eff0f6;
     height: 10px;
     border-radius: 10px
 }
 
+input[type=range]::-moz-range-track {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90%;
+    background: #eff0f6;
+    height: 10px;
+    border-radius: 10px
+}
 input[type=range]::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  background: transparent; 
-  border-color: transparent;
-  color: transparent;
-}
-
-input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     width: 90%;
     background: #eff0f6;
     height: 10px;
     border-radius: 10px
 }
 
-input[type=range]::-ms-thumb {
-    width: 90%;
-    background: #eff0f6;
-    height: 10px;
-    border-radius: 10px
-}
 
 input[name=desired-tone]:checked + label,
 input[name=payment-method]:checked + label,
