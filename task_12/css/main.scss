@@ -1,4 +1,5 @@
 $green: #3f8257;
+$red: #e6381f;
 
 /************************   HEADER   ************************/
 .header-top {
@@ -8,29 +9,80 @@ $green: #3f8257;
     justify-content: space-between;
     align-items: center;
     background-color: $green;
-    padding: 0 1em 20px 1em;
+    padding: 15px 30px 15px 30px;
+}
     button {
-        border: 2px solid #de4028;
-        border-radius: 10px;
+        //border: 2px solid #de4028;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+        //transition: all .4s cubic-bezier(0,0,.2,1);
         color: $green;
         font-weight: 600;
+        text-transform: uppercase;
         cursor: pointer;
         background-color: white;
         display: flex;
         align-items: center;
-        padding: 7px 20px;
-        img {
-            margin-right: 20px;
-            width: 50px;
-            height: auto;
+        padding: 10px 30px;
+        margin-bottom: 15px;
+        .green-white {
+                margin-right: 10px;
+                width: 25px;
+                height: 25px;
+            overflow: hidden;
+            img {
+                width: 50px;
+                position: relative;
+            }
         }
     }
-}
+        button:hover {
+            background-color: $red;
+            box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+            color: white;
+            .green-white img {
+                right: 25px;
+            }
+        }
 .clock {
     color: white;
+    width: 220px;
     font-size: 1.5em;
     font-weight: 600;
+    text-align: center;
 }
 /************************   MAIN   ************************/
+main {
+    padding: 30px 15px 30px 15px;
+    text-align: center;
+}
+.add_pizza {
+    margin: 0 auto;
+}
+.pizzas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 50px;
+}
 /************************   PIZZA   ************************/
+.pizza {
+    min-width: 200px;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
+    border-radius: 2px;
+    margin: 15px;
+    //margin-bottom: 30px;
+    background-color: #fff;
+    img {
+        max-width: 100%;
+    }
+}
 /************************   FOOTER   ************************/
+/************************   MEDIA   ************************/
+@media all and (max-width: 720px) {
+    .header-top {
+        flex-direction: column-reverse;
+    }
+}
