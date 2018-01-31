@@ -1,6 +1,18 @@
 $green: #3f8257;
-$red: #e6381f;
+$red: #dc4130;
+$grey: #858A87;
+$font: #383838;
+$l-green: #79CE97;
 
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+    min-height: 100%;
+    color: $font;
+    font-family: 'Nunito', sans-serif;
+}
 /************************   HEADER   ************************/
 .header-top {
     display: flex;
@@ -9,6 +21,7 @@ $red: #e6381f;
     justify-content: space-between;
     align-items: center;
     background-color: $green;
+    background-image: url(/img/Splatter-texture.png);
     padding: 15px 30px 15px 30px;
 }
     button {
@@ -50,7 +63,6 @@ $red: #e6381f;
     width: 220px;
     font-size: 1.5em;
     font-weight: 600;
-    text-align: center;
 }
 /************************   MAIN   ************************/
 main {
@@ -59,6 +71,12 @@ main {
 }
 .add_pizza {
     margin: 0 auto;
+    color: #fff;
+    background-color: $red;
+}
+.add_pizza:hover {
+    color: $green;
+    background-color: #fff;
 }
 .pizzas {
     display: flex;
@@ -66,23 +84,85 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 50px;
+    padding-bottom: 60px;
 }
 /************************   PIZZA   ************************/
 .pizza {
-    min-width: 200px;
+    max-width: 200px;
     box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
     border-radius: 2px;
     margin: 15px;
-    //margin-bottom: 30px;
-    background-color: #fff;
+    //background-color: #3f825721;
+    background-color: #858a8724;
+    position: relative;
+    cursor: pointer;
     img {
         max-width: 100%;
+        margin: 1em 0 2em 0;
+    }
+}
+.pizza:hover {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+//.pizza::before {
+//    content: '';
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    border-width: 32px 32px 0 0;
+//    border-style: solid;
+//    border-color: #fff #3f825721;
+//    z-index: 2;
+//}
+.pizza-info {
+    padding: 10px;
+    display: flex;
+    .left-info {
+        text-align: left;
+        line-height: 1.5
+    }
+    .right-info {
+        text-align: right;
+        line-height: 1.5;
     }
 }
 /************************   FOOTER   ************************/
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2em 30px;
+    background: #79ce97b8;
+    background-image: url(/img/Splatter-texture.png);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    address a {
+        color: $green;
+        font-weight: bold;
+        margin-right: 20px;
+        font-size: 1.2em;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #fff;
+    }
+    small {
+        color: $green;
+        font-weight: bold;
+        font-weight: 0.8em;
+    }
+}
 /************************   MEDIA   ************************/
 @media all and (max-width: 720px) {
     .header-top {
         flex-direction: column-reverse;
+    }
+    .clock {
+        text-align: center;
+    }
+    .pizzas {
+        margin-bottom: 20px;
     }
 }

@@ -1,3 +1,12 @@
+html {
+  height: 100%; }
+
+body {
+  position: relative;
+  min-height: 100%;
+  color: #383838;
+  font-family: 'Nunito', sans-serif; }
+
 /************************   HEADER   ************************/
 .header-top {
   display: flex;
@@ -6,6 +15,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #3f8257;
+  background-image: url(/img/Splatter-texture.png);
   padding: 15px 30px 15px 30px; }
 
 button {
@@ -31,7 +41,7 @@ button {
       position: relative; }
 
 button:hover {
-  background-color: #e6381f;
+  background-color: #dc4130;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   color: white; }
   button:hover .green-white img {
@@ -41,8 +51,7 @@ button:hover {
   color: white;
   width: 220px;
   font-size: 1.5em;
-  font-weight: 600;
-  text-align: center; }
+  font-weight: 600; }
 
 /************************   MAIN   ************************/
 main {
@@ -50,29 +59,82 @@ main {
   text-align: center; }
 
 .add_pizza {
-  margin: 0 auto; }
+  margin: 0 auto;
+  color: #fff;
+  background-color: #dc4130; }
+
+.add_pizza:hover {
+  color: #3f8257;
+  background-color: #fff; }
 
 .pizzas {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 50px; }
+  padding-top: 50px;
+  padding-bottom: 60px; }
 
 /************************   PIZZA   ************************/
 .pizza {
-  min-width: 200px;
+  max-width: 200px;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.07), 1px 2px 5px 0 rgba(0, 0, 0, 0.06);
   border-radius: 2px;
   margin: 15px;
-  background-color: #fff; }
+  background-color: #858a8724;
+  position: relative;
+  cursor: pointer; }
   .pizza img {
-    max-width: 100%; }
+    max-width: 100%;
+    margin: 1em 0 2em 0; }
+
+.pizza:hover {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
+
+.pizza-info {
+  padding: 10px;
+  display: flex; }
+  .pizza-info .left-info {
+    text-align: left;
+    line-height: 1.5; }
+  .pizza-info .right-info {
+    text-align: right;
+    line-height: 1.5; }
 
 /************************   FOOTER   ************************/
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2em 30px;
+  background: #79ce97b8;
+  background-image: url(/img/Splatter-texture.png);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+  footer address a {
+    color: #3f8257;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 1.2em;
+    text-decoration: none; }
+  footer a:hover {
+    color: #fff; }
+  footer small {
+    color: #3f8257;
+    font-weight: bold;
+    font-weight: 0.8em; }
+
 /************************   MEDIA   ************************/
 @media all and (max-width: 720px) {
   .header-top {
-    flex-direction: column-reverse; } }
+    flex-direction: column-reverse; }
+
+  .clock {
+    text-align: center; }
+
+  .pizzas {
+    margin-bottom: 20px; } }
 
 /*# sourceMappingURL=main.css.map */
