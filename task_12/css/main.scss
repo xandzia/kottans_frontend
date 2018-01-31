@@ -21,7 +21,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: $green;
-    background-image: url(/img/Splatter-texture.png);
+    background-image: url(../img/Splatter-texture.png);
     padding: 15px 30px 15px 30px;
 }
     button {
@@ -84,7 +84,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 50px;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 }
 /************************   PIZZA   ************************/
 .pizza {
@@ -133,7 +133,7 @@ footer {
     justify-content: space-between;
     padding: 2em 30px;
     background: #79ce97b8;
-    background-image: url(/img/Splatter-texture.png);
+    background-image: url(../img/Splatter-texture.png);
     position: absolute;
     right: 0;
     bottom: 0;
