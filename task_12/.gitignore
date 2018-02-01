@@ -41,4 +41,6 @@ sass
 stylesheets
 .sass-cache
 .vscode
-.scss
+.map
+node_modules
+.config.min.js

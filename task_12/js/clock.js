@@ -1,4 +1,4 @@
-"use strict;";
+export const clock = document.getElementById("clock");
 
 Number.prototype.pad = function(size) {
   var s = String(this);
@@ -9,7 +9,6 @@ Number.prototype.pad = function(size) {
 };
 
 {
-  const clock = document.getElementById("clock");
 
   function updateClock(clock) {
     var d = new Date(),
