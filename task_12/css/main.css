@@ -42,11 +42,13 @@ button {
       width: 50px;
       position: relative; }
 
-button:hover {
+button:hover,
+button:focus {
   background-color: #dc4130;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   color: white; }
-  button:hover .green-white img {
+  button:hover .green-white img,
+  button:focus .green-white img {
     right: 25px; }
 
 .clock {
@@ -68,7 +70,8 @@ main {
   .add_pizza .fa {
     margin-right: 10px; }
 
-.add_pizza:hover {
+.add_pizza:hover,
+.add_pizza:focus {
   color: #3f8257;
   background-color: #fff; }
 
@@ -93,7 +96,8 @@ main {
     max-width: 100%;
     margin: 1em 0 2em 0; }
 
-.pizza:hover {
+.pizza:hover,
+.pizza:focus {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
 
 .pizza-info {
@@ -122,7 +126,8 @@ footer {
     color: #fff;
     font-size: 1.2em;
     font-style: normal; }
-  footer address a:hover {
+  footer address a:hover,
+  footer address a:focus {
     color: #dc4130; }
   footer small {
     color: #fff;
@@ -131,7 +136,8 @@ footer {
     margin-left: 20px;
     font-weight: bold;
     text-decoration: none; }
-  footer .map:hover {
+  footer .map:hover,
+  footer .map:focus {
     color: #3f8257; }
   footer address .org {
     font-weight: bold;
