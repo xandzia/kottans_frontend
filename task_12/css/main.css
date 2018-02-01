@@ -107,7 +107,10 @@ main {
 
 .pizza-info {
   padding: 10px;
-  display: flex; }
+  display: flex;
+  justify-content: space-between; }
+  .pizza-info .price {
+    display: block; }
   .pizza-info .left-info {
     text-align: left;
     line-height: 1.5; }

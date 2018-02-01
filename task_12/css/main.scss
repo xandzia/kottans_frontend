@@ -132,6 +132,10 @@ main {
 .pizza-info {
     padding: 10px;
     display: flex;
+    justify-content: space-between;
+    .price {
+        display: block;
+    }
     .left-info {
         text-align: left;
         line-height: 1.5
