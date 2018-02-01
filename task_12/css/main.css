@@ -20,6 +20,11 @@ body {
   .header-top img {
     width: 100%; }
 
+h1 {
+  height: 0px;
+  overflow: hidden;
+  margin: 0; }
+
 button {
   border: none;
   border-radius: 3px;
