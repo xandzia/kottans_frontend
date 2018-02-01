@@ -856,7 +856,8 @@ input[name=payment-method]:checked + label,
 input[name=title]:checked + label {
     border: 3px solid #76a7e1;
     border-radius: 3px;
-    position: relative
+    position: relative;
+    background-color: #f7f7f9;
 }
 
 input[name=desired-tone]:checked + .tone::after,
