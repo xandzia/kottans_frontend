@@ -17,6 +17,8 @@ body {
   background-color: #3f8257;
   background-image: url(../img/Splatter-texture.png);
   padding: 15px 30px 15px 30px; }
+  .header-top img {
+    width: 100%; }
 
 button {
   border: none;
@@ -24,7 +26,7 @@ button {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   color: #3f8257;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   cursor: pointer;
   background-color: white;
   display: flex;
@@ -49,7 +51,7 @@ button:hover {
 
 .clock {
   color: white;
-  width: 220px;
+  width: 139px;
   font-size: 1.5em;
   font-weight: 600; }
 
@@ -61,7 +63,10 @@ main {
 .add_pizza {
   margin: 0 auto;
   color: #fff;
-  background-color: #dc4130; }
+  background-color: #dc4130;
+  text-transform: uppercase; }
+  .add_pizza .fa {
+    margin-right: 10px; }
 
 .add_pizza:hover {
   color: #3f8257;
@@ -107,27 +112,33 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   padding: 2em 30px;
-  background: #79ce97b8;
+  background: #858A87;
   background-image: url(../img/Splatter-texture.png);
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0; }
   footer address a {
-    color: #3f8257;
-    font-weight: bold;
-    margin-right: 20px;
+    color: #fff;
     font-size: 1.2em;
-    text-decoration: none; }
-  footer a:hover {
-    color: #fff; }
+    font-style: normal; }
+  footer address a:hover {
+    color: #dc4130; }
   footer small {
-    color: #3f8257;
-    font-weight: bold;
+    color: #fff;
     font-weight: 0.8em; }
+  footer address .tel {
+    margin-left: 20px;
+    font-weight: bold;
+    text-decoration: none; }
+  footer .map:hover {
+    color: #3f8257; }
+  footer address .org {
+    font-weight: bold;
+    text-decoration: none; }
 
 /************************   MEDIA   ************************/
-@media all and (max-width: 720px) {
+@media all and (max-width: 560px) {
   .header-top {
     flex-direction: column-reverse; }
 
@@ -135,6 +146,19 @@ footer {
     text-align: center; }
 
   .pizzas {
-    margin-bottom: 20px; } }
+    margin-bottom: 20px; }
+
+  footer {
+    padding: 1.7em 10px;
+    position: relative; }
+
+  address {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; }
+    address .tel {
+      position: absolute;
+      left: 35%;
+      bottom: 10%; } }
 
 /*# sourceMappingURL=main.css.map */

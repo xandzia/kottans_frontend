@@ -23,6 +23,9 @@ body {
     background-color: $green;
     background-image: url(../img/Splatter-texture.png);
     padding: 15px 30px 15px 30px;
+    img {
+        width: 100%;
+    }
 }
     button {
         //border: 2px solid #de4028;
@@ -32,7 +35,7 @@ body {
         //transition: all .4s cubic-bezier(0,0,.2,1);
         color: $green;
         font-weight: 600;
-        text-transform: uppercase;
+        text-transform: capitalize;
         cursor: pointer;
         background-color: white;
         display: flex;
@@ -60,7 +63,7 @@ body {
         }
 .clock {
     color: white;
-    width: 220px;
+    width: 139px;
     font-size: 1.5em;
     font-weight: 600;
 }
@@ -73,6 +76,10 @@ main {
     margin: 0 auto;
     color: #fff;
     background-color: $red;
+    text-transform: uppercase;
+    .fa {
+        margin-right: 10px;
+    }
 }
 .add_pizza:hover {
     color: $green;
@@ -132,30 +139,42 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     padding: 2em 30px;
-    background: #79ce97b8;
+    //background: #79ce97b8;
+    background: $grey;
     background-image: url(../img/Splatter-texture.png);
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     address a {
-        color: $green;
-        font-weight: bold;
-        margin-right: 20px;
-        font-size: 1.2em;
-        text-decoration: none;
-    }
-    a:hover {
         color: #fff;
+        font-size: 1.2em;
+        font-style: normal;
+    }
+    address a:hover {
+        //filter: drop-shadow(1px 1px 1px rgba(220,65,48,.5));
+        //filter: drop-shadow(2px 2px 2px rgba(63,130,87,.5));
+        color: $red;
     }
     small {
-        color: $green;
-        font-weight: bold;
+        color: #fff;
         font-weight: 0.8em;
+    }
+    address .tel {
+        margin-left: 20px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .map:hover {
+            color: $green;        
+    }
+    address .org {
+        font-weight: bold;        
+        text-decoration: none;
     }
 }
 /************************   MEDIA   ************************/
-@media all and (max-width: 720px) {
+@media all and (max-width: 560px) {
     .header-top {
         flex-direction: column-reverse;
     }
@@ -164,5 +183,20 @@ footer {
     }
     .pizzas {
         margin-bottom: 20px;
+    }
+    footer {
+        padding: 1.7em 10px;
+        position: relative;
+    }
+    address {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        .tel {
+            position: absolute;
+            left: 35%;
+            bottom: 10%;
+            
+        }
     }
 }
