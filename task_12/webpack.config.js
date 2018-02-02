@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 var extractPlugin = new ExtractTextPlugin({
     filename: 'main.css'
@@ -29,14 +30,24 @@ module.exports = {
                 ]
            },
            {
-               test: /\.scss$/,
-               use: extractPlugin.extract({
-                   use: ['css-loader?url=false', 'sass-loader']
-               })
-           },
-           {
                test: /\.css$/,
                use: ['style-loader', 'css-loader']
+           },
+           {
+               test: /\.scss$/,
+               use: extractPlugin.extract({
+                   use: ['css-loader?url=false',
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: [
+                                    autoprefixer({
+                                        browsers:['ie >= 8', 'last 4 version']
+                                    })
+                                ],
+                            }
+                        }, 'sass-loader']
+               })
            },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/, 

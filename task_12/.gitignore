@@ -43,4 +43,5 @@ stylesheets
 .vscode
 .map
 node_modules
-.config.min.js
+webpack.config.min.js
+package-lock.json

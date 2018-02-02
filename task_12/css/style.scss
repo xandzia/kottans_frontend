@@ -134,7 +134,7 @@ main {
     }
 }
 /************************   FOOTER   ************************/
-footer {
+.footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -183,7 +183,7 @@ footer {
     .pizzas {
         margin-bottom: 20px;
     }
-    footer {
+    .footer {
         padding: 1.7em 10px;
         position: relative;
     }

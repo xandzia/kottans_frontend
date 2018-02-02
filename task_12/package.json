@@ -30,6 +30,8 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "autoprefixer": "^7.2.5",
+    "postcss-loader": "^2.1.0",
     "webpack-sass-loaders": "^1.0.0"
   }
 }
