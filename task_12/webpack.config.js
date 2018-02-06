@@ -10,7 +10,7 @@ var extractPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: './js/app.js',
+    entry: ['./js/app.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -49,16 +49,12 @@ module.exports = {
                         }, 'sass-loader']
                })
            },
-            {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
-                loader: 'url-loader?limit=100000'
-            },
            {
                test: /\.html$/,
                use: ['html-loader']
            },
            {
-               test: /\.(jpg|png)$/,
+               test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
                use: [
                    {
                        loader: 'file-loader',

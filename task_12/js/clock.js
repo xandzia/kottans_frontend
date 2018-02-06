@@ -1,25 +1,14 @@
 export const clock = document.getElementById("clock");
 
-Number.prototype.pad = function(size) {
-  var s = String(this);
-  while (s.length < (size || 2)) {
-    s = "0" + s;
-  }
-  return s;
+function updateClock(elem) {
+    const time = new Date(),
+    h = `${time.getHours()}`.padStart(2, 0),
+    m = `${time.getMinutes()}`.padStart(2, 0),
+    s = `${time.getSeconds()}`.padStart(2, 0),
+    stringDate = [h, m, s].join(":");
+    elem.innerHTML = stringDate;
 };
 
-{
-
-  function updateClock(clock) {
-    var d = new Date(),
-      h = d.getHours().pad(),
-      m = d.getMinutes().pad(),
-      s = d.getSeconds().pad(),
-      time = `${h}:${m}:${s}`;
-    clock.innerHTML = time;
-  }
-
-  window.setInterval(() => {
+window.setInterval(() => {
     updateClock(clock);
-  }, 500);
-}
+}, 500);

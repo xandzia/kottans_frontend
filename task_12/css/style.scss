@@ -1,8 +1,5 @@
-$green: #3f8257;
-$red: #dc4130;
-$grey: #858A87;
-$font: #383838;
-$l-green: rgba(63, 130, 87, 0.15);
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,400i,600,700');
+@import '_variables.scss';
 
 html {
     height: 100%;
@@ -11,7 +8,13 @@ body {
     position: relative;
     min-height: 100%;
     color: $font;
-    font-family: 'Nunito', sans-serif;
+    font-family: $font-stack;
+}
+h1 {
+    height: 0px;
+    overflow: hidden;
+    margin: 0;
+    width: 0px;
 }
 /************************   HEADER   ************************/
 .header-top {
@@ -20,24 +23,18 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    background-color: $green;
+    background-color: $header-background;
     background-image: url(../img/texture.png);
     padding: 15px 30px 15px 30px;
     img {
         width: 100%;
     }
 }
-h1 {
-    height: 0px;
-    overflow: hidden;
-    margin: 0;
-    width: 0px;
-}
 button {
     border: none;
     border-radius: 3px;
     box-shadow: 1px 1px 2px rgba(0,0,0,.3);
-    color: $green;
+    color: $header-background;
     font-weight: 600;
     text-transform: capitalize;
     cursor: pointer;
@@ -46,6 +43,15 @@ button {
     align-items: center;
     padding: 10px 30px;
     margin-bottom: 15px;
+    &:hover,
+    &:focus{
+        background-color: $active-red;
+        box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+        color: white;
+        .green-white img {
+            right: 25px;
+        }
+    }
     .green-white {
         margin-right: 10px;
         width: 25px;
@@ -55,15 +61,6 @@ button {
             width: 50px;
             position: relative;
         }
-    }
-}
-button:hover,
-button:focus{
-    background-color: $red;
-    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-    color: white;
-    .green-white img {
-        right: 25px;
     }
 }
 .clock {
@@ -80,7 +77,7 @@ main {
 .add_pizza {
     margin: 0 auto;
     color: #fff;
-    background-color: $red;
+    background-color: $active-red;
     text-transform: uppercase;
     .fa {
         margin-right: 10px;
@@ -88,7 +85,7 @@ main {
 }
 .add_pizza:hover,
 .add_pizza:focus{
-    color: $green;
+    color: $header-background;
     background-color: #fff;
 }
 .pizzas {
@@ -105,7 +102,7 @@ main {
     box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
     border-radius: 2px;
     margin: 15px;
-    background-color: $l-green;
+    background-color: $card-backgraund;
     position: relative;
     cursor: pointer;
     img {
@@ -139,7 +136,7 @@ main {
     flex-direction: row;
     justify-content: space-between;
     padding: 2em 30px;
-    background: $grey;
+    background: $footer-background;
     background-image: url(../img/texture.png);
     position: absolute;
     right: 0;
@@ -152,7 +149,7 @@ main {
     }
     address a:hover,
     address a:focus {
-        color: $red;
+        color: $active-red;
     }
     small {
         color: #fff;
@@ -165,7 +162,7 @@ main {
     }
     .map:hover,
     .map:focus{
-            color: $green;        
+            color: $header-background;        
     }
     address .org {
         font-weight: bold;        
