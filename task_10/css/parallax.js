@@ -7,8 +7,8 @@ window.onload = function () {
 	c2top = document.getElementById ( 'moon' ).offsetTop,
 	c3left = document.getElementById ( 'clouds' ).offsetLeft,
 	c3top = document.getElementById ( 'clouds' ).offsetTop,
-	c4left = document.getElementById ( 'mauntain' ).offsetLeft,
-	c4top = document.getElementById ( 'mauntain' ).offsetTop;
+	c4left = document.getElementById ( 'mountains' ).offsetLeft,
+	c4top = document.getElementById ( 'mountains' ).offsetTop;
 	
 	parallaxBox.onmousemove = function ( event ) {
 		event = event || window.event;
@@ -18,7 +18,7 @@ window.onload = function () {
 		mouseParallax ( 'stars', c1left, c1top, x, y, 5 );
 		mouseParallax ( 'moon', c2left, c2top, x, y, 15 );
 		mouseParallax ( 'clouds', c3left, c3top, x, y, 30 );
-		mouseParallax ( 'mauntain', c4left, c4top, x, y, 65 );
+		mouseParallax ( 'mountains', c4left, c4top, x, y, 65 );
 	}
 	
 }
