@@ -1,11 +1,11 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-var extractPlugin = new ExtractTextPlugin({
+const extractPlugin = new ExtractTextPlugin({
     filename: 'main.css'
 });
 

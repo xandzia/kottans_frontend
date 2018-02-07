@@ -10,13 +10,13 @@ body {
     color: $font;
     font-family: $font-stack;
 }
-h1 {
+/************************   HEADER   ************************/
+.hidden-header{
     height: 0px;
     overflow: hidden;
     margin: 0;
     width: 0px;
 }
-/************************   HEADER   ************************/
 .header-top {
     display: flex;
     flex-direction: row;
@@ -30,7 +30,7 @@ h1 {
         width: 100%;
     }
 }
-button {
+.btn {
     border: none;
     border-radius: 3px;
     box-shadow: 1px 1px 2px rgba(0,0,0,.3);
@@ -68,23 +68,29 @@ button {
     width: 139px;
     font-size: 1.5em;
     font-weight: 600;
+    .fa-clock {
+        width: 20px;
+        height: 20px;
+    }
 }
 /************************   MAIN   ************************/
 main {
     padding: 30px 15px 30px 15px;
     text-align: center;
 }
-.add_pizza {
+.add-pizza {
     margin: 0 auto;
     color: #fff;
     background-color: $active-red;
     text-transform: uppercase;
-    .fa {
+    .fa-plus {
         margin-right: 10px;
+        width: 20px;
+        height: 20px;
     }
 }
-.add_pizza:hover,
-.add_pizza:focus{
+.add-pizza:hover,
+.add-pizza:focus{
     color: $header-background;
     background-color: #fff;
 }
@@ -142,31 +148,33 @@ main {
     right: 0;
     bottom: 0;
     left: 0;
-    address a {
-        color: #fff;
-        font-size: 1.2em;
-        font-style: normal;
-    }
-    address a:hover,
-    address a:focus {
-        color: $active-red;
+    address {
+        a {
+            color: #fff;
+            font-size: 1.2em;
+            font-style: normal;
+            &:hover,
+            &:focus {
+                color: $active-red;
+            }
+        }
+        .tel {
+            margin-left: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .org {
+            font-weight: bold;        
+            text-decoration: none;
+        }
     }
     small {
         color: #fff;
         font-weight: 0.8em;
     }
-    address .tel {
-        margin-left: 20px;
-        font-weight: bold;
-        text-decoration: none;
-    }
     .map:hover,
     .map:focus{
-            color: $header-background;        
-    }
-    address .org {
-        font-weight: bold;        
-        text-decoration: none;
+        color: $header-background;        
     }
 }
 /************************   MEDIA   ************************/
