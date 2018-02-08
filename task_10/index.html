@@ -5,55 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="icon" sizes="16x16" href="#">
-    <link rel="stylesheet" href="#">
+    <link href="https://fonts.googleapis.com/css?family=Geo:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#">A-city</a>
-            <a href="#">B-city</a>
-            <a href="#">C-city</a>
-        </nav>
+    <header class="wrapper top">
+       <button class="nav"><i class="fas fa-bars"></i></button>
+        <nav class="favorite"></nav>
         <input type="text" id="user-input" placeholder="Search..." value="" onkeypress="pressEnter(event)">
-        <button>favourite</button>
+        <button class="favourite"></button>
     </header>
-    <main>
-        <section>
-            <h1>openweather:
-                <span id="city"></span>
-            </h1>
-            <h2>google:
-                <span id="cityG"></span>
-            </h2>
-            <time datatime=""></time>
-            <button name="fahrenheit">fahrenheit</button>
-            <button name="celsius">celsius</button>
-        </section>
-        <section>
-            <div class="future-weather">
-                <time datatime=""></time>
-                <img src="" alt="">
-                <span name="temperature"></span>
+    <main class="wrapper body">
+        <div class="btn-group">
+            <button class="f">F</button>
+            <button class="c">C</button>
+        </div>
+        <section class="oneDay">
+            <time class="day" datatime="${main.day}">2018-11-11</time>
+            <h2 class="descrip">Kiev</h2>
+            <div class="centre">
+                <span class="temp">2<sup>o</sup></span>
+                <img class="icon" src="img/icons/big/cloud.png" alt="">
             </div>
-            <div class="future-weather">
-                <time datatime=""></time>
-                <img src="" alt="">
-                <span name="temperature"></span>
-            </div>
-            <div class="future-weather">
-                <time datatime=""></time>
-                <img src="" alt="">
-                <span name="temperature"></span>
-            </div>
-            <div class="future-weather">
-                <time datatime=""></time>
-                <img src="" alt="">
-                <span name="temperature"></span>
-            </div>
+            <span class="humid">75%</span>
         </section>
     </main>
     <footer></footer>
-    <script src="js/test.js"></script>
+<!--    <script src="js/test.js"></script>-->
+   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDzLWG78savrOF2u8tzL75R5TdnyMPQKE&libraries=places&callback=activatePlacesSearch"></script>
 </body>
 </html>

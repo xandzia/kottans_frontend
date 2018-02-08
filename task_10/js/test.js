@@ -1,7 +1,15 @@
+//selectors
 const userInput = document.getElementById('user-input');
+const oneDay = document.querySelector('.oneDay');
+const city = document.getElementById('city');
+//      day = document.querySelector('.day'),
+//      temperature = document.querySelector('.temp'),
+//      humidity =  document.querySelector('.humid'),
+//      icon = document.querySelector('.icon');
+
+
 let latitude = '';
 let longitude = '';
-let cityG = '';
 
 function activatePlacesSearch(){
     let autocomplete = new google.maps.places.Autocomplete(userInput);   
@@ -22,7 +30,6 @@ function getCityLatLon(){
             console.log(results);
             latitude = results[0].geometry.location.lat();
             longitude = results[0].geometry.location.lng();
-            cityG = results[0].address_components[0].long_name;
             
             getWeather();
         } else {
@@ -32,10 +39,10 @@ function getCityLatLon(){
 };
 
 function getWeather() {
-    const apiPath = 'https://api.openweathermap.org/data/2.5/forecast?lat=';
-    const appId = '&APPID=ceae2108078d09147f9148fbef299e0f';
+    const apiPath = 'https://api.weatherbit.io/v2.0/forecast/3hourly';
+    const appKey = '&key=ca6bb30119264fe2b2608a31b5c79d8e';
     
-    let url = `${apiPath}${latitude}&lon=${longitude}${appId}`;
+    let url = `${apiPath}?lat=${latitude}&lon=${longitude}${appKey}`;
     sendRequest(url);    
 };
 
@@ -44,11 +51,13 @@ function sendRequest(url){
     .then(response => response.json())
     .then(json => {
       const main = {};
-      main.city = json.city.name;
-      main.day = json.list[0].dt_txt;
-      main.temp = json.list[0].main.temp;
-      main.description = json.list[0].weather[0].description;
-      main.icon = json.list[0].weather[0].icon;
+      main.city = json.city_name;
+      main.day = json.data[0].datetime;
+      main.temp = json.data[0].temp;
+      main.tempFeel = json.data[0].app_temp;
+      main.description = json.data[0].weather.description;
+      main.humidity = json.data[0].rh;
+      main.icon = json.data[0].weather.icon;
           
       putIntoHtml(main);
       console.log(json);
@@ -57,9 +66,10 @@ function sendRequest(url){
 };
 
 function putIntoHtml(main) {
-    const city = document.getElementById('city');
-    const cityGoo = document.getElementById('cityG');
-
     city.innerHTML = main.city;
-    cityGoo.innerHTML = cityG;
+    oneDay.innerHTML = `<h2 class="descrip">${main.description}</h2>
+                        <time class="day" datatime="${main.day}">${main.day}</time>
+                        <span class="temp">${main.temp}</span>
+                        <span class="humid">${main.humidity}%</span>
+                        <img class="icon" src="" alt="">`;
 };

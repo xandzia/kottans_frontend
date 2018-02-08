@@ -1,0 +1,111 @@
+@import url('http://fonts.googleapis.com/css?family=Geo&subset=latin');
+
+/*************************************************GENERAL**/
+body {
+    font-family: 'Geo', sans-serif;
+        /* make text super sharp */
+    -webkit-font-smoothing: none;
+    //background-image: url(../img/backgraund/background.jpg);
+    color: #e6e6e6;
+}
+/*************************************************BUTTONS**/
+button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.favourite::before{
+    content: url(../img/icons/etc/star-empty.png);
+}
+.favourite:hover:before{
+    content: url(../img/icons/etc/star.png);  
+}
+.nav{
+    font-size: 3.7em;
+    color: #e6e6e6;
+    &::after{
+        content: url(../img/icons/etc/star.png);
+        position: absolute;
+    }
+    &:hover{
+        color: black;
+    }
+}
+.btn-group {
+    text-align: right;
+    position: absolute;
+    z-index: 1;
+    top: 0.3em;
+    right: 10px;
+    .f,
+    .c{
+        font-size: 2em;
+        cursor: pointer;
+        color: #e6e6e6;
+    }
+    .f:hover,
+    .c:hover{
+        color: black;
+    }
+}
+/*************************************************HEADER**/
+.wrapper{
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.03);
+    background-color: firebrick;
+    padding: 10px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: relative;
+    #user-input{
+        border: none;
+        flex-basis: 50%;
+    }
+    
+}
+/*************************************************MAIN**/
+.body{
+    position: relative;
+    .oneDay {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        .day{
+            position: absolute;
+            font-size: 2em;
+            padding-top: 0.3em;
+        }
+        .descrip{
+            flex-basis: 100%;
+            font-size: 8em;
+            margin: 0;
+            text-align: center;
+        }
+        .centre{
+            flex-basis: 100%;
+            text-align: center;
+            img{
+                vertical-align: middle;
+                width: 160px;
+            }
+            .temp{
+                vertical-align: middle;
+                font-size: 10em;
+                sup{
+                    font-size: 0.5em;
+                }
+            }
+        }
+        .humid{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 3em;
+        }
+    }
+}
