@@ -14,12 +14,17 @@
             <a href="#">B-city</a>
             <a href="#">C-city</a>
         </nav>
-        <input id="user-input" onkeypress="pressEnter(event)">
+        <input type="text" id="user-input" placeholder="Search..." value="" onkeypress="pressEnter(event)">
         <button>favourite</button>
     </header>
     <main>
         <section>
-            <h1>Kiev</h1>
+            <h1>openweather:
+                <span id="city"></span>
+            </h1>
+            <h2>google:
+                <span id="cityG"></span>
+            </h2>
             <time datatime=""></time>
             <button name="fahrenheit">fahrenheit</button>
             <button name="celsius">celsius</button>
@@ -46,9 +51,9 @@
                 <span name="temperature"></span>
             </div>
         </section>
-        <p id="test"></p>
     </main>
     <footer></footer>
     <script src="js/test.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDzLWG78savrOF2u8tzL75R5TdnyMPQKE&libraries=places&callback=activatePlacesSearch"></script>
 </body>
 </html>
