@@ -1,7 +1,8 @@
 //selectors
 const userInput = document.getElementById('user-input');
-const oneDay = document.querySelector('.oneDay');
-const city = document.getElementById('city');
+const oneDay = document.querySelector('.one-day');
+const nyanCat = document.querySelector('.wrapper-cat');
+//const city = document.getElementById('city');
 //      day = document.querySelector('.day'),
 //      temperature = document.querySelector('.temp'),
 //      humidity =  document.querySelector('.humid'),
@@ -19,6 +20,8 @@ function pressEnter(e) {
   if (e.keyCode === 13) {
     e.preventDefault();
     getCityLatLon();
+    clearHtml(oneDay);
+    clearHtml(nyanCat);
   }
 };
 
@@ -34,6 +37,19 @@ function getCityLatLon(){
             getWeather();
         } else {
             console.log("Something got wrong " + status);
+            nyanCat.innerHTML = `<div class='rainbow'>
+                                    <span></span>
+                                </div>
+                                <div class='nyan-cat'>
+                                    <span class="error">not found 404</span>
+                                    <div class='feet'></div>
+                                    <div class='tail'>
+                                        <span></span>
+                                    </div>
+                                    <div class='body'></div>
+                                    <div class='head'></div>
+                                </div>`;
+            nyanCat.setAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
         }
     });
 };
@@ -66,10 +82,20 @@ function sendRequest(url){
 };
 
 function putIntoHtml(main) {
-    city.innerHTML = main.city;
-    oneDay.innerHTML = `<h2 class="descrip">${main.description}</h2>
-                        <time class="day" datatime="${main.day}">${main.day}</time>
-                        <span class="temp">${main.temp}</span>
-                        <span class="humid">${main.humidity}%</span>
-                        <img class="icon" src="" alt="">`;
+    oneDay.innerHTML = `<h2 class="city">${main.city}</h2>
+                        <div class="centre">
+                            <span class="temp">${main.temp}<sup>o</sup></span>
+                            <img class="icon" src="img/icons/big/cloud.png" alt="">
+                        </div>
+                        <p class="discriptions">
+                            <time class="d-time" datatime="${main.day}">${main.day}</time>                
+                            <span class="humid">${main.description} ${main.humidity}%</span>
+                        </p>`;
+};
+
+function clearHtml(elem) {
+    while (elem.firstChild) {
+        elem.removeChild(elem.firstChild);
+    }
+    elem.removeAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
 };

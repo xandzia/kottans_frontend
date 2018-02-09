@@ -7,6 +7,55 @@ body {
     -webkit-font-smoothing: none;
     //background-image: url(../img/backgraund/background.jpg);
     color: #e6e6e6;
+    position: relative;
+    margin: 0;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #e6e6e6;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #e6e6e6;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #e6e6e6;
+}
+/*************************************************FOOTER-BACKGROUND**/
+footer{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    #box {
+        background-image: url(../img/backgraund/mini-bgd.png);
+        background-repeat: repeat-x;
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+    #mountains {
+        bottom: -10px;
+    }
+    #clouds {
+        top: 38%;
+        z-index: 4;
+    }
+    #moon {
+        right: -200px
+    }
+    img {
+        position: absolute;
+        width: calc(100% + 100px);
+        height: auto;
+        right: -50px;
+    }
+}
+#rainbaw{
+    position: absolute;
+    z-index: 3;
+    top: 36%;
+    left: 33%;
+    width: 39%;
 }
 /*************************************************BUTTONS**/
 button{
@@ -19,17 +68,6 @@ button{
 }
 .favourite:hover:before{
     content: url(../img/icons/etc/star.png);  
-}
-.nav{
-    font-size: 3.7em;
-    color: #e6e6e6;
-    &::after{
-        content: url(../img/icons/etc/star.png);
-        position: absolute;
-    }
-    &:hover{
-        color: black;
-    }
 }
 .btn-group {
     text-align: right;
@@ -48,39 +86,135 @@ button{
         color: black;
     }
 }
+$burger--thickness: 7px;
+.favour-input {
+	$width: 40px;
+    color: #e6e6e6;
+	display: inline-block;
+    border: 0;
+	background: none;
+	outline: 0;
+	padding:0px;
+	cursor: pointer;
+	border-bottom: $burger--thickness solid currentColor;
+	width: $width;
+	transition: border-bottom 0.5s ease-in-out;
+	-webkit-transition: border-bottom 0.5s ease-in-out; 
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}	 
+	&:before {
+		content: "";
+		display: block;
+		border-bottom: $burger--thickness solid currentColor;
+		width: 100%;
+		margin-bottom: 10px;
+		transition: transform 0.5s ease-in-out;    
+		-webkit-transition: -webkit-transform 0.5s ease-in-out;        
+	}
+	&:after {
+		content: "";
+		display: block;
+		border-bottom: $burger--thickness solid currentColor;
+		width: 100%;
+		margin-bottom: 10px;
+		transition: transform 0.5s ease-in-out;
+		-webkit-transition: -webkit-transform 0.5s ease-in-out;
+	}
+}
+
+.favour-check {
+  display: none;
+}
+.favour-check:checked ~ .favour-input {
+  border-bottom: $burger--thickness solid transparent;
+  transition: border-bottom 0.2s ease-in-out;
+  -webkit-transition: border-bottom 0.2s ease-in-out;
+  &:before {
+    transform: rotate(-405deg) translateY(1px) translateX(-3px);
+    -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);      
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  }
+  &:after {
+    transform: rotate(405deg) translateY(-9px) translateX(-10px); 
+    -webkit-transform: rotate(405deg) translateY(-9px) translateX(-10px);       
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  }
+}
+$navigation__transition: max-height 0.5s ease-in-out;
+.navigation {
+  overflow: hidden;
+  max-height: 0;
+//    &::after{
+//        content: url(../img/icons/etc/starBar.png);
+//        position: absolute;
+//        left: 14px;
+//        top: -27px;
+//    } 
+  transition: $navigation__transition;
+}
+.favour-check:checked ~ .navigation {
+  max-height: 500px; 
+  transition: $navigation__transition;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  font-size: 2em;
+  padding: 5px 0; 
+  a {
+    text-decoration: none;
+    color: #e6e6e6;
+    &:hover {
+      text-decoration: underline;
+    }    
+  }
+}
 /*************************************************HEADER**/
 .wrapper{
     max-width: 800px;
     margin: 0 auto;
-    background-color: rgba(0,0,0,0.03);
-    background-color: firebrick;
-    padding: 10px;
+    background-color: rgba(62,96,143,0.5);
+    padding: 2%;
+    position: relative;
+    .favour-list{
+        position: absolute;
+        z-index: 2;
+        margin-top: 14px;
+    }
 }
 .top{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     #user-input{
         border: none;
         flex-basis: 50%;
+        line-height: 2.5;
+        padding-left: 15px;
+        margin-left: 22%;
+        background-color: rgba(47,72,107,0.42);
+        color: #e6e6e6;
+        font-size: 1em;
     }
-    
 }
 /*************************************************MAIN**/
-.body{
+.weather-body{
     position: relative;
-    .oneDay {
+    .one-day {
         display: flex;
         flex-wrap: wrap;
         position: relative;
-        .day{
-            position: absolute;
-            font-size: 2em;
-            padding-top: 0.3em;
-        }
-        .descrip{
+        .city{
             flex-basis: 100%;
             font-size: 8em;
             margin: 0;
@@ -101,11 +235,37 @@ button{
                 }
             }
         }
-        .humid{
-            position: absolute;
-            bottom: 0;
-            right: 0;
+        .discriptions{
+            display: flex;
+            flex-wrap: nowrap;
             font-size: 3em;
+            width: 100%;
+            margin-top: 10px;
+            .humid{
+                margin-left: auto;
+            }
+            .d-time{
+                margin-right: auto;
+            }
         }
     }
+    .enother-days{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+/*************************************************5 DAYS**/
+.a-day{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3em;
+    //border-right: 1px solid white;
+    .icon{
+        width: 120px;
+    }
+//    &:last-child{
+//        border-right: none;
+//    }
 }

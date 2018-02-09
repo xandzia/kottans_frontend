@@ -4,7 +4,55 @@ body {
   font-family: 'Geo', sans-serif;
   /* make text super sharp */
   -webkit-font-smoothing: none;
+  color: #e6e6e6;
+  position: relative;
+  margin: 0; }
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #e6e6e6;
+  opacity: 1;
+  /* Firefox */ }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: #e6e6e6; }
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #e6e6e6; }
+
+/*************************************************FOOTER-BACKGROUND**/
+footer {
+  position: absolute;
+  top: 0;
+  z-index: -1; }
+  footer #box {
+    background-image: url(../img/backgraund/mini-bgd.png);
+    background-repeat: repeat-x;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; }
+  footer #mountains {
+    bottom: -10px; }
+  footer #clouds {
+    top: 38%;
+    z-index: 4; }
+  footer #moon {
+    right: -200px; }
+  footer img {
+    position: absolute;
+    width: calc(100% + 100px);
+    height: auto;
+    right: -50px; }
+
+#rainbaw {
+  position: absolute;
+  z-index: 3;
+  top: 36%;
+  left: 33%;
+  width: 39%; }
 
 /*************************************************BUTTONS**/
 button {
@@ -17,15 +65,6 @@ button {
 
 .favourite:hover:before {
   content: url(../img/icons/etc/star.png); }
-
-.nav {
-  font-size: 3.7em;
-  color: #e6e6e6; }
-  .nav::after {
-    content: url(../img/icons/etc/star.png);
-    position: absolute; }
-  .nav:hover {
-    color: black; }
 
 .btn-group {
   text-align: right;
@@ -42,55 +81,153 @@ button {
   .btn-group .c:hover {
     color: black; }
 
+.favour-input {
+  color: #e6e6e6;
+  display: inline-block;
+  border: 0;
+  background: none;
+  outline: 0;
+  padding: 0px;
+  cursor: pointer;
+  border-bottom: 7px solid currentColor;
+  width: 40px;
+  transition: border-bottom 0.5s ease-in-out;
+  -webkit-transition: border-bottom 0.5s ease-in-out; }
+  .favour-input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+  .favour-input:before {
+    content: "";
+    display: block;
+    border-bottom: 7px solid currentColor;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out; }
+  .favour-input:after {
+    content: "";
+    display: block;
+    border-bottom: 7px solid currentColor;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out; }
+
+.favour-check {
+  display: none; }
+
+.favour-check:checked ~ .favour-input {
+  border-bottom: 7px solid transparent;
+  transition: border-bottom 0.2s ease-in-out;
+  -webkit-transition: border-bottom 0.2s ease-in-out; }
+  .favour-check:checked ~ .favour-input:before {
+    transform: rotate(-405deg) translateY(1px) translateX(-3px);
+    -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out; }
+  .favour-check:checked ~ .favour-input:after {
+    transform: rotate(405deg) translateY(-9px) translateX(-10px);
+    -webkit-transform: rotate(405deg) translateY(-9px) translateX(-10px);
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out; }
+
+.navigation {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out; }
+
+.favour-check:checked ~ .navigation {
+  max-height: 500px;
+  transition: max-height 0.5s ease-in-out; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none;
+  font-size: 2em;
+  padding: 5px 0; }
+  li a {
+    text-decoration: none;
+    color: #e6e6e6; }
+    li a:hover {
+      text-decoration: underline; }
+
 /*************************************************HEADER**/
 .wrapper {
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.03);
-  background-color: firebrick;
-  padding: 10px; }
+  background-color: rgba(62, 96, 143, 0.5);
+  padding: 2%;
+  position: relative; }
+  .wrapper .favour-list {
+    position: absolute;
+    z-index: 2;
+    margin-top: 14px; }
 
 .top {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
   position: relative; }
   .top #user-input {
     border: none;
-    flex-basis: 50%; }
+    flex-basis: 50%;
+    line-height: 2.5;
+    padding-left: 15px;
+    margin-left: 22%;
+    background-color: rgba(47, 72, 107, 0.42);
+    color: #e6e6e6;
+    font-size: 1em; }
 
 /*************************************************MAIN**/
-.body {
+.weather-body {
   position: relative; }
-  .body .oneDay {
+  .weather-body .one-day {
     display: flex;
     flex-wrap: wrap;
     position: relative; }
-    .body .oneDay .day {
-      position: absolute;
-      font-size: 2em;
-      padding-top: 0.3em; }
-    .body .oneDay .descrip {
+    .weather-body .one-day .city {
       flex-basis: 100%;
       font-size: 8em;
       margin: 0;
       text-align: center; }
-    .body .oneDay .centre {
+    .weather-body .one-day .centre {
       flex-basis: 100%;
       text-align: center; }
-      .body .oneDay .centre img {
+      .weather-body .one-day .centre img {
         vertical-align: middle;
         width: 160px; }
-      .body .oneDay .centre .temp {
+      .weather-body .one-day .centre .temp {
         vertical-align: middle;
         font-size: 10em; }
-        .body .oneDay .centre .temp sup {
+        .weather-body .one-day .centre .temp sup {
           font-size: 0.5em; }
-    .body .oneDay .humid {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      font-size: 3em; }
+    .weather-body .one-day .discriptions {
+      display: flex;
+      flex-wrap: nowrap;
+      font-size: 3em;
+      width: 100%;
+      margin-top: 10px; }
+      .weather-body .one-day .discriptions .humid {
+        margin-left: auto; }
+      .weather-body .one-day .discriptions .d-time {
+        margin-right: auto; }
+  .weather-body .enother-days {
+    display: flex;
+    justify-content: space-between; }
+
+/*************************************************5 DAYS**/
+.a-day {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3em; }
+  .a-day .icon {
+    width: 120px; }
 
 /*# sourceMappingURL=main.css.map */
