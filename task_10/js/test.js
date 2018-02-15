@@ -1,10 +1,12 @@
+'use strict';
 const userInput = document.getElementById('user-input');
 const oneDay = document.querySelector('.one-day');
 const days = document.querySelector('.enother-days');
+const star = document.querySelector('.favourite');
+const favourit = document.getElementById('navigation1');
 const nyanCat = document.querySelector('.wrapper-cat');
+const favourireList = [];
 
-let latitude = '';
-let longitude = '';
 
 function activatePlacesSearch(){
     let autocomplete = new google.maps.places.Autocomplete(userInput);   
@@ -13,12 +15,17 @@ function activatePlacesSearch(){
 function pressEnter(e) {
   if (e.keyCode === 13) {
     e.preventDefault();
+    getWeather();
+  }
+};
+
+function getWeather(){
     getCityLatLon();
     clearHtml(oneDay);
     clearHtml(days);
+    star.setAttribute('data-favourite', false);
     clearHtml(nyanCat);
-    clearStyle(nyanCat, "style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
-  }
+    clearStyle(nyanCat, "style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");  
 };
 
 function getCityLatLon(){
@@ -26,10 +33,10 @@ function getCityLatLon(){
     
     geocoder.geocode( { address: `${userInput.value}`}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            latitude = results[0].geometry.location.lat();
-            longitude = results[0].geometry.location.lng();
+            let latitude = results[0].geometry.location.lat();
+            let longitude = results[0].geometry.location.lng();
             
-            getUrl();
+            getUrl(latitude, longitude);
         } else {
             console.log("Something got wrong " + status);
             
@@ -54,12 +61,12 @@ function placeNyanCat(elem) {
     elem.setAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");  
 };
 
-function getUrl() {
+function getUrl(latitude,longitude) {
     const apiPath = 'https://api.weatherbit.io/v2.0/forecast/daily';
     const appKey = '&key=ca6bb30119264fe2b2608a31b5c79d8e';
     
     let url = `${apiPath}?lat=${latitude}&lon=${longitude}${appKey}`;
-    sendRequest(url);    
+    sendRequest(url); 
 };
 
 function sendRequest(url){
@@ -72,18 +79,21 @@ function sendRequest(url){
 };
 
 function createMainJson(json) {
-      const main = {};
-      main.city = json.city_name;
-      main.day = json.data[0].datetime;
-      main.temp = json.data[0].temp;
-      main.tempFeel = json.data[0].app_temp;
-      main.description = json.data[0].weather.description;
-      main.humidity = json.data[0].rh;
-      main.icon = json.data[0].weather.code;
+    const main = {};
+    main.city = json.city_name;
+    main.day = json.data[0].datetime;
+    main.temp = json.data[0].temp;
+    main.tempFeel = json.data[0].app_temp;
+    main.description = json.data[0].weather.description;
+    main.humidity = json.data[0].rh;
+    main.icon = json.data[0].weather.code;
+    main.lat = json.lat;
+    main.lon = json.lon;
     
-      console.log(main);
-      putHtmlToday(main);
-      putHtmlDays(json);
+    console.log(main);
+    putHtmlToday(main);
+    putHtmlDays(json);
+    star.onclick = function(){addToFavourite(main)};
 };
 
 function putHtmlToday(main) {
@@ -102,8 +112,16 @@ function putHtmlToday(main) {
                             <span class="desc">${main.description}</span>
                             <span class="humid">${main.humidity}%</span>
                         </p>`;
-    console.log(getIcon(main.icon));
+    populateCityToUrl(main.city);
 };
+
+const populateCityToUrl = (city) => {
+  if (history.pushState) { 
+    var newurl = window.location.origin + window.location.pathname + "?="+ city;;
+    window.history.pushState({ path:newurl }, '', newurl );
+  } 
+}
+
 
 function putHtmlDays(json) {
     for (let i = 1; i<5; i++) {
@@ -161,6 +179,25 @@ function clearHtml(elem) {
 function clearStyle(elem, style) {
     elem.removeAttribute(style);    
 };
+
+function addToFavourite(obj) {
+    let city = document.querySelector('.city');
+    city = city.outerText;
+    let list = document.createElement('li');
+    list.innerHTML = `<a>${city}</a>`;
+    favourit.appendChild(list);
+    star.setAttribute('data-favourite', true);
+    favourireList.push(obj);
+}
+
+function ShowFavouriteCities (elem) {
+    elem.onclick = (event) => {
+        let target = event.target.outerText;
+        userInput.value = target;
+        getWeather();
+    };
+};
+new ShowFavouriteCities(favourit);
 
 function getIcon(iconCode) {
     const icons = {
