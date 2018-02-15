@@ -61,21 +61,22 @@ button {
   cursor: pointer;
   position: relative; }
 
-.favourite::before {
-  content: url(../img/icons/etc/star-empty.png);
-  position: absolute;
-  top: -35px;
-  left: -67px; }
+.favourite {
+  content: '';
+  background-image: url(../img/icons/etc/star-empty.svg);
+  background-size: cover;
+  width: 64px;
+  height: 64px; }
 
-.favourite:hover:before {
-  content: url(../img/icons/etc/star.png); }
+.favourite:hover {
+  background-image: url(../img/icons/etc/star.svg); }
 
 .btn-group {
   text-align: right;
   position: absolute;
   z-index: 1;
   top: 2em;
-  right: 10px; }
+  right: 0px; }
   .btn-group .f,
   .btn-group .c {
     font-size: 2em;
@@ -162,12 +163,13 @@ li {
 .wrapper {
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(62, 96, 143, 0.5);
+  background-color: rgba(62, 96, 143, 0.6);
   padding: 3%;
   position: relative; }
   .wrapper .favour-list {
     position: absolute;
-    z-index: 2; }
+    z-index: 2;
+    margin-top: 10px; }
 
 .top {
   display: flex;
@@ -193,12 +195,14 @@ li {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    margin-top: 3em; }
+    margin-top: 1em; }
     .weather-body .one-day .city {
       flex-basis: 100%;
       font-size: 8em;
       margin: 0;
-      text-align: center; }
+      margin-top: 0.1em;
+      text-align: center;
+      line-height: 1.5; }
     .weather-body .one-day .centre {
       flex-basis: 100%;
       text-align: center; }
@@ -209,10 +213,6 @@ li {
       .weather-body .one-day .centre .temp {
         vertical-align: middle;
         font-size: 10em; }
-        .weather-body .one-day .centre .temp sup {
-          font-size: 0.5em;
-          position: relative;
-          top: -54px; }
     .weather-body .one-day .discriptions {
       display: flex;
       flex-wrap: nowrap;
@@ -220,22 +220,32 @@ li {
       width: 100%;
       margin-top: 1em;
       margin-bottom: 2em; }
-      .weather-body .one-day .discriptions .humid {
-        margin-left: auto; }
+      .weather-body .one-day .discriptions .humid,
+      .weather-body .one-day .discriptions .desc {
+        margin-left: auto;
+        position: relative;
+        z-index: 1; }
       .weather-body .one-day .discriptions .d-time {
         margin-right: auto; }
   .weather-body .enother-days {
     display: flex;
     justify-content: space-between; }
 
+sup {
+  font-size: 0.5em;
+  position: relative;
+  top: -54px; }
+
 /*************************************************5 DAYS**/
 .a-day {
-  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 3em; }
   .a-day .icon {
-    width: 120px; }
+    width: 120px;
+    margin: 0.5em 0; }
+  .a-day sup {
+    top: -16px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -15,6 +15,7 @@ function pressEnter(e) {
     e.preventDefault();
     getCityLatLon();
     clearHtml(oneDay);
+    clearHtml(days);
     clearHtml(nyanCat);
     clearStyle(nyanCat, "style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
   }
@@ -25,7 +26,6 @@ function getCityLatLon(){
     
     geocoder.geocode( { address: `${userInput.value}`}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-//            console.log(results);
             latitude = results[0].geometry.location.lat();
             longitude = results[0].geometry.location.lng();
             
@@ -87,6 +87,7 @@ function createMainJson(json) {
 };
 
 function putHtmlToday(main) {
+    main.icon = getIcon(main.icon);
     oneDay.innerHTML = `<div class="btn-group">
                             <button class="f">F</button>
                             <button class="c">C</button>
@@ -94,12 +95,14 @@ function putHtmlToday(main) {
                         <h2 class="city">${main.city}</h2>
                         <div class="centre">
                             <span class="temp">${main.temp}<sup>o</sup>C</span>
-                            <img class="icon" src="img/icons/big/cloud.png" alt="">
+                            <img class="icon" src="img/icons/big/${main.icon}.svg" alt="${main.icon}">
                         </div>
                         <p class="discriptions">
                             <time class="d-time" datatime="${main.day}">${changeDateTime(main.day)}</time>   
-                            <span class="humid">${main.description}  ${main.humidity}%</span>
+                            <span class="desc">${main.description}</span>
+                            <span class="humid">${main.humidity}%</span>
                         </p>`;
+    console.log(getIcon(main.icon));
 };
 
 function putHtmlDays(json) {
@@ -107,11 +110,11 @@ function putHtmlDays(json) {
         let nextDay = document.createElement('div');
         let datetime = json.data[i].datetime;
         let rename = changeDateTime(datetime);
-        console.log(rename);
+        let icon = getIcon(json.data[i].weather.code);
         nextDay.className = 'a-day';
         nextDay.innerHTML = `<time datatime="${datetime}">${rename}</time>
-                             <img src="img/icons/big/cloud.png" alt="" class="icon">
-                             <span class="temp-">${json.data[i].temp}&deg;C</span>`;
+                             <img src="img/icons/big/${icon}.svg" alt="${icon}" class="icon">
+                             <span class="temp">${json.data[i].temp}<sup>o</sup>C</span>`;
         days.appendChild(nextDay);
     }
 };
@@ -174,24 +177,26 @@ function getIcon(iconCode) {
         sun: 'sun'
     };
     let icon='';
-    switch(iconCode) {
-        case ('200'||'201'||'202'): icon = stormRain;
-            break;
-        default: icon = sun;
-            break;
-    }
-    return `<img class="icon" src="img/icons/big/${icon}.png" alt="${icon}">`;
+    iconCode = Number(iconCode);
+    if (iconCode >= 200 && iconCode <= 202) {
+        icon = icons.stormRain;
+    } else if (iconCode >= 230 && iconCode <= 233) {
+        icon = icons.storm;
+    } else if (iconCode >=300 && iconCode <=500 || iconCode === 521 || iconCode === 900) {
+        icon = icons.rain;
+    } else if (iconCode >= 501 && iconCode <= 522) {
+        icon = icons.doubleRain;
+    } else if (iconCode >= 600 && iconCode <= 623) {
+        icon = icons.snowy;
+    } else if (iconCode === 611 || iconCode === 612) {
+        icon = icons.cloud;
+    } else if (iconCode >= 700 && iconCode <= 751 || iconCode >=801 && iconCode <= 803) {
+        icon = icons.cloudy;
+    } else if (iconCode === 804) {
+        icon = icons.doubleCloudy;
+    } else {
+        icon = icons.sun;
+        }
+    return icon;
 };
 
-
-
-//const get = url => fetch(url).then(res => {
-//    if (res.ok) {
-//        return res.json()
-//    }
-//    throw new Error();
-//})
-//const renderUser = userData => {
-//    const li = document.createElement('li');
-//    li.
-//}

@@ -64,21 +64,22 @@ button{
     cursor: pointer;
     position: relative;
 }
-.favourite::before{
-    content: url(../img/icons/etc/star-empty.png);
-    position: absolute;
-    top: -35px;
-    left: -67px;
+.favourite{
+    content: '';
+    background-image: url(../img/icons/etc/star-empty.svg);
+    background-size: cover;
+    width: 64px;
+    height: 64px;
 }
-.favourite:hover:before{
-    content: url(../img/icons/etc/star.png);  
+.favourite:hover{
+    background-image: url(../img/icons/etc/star.svg);  
 }
 .btn-group {
     text-align: right;
     position: absolute;
     z-index: 1;
     top: 2em;
-    right: 10px;
+    right: 0px;
     .f,
     .c{
         font-size: 2em;
@@ -184,12 +185,13 @@ li {
 .wrapper{
     max-width: 800px;
     margin: 0 auto;
-    background-color: rgba(62,96,143,0.5);
+    background-color: rgba(62,96,143,0.6);
     padding: 3%;
     position: relative;
     .favour-list{
         position: absolute;
         z-index: 2;
+        margin-top: 10px;
     }
 }
 .top{
@@ -217,12 +219,14 @@ li {
         display: flex;
         flex-wrap: wrap;
         position: relative;
-        margin-top: 3em;
+        margin-top: 1em;
         .city{
             flex-basis: 100%;
             font-size: 8em;
             margin: 0;
+            margin-top: 0.1em;
             text-align: center;
+            line-height: 1.5;
         }
         .centre{
             flex-basis: 100%;
@@ -235,11 +239,6 @@ li {
             .temp{
                 vertical-align: middle;
                 font-size: 10em;
-                sup{
-                    font-size: 0.5em;
-                    position: relative;
-                    top: -54px;
-                }
             }
         }
         .discriptions{
@@ -249,12 +248,22 @@ li {
             width: 100%;
             margin-top: 1em;
             margin-bottom: 2em;
-            .humid{
+            .humid,
+            .desc{
                 margin-left: auto;
+                position: relative;
+                z-index: 1;
             }
             .d-time{
                 margin-right: auto;
             }
+//            .humid::before {
+//                content: url(../img/icons/etc/humidity.svg);
+//                position: absolute;
+//                z-index: -1;
+//                width: 100px;
+//                height: auto;
+//            }
         }
     }
     .enother-days{
@@ -262,9 +271,13 @@ li {
         justify-content: space-between;
     }
 }
+sup{
+    font-size: 0.5em;
+    position: relative;
+    top: -54px;
+}
 /*************************************************5 DAYS**/
 .a-day{
-    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -272,6 +285,10 @@ li {
     //border-right: 1px solid white;
     .icon{
         width: 120px;
+        margin: 0.5em 0;
+    }
+    sup{
+        top: -16px;
     }
 //    &:last-child{
 //        border-right: none;
