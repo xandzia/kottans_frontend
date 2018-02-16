@@ -255,9 +255,15 @@ li {
                 width: 160px;
                 margin-left: 3em;
             }
-            .temp{
+            .temp,
+            .cf {
                 vertical-align: middle;
                 font-size: 10em;
+            }
+            sup {
+                font-size: 3.5em;
+                top: -21px;
+                position: relative;
             }
         }
         .discriptions{
@@ -290,26 +296,22 @@ li {
         justify-content: space-between;
     }
 }
-sup{
-    font-size: 0.5em;
-    position: relative;
-    top: -54px;
-}
 /*************************************************5 DAYS**/
 .a-day{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 3em;
-    //border-right: 1px solid white;
     .icon{
         width: 120px;
         margin: 0.5em 0;
     }
     sup{
-        top: -16px;
+        font-size: 0.5em;
+        position: relative;
+        top: -15px;
     }
-//    &:last-child{
-//        border-right: none;
-//    }
 }
+//sup{
+//    top: -16px;
+//}

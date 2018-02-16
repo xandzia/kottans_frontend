@@ -229,9 +229,14 @@ li {
         vertical-align: middle;
         width: 160px;
         margin-left: 3em; }
-      .weather-body .one-day .centre .temp {
+      .weather-body .one-day .centre .temp,
+      .weather-body .one-day .centre .cf {
         vertical-align: middle;
         font-size: 10em; }
+      .weather-body .one-day .centre sup {
+        font-size: 3.5em;
+        top: -21px;
+        position: relative; }
     .weather-body .one-day .discriptions {
       display: flex;
       flex-wrap: nowrap;
@@ -250,11 +255,6 @@ li {
     display: flex;
     justify-content: space-between; }
 
-sup {
-  font-size: 0.5em;
-  position: relative;
-  top: -54px; }
-
 /*************************************************5 DAYS**/
 .a-day {
   display: flex;
@@ -265,6 +265,8 @@ sup {
     width: 120px;
     margin: 0.5em 0; }
   .a-day sup {
-    top: -16px; }
+    font-size: 0.5em;
+    position: relative;
+    top: -15px; }
 
 /*# sourceMappingURL=main.css.map */

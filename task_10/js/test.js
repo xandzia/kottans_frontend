@@ -92,6 +92,7 @@ function createMainJson(json) {
     console.log(main);
     putHtmlToday(main);
     putHtmlDays(json);
+    swapCF();
     star.onclick = function(){addToFavourite(main)};
 };
 
@@ -103,7 +104,7 @@ function putHtmlToday(main) {
                         </div>
                         <h2 class="city">${main.city}</h2>
                         <div class="centre">
-                            <span class="temp">${main.temp}<sup>o</sup>C</span>
+                            <span class="temp">${main.temp}</span><sup>o</sup><span class="cf">C</span>
                             <img class="icon" src="img/icons/big/${main.icon}.svg" alt="${main.icon}">
                         </div>
                         <p class="discriptions">
@@ -131,7 +132,7 @@ function putHtmlDays(json) {
         nextDay.className = 'a-day';
         nextDay.innerHTML = `<time datatime="${datetime}">${rename}</time>
                              <img src="img/icons/big/${icon}.svg" alt="${icon}" class="icon">
-                             <span class="temp">${json.data[i].temp}<sup>o</sup>C</span>`;
+                             <div><span class="temp">${json.data[i].temp}</span><sup>o</sup><span class="cf">C</span></div>`;
         days.appendChild(nextDay);
     }
 };
@@ -197,7 +198,7 @@ function showHideStar(elem) {
     }, 3000)
 };
 
-function ShowFavouriteCity (elem) {
+function ShowFavouriteCity(elem) {
     elem.onclick = (event) => {
         let target = event.target.outerText;
         userInput.value = target;
@@ -206,6 +207,35 @@ function ShowFavouriteCity (elem) {
     };
 };
 new ShowFavouriteCity(favourit);
+
+function swapCF() {
+    const f = document.querySelector('.f');
+    const c = document.querySelector('.c');
+    const t = document.querySelectorAll('.temp');
+    const cf = document.querySelectorAll('.cf');
+    c.disabled = true;
+
+    f.onclick = () => {
+        for (let i=0; i<t.length; i++) {
+            let temp = parseFloat(t[i].innerHTML);
+            temp = temp * 1.8 + 32;
+            t[i].textContent = temp;
+            cf[i].textContent = 'F';
+        };
+        f.disabled = true;
+        c.disabled = false;
+    };
+    c.onclick = () => {
+        for (let i=0; i<t.length; i++) {
+            let temp = parseFloat(t[i].innerHTML);
+            temp = (temp - 32) * (5/9);
+            t[i].textContent = temp.toFixed(1);
+            cf[i].textContent = 'C';
+        };
+        c.disabled = true;
+        f.disabled = false;
+    }
+};
 
 function getIcon(iconCode) {
     const icons = {
