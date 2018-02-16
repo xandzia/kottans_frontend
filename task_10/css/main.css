@@ -128,8 +128,8 @@ button {
   transition: border-bottom 0.2s ease-in-out;
   -webkit-transition: border-bottom 0.2s ease-in-out; }
   .favour-check:checked ~ .favour-input:before {
-    transform: rotate(-405deg) translateY(1px) translateX(-3px);
-    -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
+    transform: rotate(-405deg) translateY(0px) translateX(-1px);
+    -webkit-transform: rotate(-405deg) translateY(0px) translateX(-1px);
     transition: transform 0.5s ease-in-out;
     -webkit-transition: -webkit-transform 0.5s ease-in-out; }
   .favour-check:checked ~ .favour-input:after {
@@ -171,7 +171,8 @@ ul {
 li {
   list-style: none;
   font-size: 2em;
-  padding: 5px 0; }
+  padding: 5px 0;
+  cursor: pointer; }
   li a {
     text-decoration: none;
     color: #e6e6e6; }
@@ -251,7 +252,7 @@ li {
         z-index: 1; }
       .weather-body .one-day .discriptions .d-time {
         margin-right: auto; }
-  .weather-body .enother-days {
+  .weather-body .another-days {
     display: flex;
     justify-content: space-between; }
 
@@ -268,5 +269,44 @@ li {
     font-size: 0.5em;
     position: relative;
     top: -15px; }
+
+/*************************************************MEDIA**/
+@media all and (max-width: 640px) {
+  .another-days {
+    flex-direction: column; }
+    .another-days .a-day {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 2em; }
+      .another-days .a-day .icon {
+        margin: 0;
+        width: 50px; }
+
+  .btn-group .f, .btn-group .c {
+    font-size: 1.9em; }
+
+  .favour-input,
+  .favour-input:before,
+  .favour-input:after {
+    border-bottom: 4px solid currentColor; }
+
+  .weather-body .one-day .city, .weather-body .one-day .centre .temp, .weather-body .one-day .centre .cf {
+    font-size: 4em; }
+  .weather-body .one-day .discriptions {
+    font-size: 2em; }
+  .weather-body .one-day .centre img {
+    width: 100px; }
+
+  .favourite {
+    width: 40px;
+    height: 40px; }
+
+  .navigation::after {
+    top: -19px;
+    left: -11px; }
+
+  .top {
+    top: 7px; } }
 
 /*# sourceMappingURL=main.css.map */

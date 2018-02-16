@@ -1,14 +1,14 @@
 'use strict';
 const userInput = document.getElementById('user-input');
 const oneDay = document.querySelector('.one-day');
-const days = document.querySelector('.enother-days');
+const days = document.querySelector('.another-days');
 const star = document.querySelector('.favourite');
 const favourit = document.getElementById('navigation1');
 const nyanCat = document.querySelector('.wrapper-cat');
 const favourireList = [];
 
 function activatePlacesSearch(){
-    let autocomplete = new google.maps.places.Autocomplete(userInput);   
+    let autocomplete = new google.maps.places.Autocomplete(userInput);
 };
 
 function pressEnter(e) {

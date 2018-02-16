@@ -139,8 +139,8 @@ $burger--thickness: 7px;
   transition: border-bottom 0.2s ease-in-out;
   -webkit-transition: border-bottom 0.2s ease-in-out;
   &:before {
-    transform: rotate(-405deg) translateY(1px) translateX(-3px);
-    -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);      
+    transform: rotate(-405deg) translateY(0px) translateX(-1px);
+    -webkit-transform: rotate(-405deg) translateY(0px) translateX(-1px);      
     transition: transform 0.5s ease-in-out;
     -webkit-transition: -webkit-transform 0.5s ease-in-out;
   }
@@ -191,7 +191,8 @@ ul {
 li {
   list-style: none;
   font-size: 2em;
-  padding: 5px 0; 
+  padding: 5px 0;
+  cursor: pointer;
   a {
     text-decoration: none;
     color: #e6e6e6;
@@ -291,7 +292,7 @@ li {
 //            }
         }
     }
-    .enother-days{
+    .another-days{
         display: flex;
         justify-content: space-between;
     }
@@ -312,6 +313,74 @@ li {
         top: -15px;
     }
 }
-//sup{
-//    top: -16px;
-//}
+/*************************************************MEDIA**/
+@media all and (max-width:640px) {
+    .another-days{
+        flex-direction: column;
+        .a-day{
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 10px;
+            font-size: 2em;
+            .icon{
+                margin: 0;
+                width: 50px;
+            }
+        }
+    }
+    .btn-group{
+        .f, .c {
+            font-size: 1.9em;
+        }
+    }
+    .favour-input,
+    .favour-input:before,
+    .favour-input:after {
+        border-bottom: 4px solid currentColor;
+    }
+    .weather-body .one-day {
+        .city, .centre .temp, .centre .cf {
+            font-size: 4em;
+        }
+        .discriptions{
+            font-size: 2em;
+        }
+        .centre img{
+            width: 100px;
+        }
+    }
+    .favourite{
+        width: 40px;
+        height: 40px;
+    }
+    .navigation::after {
+        top: -19px;
+        left: -11px;
+    }
+    .top {
+        top: 7px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
