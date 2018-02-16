@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Geo&subset=latin");
+@import url("https://fonts.googleapis.com/css?family=Geo&subset=latin");
 /*************************************************GENERAL**/
 body {
   font-family: 'Geo', sans-serif;
@@ -142,7 +142,24 @@ button {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s ease-in-out; }
+  .navigation::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: -27px;
+    z-index: -1; }
 
+.navigation.change::after {
+  content: url(../img/icons/etc/star.png);
+  animation: pulse 3.5s 1; }
+
+@keyframes pulse {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 .favour-check:checked ~ .navigation {
   max-height: 500px;
   transition: max-height 0.5s ease-in-out; }

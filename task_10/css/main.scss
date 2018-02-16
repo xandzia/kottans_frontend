@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Geo&subset=latin');
+@import url('https://fonts.googleapis.com/css?family=Geo&subset=latin');
 
 /*************************************************GENERAL**/
 body {
@@ -155,14 +155,31 @@ $navigation__transition: max-height 0.5s ease-in-out;
 .navigation {
   overflow: hidden;
   max-height: 0;
-//    &::after{
-//        content: url(../img/icons/etc/starBar.png);
-//        position: absolute;
-//        left: 14px;
-//        top: -27px;
-//    } 
   transition: $navigation__transition;
+    &::after{
+        content: '';
+        position: absolute;
+        left: 14px;
+        top: -27px;
+        z-index: -1;
+    }
 }
+.navigation.change::after{
+    content: url(../img/icons/etc/star.png);
+    animation: pulse 3.5s 1;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;      
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .favour-check:checked ~ .navigation {
   max-height: 500px; 
   transition: $navigation__transition;

@@ -7,7 +7,6 @@ const favourit = document.getElementById('navigation1');
 const nyanCat = document.querySelector('.wrapper-cat');
 const favourireList = [];
 
-
 function activatePlacesSearch(){
     let autocomplete = new google.maps.places.Autocomplete(userInput);   
 };
@@ -187,17 +186,26 @@ function addToFavourite(obj) {
     list.innerHTML = `<a>${city}</a>`;
     favourit.appendChild(list);
     star.setAttribute('data-favourite', true);
+    showHideStar(favourit);
     favourireList.push(obj);
-}
+};
 
-function ShowFavouriteCities (elem) {
+function showHideStar(elem) {
+    elem.classList.add('change');
+    setTimeout(function() {
+        elem.classList.remove('change');
+    }, 3000)
+};
+
+function ShowFavouriteCity (elem) {
     elem.onclick = (event) => {
         let target = event.target.outerText;
         userInput.value = target;
         getWeather();
+        star.setAttribute('data-favourite', true);
     };
 };
-new ShowFavouriteCities(favourit);
+new ShowFavouriteCity(favourit);
 
 function getIcon(iconCode) {
     const icons = {
