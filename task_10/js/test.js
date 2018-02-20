@@ -6,9 +6,10 @@ const star = document.querySelector('.favourite');
 const favourit = document.getElementById('navigation1');
 const nyanCat = document.querySelector('.wrapper-cat');
 const favourireList = [];
-    let autocompleteCity = document.getElementsByClassName('pac-item-query');
 
 function activatePlacesSearch(){
+    getCityFromUrl();
+
     let autocomplete = new google.maps.places.Autocomplete((userInput), {
       types: [`(cities)`],
 //      componentRestrictions: {country: "us"}
@@ -67,6 +68,15 @@ function getUrl(latitude,longitude) {
     
     let url = `${apiPath}?lat=${latitude}&lon=${longitude}${appKey}`;
     sendRequest(url); 
+};
+
+function getCityFromUrl() {
+    let url = new URL(window.location.href);
+    if (url.search.startsWith('?=')) {
+        userInput.value = url.search.slice(2);
+        getCityLatLon();
+        return userInput.value;
+    }
 };
 
 function sendRequest(url){
