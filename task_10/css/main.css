@@ -6,7 +6,8 @@ body {
   -webkit-font-smoothing: none;
   color: #e6e6e6;
   position: relative;
-  height: 100%; }
+  height: 100%;
+  background-color: #3e5f8e; }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -283,13 +284,31 @@ li {
         margin: 0;
         width: 50px; }
 
+  .wrapper .favour-list {
+    margin-top: 14px; }
+
   .btn-group .f, .btn-group .c {
     font-size: 1.9em; }
 
   .favour-input,
   .favour-input:before,
   .favour-input:after {
-    border-bottom: 4px solid currentColor; }
+    border-bottom: 3px solid currentColor; }
+
+  .favour-input {
+    width: 30px; }
+
+  .favour-input:before,
+  .favour-input:after {
+    margin-bottom: 8px; }
+
+  .favour-check:checked ~ .favour-input:after {
+    -webkit-transform: rotate(405deg) translateY(-5px) translateX(-7px);
+    -transform: rotate(405deg) translateY(-5px) translateX(-7px); }
+
+  .favour-check:checked ~ .favour-input:before {
+    transform: rotate(-405deg) translateY(1px) translateX(-3px);
+    -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px); }
 
   .weather-body .one-day .city, .weather-body .one-day .centre .temp, .weather-body .one-day .centre .cf {
     font-size: 4em; }
@@ -307,6 +326,9 @@ li {
     left: -11px; }
 
   .top {
-    top: 7px; } }
+    top: 7px; }
+    .top #user-input {
+      margin-left: 14%;
+      line-height: 2; } }
 
 /*# sourceMappingURL=main.css.map */

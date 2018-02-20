@@ -9,6 +9,7 @@ body {
     color: #e6e6e6;
     position: relative;
     height: 100%;
+    background-color: #3e5f8e;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #e6e6e6;
@@ -328,6 +329,9 @@ li {
             }
         }
     }
+    .wrapper .favour-list {
+            margin-top: 14px;
+        }
     .btn-group{
         .f, .c {
             font-size: 1.9em;
@@ -336,7 +340,22 @@ li {
     .favour-input,
     .favour-input:before,
     .favour-input:after {
-        border-bottom: 4px solid currentColor;
+        border-bottom: 3px solid currentColor;
+    }
+    .favour-input {
+        width: 30px;
+    }
+    .favour-input:before,
+    .favour-input:after {
+        margin-bottom: 8px;
+    }
+    .favour-check:checked ~ .favour-input:after {
+        -webkit-transform: rotate(405deg) translateY(-5px) translateX(-7px);        -transform: rotate(405deg) translateY(-5px) translateX(-7px);
+    }
+    .favour-check:checked ~ .favour-input:before {
+        transform: rotate(-405deg) translateY(1px) translateX(-3px);
+        -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
+        
     }
     .weather-body .one-day {
         .city, .centre .temp, .centre .cf {
@@ -359,28 +378,10 @@ li {
     }
     .top {
         top: 7px;
+        #user-input {
+            margin-left: 14%;
+            line-height: 2;
+        }
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
