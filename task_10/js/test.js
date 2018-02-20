@@ -6,16 +6,17 @@ const star = document.querySelector('.favourite');
 const favourit = document.getElementById('navigation1');
 const nyanCat = document.querySelector('.wrapper-cat');
 const favourireList = [];
+    let autocompleteCity = document.getElementsByClassName('pac-item-query');
 
 function activatePlacesSearch(){
-    let autocomplete = new google.maps.places.Autocomplete(userInput);
-};
-
-function pressEnter(e) {
-  if (e.keyCode === 13) {
-    e.preventDefault();
+    let autocomplete = new google.maps.places.Autocomplete((userInput), {
+      types: [`(cities)`],
+//      componentRestrictions: {country: "us"}
+    });
+    google.maps.event.clearInstanceListeners(userInput);
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
     getWeather();
-  }
+    });
 };
 
 function getWeather(){
