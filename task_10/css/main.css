@@ -75,8 +75,9 @@ button {
   background-image: url(../img/icons/etc/star.svg); }
 
 .btn-group {
-  text-align: right;
   position: absolute;
+  display: flex;
+  flex-direction: column;
   z-index: 1;
   top: 2em;
   right: 0px; }
@@ -129,8 +130,8 @@ button {
   transition: border-bottom 0.2s ease-in-out;
   -webkit-transition: border-bottom 0.2s ease-in-out; }
   .favour-check:checked ~ .favour-input:before {
-    transform: rotate(-405deg) translateY(0px) translateX(-1px);
-    -webkit-transform: rotate(-405deg) translateY(0px) translateX(-1px);
+    transform: rotate(-405deg) translateY(1px) translateX(-3px);
+    -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
     transition: transform 0.5s ease-in-out;
     -webkit-transition: -webkit-transform 0.5s ease-in-out; }
   .favour-check:checked ~ .favour-input:after {
@@ -199,15 +200,25 @@ li {
   justify-content: space-between;
   align-items: center;
   position: relative; }
-  .top #user-input {
+  .top .reset {
+    position: relative;
+    right: 11.5%;
+    height: 42px;
+    font-size: 1em;
+    color: #e6e6e6;
+    background-color: transparent;
     border: none;
+    cursor: pointer; }
+  .top #user-input {
     flex-basis: 50%;
+    margin-left: 22%;
+    border: none;
     line-height: 2.5;
     padding-left: 15px;
-    margin-left: 22%;
     background-color: rgba(47, 72, 107, 0.42);
     color: #e6e6e6;
-    font-size: 1em; }
+    font-size: 1em;
+    width: 100%; }
 
 /*************************************************MAIN**/
 .weather-body {
@@ -280,6 +291,8 @@ li {
       justify-content: space-between;
       padding: 10px;
       font-size: 2em; }
+      .another-days .a-day sup {
+        top: -11px; }
       .another-days .a-day .icon {
         margin: 0;
         width: 50px; }
@@ -316,6 +329,9 @@ li {
     font-size: 2em; }
   .weather-body .one-day .centre img {
     width: 100px; }
+  .weather-body .one-day .centre sup {
+    font-size: 1.5em;
+    top: -11px; }
 
   .favourite {
     width: 40px;
@@ -329,6 +345,7 @@ li {
     top: 7px; }
     .top #user-input {
       margin-left: 14%;
-      line-height: 2; } }
+      line-height: 2;
+      flex-basis: 60%; } }
 
 /*# sourceMappingURL=main.css.map */

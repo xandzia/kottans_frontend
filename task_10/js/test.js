@@ -1,5 +1,6 @@
 'use strict';
 const userInput = document.getElementById('user-input');
+const resetBtn = document.querySelector('.reset');
 const oneDay = document.querySelector('.one-day');
 const days = document.querySelector('.another-days');
 const star = document.querySelector('.favourite');
@@ -74,6 +75,7 @@ function getCityFromUrl() {
     let url = new URL(window.location.href);
     if (url.search.startsWith('?=')) {
         userInput.value = url.search.slice(2);
+        userInput.value = userInput.value.replace('%20', ' ');
         getCityLatLon();
         return userInput.value;
     }
@@ -104,7 +106,7 @@ function createMainJson(json) {
     putHtmlToday(main);
     putHtmlDays(json);
     swapCF();
-    star.onclick = function(){addToFavourite(main)};
+    star.onclick = function(){addToFavourite(main.city)};
 };
 
 function putHtmlToday(main) {
@@ -128,7 +130,7 @@ function putHtmlToday(main) {
 
 const populateCityToUrl = (city) => {
   if (history.pushState) { 
-    var newurl = window.location.origin + window.location.pathname + "?="+ city;;
+    var newurl = window.location.origin + window.location.pathname + "?="+ city;
     window.history.pushState({ path:newurl }, '', newurl );
   } 
 }
@@ -147,6 +149,10 @@ function putHtmlDays(json) {
         days.appendChild(nextDay);
     }
 };
+
+    resetBtn.addEventListener('click', function(){
+        userInput.value = '';
+    });
 
 function changeDateTime(date) {
     date = date.split('-');
@@ -192,14 +198,31 @@ function clearStyle(elem, style) {
 };
 
 function addToFavourite(obj) {
-    let city = document.querySelector('.city');
-    city = city.outerText;
-    let list = document.createElement('li');
-    list.innerHTML = `<a>${city}</a>`;
-    favourit.appendChild(list);
-    star.setAttribute('data-favourite', true);
-    showHideStar(favourit);
-    favourireList.push(obj);
+    if( star.dataset.favourite === 'true') {
+        star.setAttribute('data-favourite', false);
+        let delCity = document.getElementById(obj);
+        delCity.remove();
+        removeFavourite(favourireList, obj);
+    } else {
+        let list = document.createElement('li');
+        list.setAttribute('id', obj);
+        star.setAttribute('data-favourite', true);
+        list.innerHTML = `<a>${obj}</a>`;
+        favourit.appendChild(list);
+        showHideStar(favourit);
+        favourireList.push(obj);
+    };
+};
+
+function removeFavourite(arr) {
+    let what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
 };
 
 function showHideStar(elem) {
@@ -230,7 +253,7 @@ function swapCF() {
         for (let i=0; i<t.length; i++) {
             let temp = parseFloat(t[i].innerHTML);
             temp = temp * 1.8 + 32;
-            t[i].textContent = temp;
+            t[i].textContent = temp.toFixed(1);;
             cf[i].textContent = 'F';
         };
         f.disabled = true;
