@@ -225,7 +225,7 @@ li {
     position: relative;
     .reset{
         position: relative;
-        right: 11.5%;
+        right: 8.8%;
         height: 42px;
         font-size: 1em;
         color: #e6e6e6;
@@ -239,6 +239,7 @@ li {
         border: none;
         line-height: 2.5;
         padding-left: 15px;
+        padding-right: 35px;
         background-color: rgba(47,72,107,0.42);
         color: #e6e6e6;
         font-size: 1em;
@@ -253,6 +254,7 @@ li {
         flex-wrap: wrap;
         position: relative;
         margin-top: 1em;
+        text-align: center;
         .city{
             flex-basis: 100%;
             font-size: 8em;
@@ -348,6 +350,10 @@ li {
             margin-top: 14px;
         }
     .btn-group{
+        position: relative;
+        flex-direction: row;
+        margin-left: auto;
+        top: 0;
         .f, .c {
             font-size: 1.9em;
         }
@@ -376,6 +382,9 @@ li {
         .city, .centre .temp, .centre .cf {
             font-size: 4em;
         }
+        .city {
+            margin-top: -0.2em;
+        }
         .discriptions{
             font-size: 2em;
         }
@@ -389,7 +398,8 @@ li {
     }
     
     .favourite{
-        width: 40px;
+        width: 46px;
+        padding: 0;
         height: 40px;
     }
     .navigation::after {

@@ -202,7 +202,7 @@ li {
   position: relative; }
   .top .reset {
     position: relative;
-    right: 11.5%;
+    right: 8.8%;
     height: 42px;
     font-size: 1em;
     color: #e6e6e6;
@@ -215,6 +215,7 @@ li {
     border: none;
     line-height: 2.5;
     padding-left: 15px;
+    padding-right: 35px;
     background-color: rgba(47, 72, 107, 0.42);
     color: #e6e6e6;
     font-size: 1em;
@@ -227,7 +228,8 @@ li {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    margin-top: 1em; }
+    margin-top: 1em;
+    text-align: center; }
     .weather-body .one-day .city {
       flex-basis: 100%;
       font-size: 8em;
@@ -300,8 +302,13 @@ li {
   .wrapper .favour-list {
     margin-top: 14px; }
 
-  .btn-group .f, .btn-group .c {
-    font-size: 1.9em; }
+  .btn-group {
+    position: relative;
+    flex-direction: row;
+    margin-left: auto;
+    top: 0; }
+    .btn-group .f, .btn-group .c {
+      font-size: 1.9em; }
 
   .favour-input,
   .favour-input:before,
@@ -325,6 +332,8 @@ li {
 
   .weather-body .one-day .city, .weather-body .one-day .centre .temp, .weather-body .one-day .centre .cf {
     font-size: 4em; }
+  .weather-body .one-day .city {
+    margin-top: -0.2em; }
   .weather-body .one-day .discriptions {
     font-size: 2em; }
   .weather-body .one-day .centre img {
@@ -334,7 +343,8 @@ li {
     top: -11px; }
 
   .favourite {
-    width: 40px;
+    width: 46px;
+    padding: 0;
     height: 40px; }
 
   .navigation::after {

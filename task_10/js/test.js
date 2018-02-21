@@ -6,7 +6,30 @@ const days = document.querySelector('.another-days');
 const star = document.querySelector('.favourite');
 const favourit = document.getElementById('navigation1');
 const nyanCat = document.querySelector('.wrapper-cat');
-const favourireList = [];
+let favourireList = [];
+getLocalStorage();
+
+function saveLocalStorage(){
+    let fList = JSON.stringify(favourireList);
+    localStorage.setItem('favourireList', fList);
+};
+
+function getLocalStorage() {
+    let fList = localStorage.getItem('favourireList');
+    favourireList = JSON.parse(fList);
+    if (!favourireList) {
+        favourireList = [];
+    } else {
+        for (let i =0; i<favourireList.length; i++) {
+            let list = document.createElement('li');
+            list.setAttribute('id', favourireList[i]);
+            star.setAttribute('data-favourite', true);
+            list.innerHTML = `<a>${favourireList[i]}</a>`;
+            favourit.appendChild(list);
+            showHideStar(favourit);           
+        }
+    }
+};
 
 function activatePlacesSearch(){
     getCityFromUrl();
@@ -203,6 +226,7 @@ function addToFavourite(obj) {
         let delCity = document.getElementById(obj);
         delCity.remove();
         removeFavourite(favourireList, obj);
+        saveLocalStorage();
     } else {
         let list = document.createElement('li');
         list.setAttribute('id', obj);
@@ -211,8 +235,28 @@ function addToFavourite(obj) {
         favourit.appendChild(list);
         showHideStar(favourit);
         favourireList.push(obj);
+        saveLocalStorage();
     };
 };
+
+//function addToFavourite(obj) {
+//    if( favourireList.length === !0) {
+//        star.setAttribute('data-favourite', false);
+//        let delCity = document.getElementById(obj);
+//        delCity.remove();
+//        removeFavourite(favourireList, obj);
+//        saveLocalStorage();
+//    } else {
+//        let list = document.createElement('li');
+//        list.setAttribute('id', obj);
+//        star.setAttribute('data-favourite', true);
+//        list.innerHTML = `<a>${obj}</a>`;
+//        favourit.appendChild(list);
+//        showHideStar(favourit);
+//        favourireList.push(obj);
+//        saveLocalStorage();
+//    };
+//};
 
 function removeFavourite(arr) {
     let what, a = arguments, L = a.length, ax;
