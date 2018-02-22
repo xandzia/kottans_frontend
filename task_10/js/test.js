@@ -154,10 +154,7 @@ function putHtmlToday(main) {
 };
 
 const populateCityToUrl = (city) => {
-  if (history.pushState) { 
-    let newurl = window.location.origin + window.location.pathname + "?="+ city;
-    window.history.pushState({ path:newurl }, '', newurl );
-  } 
+    window.history.pushState(null, null, `?=${city}`);
 }
 
 
@@ -175,11 +172,13 @@ function putHtmlDays(json) {
     }
 };
 
-    resetBtn.addEventListener('click', function(){
-        userInput.value = '';
-        let newurl = window.location.origin + window.location.pathname + '';
-        window.history.pushState({ path:newurl }, '', newurl );
-    });
+resetBtn.addEventListener('click', function(){
+    userInput.value = '';
+    if (history.pushState) { 
+    let newurl = window.location.origin + window.location.pathname + '';
+    window.history.pushState({ path:newurl }, '', newurl );
+    } 
+});
 
 function changeDateTime(date) {
     date = date.split('-');
