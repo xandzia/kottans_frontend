@@ -1,0 +1,8 @@
+.sass-cache/
+*.css.map
+*.rb
+stylesheets/
+sass/
+node_modules
+package-lock.json
+.cache

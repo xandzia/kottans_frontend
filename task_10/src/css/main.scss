@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Geo&subset=latin');
-
+@import './reset.css';
+@import './cat.css';
+@import url('https://fonts.googleapis.com/css?family=Geo:400,400i');
 /*************************************************GENERAL**/
-body {
+*{
     font-family: 'Geo', sans-serif;
-        /* make text super sharp */
-    -webkit-font-smoothing: none;
+}
+body {
+    -webkit-font-smoothing: none;    
     //background-image: url(../img/backgraund/background.jpg);
     color: #e6e6e6;
     position: relative;
@@ -27,7 +29,7 @@ footer{
     top: 0;
     z-index: -1;
     #box {
-        background-image: url(../img/backgraund/mini-bgd.png);
+        background-image: url(../src/img/backgraund/mini-bgd.png);
         background-repeat: repeat-x;
         background-size: contain;
         position: relative;
@@ -68,14 +70,14 @@ button{
 }
 .favourite{
     content: '';
-    background-image: url(../img/icons/etc/star-empty.svg);
+    background-image: url(../src/img/icons/etc/star-empty.svg);
     background-size: cover;
     width: 64px;
     height: 64px;
 }
 .favourite:hover,
 [data-favourite="true"]{
-    background-image: url(../img/icons/etc/star.svg);  
+    background-image: url(../src/img/icons/etc/star.svg);  
 }
 .btn-group {
     position: absolute;
@@ -86,7 +88,7 @@ button{
     right: 0px;
     .f,
     .c{
-        font-size: 2em;
+        font-size: 3em;
         color: #e6e6e6;
         font-weight: bold;
     }
@@ -167,7 +169,7 @@ $navigation__transition: max-height 0.5s ease-in-out;
     }
 }
 .navigation.change::after{
-    content: url(../img/icons/etc/star.png);
+    content: url(../src/img/icons/etc/star.png);
     animation: pulse 3.5s 1;
 }
 @keyframes pulse {
@@ -198,6 +200,8 @@ li {
   a {
     text-decoration: none;
     color: #e6e6e6;
+    font-family: 'Geo', sans-serif;
+    font-size: 1.5em;
     &:hover {
       text-decoration: underline;
     }    
@@ -213,7 +217,6 @@ li {
     .favour-list{
         position: absolute;
         z-index: 2;
-        margin-top: 10px;
     }
 }
 .top{
@@ -227,7 +230,7 @@ li {
         position: relative;
         right: 8.8%;
         height: 42px;
-        font-size: 1em;
+        font-size: 1.5em;
         color: #e6e6e6;
         background-color: transparent;
         border: none;
@@ -237,12 +240,12 @@ li {
         flex-basis: 50%;
         margin-left: 22%;
         border: none;
-        line-height: 2.5;
+        line-height: 2;
         padding-left: 15px;
         padding-right: 35px;
         background-color: rgba(47,72,107,0.42);
         color: #e6e6e6;
-        font-size: 1em;
+        font-size: 1.5em;
         width: 100%;
     }
 }
@@ -335,7 +338,7 @@ li {
         .a-day{
             flex-direction: row;
             justify-content: space-between;
-            padding: 10px;
+            padding: 10px 0;
             font-size: 2em;
             sup {
                 top: -11px;
@@ -387,6 +390,17 @@ li {
         }
         .discriptions{
             font-size: 2em;
+            flex-wrap: wrap;
+            margin-bottom: 1em;
+            .d-time,
+            .humid{
+                order: 1;
+            }
+            .desc{
+                flex-basis: 100%;
+                order: 2;
+                margin-top: 10px;
+            }
         }
         .centre img{
             width: 100px;
@@ -400,7 +414,7 @@ li {
     .favourite{
         width: 46px;
         padding: 0;
-        height: 40px;
+        height: 46px;
     }
     .navigation::after {
         top: -19px;
@@ -410,8 +424,12 @@ li {
         top: 7px;
         #user-input {
             margin-left: 14%;
-            line-height: 2;
+            line-height: 1.5;
             flex-basis: 60%;
+            font-size: 1.2em;
+        }
+        .reset {
+            font-size: 1.2em;
         }
     }
 
