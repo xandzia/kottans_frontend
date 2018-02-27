@@ -2,13 +2,17 @@ import { daysForecast } from '../components/DaysForecast';
 import { todayForecast } from '../components/TodayForecast';
 import { placeNyanCat, nyanCat } from './error';
 
-function getWeather(latitude,longitude) {
-    const apiPath = 'https://api.weatherbit.io/v2.0/forecast/daily';
-    const appKey = '&key=ca6bb30119264fe2b2608a31b5c79d8e';
+const apiPath = 'https://api.weatherbit.io/v2.0/forecast/daily';
+const appKey = '&key=ca6bb30119264fe2b2608a31b5c79d8e';
+
+export function getWeather(latitude, longitude) {
     let url = `${apiPath}?lat=${latitude}&lon=${longitude}${appKey}`;
-    
     return fetch(url)
-        .then(response => response.json());
+        .then(response => {
+            return response.json()
+        }).catch(e => {
+        console.log(e);
+    });
 };
 
 export const getCityFromUrl = (userInput) => {
@@ -16,34 +20,41 @@ export const getCityFromUrl = (userInput) => {
     if (url.search.startsWith('?=')) {
         userInput.value = url.search.slice(2);
         userInput.value = decodeURIComponent(userInput.value);
-        console.log(userInput.value);
         getCityLatLon();
         return userInput.value;
     }
 };
 
-const populateCityToUrl = (city) => {
-    window.history.pushState(null, null, `?=${city}`);
-}
+export function populateCityToUrl(city) {
+    window.history.pushState(null, null, `?city=${city}`);
+};
 
-export function getCityLatLon(city){
-    let geocoder =  new google.maps.Geocoder();
-    
-    geocoder.geocode( { address: `${city}`}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            let latitude = results[0].geometry.location.lat();
-            let longitude = results[0].geometry.location.lng();
-            
-            getWeather(latitude, longitude).then((weather) => {
-                console.log(2, this);
-                todayForecast(weather);
-                daysForecast(weather);
-                
-            });
-        } else {
-            console.log("Something got wrong " + status);
-            
-            placeNyanCat(nyanCat);
-        }
-    });
+export function getCityLatLon(city) {
+    return new Promise((resolve, reject) => {
+        let geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({
+            address: `${city}`
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                let latitude = results[0].geometry.location.lat();
+                let longitude = results[0].geometry.location.lng();
+
+                //            getWeather(latitude, longitude).then((weather) => {
+                //                console.log(2, this);
+                //                todayForecast(weather);
+                //                daysForecast(weather);              
+                //            });
+                console.log([latitude, longitude]);
+
+                resolve([latitude, longitude]);
+            } else {
+                console.log("Something got wrong " + status);
+
+//                placeNyanCat(nyanCat);
+                reject(placeNyanCat(nyanCat))
+            }
+        });
+
+    })
 };

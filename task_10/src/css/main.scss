@@ -23,6 +23,9 @@ body {
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: #e6e6e6;
 }
+.pac-container:after {
+    display: none;
+}
 /*************************************************FOOTER-BACKGROUND**/
 footer{
     position: absolute;

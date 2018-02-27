@@ -1,59 +1,63 @@
-import { Form } from './components/LocationSearch';
+import Form from './components/LocationSearch';
+import TodayForecast from './components/TodayForecast';
 
-//let weatherGlobal = null;
-
-//window.activatePlacesSearch = activatePlacesSearch;
-
-//function activatePlacesSearch() {
-//    getCityFromUrl(userInput);
-//
-//    let autocomplete = new google.maps.places.Autocomplete((userInput), {
-//      types: [`(cities)`],
-//    });
-//    google.maps.event.clearInstanceListeners(userInput);
-//    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-//    getCityLatLon(userInput.value);
-//    });
-//    resetBtn.addEventListener('click', function(){
-//        userInput.value = '';
-//        if (history.pushState) { 
-//            let newurl = window.location.origin + window.location.pathname + '';
-//            window.history.pushState({ path:newurl }, '', newurl );
-//        } 
-//    });
-//};
-//function getCityLatLon(city){
-//    let geocoder =  new google.maps.Geocoder();
-//    
-//    geocoder.geocode( { address: `${city}`}, function(results, status) {
-//        if (status == google.maps.GeocoderStatus.OK) {
-//            let latitude = results[0].geometry.location.lat();
-//            let longitude = results[0].geometry.location.lng();
-//            
-//            getWeather(latitude, longitude).then((weather) => {
-////                weatherGlobal = weather;
-////                return weather;
-//                todayForecast(weather);
-//                daysForecast(weather);
-//                
-//            });
-//        } else {
-//            console.log("Something got wrong " + status);
-//            
-//            placeNyanCat(nyanCat);
-//        }
-//    });
-//};
+import { getWeather, populateCityToUrl } from './utils/api';
+import { bindAll } from './utils/lib';
 
 class App {
-    constructor(){
-        this.form = new Form();
-        this.wrapper = document.getElementById('form');
+    constructor(host){
+        this.state = {
+            city: new URLSearchParams(window.location.search).get('city') || '',
+            coord: {
+                lat: null,
+                lon: null
+            },
+            weather: null,
+        };
+        
+        this.host = host;
+        
+        this.form = new Form({
+            city: this.state.city,
+            coord: this.state.coord,
+            onSubmit: this.onSearchSubmit,
+        });
+        
+        this.todayForecast = new TodayForecast({ weather: this.state.weather });
         window.activatePlacesSearch = this.form.activatePlacesSearch;
+        
+        bindAll(this, 'onSearchSubmit');
+
     };
     
+    onSearchSubmit(coord) {
+        console.log('1', coord);
+        getWeather(coord[0], coord[1]).then(( weather ) => {
+            this.updateState({
+                weather,
+                coord,
+            });
+            populateCityToUrl(weather.city_name);
+        });
+
+    };
+    
+    updateState(nextState){
+        this.state = Object.assign({}, this.state, nextState);
+        return this.render();
+    };
+    
+    
     render() {
-        this.wrapper.appendChild(this.form.render());
+        const  { city, coord, weather } =  this.state;
+        this.host.appendChild(
+            this.form.update({ city, onSubmit: this.onSearchSubmit }),
+        );
+        console.log(this.todayForecast);
+        return [
+            this.host,
+            this.todayForecast.update({ weather }),
+        ];
     }
 };
 
