@@ -49,7 +49,6 @@ class App {
             populateCityToUrl(weather.city_name);
             swapFC();
         });
-
     };
     
     

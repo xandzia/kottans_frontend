@@ -165,17 +165,14 @@ $navigation__transition: max-height 0.5s ease-in-out;
   overflow: hidden;
   max-height: 0;
   transition: $navigation__transition;
-    &::after{
-        content: '';
-        position: absolute;
-        left: 14px;
-        top: -27px;
-        z-index: -1;
-    }
 }
-.navigation.change::after{
+.change::after{
     content: url(../src/img/icons/etc/star.png);
-    animation: pulse 3.5s 1;
+    position: absolute;
+    left: 17px;
+    top: -12px;
+    z-index: 2;
+    animation: pulse 2s 1;
 }
 @keyframes pulse {
   0% {
@@ -355,7 +352,7 @@ li {
         }
     }
     li a {
-        font-size: 1em;
+        font-size: 0.8em;
     }
     .btn-group{
         position: relative;
@@ -385,6 +382,9 @@ li {
         transform: rotate(-405deg) translateY(1px) translateX(-3px);
         -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
         
+    }
+    .change::after {
+        left: 3px;
     }
     .weather-body .one-day {
         .city, .centre .temp, .centre .cf {
@@ -417,13 +417,9 @@ li {
     }
     
     .favourite{
-        width: 46px;
-        padding: 0;
-        height: 46px;
-    }
-    .navigation::after {
-        top: -19px;
-        left: -11px;
+        width: 35px;
+        padding: 5px;
+        height: 35px;
     }
     .top {
         top: 7px;

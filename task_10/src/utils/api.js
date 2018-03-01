@@ -29,10 +29,13 @@ export function populateCityToUrl(city) {
     window.history.pushState(null, null, `?city=${city}`);
 };
 
+function clearHtml(elem) {
+    while (elem.firstChild) {
+        elem.removeChild(elem.firstChild);
+    }
+};
+
 export function getCityLatLon(city) {
-    const star = document.querySelector('.favourite');
-    star.setAttribute('data-favourite', false);
-    
     return new Promise((resolve, reject) => {
         let geocoder = new google.maps.Geocoder();
 
@@ -47,7 +50,7 @@ export function getCityLatLon(city) {
                 console.log("Something got wrong " + status);
 
 //                placeNyanCat(nyanCat);
-                reject(placeNyanCat(nyanCat))
+                reject(nyanCat)
             }
         });
 

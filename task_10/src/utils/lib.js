@@ -21,6 +21,13 @@ export function removeFavourite(arr) {
     return arr;
 };
 
+export function showHideStar(elem) {
+    elem.classList.add('change');
+    setTimeout(function() {
+        elem.classList.remove('change');
+    }, 2000)
+};
+
 export function saveLocalStorage(favourireList) {
     let fList = JSON.stringify(favourireList);
     localStorage.setItem('favourireList', fList);

@@ -1,4 +1,4 @@
-import { removeFavourite, saveLocalStorage, bindAll } from '../utils/lib';
+import { removeFavourite, saveLocalStorage, bindAll, showHideStar } from '../utils/lib';
 import { getCityLatLon } from '../utils/api';
 
 class FavouriteCities {
@@ -35,9 +35,9 @@ class FavouriteCities {
 		this.star.classList.add('favourite');
         this.host.appendChild(this.star);
         
-        bindAll(this, 'addToFavourite', 'showFavouriteCity');
         
-        console.log(this.star.dataset.favourite);
+        bindAll(this, 'addToFavourite', 'showFavouriteCity', 'checkFList');
+        showHideStar(this.host);           
     };
 
     updateState(nextState) {
@@ -57,7 +57,9 @@ class FavouriteCities {
         const target = event.target.innerHTML;
         userInput.value = target;
         
-		getCityLatLon(target).then(coords => { this.props.onSub(coords) }),
+		getCityLatLon(target).then(coords => { 
+            this.props.onSub(coords)
+        })
             this.star.setAttribute('data-favourite', true)
     };
     
@@ -70,9 +72,19 @@ class FavouriteCities {
         return fList;
     };
     
+    checkFList() {
+        console.log(this.props.city);
+        for(let i =0; i<this.state.favourireList.length; i++) {
+        console.log('flist', this.state.favourireList);
+            if (this.props.city === this.state.favourireList[i]) {
+                return this.star.setAttribute('data-favourite', true)                
+            } else {
+                 this.star.setAttribute('data-favourite', false)                                
+            }
+        }
+    };
     
     addToFavourite() {
-        console.log(this.props.city);
         if( this.star.dataset.favourite === 'true') {
             this.star.setAttribute('data-favourite', false);
             let delCity = document.getElementById(this.props.city);
@@ -85,7 +97,7 @@ class FavouriteCities {
             list.innerHTML = `<a>${this.props.city}</a>`;
             this.star.setAttribute('data-favourite', true);
             this.ul.appendChild(list);
-//            showHideStar(favourit);
+            showHideStar(this.host);           
             this.state.favourireList.push(this.props.city);
             saveLocalStorage(this.state.favourireList);
         }
@@ -103,8 +115,8 @@ class FavouriteCities {
                             <a>${favourireList[i]}</a>
                             </li>`;
             this.ul.insertAdjacentHTML('beforeend', list);
-//            showHideStar(favourit);           
         };
+        this.checkFList();
         this.star.addEventListener('click', this.addToFavourite);
         this.ul.addEventListener('click', this.showFavouriteCity);
         return [ this.list, this.star, this.ul ];

@@ -1,5 +1,7 @@
 import { getCityLatLon } from '../utils/api';
 import { bindAll } from '../utils/lib';
+import { placeNyanCat } from '../utils/error';
+
 
 class Form {
 
@@ -13,8 +15,7 @@ class Form {
         this.host.setAttribute('placeholder','Search...');
         
         bindAll(this, 'activatePlacesSearch');
-
-        
+   
     };
 
     updateState(nextState) {
@@ -27,18 +28,27 @@ class Form {
         return this.render();
     };
     
-    
+    getWeather() {
+        return getCityLatLon(this.host.value)
+            .then(coords => {
+            this.props.onSubmit(coords)
+        }).catch(nyanCat => {
+            placeNyanCat(nyanCat)
+        })
+    };
 
     activatePlacesSearch() {
         let autocomplete = new google.maps.places.Autocomplete((this.host), {
           types: [`(cities)`],
         });
         window.google.maps.event.clearInstanceListeners(this.host);
-        window.google.maps.event.addListener(autocomplete, 'place_changed', () => {
-        getCityLatLon(this.host.value).then(coords => {
-            this.props.onSubmit(coords)
-        }, console.log(2, this.props.city));
-        });
+        
+        if ( this.host.value === '' ) {
+            window.google.maps.event.addListener(autocomplete, 'place_changed', () => {
+                this.getWeather();
+            }) } else {
+                this.getWeather();
+        }
     }
     
     render() {
