@@ -77,6 +77,7 @@ button{
     background-size: cover;
     width: 64px;
     height: 64px;
+    order: 3;
 }
 .favourite:hover,
 [data-favourite="true"]{
@@ -160,6 +161,7 @@ $burger--thickness: 7px;
 }
 $navigation__transition: max-height 0.5s ease-in-out;
 .navigation {
+  position: absolute;
   overflow: hidden;
   max-height: 0;
   transition: $navigation__transition;
@@ -352,9 +354,9 @@ li {
             }
         }
     }
-    .wrapper .favour-list {
-            margin-top: 14px;
-        }
+    li a {
+        font-size: 1em;
+    }
     .btn-group{
         position: relative;
         flex-direction: row;

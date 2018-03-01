@@ -37,14 +37,14 @@ class Form {
         window.google.maps.event.addListener(autocomplete, 'place_changed', () => {
         getCityLatLon(this.host.value).then(coords => {
             this.props.onSubmit(coords)
-        }, console.log(this.state));
+        }, console.log(2, this.props.city));
         });
-        
     }
     
     render() {
-        const { city, coord } = this.props;        
-        this.host.setAttribute('value',`${city}`);   
+        const { city, coord, weather } = this.props;
+        this.host.setAttribute('value',`${city}`);
+        this.host.value = city;
         return this.host;
     }
 };

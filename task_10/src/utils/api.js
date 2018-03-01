@@ -30,6 +30,9 @@ export function populateCityToUrl(city) {
 };
 
 export function getCityLatLon(city) {
+    const star = document.querySelector('.favourite');
+    star.setAttribute('data-favourite', false);
+    
     return new Promise((resolve, reject) => {
         let geocoder = new google.maps.Geocoder();
 
@@ -39,15 +42,7 @@ export function getCityLatLon(city) {
             if (status == google.maps.GeocoderStatus.OK) {
                 let latitude = results[0].geometry.location.lat();
                 let longitude = results[0].geometry.location.lng();
-
-                //            getWeather(latitude, longitude).then((weather) => {
-                //                console.log(2, this);
-                //                todayForecast(weather);
-                //                daysForecast(weather);              
-                //            });
-                console.log([latitude, longitude]);
-
-                resolve([latitude, longitude]);
+              resolve([latitude, longitude]);
             } else {
                 console.log("Something got wrong " + status);
 

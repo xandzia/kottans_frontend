@@ -1,14 +1,11 @@
-import { getIcon, changeDateTime, populateCityToUrl } from '../utils/lib';
-
-//const oneDay = document.querySelector('.one-day');
+import { getIcon, changeDateTime } from '../utils/lib';
 
 class TodayForecast{
     
     constructor(props) {
         this.props = props || {};
         
-        this.oneDay = document.querySelector('.one-day');
-                
+        this.oneDay = document.querySelector('.one-day');             
     };
     
     updateState(nextState) {
@@ -20,19 +17,7 @@ class TodayForecast{
         this.props = nextProps;
         return this.render();
     };
-//    todayForecast(json) {
-//        const main = {};
-//        main.city = weather.city_name;
-//        main.day = weather.data[0].datetime;
-//        main.temp = weather.data[0].temp;
-//        main.tempFeel = weather.data[0].app_temp;
-//        main.description = weather.data[0].weather.description;
-//        main.humidity = weather.data[0].rh;
-//        main.icon = weather.data[0].weather.code;
-//
-//        main.icon = getIcon(main.icon);
-//    };
-    
+
     render() {
         if (!this.props.weather) return '';
         const { weather } = this.props;

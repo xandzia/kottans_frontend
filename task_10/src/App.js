@@ -1,8 +1,11 @@
 import Form from './components/LocationSearch';
 import TodayForecast from './components/TodayForecast';
+import DaysForecast from './components/DaysForecast';
+import FavouriteCities from './components/FavouriteCities';
 
 import { getWeather, populateCityToUrl } from './utils/api';
 import { bindAll } from './utils/lib';
+import { swapFC } from './utils/swapFC';
 
 class App {
     constructor(host){
@@ -22,25 +25,33 @@ class App {
             coord: this.state.coord,
             onSubmit: this.onSearchSubmit,
         });
-        
+
         this.todayForecast = new TodayForecast({ weather: this.state.weather });
+        this.daysForecast = new DaysForecast({ weather: this.state.weather });
+        this.favouriteCities = new FavouriteCities({ 
+            city: this.state.city,
+            onSub: this.onSearchSubmit,
+        });
         window.activatePlacesSearch = this.form.activatePlacesSearch;
         
         bindAll(this, 'onSearchSubmit');
 
     };
     
-    onSearchSubmit(coord) {
-        console.log('1', coord);
+    onSearchSubmit(coord,city) {
         getWeather(coord[0], coord[1]).then(( weather ) => {
+            city = weather.city_name;
             this.updateState({
                 weather,
                 coord,
+                city,
             });
             populateCityToUrl(weather.city_name);
+            swapFC();
         });
 
     };
+    
     
     updateState(nextState){
         this.state = Object.assign({}, this.state, nextState);
@@ -53,10 +64,11 @@ class App {
         this.host.appendChild(
             this.form.update({ city, onSubmit: this.onSearchSubmit }),
         );
-        console.log(this.todayForecast);
         return [
             this.host,
+            this.favouriteCities.update({ city, onSub: this.onSearchSubmit }),
             this.todayForecast.update({ weather }),
+            this.daysForecast.update({ weather }),
         ];
     }
 };
