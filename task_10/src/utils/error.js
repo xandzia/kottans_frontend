@@ -13,5 +13,9 @@ export function placeNyanCat(elem) {
         <div class='body'></div>
         <div class='head'></div>
         </div>`;
-    elem.setAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");  
-};
+    elem.setAttribute("style", "-webkit-animation: animateC 7s linear; animation-fill-mode: forwards;");
+    setTimeout( function cleanCat() { 
+        elem.innerHTML = '';
+        elem.removeAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
+    }, 7000);
+}

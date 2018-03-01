@@ -1,26 +1,18 @@
 import { changeDateTime, getIcon } from '../utils/lib';
 
-class DaysForecast {
+import { Component } from './Plus';
+
+class DaysForecast extends Component {
     
     constructor(props) {
-        this.props = props || {};
+        super();
         
         this.days = document.querySelector('.another-days');         
     };
     
-    updateState(nextState) {
-        this.state = Object.assign({}, this.state, nextState);
-        return this.render();
-    };
-    
-    update(nextProps) {
-        this.props = nextProps;
-        return this.render();
-    };
-    
     render() {
-        if (!this.props.weather) return '';
         const { weather } = this.props;
+        if (!this.props.weather) return '';
         
         const icon = getIcon(weather.icon);
         let arr = [];

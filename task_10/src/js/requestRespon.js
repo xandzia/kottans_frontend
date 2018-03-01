@@ -49,7 +49,7 @@ export function getWeather(){
     clearHtml(days);
     star.setAttribute('data-favourite', false);
     clearHtml(nyanCat);
-    clearStyle(nyanCat, "style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");  
+    clearStyle(nyanCat, "style", "-webkit-animation: animateC 8s linear; animation-fill-mode: forwards;");  
 };
 
 function clearHtml(elem) {

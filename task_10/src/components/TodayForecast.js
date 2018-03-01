@@ -1,9 +1,10 @@
 import { getIcon, changeDateTime } from '../utils/lib';
+import { Component } from './Plus';
 
-class TodayForecast{
+class TodayForecast extends Component {
     
     constructor(props) {
-        this.props = props || {};
+        super();
         
         this.oneDay = document.querySelector('.one-day');             
     };
@@ -39,8 +40,6 @@ class TodayForecast{
                                 <span class="desc">${weather.data[0].weather.description}</span>
                                 <span class="humid">${weather.data[0].rh}%</span>
                             </p>`;
-    //    swapCF();
-    //    star.onclick = function(){addToFavourite(main.city)};
         return this.oneDay;
     }
 };

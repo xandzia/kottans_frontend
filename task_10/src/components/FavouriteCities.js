@@ -1,10 +1,11 @@
 import { removeFavourite, saveLocalStorage, bindAll, showHideStar } from '../utils/lib';
 import { getCityLatLon } from '../utils/api';
+import { Component } from './Plus';
 
-class FavouriteCities {
+class FavouriteCities extends Component {
 
     constructor(props) {
-        this.props = props || {};
+        super(props);
         this.state = {
             favourireList: this.getLocalStorage(),
         };
@@ -39,17 +40,7 @@ class FavouriteCities {
         bindAll(this, 'addToFavourite', 'showFavouriteCity', 'checkFList');
         showHideStar(this.host);           
     };
-
-    updateState(nextState) {
-        this.state = Object.assign({}, this.state, nextState);
-        return this.render();
-    };
-    
-    update(nextProps) {
-        this.props = nextProps;
-        return this.render();
-    };
-    
+   
     showFavouriteCity(event) {
         event.preventDefault();
         
@@ -102,8 +93,6 @@ class FavouriteCities {
             saveLocalStorage(this.state.favourireList);
         }
     }
-    
-    
     
     render() {
         const { city, coord } = this.props;        
