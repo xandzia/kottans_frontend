@@ -1,7 +1,11 @@
 export const nyanCat = document.querySelector('.wrapper-cat');
 const wrap = document.querySelector('.wrapper');
+const day = document.querySelector('.one-day');
+const days = document.querySelector('.another-days');
 
 export function placeNyanCat(elem) {
+    day.innerHTML = '';
+    days.innerHTML = '';
     elem.innerHTML = `<div class='rainbow'>
         <span></span>
         </div>
