@@ -49,7 +49,6 @@ body {
 footer {
     position: absolute;
     top: 0;
-    z-index: -1;
     #box {
         background-image: url(../src/img/backgraund/mini-bgd.png);
         background-repeat: repeat-x;
@@ -64,7 +63,8 @@ footer {
     }
     #clouds {
         top: 38%;
-        z-index: 4;
+//        z-index: 4;
+        animation: lug 4s infinite;
     }
     #moon {
         right: -200px
@@ -83,6 +83,18 @@ footer {
     top: 36%;
     left: 33%;
     width: 39%;
+}
+
+@keyframes lug {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 30px;
+  }
+  100% {
+    left: 0px;
+  }
 }
 
 /*************************************************BUTTONS**/
@@ -252,6 +264,7 @@ li {
     padding: 40px;
     position: relative;
     overflow: hidden;
+    z-index: 1;
     .favour-list {
         position: fixed;
         top: 50px;
