@@ -2,30 +2,22 @@ import { getIcon, changeDateTime } from '../utils/lib';
 import { Component } from './Plus';
 
 class TodayForecast extends Component {
-    
+
     constructor(props) {
         super();
-        
-        this.oneDay = document.querySelector('.one-day');             
-    };
-    
-    updateState(nextState) {
-        this.state = Object.assign({}, this.state, nextState);
-        return this.render();
-    };
-    
-    update(nextProps) {
-        this.props = nextProps;
-        return this.render();
+
+        this.oneDay = document.querySelector('.one-day');
     };
 
     render() {
-        if (!this.props.weather) return '';
         const { weather } = this.props;
-        
+
+        if (!this.props.weather) {
+            return this.oneDay.innerHTML = '';
+        }
         const icon = getIcon(weather.icon);
         const dataTime = changeDateTime(weather.data[0].datetime);
-        
+
         this.oneDay.innerHTML = `<div class="btn-group">
                                 <button class="f">F</button>
                                 <button class="c">C</button>

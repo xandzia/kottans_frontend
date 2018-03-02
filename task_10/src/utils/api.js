@@ -11,8 +11,8 @@ export function getWeather(latitude, longitude) {
         .then(response => {
             return response.json()
         }).catch(e => {
-        console.log(e);
-    });
+            console.log(e);
+        });
 };
 
 export const getCityFromUrl = (userInput) => {
@@ -45,11 +45,11 @@ export function getCityLatLon(city) {
             if (status == google.maps.GeocoderStatus.OK) {
                 let latitude = results[0].geometry.location.lat();
                 let longitude = results[0].geometry.location.lng();
-              resolve([latitude, longitude]);
+                resolve([latitude, longitude]);
             } else {
                 console.log("Something got wrong " + status);
 
-//                placeNyanCat(nyanCat);
+                //                placeNyanCat(nyanCat);
                 reject(nyanCat)
             }
         });

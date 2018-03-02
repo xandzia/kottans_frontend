@@ -1,4 +1,5 @@
 export const nyanCat = document.querySelector('.wrapper-cat');
+const wrap = document.querySelector('.wrapper');
 
 export function placeNyanCat(elem) {
     elem.innerHTML = `<div class='rainbow'>
@@ -14,8 +15,10 @@ export function placeNyanCat(elem) {
         <div class='head'></div>
         </div>`;
     elem.setAttribute("style", "-webkit-animation: animateC 7s linear; animation-fill-mode: forwards;");
-    setTimeout( function cleanCat() { 
+    wrap.setAttribute("style", "height: 400px;");
+    setTimeout(function cleanCat() {
         elem.innerHTML = '';
         elem.removeAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
+        wrap.removeAttribute("style", "height: 400px;");
     }, 7000);
 }

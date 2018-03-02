@@ -5,10 +5,11 @@ import FavouriteCities from './components/FavouriteCities';
 
 import { getWeather, populateCityToUrl } from './utils/api';
 import { bindAll } from './utils/lib';
+
 import { swapFC } from './utils/swapFC';
 
 class App {
-    constructor(host){
+    constructor(host) {
         this.state = {
             city: new URLSearchParams(window.location.search).get('city') || '',
             coord: {
@@ -17,46 +18,48 @@ class App {
             },
             weather: null,
         };
-        
+
         this.host = host;
-        
+
         this.form = new Form({
             city: this.state.city,
             coord: this.state.coord,
             onSubmit: this.onSearchSubmit,
         });
 
-        this.todayForecast = new TodayForecast({ weather: this.state.weather });
-        this.daysForecast = new DaysForecast({ weather: this.state.weather });
-        this.favouriteCities = new FavouriteCities({ 
+        this.todayForecast = new TodayForecast({
+            weather: this.state.weather
+        });
+        this.daysForecast = new DaysForecast({
+            weather: this.state.weather
+        });
+        this.favouriteCities = new FavouriteCities({
             city: this.state.city,
             onSub: this.onSearchSubmit,
         });
         window.activatePlacesSearch = this.form.activatePlacesSearch;
-        
-        bindAll(this, 'onSearchSubmit');
 
+        bindAll(this, 'onSearchSubmit');
     };
-    
-    onSearchSubmit(coord,city) {
-        getWeather(coord[0], coord[1]).then(( weather ) => {
+
+    onSearchSubmit(coord, city) {
+        getWeather(coord[0], coord[1]).then((weather) => {
             city = weather.city_name;
             this.updateState({
                 weather,
                 coord,
                 city,
             });
-            populateCityToUrl(weather.city_name);
+            window.history.pushState(null, null, `?city=${weather.city_name}`);
             swapFC();
         });
     };
-    
-    
-    updateState(nextState){
+
+
+    updateState(nextState) {
         this.state = Object.assign({}, this.state, nextState);
         return this.render();
     };
-    
     
     render() {
         const  { city, coord, weather } =  this.state;
