@@ -19,10 +19,10 @@ export function placeNyanCat(elem) {
         <div class='head'></div>
         </div>`;
     elem.setAttribute("style", "-webkit-animation: animateC 7s linear; animation-fill-mode: forwards;");
-    wrap.setAttribute("style", "height: 400px;");
+    wrap.setAttribute("style", "height: 100vh;");
     setTimeout(function cleanCat() {
         elem.innerHTML = '';
         elem.removeAttribute("style", "-webkit-animation: animateC 4s linear; animation-fill-mode: forwards;");
-        wrap.removeAttribute("style", "height: 400px;");
+        wrap.removeAttribute("style", "height: 100vh;");
     }, 7000);
 }

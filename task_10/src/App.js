@@ -3,7 +3,7 @@ import TodayForecast from './components/TodayForecast';
 import DaysForecast from './components/DaysForecast';
 import FavouriteCities from './components/FavouriteCities';
 
-import { getWeather, populateCityToUrl } from './utils/api';
+import { getWeather } from './utils/api';
 import { bindAll } from './utils/lib';
 
 import { swapFC } from './utils/swapFC';
@@ -52,7 +52,9 @@ class App {
             });
             window.history.pushState(null, null, `?city=${weather.city_name}`);
             swapFC();
-        });
+        }).catch(error => {
+            console.log(error)            
+        })
     };
 
 

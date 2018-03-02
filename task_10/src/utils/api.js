@@ -25,10 +25,6 @@ export const getCityFromUrl = (userInput) => {
     }
 };
 
-export function populateCityToUrl(city) {
-    window.history.pushState(null, null, `?city=${city}`);
-};
-
 function clearHtml(elem) {
     while (elem.firstChild) {
         elem.removeChild(elem.firstChild);
@@ -48,8 +44,6 @@ export function getCityLatLon(city) {
                 resolve([latitude, longitude]);
             } else {
                 console.log("Something got wrong " + status);
-
-                //                placeNyanCat(nyanCat);
                 reject(nyanCat)
             }
         });

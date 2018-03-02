@@ -216,18 +216,19 @@ $navigation__transition: max-height 0.5s ease-in-out;
 ul {
     margin: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 li {
     list-style: none;
     font-size: 2em;
     padding: 5px 0;
-    cursor: pointer;
     a {
         text-decoration: none;
         color: #e6e6e6;
         font-family: 'Geo', sans-serif;
         font-size: 1.5em;
+        cursor: pointer;
         &:hover {
             text-decoration: underline;
         }
@@ -246,7 +247,7 @@ li {
     .favour-list {
         position: fixed;
         top: 50px;
-        z-index: 2;
+        z-index: 5;
     }
 }
 
