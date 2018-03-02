@@ -1,12 +1,11 @@
 @import './reset.css';
 @import './cat.css';
-@import url('https://fonts.googleapis.com/css?family=Geo:400,400i');
-/*************************************************GENERAL**/
 
+/*************************************************GENERAL**/
+@import url('https://fonts.googleapis.com/css?family=Geo:400,400i');
 * {
     font-family: 'Geo', sans-serif;
 }
-
 body {
     -webkit-font-smoothing: none; //background-image: url(../img/backgraund/background.jpg);
     color: #e6e6e6;
@@ -34,6 +33,14 @@ body {
 
 .pac-container:after {
     display: none;
+}
+.error{
+    position: absolute;
+    font-size: 4em;
+    top: -65px;
+    left: -224px;
+    color: black;
+    font-family: 'Geo', sans-serif;
 }
 
 /*************************************************FOOTER-BACKGROUND**/

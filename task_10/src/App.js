@@ -38,7 +38,7 @@ class App {
             onSub: this.onSearchSubmit,
         });
         window.activatePlacesSearch = this.form.activatePlacesSearch;
-
+        
         bindAll(this, 'onSearchSubmit');
     };
 
