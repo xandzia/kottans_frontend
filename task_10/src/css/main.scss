@@ -64,7 +64,7 @@ footer {
     #clouds {
         top: 38%;
 //        z-index: 4;
-        animation: lug 4s infinite;
+        animation: lug 6s infinite;
     }
     #moon {
         right: -200px
@@ -127,6 +127,7 @@ button {
     z-index: 1;
     top: 2em;
     right: 0px;
+    pointer-events: auto;
     .f,
     .c {
         font-size: 3em;
@@ -265,10 +266,12 @@ li {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
     .favour-list {
         position: fixed;
         top: 50px;
         z-index: 5;
+        pointer-events: auto;
     }
 }
 
@@ -279,6 +282,7 @@ li {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    pointer-events: auto;
     .reset {
         position: relative;
         right: 8.8%;
