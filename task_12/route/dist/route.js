@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({13:[function(require,module,exports) {
+})({22:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -134,7 +134,7 @@ var Component = function () {
 }();
 
 exports.default = Component;
-},{}],11:[function(require,module,exports) {
+},{}],18:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -151,58 +151,7 @@ Object.defineProperty(exports, 'Component', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Component":13}],9:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Facepalm = require('../Facepalm');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-//import { bindAll } from '../utils';
-
-var Login = function (_Component) {
-    _inherits(Login, _Component);
-
-    function Login(props) {
-        _classCallCheck(this, Login);
-
-        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-
-        _this.state = {};
-
-        _this.host = document.createElement('form');
-
-        //       bindAll(this, '');
-        return _this;
-    }
-
-    _createClass(Login, [{
-        key: 'render',
-        value: function render() {
-            return '\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Username" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <button type="submit">Login</button>\n          </figcaption>\n      </figure>';
-
-            //  <div class="container" style="background-color:#f1f1f1">
-            //    <button type="button" class="cancelbtn">Cancel</button>
-            //    <span class="psw">Forgot <a href="#">password?</a></span>
-            //  </div>`;
-        }
-    }]);
-
-    return Login;
-}(_Facepalm.Component);
-
-exports.default = Login;
-},{"../Facepalm":11}],15:[function(require,module,exports) {
+},{"./Component":22}],21:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -224,7 +173,75 @@ var bindAll = exports.bindAll = function bindAll(context) {
     }
   });
 };
-},{}],14:[function(require,module,exports) {
+
+var toHtml = exports.toHtml = function toHtml(string) {
+  var template = document.createElement('template');
+  template.innerHTML = string.trim();
+
+  return template.content;
+};
+},{}],19:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Facepalm = require('../Facepalm');
+
+var _utils = require('../utils');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Login = function (_Component) {
+    _inherits(Login, _Component);
+
+    function Login(props) {
+        _classCallCheck(this, Login);
+
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+        _this.host = document.createElement('form');
+        _this.host.addEventListener('submit', _this.handleSubmit);
+        (0, _utils.bindAll)(_this, 'handleSubmit');
+        return _this;
+    }
+
+    _createClass(Login, [{
+        key: 'handleSubmit',
+        value: function handleSubmit() {
+            event.preventDefault();
+
+            var uname = event.target.elements[0].value.trim();
+            var password = event.target.elements[1].value.trim();
+
+            console.log('LOGIN', 'uname:', uname, 'password:', password);
+            //        return [uname, password];
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            //        const { uname, password } = this.props;
+            return '\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>\n            <button type="submit" id="login">Login</button>\n          </figcaption>\n      </figure>';
+
+            //  <div class="container" style="background-color:#f1f1f1">
+            //    <button type="button" class="cancelbtn">Cancel</button>
+            //    <span class="psw">Forgot <a href="#">password?</a></span>
+            //  </div>`;
+        }
+    }]);
+
+    return Login;
+}(_Facepalm.Component);
+
+exports.default = Login;
+},{"../Facepalm":18,"../utils":21}],23:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -262,7 +279,8 @@ var Singup = function (_Component) {
     _createClass(Singup, [{
         key: 'render',
         value: function render() {
-            return '\n    <h1>Sign Up</h1>\n    <p>Please fill in this form to create an account.</p>\n    <hr>\n\n    <label for="email"><b>Email</b></label>\n    <input type="text" placeholder="Enter Email" name="email" required>\n\n    <label for="psw"><b>Password</b></label>\n    <input type="password" placeholder="Enter Password" name="psw" required>\n\n    <label for="psw-repeat"><b>Repeat Password</b></label>\n    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>\n\n    <button type="submit" class="signupbtn">Sign Up</button>';
+
+            return '\n    <p>Create an account</p>\n    <hr>\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <label for="psw-repeat"><b>Repeat Password</b></label>\n            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>\n\n            <label for="email"><b>Email</b></label>\n            <input type="text" placeholder="Enter Email" name="email" required>\n\n            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>\n          </figcaption>\n      </figure>';
         }
     }]);
 
@@ -270,7 +288,7 @@ var Singup = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Singup;
-},{"../Facepalm":11,"../utils":15}],8:[function(require,module,exports) {
+},{"../Facepalm":18,"../utils":21}],17:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -289,6 +307,8 @@ var _Singup = require('./Singup');
 
 var _Singup2 = _interopRequireDefault(_Singup);
 
+var _utils = require('../utils');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -296,8 +316,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-//import { bindAll } from '../utils';
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -307,24 +325,32 @@ var App = function (_Component) {
 
         _classCallCheck(this, App);
 
+        //       this.state = {
+        //           uname: null,
+        //           password: null,
+        //       };
+
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-        _this.state = {};
-
         _this.host = host;
-        console.log(_this.host);
 
         _this.login = new _Login2.default({});
         _this.singup = new _Singup2.default({});
 
-        //       bindAll(this, '');
+        //       bindAll(this, 'hSubmit');
         return _this;
     }
 
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            return [this.login.update({}), this.singup.update({})];
+            var _state = this.state,
+                uname = _state.uname,
+                password = _state.password;
+
+            return [
+            //            this.login.update({ }),
+            this.singup.update({})];
         }
     }]);
 
@@ -332,7 +358,7 @@ var App = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = App;
-},{"../Facepalm":11,"./Login":9,"./Singup":14}],4:[function(require,module,exports) {
+},{"../Facepalm":18,"./Login":19,"./Singup":23,"../utils":21}],2:[function(require,module,exports) {
 'use strict';
 
 var _App = require('./src/components/App');
@@ -343,7 +369,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = new _App2.default({ host: document.getElementById('root') });
 app.update();
-},{"./src/components/App":8}],24:[function(require,module,exports) {
+},{"./src/components/App":17}],16:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -365,7 +391,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '36545' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '40879' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -466,5 +492,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[24,4])
+},{}]},{},[16,2])
 //# sourceMappingURL=/dist/route.map

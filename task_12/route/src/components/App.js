@@ -3,26 +3,29 @@ import Login from './Login';
 import Singup from './Singup';
 
 
-//import { bindAll } from '../utils';
+import { bindAll } from '../utils';
 
 class App extends Component {
    constructor({ host }) {
        super();
        
-       this.state = {};
+//       this.state = {
+//           uname: null,
+//           password: null,
+//       };
        
        this.host = host;
-        console.log(this.host);
 
        this.login = new Login({});
        this.singup = new Singup({});
        
-//       bindAll(this, '');
+//       bindAll(this, 'hSubmit');
    }
     
     render() {
+        const { uname, password } = this.state;
         return [
-            this.login.update({}),
+//            this.login.update({ }),
             this.singup.update({}),
         ]
     }

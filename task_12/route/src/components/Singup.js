@@ -13,21 +13,29 @@ class Singup extends Component {
    }
     
     render() {
+        
         return `
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p>Create an account</p>
     <hr>
+      <figure class="imgcontainer">
+          <img src="img_avatar2.png" alt="Avatar" class="avatar">
+          <figcaption class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Name" name="uname" required>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
 
-    <button type="submit" class="signupbtn">Sign Up</button>`;
+            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>
+          </figcaption>
+      </figure>`;
+        
     }
 
 }
