@@ -4,9 +4,7 @@ import { bindAll } from '../utils';
 class Singup extends Component {
    constructor(props) {
        super(props);
-       
-       this.state = {};
-       
+              
        this.host = document.createElement('form');
        
 //       bindAll(this, '');

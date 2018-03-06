@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({22:[function(require,module,exports) {
+})({12:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -134,24 +134,7 @@ var Component = function () {
 }();
 
 exports.default = Component;
-},{}],18:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Component = require('./Component');
-
-Object.defineProperty(exports, 'Component', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Component).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Component":22}],21:[function(require,module,exports) {
+},{}],15:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -180,7 +163,173 @@ var toHtml = exports.toHtml = function toHtml(string) {
 
   return template.content;
 };
-},{}],19:[function(require,module,exports) {
+},{}],7:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Component2 = require('./Component');
+
+var _Component3 = _interopRequireDefault(_Component2);
+
+var _utils = require('../utils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//import { isUrlParam, isEqualPaths, extractUrlParams } from '../utils';
+
+//const ANY_PATH = '*';
+
+var Router = function (_Component) {
+  _inherits(Router, _Component);
+
+  function Router(props) {
+    _classCallCheck(this, Router);
+
+    var _this = _possibleConstructorReturn(this, (Router.__proto__ || Object.getPrototypeOf(Router)).call(this, props));
+
+    var _this$props = _this.props,
+        routes = _this$props.routes,
+        host = _this$props.host;
+
+
+    _this.state = {
+      routes: routes,
+      currentRoute: null,
+      currentComponent: null
+    };
+
+    _this.host = host;
+
+    console.log(props);
+    //    this.host = document.createElement('div');
+
+    window.addEventListener('hashchange', function () {
+      return _this.handleUrlChange(_this.path);
+    });
+
+    _this.handleUrlChange(_this.path);
+
+    (0, _utils.bindAll)(_this, 'handleUrlChange');
+    return _this;
+  }
+
+  _createClass(Router, [{
+    key: 'handleUrlChange',
+    value: function handleUrlChange(path) {
+      var _this2 = this;
+
+      var _state = this.state,
+          routes = _state.routes,
+          currentRoute = _state.currentRoute;
+
+      var nextRoute = routes.find(function (_ref) {
+        var href = _ref.href;
+        return href === _this2.path;
+      }
+      //        isEqualPaths(href, url)
+      );
+
+      console.log('nextRoute', nextRoute);
+
+      if (nextRoute) {
+        this.updateState({
+          activeComponent: new nextRoute.component(),
+          currentRoute: nextRoute
+        });
+      }
+      //    if (!nextRoute) {
+      //      nextRoute = routes.find(({ href }) => href === ANY_PATH); //looking for any route
+      //    }
+
+      //    if (nextRoute && activeRoute !== nextRoute) {
+      //      if (!!nextRoute.redirectTo) {
+      //        return this.handleRedirect(nextRoute.redirectTo);
+      //      }
+
+      //      if (!!nextRoute.onEnter) {
+      //        return this.handleOnEnter(nextRoute, url);
+      //      }
+      //
+      //      this.applyRoute(nextRoute, url);
+      //    }
+    }
+
+    //  handleRedirect(url) {
+    //    window.location.hash = url;
+    //  }
+    //
+    //  handleOnEnter(nextRoute, url) {
+    //    const { href } = nextRoute;
+    //    const params = extractUrlParams(href, url);
+    //
+    //    nextRoute.onEnter(params, this.handleRedirect, nextRoute);
+    //  }
+    //
+    //  applyRoute(route, url) {
+    //    const { href, component: Component } = route;
+    //    const { activeComponent } = this.state;
+    //
+    //    const componentInstance = new Component({
+    //      params: extractUrlParams(href, this.path),
+    //      replace: this.handleRedirect,
+    //    });
+    //
+    //    if (activeComponent) {
+    //      activeComponent.unmount();
+    //    }
+    //
+    //    this.updateState({
+    //      activeRoute: route,
+    //      activeComponent: componentInstance,
+    //    });
+    //  }
+    //
+
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.state.activeComponent.update();
+    }
+  }, {
+    key: 'path',
+    get: function get() {
+      return window.location.hash.slice(1);
+    }
+  }]);
+
+  return Router;
+}(_Component3.default);
+
+exports.default = Router;
+},{"./Component":12,"../utils":15}],14:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Component = require('./Component');
+
+Object.defineProperty(exports, 'Component', {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_Component).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./Component":12}],9:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -241,7 +390,7 @@ var Login = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Login;
-},{"../Facepalm":18,"../utils":21}],23:[function(require,module,exports) {
+},{"../Facepalm":14,"../utils":15}],10:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -268,8 +417,6 @@ var Singup = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Singup.__proto__ || Object.getPrototypeOf(Singup)).call(this, props));
 
-        _this.state = {};
-
         _this.host = document.createElement('form');
 
         //       bindAll(this, '');
@@ -288,88 +435,51 @@ var Singup = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Singup;
-},{"../Facepalm":18,"../utils":21}],17:[function(require,module,exports) {
+},{"../Facepalm":14,"../utils":15}],4:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Facepalm = require('../Facepalm');
-
-var _Login = require('./Login');
+var _Login = require('./components/Login');
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _Singup = require('./Singup');
+var _Singup = require('./components/Singup');
 
 var _Singup2 = _interopRequireDefault(_Singup);
 
-var _utils = require('../utils');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+//import App from './src/components/App';
+var routes = [{
+  href: '/',
+  component: _Singup2.default
+}, {
+  href: '/login',
+  component: _Login2.default
+}];
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_Component) {
-    _inherits(App, _Component);
-
-    function App(_ref) {
-        var host = _ref.host;
-
-        _classCallCheck(this, App);
-
-        //       this.state = {
-        //           uname: null,
-        //           password: null,
-        //       };
-
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-        _this.host = host;
-
-        _this.login = new _Login2.default({});
-        _this.singup = new _Singup2.default({});
-
-        //       bindAll(this, 'hSubmit');
-        return _this;
-    }
-
-    _createClass(App, [{
-        key: 'render',
-        value: function render() {
-            var _state = this.state,
-                uname = _state.uname,
-                password = _state.password;
-
-            return [
-            //            this.login.update({ }),
-            this.singup.update({})];
-        }
-    }]);
-
-    return App;
-}(_Facepalm.Component);
-
-exports.default = App;
-},{"../Facepalm":18,"./Login":19,"./Singup":23,"../utils":21}],2:[function(require,module,exports) {
+exports.default = routes;
+},{"./components/Login":9,"./components/Singup":10}],2:[function(require,module,exports) {
 'use strict';
 
-var _App = require('./src/components/App');
+var _Router = require('./src/Facepalm/Router');
 
-var _App2 = _interopRequireDefault(_App);
+var _Router2 = _interopRequireDefault(_Router);
+
+var _routes = require('./src/routes');
+
+var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = new _App2.default({ host: document.getElementById('root') });
-app.update();
-},{"./src/components/App":17}],16:[function(require,module,exports) {
+//import App from './src/components/App';
+var router = new _Router2.default({ host: document.getElementById('root'), routes: _routes2.default });
+//const app = new App({ host: document.getElementById('root') });
+//app.update();
+},{"./src/Facepalm/Router":7,"./src/routes":4}],16:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -391,7 +501,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '40879' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '34885' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
