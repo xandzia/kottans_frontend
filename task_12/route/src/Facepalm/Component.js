@@ -10,8 +10,11 @@ class Component {
         this.state = Object.assign({}, this.state, nextState);
         this._render();
     }
+    
+    onBeforeUpdate(nextProps) {}
 
     update(nextProps) {
+        this.onBeforeUpdate(nextProps);
         this.props = Object.assign({}, this.props, nextProps);
         return this._render();
     }

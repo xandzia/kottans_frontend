@@ -6,28 +6,19 @@ import Singup from './Singup';
 import { bindAll } from '../utils';
 
 class App extends Component {
-   constructor({ host }) {
-       super();
+   constructor(props) {
+       super(props);
        
-//       this.state = {
-//           uname: null,
-//           password: null,
-//       };
-       
-       this.host = host;
+       this.host = document.createElement('div');
 
-       this.login = new Login({});
-       this.singup = new Singup({});
-       
-//       bindAll(this, 'hSubmit');
    }
     
+    onBeforeUpdate(nextProps) {
+    }
+    
     render() {
-        const { uname, password } = this.state;
-        return [
-//            this.login.update({ }),
-            this.singup.update({}),
-        ]
+        return `<h1>MAIN$</h1>
+                <a href="#login">LOGIN</a>`;
     }
 
 }

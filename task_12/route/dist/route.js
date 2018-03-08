@@ -101,8 +101,12 @@ var Component = function () {
             this._render();
         }
     }, {
+        key: 'onBeforeUpdate',
+        value: function onBeforeUpdate(nextProps) {}
+    }, {
         key: 'update',
         value: function update(nextProps) {
+            this.onBeforeUpdate(nextProps);
             this.props = Object.assign({}, this.props, nextProps);
             return this._render();
         }
@@ -134,7 +138,24 @@ var Component = function () {
 }();
 
 exports.default = Component;
-},{}],15:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Component = require('./Component');
+
+Object.defineProperty(exports, 'Component', {
+  enumerable: true,
+  get: function () {
+    return _interopRequireDefault(_Component).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./Component":12}],15:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -163,173 +184,36 @@ var toHtml = exports.toHtml = function toHtml(string) {
 
   return template.content;
 };
-},{}],7:[function(require,module,exports) {
-'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var URL_PARAM_REGEXP = /:\w+/g;
+var isUrlParam = function isUrlParam(path) {
+  return URL_PARAM_REGEXP.test(path);
+};
+var urlToRegExp = function urlToRegExp(url) {
+  return RegExp('^' + url.replace(URL_PARAM_REGEXP, '(.*)') + '$');
+};
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var isEqualPaths = exports.isEqualPaths = function isEqualPaths(template, url) {
+  return urlToRegExp(template).test(url);
+};
 
-var _Component2 = require('./Component');
+var extractUrlParams = exports.extractUrlParams = function extractUrlParams(template, url) {
+  var values = url.split('/');
+  var params = {};
 
-var _Component3 = _interopRequireDefault(_Component2);
-
-var _utils = require('../utils');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-//import { isUrlParam, isEqualPaths, extractUrlParams } from '../utils';
-
-//const ANY_PATH = '*';
-
-var Router = function (_Component) {
-  _inherits(Router, _Component);
-
-  function Router(props) {
-    _classCallCheck(this, Router);
-
-    var _this = _possibleConstructorReturn(this, (Router.__proto__ || Object.getPrototypeOf(Router)).call(this, props));
-
-    var _this$props = _this.props,
-        routes = _this$props.routes,
-        host = _this$props.host;
-
-
-    _this.state = {
-      routes: routes,
-      currentRoute: null,
-      currentComponent: null
-    };
-
-    _this.host = host;
-
-    console.log(props);
-    //    this.host = document.createElement('div');
-
-    window.addEventListener('hashchange', function () {
-      return _this.handleUrlChange(_this.path);
-    });
-
-    _this.handleUrlChange(_this.path);
-
-    (0, _utils.bindAll)(_this, 'handleUrlChange');
-    return _this;
+  if (!values) {
+    return params;
   }
 
-  _createClass(Router, [{
-    key: 'handleUrlChange',
-    value: function handleUrlChange(path) {
-      var _this2 = this;
-
-      var _state = this.state,
-          routes = _state.routes,
-          currentRoute = _state.currentRoute;
-
-      var nextRoute = routes.find(function (_ref) {
-        var href = _ref.href;
-        return href === _this2.path;
-      }
-      //        isEqualPaths(href, url)
-      );
-
-      console.log('nextRoute', nextRoute);
-
-      if (nextRoute) {
-        this.updateState({
-          activeComponent: new nextRoute.component(),
-          currentRoute: nextRoute
-        });
-      }
-      //    if (!nextRoute) {
-      //      nextRoute = routes.find(({ href }) => href === ANY_PATH); //looking for any route
-      //    }
-
-      //    if (nextRoute && activeRoute !== nextRoute) {
-      //      if (!!nextRoute.redirectTo) {
-      //        return this.handleRedirect(nextRoute.redirectTo);
-      //      }
-
-      //      if (!!nextRoute.onEnter) {
-      //        return this.handleOnEnter(nextRoute, url);
-      //      }
-      //
-      //      this.applyRoute(nextRoute, url);
-      //    }
+  return template.split('/').reduce(function (acc, param, index) {
+    if (!isUrlParam(param)) {
+      return acc;
     }
-
-    //  handleRedirect(url) {
-    //    window.location.hash = url;
-    //  }
-    //
-    //  handleOnEnter(nextRoute, url) {
-    //    const { href } = nextRoute;
-    //    const params = extractUrlParams(href, url);
-    //
-    //    nextRoute.onEnter(params, this.handleRedirect, nextRoute);
-    //  }
-    //
-    //  applyRoute(route, url) {
-    //    const { href, component: Component } = route;
-    //    const { activeComponent } = this.state;
-    //
-    //    const componentInstance = new Component({
-    //      params: extractUrlParams(href, this.path),
-    //      replace: this.handleRedirect,
-    //    });
-    //
-    //    if (activeComponent) {
-    //      activeComponent.unmount();
-    //    }
-    //
-    //    this.updateState({
-    //      activeRoute: route,
-    //      activeComponent: componentInstance,
-    //    });
-    //  }
-    //
-
-  }, {
-    key: 'render',
-    value: function render() {
-      return this.state.activeComponent.update();
-    }
-  }, {
-    key: 'path',
-    get: function get() {
-      return window.location.hash.slice(1);
-    }
-  }]);
-
-  return Router;
-}(_Component3.default);
-
-exports.default = Router;
-},{"./Component":12,"../utils":15}],14:[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Component = require('./Component');
-
-Object.defineProperty(exports, 'Component', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Component).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Component":12}],9:[function(require,module,exports) {
+    acc[param.slice(1)] = values[index];
+    return acc;
+  }, params);
+};
+},{}],9:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -354,11 +238,14 @@ var Login = function (_Component) {
     function Login(props) {
         _classCallCheck(this, Login);
 
+        //       const { userName } = this.props;
+
         var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
         _this.host = document.createElement('form');
         _this.host.addEventListener('submit', _this.handleSubmit);
         (0, _utils.bindAll)(_this, 'handleSubmit');
+        console.log('login-props', _this.props);
         return _this;
     }
 
@@ -367,22 +254,15 @@ var Login = function (_Component) {
         value: function handleSubmit() {
             event.preventDefault();
 
-            var uname = event.target.elements[0].value.trim();
+            var userName = event.target.elements[0].value.trim();
             var password = event.target.elements[1].value.trim();
 
-            console.log('LOGIN', 'uname:', uname, 'password:', password);
-            //        return [uname, password];
+            console.log('LOGIN', 'uname:', userName, 'password:', password);
         }
     }, {
         key: 'render',
         value: function render() {
-            //        const { uname, password } = this.props;
-            return '\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>\n            <button type="submit" id="login">Login</button>\n          </figcaption>\n      </figure>';
-
-            //  <div class="container" style="background-color:#f1f1f1">
-            //    <button type="button" class="cancelbtn">Cancel</button>
-            //    <span class="psw">Forgot <a href="#">password?</a></span>
-            //  </div>`;
+            return '\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <button type="submit" class="signupbtn" id="singUp"><a href="#singup">Sign Up</a></button>\n            <button type="submit" id="login">Login</button>\n          </figcaption>\n      </figure>\n        <a href="#">MAIN</a>';
         }
     }]);
 
@@ -435,12 +315,195 @@ var Singup = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Singup;
-},{"../Facepalm":14,"../utils":15}],4:[function(require,module,exports) {
+},{"../Facepalm":14,"../utils":15}],18:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Facepalm = require('../Facepalm');
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _Singup = require('./Singup');
+
+var _Singup2 = _interopRequireDefault(_Singup);
+
+var _utils = require('../utils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_Component) {
+    _inherits(App, _Component);
+
+    function App(props) {
+        _classCallCheck(this, App);
+
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+        _this.host = document.createElement('div');
+
+        return _this;
+    }
+
+    _createClass(App, [{
+        key: 'onBeforeUpdate',
+        value: function onBeforeUpdate(nextProps) {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return '<h1>MAIN$</h1>\n                <a href="#login">LOGIN</a>';
+        }
+    }]);
+
+    return App;
+}(_Facepalm.Component);
+
+exports.default = App;
+},{"../Facepalm":14,"./Login":9,"./Singup":10,"../utils":15}],7:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Component2 = require('./Component');
+
+var _Component3 = _interopRequireDefault(_Component2);
+
+var _utils = require('../utils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Router = function (_Component) {
+  _inherits(Router, _Component);
+
+  function Router(props) {
+    _classCallCheck(this, Router);
+
+    var _this = _possibleConstructorReturn(this, (Router.__proto__ || Object.getPrototypeOf(Router)).call(this, props));
+
+    var _this$props = _this.props,
+        routes = _this$props.routes,
+        host = _this$props.host;
+
+
+    _this.state = {
+      routes: routes,
+      currentRoute: null,
+      currentComponent: null,
+      userName: null,
+      password: null
+    };
+
+    _this.host = host;
+
+    console.log('props-Router', props);
+
+    window.addEventListener('hashchange', function () {
+      return _this.handleUrlChange(_this.path);
+    });
+
+    _this.handleUrlChange(_this.path);
+
+    (0, _utils.bindAll)(_this, 'handleUrlChange', 'handleRedirect');
+    return _this;
+  }
+
+  _createClass(Router, [{
+    key: 'handleUrlChange',
+    value: function handleUrlChange(path) {
+      var _this2 = this;
+
+      var _state = this.state,
+          routes = _state.routes,
+          currentRoute = _state.currentRoute;
+
+
+      var nextRoute = routes.find(function (_ref) {
+        var href = _ref.href;
+        return (0, _utils.isEqualPaths)(href, _this2.path);
+      }
+      //            href === this.path
+      );
+
+      if (nextRoute && nextRoute !== currentRoute) {
+        if (nextRoute.onEnter) {
+          return this.handleOnEnter(nextRoute);
+        }
+        if (!!nextRoute.redirectTo) {
+          return this.handleRedirect(nextRoute.redirectTo);
+        }
+
+        this.updateState({
+          activeComponent: new nextRoute.component(),
+          currentRoute: nextRoute
+        });
+      }
+    }
+  }, {
+    key: 'handleRedirect',
+    value: function handleRedirect(url) {
+      window.location.hash = url;
+    }
+
+    //  handleOnEnter(userName) {
+    //      this.updateState({ userName });
+    //  }
+
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state2 = this.state,
+          activeComponent = _state2.activeComponent,
+          currentRoute = _state2.currentRoute;
+
+
+      return activeComponent.update({
+        params: (0, _utils.extractUrlParams)(currentRoute.href, this.path)
+        //        userName: this.handleOnEnter,
+      });
+    }
+  }, {
+    key: 'path',
+    get: function get() {
+      return window.location.hash.slice(1);
+    }
+  }]);
+
+  return Router;
+}(_Component3.default);
+
+exports.default = Router;
+},{"./Component":12,"../utils":15}],4:[function(require,module,exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _App = require('./components/App');
+
+var _App2 = _interopRequireDefault(_App);
 
 var _Login = require('./components/Login');
 
@@ -452,18 +515,42 @@ var _Singup2 = _interopRequireDefault(_Singup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import App from './src/components/App';
 var routes = [{
-  href: '/',
-  component: _Singup2.default
+  href: '',
+  component: _App2.default,
+  redirectTo: 'login'
+  //    onEnter: (handleRedirect) => {
+  //        if (true) {
+  //            handleRedirect('/login');
+  //        }
+  ////        return false;
+  //        console.log(arguments)
+  //    },
 }, {
-  href: '/login',
+  href: 'user/:id',
+  component: _App2.default
+  //    onEnter: ( handleRedirect, { userName } ) => {
+  //        if (userName === 'a') {
+  //            handleRedirect('user/:id');
+  //        }
+  //        return false;
+  ////        console.log(arguments)
+  //    },
+}, {
+  href: 'login',
   component: _Login2.default
+}, {
+  href: 'singup',
+  component: _Singup2.default
 }];
 
 exports.default = routes;
-},{"./components/Login":9,"./components/Singup":10}],2:[function(require,module,exports) {
+},{"./components/App":18,"./components/Login":9,"./components/Singup":10}],2:[function(require,module,exports) {
 'use strict';
+
+var _App = require('./src/components/App');
+
+var _App2 = _interopRequireDefault(_App);
 
 var _Router = require('./src/Facepalm/Router');
 
@@ -475,11 +562,10 @@ var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import App from './src/components/App';
 var router = new _Router2.default({ host: document.getElementById('root'), routes: _routes2.default });
 //const app = new App({ host: document.getElementById('root') });
 //app.update();
-},{"./src/Facepalm/Router":7,"./src/routes":4}],16:[function(require,module,exports) {
+},{"./src/components/App":18,"./src/Facepalm/Router":7,"./src/routes":4}],20:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -602,5 +688,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[16,2])
+},{}]},{},[20,2])
 //# sourceMappingURL=/dist/route.map
