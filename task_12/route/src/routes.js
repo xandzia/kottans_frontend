@@ -4,26 +4,28 @@ import Singup from './components/Singup';
 
 const routes = [
   {
-    href: '',
+    href: 'main',
     component: App,
-    redirectTo: 'login',
+    onEnter: ( handleRedirect, { userName } ) => {
+        if (userName != 'anna') {
+            handleRedirect('login');
+            return false;
+        } else 
+//            handleRedirect('');
+            return;
+//        console.log(arguments)
+    },
+  },
+  {
+    href: 'user/:id',
+    component: App,
+//    redirectTo: 'login',
 //    onEnter: (handleRedirect) => {
 //        if (true) {
 //            handleRedirect('/login');
 //        }
 ////        return false;
 //        console.log(arguments)
-//    },
-  },
-  {
-    href: 'user/:id',
-    component: App,
-//    onEnter: ( handleRedirect, { userName } ) => {
-//        if (userName === 'a') {
-//            handleRedirect('user/:id');
-//        }
-//        return false;
-////        console.log(arguments)
 //    },
   },
   {

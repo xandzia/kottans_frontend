@@ -11,13 +11,12 @@ class Router extends Component {
           routes,
           currentRoute: null,
           currentComponent: null,
-          userName: null,
-          password: null,
+          username: null,
       };
       
     this.host = host;
       
-      console.log('props-Router', props);
+    bindAll(this, 'handleUrlChange', 'handleLogin');
 
     window.addEventListener('hashchange', () =>
       this.handleUrlChange(this.path)
@@ -25,7 +24,6 @@ class Router extends Component {
 
     this.handleUrlChange(this.path);
       
-    bindAll(this, 'handleUrlChange', 'handleRedirect');
   }
 
   get path() {
@@ -35,16 +33,17 @@ class Router extends Component {
   handleUrlChange(path) {
     const { routes, currentRoute } = this.state;
       
-    let nextRoute = routes.find(({ href }) =>
+    const nextRoute = routes.find(({ href }) =>
         isEqualPaths(href, this.path),
 //            href === this.path
     );
             
       if(nextRoute && nextRoute !== currentRoute) {
+          
           if (nextRoute.onEnter) {
-             return this.handleOnEnter(nextRoute);
+             nextRoute.onEnter(this.handleRedirect, this.state);
           }
-          if (!!nextRoute.redirectTo) {
+          if (nextRoute.redirectTo) {
             return this.handleRedirect(nextRoute.redirectTo);
           }
           
@@ -58,17 +57,19 @@ class Router extends Component {
   handleRedirect(url) {
     window.location.hash = url;
   }
-
-//  handleOnEnter(userName) {
-//      this.updateState({ userName });
-//  }
+    
+  handleLogin(userName) {
+    this.updateState({ userName });
+      this.state.username = userName;
+  }
     
   render() {
-      const { activeComponent, currentRoute } = this.state;
+    const { activeComponent, currentRoute, username } = this.state;
       
     return activeComponent.update({
         params: extractUrlParams(currentRoute.href, this.path),
-//        userName: this.handleOnEnter,
+        user: this.handleLogin,
+        username: username,
     });
   }
 }

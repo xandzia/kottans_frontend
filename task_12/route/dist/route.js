@@ -238,31 +238,35 @@ var Login = function (_Component) {
     function Login(props) {
         _classCallCheck(this, Login);
 
-        //       const { userName } = this.props;
-
         var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
         _this.host = document.createElement('form');
-        _this.host.addEventListener('submit', _this.handleSubmit);
+
         (0, _utils.bindAll)(_this, 'handleSubmit');
-        console.log('login-props', _this.props);
+        _this.host.addEventListener('submit', _this.handleSubmit);
         return _this;
     }
 
     _createClass(Login, [{
         key: 'handleSubmit',
-        value: function handleSubmit() {
-            event.preventDefault();
+        value: function handleSubmit(ev) {
+            ev.preventDefault();
 
-            var userName = event.target.elements[0].value.trim();
-            var password = event.target.elements[1].value.trim();
+            var userName = event.target.uname.value.trim();
+            //        const password = event.target.psw.value.trim();
+            //        console.log('user-target', this.props);
+            this.props.user(userName);
 
-            console.log('LOGIN', 'uname:', userName, 'password:', password);
+            console.log('login-props', this.props);
+            console.log('LOGIN', 'userName:', userName);
+            window.location.hash = '#main';
         }
     }, {
         key: 'render',
         value: function render() {
-            return '\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <button type="submit" class="signupbtn" id="singUp"><a href="#singup">Sign Up</a></button>\n            <button type="submit" id="login">Login</button>\n          </figcaption>\n      </figure>\n        <a href="#">MAIN</a>';
+            return '\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n\n            <a href="#singup">Sign Up</a>\n            <button type="submit" id="login">Login</button>\n        <a href="#">MAIN</a>';
+            //            <label for="psw"><b>Password</b></label>
+            //            <input type="password" placeholder="Enter Password" name="psw" required>
         }
     }]);
 
@@ -363,7 +367,8 @@ var App = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            return '<h1>MAIN$</h1>\n                <a href="#login">LOGIN</a>';
+            console.log(this.props);
+            return '<h1>Hello ' + this.props.username + '</h1>\n                <a href="#login">LOG OUT</a>';
         }
     }]);
 
@@ -411,13 +416,12 @@ var Router = function (_Component) {
       routes: routes,
       currentRoute: null,
       currentComponent: null,
-      userName: null,
-      password: null
+      username: null
     };
 
     _this.host = host;
 
-    console.log('props-Router', props);
+    (0, _utils.bindAll)(_this, 'handleUrlChange', 'handleLogin');
 
     window.addEventListener('hashchange', function () {
       return _this.handleUrlChange(_this.path);
@@ -425,7 +429,6 @@ var Router = function (_Component) {
 
     _this.handleUrlChange(_this.path);
 
-    (0, _utils.bindAll)(_this, 'handleUrlChange', 'handleRedirect');
     return _this;
   }
 
@@ -447,10 +450,11 @@ var Router = function (_Component) {
       );
 
       if (nextRoute && nextRoute !== currentRoute) {
+
         if (nextRoute.onEnter) {
-          return this.handleOnEnter(nextRoute);
+          nextRoute.onEnter(this.handleRedirect, this.state);
         }
-        if (!!nextRoute.redirectTo) {
+        if (nextRoute.redirectTo) {
           return this.handleRedirect(nextRoute.redirectTo);
         }
 
@@ -465,22 +469,25 @@ var Router = function (_Component) {
     value: function handleRedirect(url) {
       window.location.hash = url;
     }
-
-    //  handleOnEnter(userName) {
-    //      this.updateState({ userName });
-    //  }
-
+  }, {
+    key: 'handleLogin',
+    value: function handleLogin(userName) {
+      this.updateState({ userName: userName });
+      this.state.username = userName;
+    }
   }, {
     key: 'render',
     value: function render() {
       var _state2 = this.state,
           activeComponent = _state2.activeComponent,
-          currentRoute = _state2.currentRoute;
+          currentRoute = _state2.currentRoute,
+          username = _state2.username;
 
 
       return activeComponent.update({
-        params: (0, _utils.extractUrlParams)(currentRoute.href, this.path)
-        //        userName: this.handleOnEnter,
+        params: (0, _utils.extractUrlParams)(currentRoute.href, this.path),
+        user: this.handleLogin,
+        username: username
       });
     }
   }, {
@@ -516,25 +523,29 @@ var _Singup2 = _interopRequireDefault(_Singup);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = [{
-  href: '',
+  href: 'main',
   component: _App2.default,
-  redirectTo: 'login'
+  onEnter: function onEnter(handleRedirect, _ref) {
+    var userName = _ref.userName;
+
+    if (userName != 'anna') {
+      handleRedirect('login');
+      return false;
+    } else
+      //            handleRedirect('');
+      return;
+    //        console.log(arguments)
+  }
+}, {
+  href: 'user/:id',
+  component: _App2.default
+  //    redirectTo: 'login',
   //    onEnter: (handleRedirect) => {
   //        if (true) {
   //            handleRedirect('/login');
   //        }
   ////        return false;
   //        console.log(arguments)
-  //    },
-}, {
-  href: 'user/:id',
-  component: _App2.default
-  //    onEnter: ( handleRedirect, { userName } ) => {
-  //        if (userName === 'a') {
-  //            handleRedirect('user/:id');
-  //        }
-  //        return false;
-  ////        console.log(arguments)
   //    },
 }, {
   href: 'login',
