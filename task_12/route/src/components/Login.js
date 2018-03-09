@@ -6,6 +6,7 @@ class Login extends Component {
        super(props);
               
        this.host = document.createElement('form');
+       this.host.classList.add('form');
        
        bindAll(this, 'handleSubmit');
        this.host.addEventListener('submit', this.handleSubmit );
@@ -26,14 +27,12 @@ class Login extends Component {
     
     render() {
         return `
-          <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Name" name="uname" required>
+          <div class="avatar"><img src="/dist/a3008c245d4370a193f8469baba6d707.png" alt="Avatar" class="avatar"></div>
+            <input type="text" placeholder="Username" name="uname" required>
 
-
-            <a href="#singup">Sign Up</a>
             <button type="submit" id="login">Login</button>
-        <a href="#">MAIN</a>`;
+            <a href="#singup">Sign Up</a>`;
+//        <a href="#">MAIN</a>`;
 //            <label for="psw"><b>Password</b></label>
 //            <input type="password" placeholder="Enter Password" name="psw" required>
     }

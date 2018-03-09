@@ -18,8 +18,8 @@ class App extends Component {
     
     render() {
         console.log(this.props);
-        return `<h1>Hello ${this.props.username}</h1>
-                <a href="#login">LOG OUT</a>`;
+        return `<div class="main"><h1>Hello ${this.props.username}</h1>
+                <a href="#login">LOG OUT</a></div>`;
     }
 
 }

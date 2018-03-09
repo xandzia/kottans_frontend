@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({12:[function(require,module,exports) {
+})({13:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -138,7 +138,7 @@ var Component = function () {
 }();
 
 exports.default = Component;
-},{}],14:[function(require,module,exports) {
+},{}],15:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -155,7 +155,7 @@ Object.defineProperty(exports, 'Component', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Component":12}],15:[function(require,module,exports) {
+},{"./Component":13}],14:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -213,7 +213,7 @@ var extractUrlParams = exports.extractUrlParams = function extractUrlParams(temp
     return acc;
   }, params);
 };
-},{}],9:[function(require,module,exports) {
+},{}],11:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -241,6 +241,7 @@ var Login = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
         _this.host = document.createElement('form');
+        _this.host.classList.add('form');
 
         (0, _utils.bindAll)(_this, 'handleSubmit');
         _this.host.addEventListener('submit', _this.handleSubmit);
@@ -264,7 +265,8 @@ var Login = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            return '\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n\n            <a href="#singup">Sign Up</a>\n            <button type="submit" id="login">Login</button>\n        <a href="#">MAIN</a>';
+            return '\n          <div class="avatar"><img src="/dist/a3008c245d4370a193f8469baba6d707.png" alt="Avatar" class="avatar"></div>\n            <input type="text" placeholder="Username" name="uname" required>\n\n            <button type="submit" id="login">Login</button>\n            <a href="#singup">Sign Up</a>';
+            //        <a href="#">MAIN</a>`;
             //            <label for="psw"><b>Password</b></label>
             //            <input type="password" placeholder="Enter Password" name="psw" required>
         }
@@ -274,7 +276,7 @@ var Login = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Login;
-},{"../Facepalm":14,"../utils":15}],10:[function(require,module,exports) {
+},{"../Facepalm":15,"../utils":14}],12:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -302,6 +304,7 @@ var Singup = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Singup.__proto__ || Object.getPrototypeOf(Singup)).call(this, props));
 
         _this.host = document.createElement('form');
+        _this.host.classList.add('form');
 
         //       bindAll(this, '');
         return _this;
@@ -311,7 +314,7 @@ var Singup = function (_Component) {
         key: 'render',
         value: function render() {
 
-            return '\n    <p>Create an account</p>\n    <hr>\n      <figure class="imgcontainer">\n          <img src="img_avatar2.png" alt="Avatar" class="avatar">\n          <figcaption class="container">\n            <label for="uname"><b>Username</b></label>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n\n            <label for="psw"><b>Password</b></label>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n\n            <label for="psw-repeat"><b>Repeat Password</b></label>\n            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>\n\n            <label for="email"><b>Email</b></label>\n            <input type="text" placeholder="Enter Email" name="email" required>\n\n            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>\n          </figcaption>\n      </figure>';
+            return '\n          <div class="avatar"><img src="/dist/a3008c245d4370a193f8469baba6d707.png" alt="Avatar" class="avatar"></div>\n            <input type="text" placeholder="Enter Name" name="uname" required>\n            <input type="password" placeholder="Enter Password" name="psw" required>\n            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>\n            <input type="text" placeholder="Enter Email" name="email" required>\n\n            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>';
         }
     }]);
 
@@ -319,7 +322,7 @@ var Singup = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Singup;
-},{"../Facepalm":14,"../utils":15}],18:[function(require,module,exports) {
+},{"../Facepalm":15,"../utils":14}],7:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -368,7 +371,7 @@ var App = function (_Component) {
         key: 'render',
         value: function render() {
             console.log(this.props);
-            return '<h1>Hello ' + this.props.username + '</h1>\n                <a href="#login">LOG OUT</a>';
+            return '<div class="main"><h1>Hello ' + this.props.username + '</h1>\n                <a href="#login">LOG OUT</a></div>';
         }
     }]);
 
@@ -376,7 +379,7 @@ var App = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = App;
-},{"../Facepalm":14,"./Login":9,"./Singup":10,"../utils":15}],7:[function(require,module,exports) {
+},{"../Facepalm":15,"./Login":11,"./Singup":12,"../utils":14}],6:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -501,7 +504,7 @@ var Router = function (_Component) {
 }(_Component3.default);
 
 exports.default = Router;
-},{"./Component":12,"../utils":15}],4:[function(require,module,exports) {
+},{"./Component":13,"../utils":14}],5:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -523,6 +526,10 @@ var _Singup2 = _interopRequireDefault(_Singup);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = [{
+  href: '',
+  component: _Login2.default,
+  redirectTo: 'login'
+}, {
   href: 'main',
   component: _App2.default,
   onEnter: function onEnter(handleRedirect, _ref) {
@@ -539,7 +546,6 @@ var routes = [{
 }, {
   href: 'user/:id',
   component: _App2.default
-  //    redirectTo: 'login',
   //    onEnter: (handleRedirect) => {
   //        if (true) {
   //            handleRedirect('/login');
@@ -556,7 +562,7 @@ var routes = [{
 }];
 
 exports.default = routes;
-},{"./components/App":18,"./components/Login":9,"./components/Singup":10}],2:[function(require,module,exports) {
+},{"./components/App":7,"./components/Login":11,"./components/Singup":12}],2:[function(require,module,exports) {
 'use strict';
 
 var _App = require('./src/components/App');
@@ -576,7 +582,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = new _Router2.default({ host: document.getElementById('root'), routes: _routes2.default });
 //const app = new App({ host: document.getElementById('root') });
 //app.update();
-},{"./src/components/App":18,"./src/Facepalm/Router":7,"./src/routes":4}],20:[function(require,module,exports) {
+},{"./src/components/App":7,"./src/Facepalm/Router":6,"./src/routes":5}],16:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -598,7 +604,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '34885' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '34839' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -699,5 +705,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[20,2])
+},{}]},{},[16,2])
 //# sourceMappingURL=/dist/route.map

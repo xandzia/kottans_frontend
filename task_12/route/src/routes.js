@@ -4,6 +4,11 @@ import Singup from './components/Singup';
 
 const routes = [
   {
+    href: '',
+    component: Login,
+    redirectTo: 'login',
+  },
+  {
     href: 'main',
     component: App,
     onEnter: ( handleRedirect, { userName } ) => {
@@ -19,7 +24,6 @@ const routes = [
   {
     href: 'user/:id',
     component: App,
-//    redirectTo: 'login',
 //    onEnter: (handleRedirect) => {
 //        if (true) {
 //            handleRedirect('/login');
