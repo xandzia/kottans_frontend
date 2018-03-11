@@ -138,7 +138,7 @@ var Component = function () {
 }();
 
 exports.default = Component;
-},{}],15:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -155,7 +155,7 @@ Object.defineProperty(exports, 'Component', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Component":13}],14:[function(require,module,exports) {
+},{"./Component":13}],15:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -276,7 +276,7 @@ var Login = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Login;
-},{"../Facepalm":15,"../utils":14}],12:[function(require,module,exports) {
+},{"../Facepalm":14,"../utils":15}],12:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -322,7 +322,7 @@ var Singup = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = Singup;
-},{"../Facepalm":15,"../utils":14}],7:[function(require,module,exports) {
+},{"../Facepalm":14,"../utils":15}],6:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -379,7 +379,7 @@ var App = function (_Component) {
 }(_Facepalm.Component);
 
 exports.default = App;
-},{"../Facepalm":15,"./Login":11,"./Singup":12,"../utils":14}],6:[function(require,module,exports) {
+},{"../Facepalm":14,"./Login":11,"./Singup":12,"../utils":15}],7:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -504,7 +504,7 @@ var Router = function (_Component) {
 }(_Component3.default);
 
 exports.default = Router;
-},{"./Component":13,"../utils":14}],5:[function(require,module,exports) {
+},{"./Component":13,"../utils":15}],5:[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -562,7 +562,7 @@ var routes = [{
 }];
 
 exports.default = routes;
-},{"./components/App":7,"./components/Login":11,"./components/Singup":12}],2:[function(require,module,exports) {
+},{"./components/App":6,"./components/Login":11,"./components/Singup":12}],2:[function(require,module,exports) {
 'use strict';
 
 var _App = require('./src/components/App');
@@ -582,7 +582,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = new _Router2.default({ host: document.getElementById('root'), routes: _routes2.default });
 //const app = new App({ host: document.getElementById('root') });
 //app.update();
-},{"./src/components/App":7,"./src/Facepalm/Router":6,"./src/routes":5}],16:[function(require,module,exports) {
+},{"./src/components/App":6,"./src/Facepalm/Router":7,"./src/routes":5}],16:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -604,7 +604,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '34839' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '43277' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

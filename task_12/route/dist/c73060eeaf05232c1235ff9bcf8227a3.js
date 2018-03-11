@@ -166,7 +166,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '34839' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '43277' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -267,7 +267,7 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}],26:[function(require,module,exports) {
+},{}],18:[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -347,6 +347,6 @@ LazyPromise.prototype.catch = function (onError) {
   return this.promise || (this.promise = new Promise(this.executor).catch(onError));
 };
 },{"./bundle-url":10}],0:[function(require,module,exports) {
-var b=require(26);b.load([["efa0b4db80d8f2fcabdb1a8cf92f8f17.png",9]]);
+var b=require(18);b.load([["efa0b4db80d8f2fcabdb1a8cf92f8f17.png",9]]);
 },{}]},{},[16,0])
 //# sourceMappingURL=/dist/c73060eeaf05232c1235ff9bcf8227a3.map
