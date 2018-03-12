@@ -8,35 +8,21 @@ var email = document.querySelector("#email"),
 	nose = document.querySelector(".nose"),
 	mouth = document.querySelector(".mouth"),
 	mouthBG = document.querySelector(".mouthBG"),
-	mouthSmallBG = document.querySelector(".mouthSmallBG"),
-	mouthMediumBG = document.querySelector(".mouthMediumBG"),
-	mouthLargeBG = document.querySelector(".mouthLargeBG"),
-	mouthMaskPath = document.querySelector("#mouthMaskPath"),
-	mouthOutline = document.querySelector(".mouthOutline"),
-	tooth = document.querySelector(".tooth"),
-	tongue = document.querySelector(".tongue"),
 	chin = document.querySelector(".chin"),
-	face = document.querySelector(".face"),
-	eyebrow = document.querySelector(".eyebrow"),
-	outerEarL = document.querySelector(".earL .outerEar"),
-	outerEarR = document.querySelector(".earR .outerEar"),
-	earHairL = document.querySelector(".earL .earHair"),
-	earHairR = document.querySelector(".earR .earHair"),
-	hair = document.querySelector(".hair");
+	face = document.querySelector(".face");
 var caretPos,
 	curEmailIndex,
 	screenCenter,
 	svgCoords,
-	eyeMaxHorizD = 20,
-	eyeMaxVertD = 10,
+	eyeMaxHorizD = 9,
+	eyeMaxVertD = 8,
 	noseMaxHorizD = 23,
 	noseMaxVertD = 10,
 	dFromC,
 	eyeDistH,
 	eyeLDistV,
 	eyeRDistV,
-	eyeDistR,
-	mouthStatus = "small";
+	eyeDistR;
 
 function getCoord(e) {
 	var carPos = email.selectionEnd,
@@ -77,15 +63,15 @@ function getCoord(e) {
 		eyeDistH = -eyeMaxHorizD;
 	}
 
-	var eyeLCoords = { x: svgCoords.x + 84, y: svgCoords.y + 76 };
-	var eyeRCoords = { x: svgCoords.x + 113, y: svgCoords.y + 76 };
+	var eyeLCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
+	var eyeRCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
 	var noseCoords = { x: svgCoords.x + 97, y: svgCoords.y + 81 };
 	var mouthCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
 	var eyeLAngle = getAngle(
 		eyeLCoords.x,
 		eyeLCoords.y,
 		emailCoords.x + caretCoords.x,
-		emailCoords.y + 25
+		emailCoords.y + 5
 	);
 	var eyeLX = Math.cos(eyeLAngle) * eyeMaxHorizD;
 	var eyeLY = Math.sin(eyeLAngle) * eyeMaxVertD;
@@ -93,7 +79,7 @@ function getCoord(e) {
 		eyeRCoords.x,
 		eyeRCoords.y,
 		emailCoords.x + caretCoords.x,
-		emailCoords.y + 25
+		emailCoords.y + 5
 	);
 	var eyeRX = Math.cos(eyeRAngle) * eyeMaxHorizD;
 	var eyeRY = Math.sin(eyeRAngle) * eyeMaxVertD;
@@ -123,20 +109,23 @@ function getCoord(e) {
 	var faceX = mouthX * 0.3;
 	var faceY = mouthY * 0.4;
 	var faceSkew = Math.cos(mouthAngle) * 5;
-	var eyebrowSkew = Math.cos(mouthAngle) * 25;
-	var outerEarX = Math.cos(mouthAngle) * 4;
-	var outerEarY = Math.cos(mouthAngle) * 5;
-	var hairX = Math.cos(mouthAngle) * 6;
-	var hairS = 1.2;
 
-	TweenMax.to(eyeL, 1, { x: -eyeLX, y: -eyeLY, ease: Expo.easeOut });
-	TweenMax.to(eyeR, 1, { x: -eyeRX, y: -eyeRY, ease: Expo.easeOut });
+	TweenMax.to(eyeL, 1, {
+	    x: -eyeLX,
+	    y: -eyeLY,
+	    ease: Expo.easeOut
+	});
+	TweenMax.to(eyeR, 1, {
+	    x: -eyeRX,
+	    y: -eyeRY,
+	    ease: Expo.easeOut
+	});
 	TweenMax.to(nose, 1, {
-		x: -noseX,
-		y: -noseY,
-		rotation: mouthR,
-		transformOrigin: "center center",
-		ease: Expo.easeOut
+	    x: -noseX,
+	    y: -noseY,
+	    rotation: mouthR,
+	    transformOrigin: "center center",
+	    ease: Expo.easeOut
 	});
 	TweenMax.to(mouth, 1, {
 		x: -mouthX,
@@ -158,88 +147,12 @@ function getCoord(e) {
 		transformOrigin: "center top",
 		ease: Expo.easeOut
 	});
-	TweenMax.to(eyebrow, 1, {
-		x: -faceX,
-		y: -faceY,
-		skewX: -eyebrowSkew,
-		transformOrigin: "center top",
-		ease: Expo.easeOut
-	});
-	TweenMax.to(outerEarL, 1, { x: outerEarX, y: -outerEarY, ease: Expo.easeOut });
-	TweenMax.to(outerEarR, 1, { x: outerEarX, y: outerEarY, ease: Expo.easeOut });
-	TweenMax.to(earHairL, 1, { x: -outerEarX, y: -outerEarY, ease: Expo.easeOut });
-	TweenMax.to(earHairR, 1, { x: -outerEarX, y: outerEarY, ease: Expo.easeOut });
-	TweenMax.to(hair, 1, {
-		x: hairX,
-		scaleY: hairS,
-		transformOrigin: "center bottom",
-		ease: Expo.easeOut
-	});
 
 	document.body.removeChild(div);
 }
 
 function onEmailInput(e) {
 	getCoord(e);
-	var value = e.target.value;
-	curEmailIndex = value.length;
-
-	// very crude email validation for now to trigger effects
-	if (curEmailIndex > 0) {
-		if (mouthStatus == "small") {
-			mouthStatus = "medium";
-			TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
-				morphSVG: mouthMediumBG,
-				shapeIndex: 8,
-				ease: Expo.easeOut
-			});
-			TweenMax.to(tooth, 1, { x: 0, y: 0, ease: Expo.easeOut });
-			TweenMax.to(tongue, 1, { x: 0, y: 1, ease: Expo.easeOut });
-			TweenMax.to([eyeL, eyeR], 1, {
-				scaleX: 0.85,
-				scaleY: 0.85,
-				ease: Expo.easeOut
-			});
-		}
-		if (value.includes("@")) {
-			mouthStatus = "large";
-			TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
-				morphSVG: mouthLargeBG,
-				ease: Expo.easeOut
-			});
-			TweenMax.to(tooth, 1, { x: 3, y: -2, ease: Expo.easeOut });
-			TweenMax.to(tongue, 1, { y: 2, ease: Expo.easeOut });
-			TweenMax.to([eyeL, eyeR], 1, {
-				scaleX: 0.65,
-				scaleY: 0.65,
-				ease: Expo.easeOut,
-				transformOrigin: "center center"
-			});
-		} else {
-			mouthStatus = "medium";
-			TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
-				morphSVG: mouthMediumBG,
-				ease: Expo.easeOut
-			});
-			TweenMax.to(tooth, 1, { x: 0, y: 0, ease: Expo.easeOut });
-			TweenMax.to(tongue, 1, { x: 0, y: 1, ease: Expo.easeOut });
-			TweenMax.to([eyeL, eyeR], 1, {
-				scaleX: 0.85,
-				scaleY: 0.85,
-				ease: Expo.easeOut
-			});
-		}
-	} else {
-		mouthStatus = "small";
-		TweenMax.to([mouthBG, mouthOutline, mouthMaskPath], 1, {
-			morphSVG: mouthSmallBG,
-			shapeIndex: 9,
-			ease: Expo.easeOut
-		});
-		TweenMax.to(tooth, 1, { x: 0, y: 0, ease: Expo.easeOut });
-		TweenMax.to(tongue, 1, { y: 0, ease: Expo.easeOut });
-		TweenMax.to([eyeL, eyeR], 1, { scaleX: 1, scaleY: 1, ease: Expo.easeOut });
-	}
 }
 
 function onEmailFocus(e) {
@@ -263,14 +176,8 @@ function onPasswordBlur(e) {
 }
 
 function coverEyes() {
-	TweenMax.to(armL, 0.45, { x: -43, y: 32, rotation: 0, ease: Quad.easeOut });
-	TweenMax.to(armR, 0.45, {
-		x: 63,
-		y: 32,
-		rotation: 0,
-		ease: Quad.easeOut,
-		delay: 0.1
-	});
+	TweenMax.to(armL, 0.45, { x: -63, y: 52, rotation: -15, ease: Quad.easeOut });
+	TweenMax.to(armR, 0.45, { x: 73, y: 52, rotation: 15, ease: Quad.easeOut, delay: 0.1 });
 }
 
 function uncoverEyes() {
@@ -285,13 +192,6 @@ function resetFace() {
 	TweenMax.to(nose, 1, { x: 0, y: 0, scaleX: 1, scaleY: 1, ease: Expo.easeOut });
 	TweenMax.to(mouth, 1, { x: 0, y: 0, rotation: 0, ease: Expo.easeOut });
 	TweenMax.to(chin, 1, { x: 0, y: 0, scaleY: 1, ease: Expo.easeOut });
-	TweenMax.to([face, eyebrow], 1, { x: 0, y: 0, skewX: 0, ease: Expo.easeOut });
-	TweenMax.to([outerEarL, outerEarR, earHairL, earHairR, hair], 1, {
-		x: 0,
-		y: 0,
-		scaleY: 1,
-		ease: Expo.easeOut
-	});
 }
 
 function getAngle(x1, y1, x2, y2) {
