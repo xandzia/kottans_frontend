@@ -18,22 +18,25 @@ class Component {
         this.props = Object.assign({}, this.props, nextProps);
         return this._render();
     }
+    
+  insertChildren(children, host = this.host) {
+    let node = host;
+    if (typeof children === 'string') {
+      node.insertAdjacentHTML('beforeend', children)
+    } else if (Array.isArray(children)) {
+        children.forEach(elem => {
+          (typeof elem === 'string') ? node.insertAdjacentHTML('beforeend', elem) : node.append(elem);
+        });
+    } else {
+      node.append(children);
+    };
+    return node;
+  }
 
-    _render() {
-        const children = this.render();
-
-        this.host.innerHTML = '';
-
-        if (typeof children === 'string') {
-            this.host.innerHTML = children;
-        } else if (Array.isArray(children)) {
-            this.host.append(...children);
-        } else {
-            this.host.append(children);
-        }
-
-        return this.host;
-    }
+  _render() {
+    this.host.innerHTML = '';
+    return this.insertChildren(this.render());
+  }
 
     render() {}
 }

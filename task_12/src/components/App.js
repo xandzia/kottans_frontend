@@ -18,8 +18,8 @@ class App extends Component {
        this.host = document.createElement('div');
        
        this.header = new Header();
-//       this.main = new Main();
-//       this.footer = new Footer();
+       this.main = new Main();
+       this.footer = new Footer();
 
    }
     
@@ -30,8 +30,8 @@ class App extends Component {
 //        console.log(this.props);
         return [
             this.header.update(),
-//			this.main.update(),
-//			this.footer.update(),
+			this.main.update(),
+			this.footer.update(),
         ];
 //                `<div class="main"><h1>Hello ${this.props.username}</h1>
 //                <a href="#login">LOG OUT</a></div>`;
