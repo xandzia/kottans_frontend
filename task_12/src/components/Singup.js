@@ -30,10 +30,6 @@ class Singup extends Component {
         const storeValue = document.getElementById("select").value;
         const id = store.options[store.selectedIndex].id;
         
-//        console.log('user-target', this.props);
-//        this.props.user(userName);
-        
-//        console.log('login-props', this.props);
         console.log('store:', storeValue);
 //        window.location.hash = '#/user';
         const userData = {
@@ -46,7 +42,8 @@ class Singup extends Component {
             
         };
         console.log(userData);
-        AUTH_SERVISE.login(userData)
+        
+        AUTH_SERVISE.singup(userData)
             .then(result => {
                 console.log(AUTH_SERVISE.token);
             },
@@ -59,18 +56,6 @@ class Singup extends Component {
                 
             }
         })
-//            return fetch("https://pizza-tele.ga/api/v1/user/create", {
-//                method: 'POST',
-//                body: JSON.stringify(userData),
-//                headers: new Headers().append("Content-Type", "application/json")
-//            })
-//            .then(res => {
-//                if (res.ok) {
-//                    console.log(res);
-//                   return res.json(); 
-//                }
-//                throw new Error(res.error);
-//            });
     }
     
     render() {

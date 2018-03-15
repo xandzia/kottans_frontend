@@ -2,7 +2,7 @@ import App from './components/App';
 import Login from './components/Login';
 import Singup from './components/Singup';
 import UserInfo from './components/UserInfo';
-import { authGuard } from './authGuard';
+//import { authGuard } from './authGuard';
 
 const routes = [
   {
@@ -12,21 +12,16 @@ const routes = [
   {
     href: '/user',
     component: UserInfo,
-    onEnter: authGuard,
+//    onEnter: authGuard,
+    onEnter: ( handleRedirect, { success } ) => {
+        if (success != true) {
+            handleRedirect('/login');
+            return;
+        } else 
+        console.log(arguments)
+            return false;
+    },
   },
-//  {
-//    href: '/user/:id',
-//    component: App,
-//    onEnter: ( handleRedirect, { userName } ) => {
-//        if (userName != 'anna') {
-//            handleRedirect('login');
-//            return false;
-//        } else 
-////            handleRedirect('');
-//            return;
-////        console.log(arguments)
-//    },
-//  },
   {
     href: '/login',
     component: Login,

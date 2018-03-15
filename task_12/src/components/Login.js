@@ -16,28 +16,28 @@ class Login extends Component {
     handleSubmit(ev) {
         ev.preventDefault();
                 
-        const userName = event.target.uname.value.trim();
+        const username = event.target.uname.value.trim();
         const password = event.target.psw.value.trim();
-//        console.log('user-target', this.props);
-//        this.props.user(userName);
-        AUTH_SERVISE.login({userName, password})
+        AUTH_SERVISE.login({username, password})
             .then(result => {
-                console.log(AUTH_SERVISE.token);
+                const success = result.answer.success;
+                this.props.user(success);
+                console.log('success', result.answer.success);
+                window.location.hash = '#/user';
             },
             status => {
-                console.log(status);
+                const success = status.answer.success;
+                this.props.user(success);
+                console.log('success', status.answer.success);
             }
             )
             .catch(err => {
 //            console.log("err", err);
             if (err === "400") {
                 
-            }
+            };
         })
-        
-//        console.log('login-props', this.props);
-//        console.log('LOGIN','userName:', userName, 'password:', password);
-//        window.location.hash = '#/user';
+
     }
     
     render() {

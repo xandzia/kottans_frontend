@@ -581,7 +581,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = new _Router2.default({ host: document.getElementById('root'), routes: _routes2.default });
 //const app = new App({ host: document.getElementById('root') });
 //app.update();
-},{"./src/components/App":6,"./src/Facepalm/Router":7,"./src/routes":5}],21:[function(require,module,exports) {
+},{"./src/components/App":6,"./src/Facepalm/Router":7,"./src/routes":5}],16:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -603,7 +603,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '32975' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '44075' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -704,5 +704,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[21,2])
+},{}]},{},[16,2])
 //# sourceMappingURL=/dist/route.map

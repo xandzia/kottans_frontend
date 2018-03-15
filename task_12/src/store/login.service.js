@@ -41,6 +41,26 @@ class AuthService {
         })
     }
     
+    singup(userData) {
+        return fetch("https://pizza-tele.ga/api/v1/user/create", {
+            method: "POST",
+            body: JSON.stringify(userData),
+            headers: new Headers().append("Content-Type", "application/json")
+        })
+        .then(res => {
+            if(res.ok) {
+                console.log(res);
+                return res.json().then(answer => {
+                    this.token = answer.token;
+                    return Promise.resolve({answer, status: res.status})
+                })
+            } else {
+                return res.json().then(answer => Promise.reject({answer, status: res.status}))
+            }
+//            throw new Error(`${res.status}`);
+        })
+    }
+    
     parseJwtClaims(jwtToken) {
         if (jwtToken) {
             let base64Url = jwtToken.split('.')[1]

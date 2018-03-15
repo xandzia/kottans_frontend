@@ -11,7 +11,7 @@ class Router extends Component {
           routes,
           currentRoute: null,
           currentComponent: null,
-          username: null,
+          access: null,
       };
       
     this.host = host;
@@ -58,18 +58,18 @@ class Router extends Component {
     window.location.hash = url;
   }
     
-  handleLogin(userName) {
-    this.updateState({ userName });
-      this.state.username = userName;
+  handleLogin(success) {
+    this.updateState({ success });
+      this.state.access = success;
   }
     
   render() {
-    const { activeComponent, currentRoute, username } = this.state;
+    const { activeComponent, currentRoute, access } = this.state;
       
     return activeComponent.update({
         params: extractUrlParams(currentRoute.href, this.path),
         user: this.handleLogin,
-        username: username,
+        access: access,
     });
   }
 }
