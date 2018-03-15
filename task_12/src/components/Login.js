@@ -47,7 +47,7 @@ class Login extends Component {
             <input type="password" placeholder="Password" name="psw" required>
 
             <button type="submit" id="login">Login</button>
-            <a href="/#/singup">Sign Up</a>
+            <a href="#/singup">Sign Up</a>
             <p class="error-text"></p>`;
 //        <a href="#">MAIN</a>`;
 //            <label for="psw"><b>Password</b></label>
