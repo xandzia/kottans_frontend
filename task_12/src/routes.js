@@ -1,16 +1,22 @@
 import App from './components/App';
 import Login from './components/Login';
 import Singup from './components/Singup';
+import UserInfo from './components/UserInfo';
+import { authGuard } from './authGuard';
 
 const routes = [
   {
     href: '',
-    component: App,
-//    redirectTo: 'login',
+    redirectTo: '/user',
   },
   {
-    href: 'main',
-    component: App,
+    href: '/user',
+    component: UserInfo,
+    onEnter: authGuard,
+  },
+//  {
+//    href: '/user/:id',
+//    component: App,
 //    onEnter: ( handleRedirect, { userName } ) => {
 //        if (userName != 'anna') {
 //            handleRedirect('login');
@@ -20,24 +26,13 @@ const routes = [
 //            return;
 ////        console.log(arguments)
 //    },
-  },
+//  },
   {
-    href: 'user/:id',
-    component: App,
-//    onEnter: (handleRedirect) => {
-//        if (true) {
-//            handleRedirect('/login');
-//        }
-////        return false;
-//        console.log(arguments)
-//    },
-  },
-  {
-    href: 'login',
+    href: '/login',
     component: Login,
   },
   {
-    href: 'singup',
+    href: '/singup',
     component: Singup,
   },
 ];

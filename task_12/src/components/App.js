@@ -16,7 +16,8 @@ class App extends Component {
        super(props);
        
        this.host = document.createElement('div');
-       
+       this.host.classList.add('app-container');
+
        this.header = new Header();
        this.main = new Main();
        this.footer = new Footer();

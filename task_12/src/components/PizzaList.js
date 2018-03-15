@@ -16,7 +16,7 @@ class PizzaList extends Component {
                         <img src="img/pizza.png" alt="pizza with sausage">
                         <figcaption class="pizza-info">
                         <div class="left-info">
-                            <time>02-55-87</time>
+                            <time class="date">02-55-87</time>
                             <time datetime="00:00:00" class="eta">ETA:<span>1&nbsp;min</span></time>
                         </div>
                         <div class="right-info">
