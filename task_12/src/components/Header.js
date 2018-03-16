@@ -35,10 +35,10 @@ class Header extends Component {
         <a href="#" class="logo">
             <img src="img/logo.jpg" alt="pizza and ninja turtle">
         </a>
-        <button class="btn login">
+        <a href="#/login"class="btn login">
             <span class="green-white"><img src="img/green-ninja-turtle.png" alt="ninja turtle face"></span>
             login
-        </button>`;
+        </a>`;
         const header = toHtml(html);
         const clock = header.getElementById('clock');
         this.clock(clock);

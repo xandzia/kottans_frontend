@@ -1,16 +1,22 @@
 import { Component } from '../Facepalm';
 import { bindAll, toHtml } from '../utils/index';
-import { AUTH_SERVISE } from '../store/login.service';
+import { AUTH_SERVICE } from '../auth/login.service';
+
+import Header from './Header';
+import Footer from './Footer';
+
 
 class Singup extends Component {
     constructor(props) {
         super(props);
         
-        this.host = document.createElement('form');
-        this.host.classList.add('form');
+        this.host = document.createElement('div');
+        
+        this.header = new Header();
+        this.footer = new Footer();
 
-       bindAll(this, 'handleSubmit');
-       this.host.addEventListener('submit', this.handleSubmit );
+        bindAll(this, 'handleSubmit');
+        this.host.addEventListener('submit', this.handleSubmit );
    }
     
     storeList() {
@@ -43,23 +49,25 @@ class Singup extends Component {
         };
         console.log(userData);
         
-        AUTH_SERVISE.singup(userData)
+        AUTH_SERVICE.singup(userData)
             .then(result => {
-                console.log(AUTH_SERVISE.token);
+                window.location.hash = '#/user';
+                console.log(AUTH_SERVICE.token);
             },
             status => {
+                if (data.status === 400) {
+                    document.querySelector('.error-text').textContent = data.answer.error;
+                }
                 console.log(status);
             }
             )
             .catch(err => {
-            if (err === "400") {
-                
-            }
-        })
+                console.log(err);
+            })
     }
     
     render() {
-        const html = `<div class="avatar"><img src="" alt="Avatar" class="avatar"></div>
+        const html = `<form class="form"><div class="avatar"><img src="" alt="Avatar" class="avatar"></div>
             <input type="text" placeholder="Enter Name" name="uname" required>
             <input type="password" placeholder="Enter Password" name="psw" required>
             <input type="password" placeholder="Repeat Password" name="pswRepeat" required>
@@ -69,7 +77,7 @@ class Singup extends Component {
             </select>
             <input type="password" placeholder="Store Password" name="storePsw" required>
 
-            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>`;
+            <button type="submit" class="signupbtn" id="singUp">Sign Up</button></form>`;
         const form = toHtml(html);
         const storeList = form.getElementById('select');
         
@@ -84,7 +92,11 @@ class Singup extends Component {
             storeList.innerHTML = arr.join('');
             return storeList;
         })
-        return form;
+        return [
+            this.header.update(),
+            form,
+            this.footer.update(),
+        ];
     }
 
 }

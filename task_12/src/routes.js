@@ -2,23 +2,30 @@ import App from './components/App';
 import Login from './components/Login';
 import Singup from './components/Singup';
 import UserInfo from './components/UserInfo';
-//import { authGuard } from './authGuard';
+//import { AUTH_SERVICE } from './store/login.service';
+
 
 const routes = [
   {
     href: '',
-    redirectTo: '/user',
+    component: App,
+    onEnter: ( handleRedirect, a ) => {
+        if (a != true) {
+            handleRedirect('/login');
+            return;
+        } else 
+            return false;
+    },
   },
   {
     href: '/user',
     component: UserInfo,
-//    onEnter: authGuard,
-    onEnter: ( handleRedirect, { success } ) => {
-        if (success != true) {
+    onEnter: ( handleRedirect, a ) => {
+        if (a != true) {
             handleRedirect('/login');
             return;
         } else 
-        console.log(arguments)
+//        console.log(arguments)
             return false;
     },
   },

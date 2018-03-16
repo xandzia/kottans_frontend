@@ -1,5 +1,6 @@
 import Component from './Component';
 import { bindAll, isEqualPaths, extractUrlParams } from '../utils';
+import { AUTH_SERVICE } from '../auth/login.service';
 
 class Router extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class Router extends Component {
       
     this.host = host;
       
-    bindAll(this, 'handleUrlChange', 'handleLogin');
+    bindAll(this, 'handleUrlChange');
+//    bindAll(this, 'handleLogin');
 
     window.addEventListener('hashchange', () =>
       this.handleUrlChange(this.path)
@@ -32,6 +34,7 @@ class Router extends Component {
 
   handleUrlChange(path) {
     const { routes, currentRoute } = this.state;
+    let a = AUTH_SERVICE.isAuthorized();
       
     const nextRoute = routes.find(({ href }) =>
         isEqualPaths(href, this.path),
@@ -41,7 +44,7 @@ class Router extends Component {
       if(nextRoute && nextRoute !== currentRoute) {
           
           if (nextRoute.onEnter) {
-             nextRoute.onEnter(this.handleRedirect, this.state);
+             nextRoute.onEnter(this.handleRedirect, a);
           }
           if (nextRoute.redirectTo) {
             return this.handleRedirect(nextRoute.redirectTo);
@@ -58,20 +61,21 @@ class Router extends Component {
     window.location.hash = url;
   }
     
-  handleLogin(success) {
-    this.updateState({ success });
-      this.state.access = success;
-  }
+//  handleLogin(success) {
+//    this.updateState({ success });
+//      this.state.access = success;
+//  }
     
   render() {
     const { activeComponent, currentRoute, access } = this.state;
       
     return activeComponent.update({
         params: extractUrlParams(currentRoute.href, this.path),
-        user: this.handleLogin,
-        access: access,
+//        user: this.handleLogin,
+//        access: access,
     });
   }
 }
 
 export default Router;
+

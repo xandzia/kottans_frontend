@@ -1,25 +1,45 @@
 import { Component } from '../Facepalm';
-import { toHtml } from '../utils/index';
+
+import Header from './Header';
+import User from './User';
+import Footer from './Footer';
+import { AUTH_HTTP } from '../auth/http.service.js'
 
 class UserInfo extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 
-		this.host = document.createElement('main');
-		this.host.classList.add('main');
-        
+		this.state = {
+			userData: null,
+		}
+
+		this.host = document.createElement('div');
+		this.host.classList.add('userInfo');
+
+		this.header = new Header();
+		this.user = new User();
+		this.footer = new Footer();
+
+		this.getUserData();
+	}
+
+    getUserData() {
+		return AUTH_HTTP.get('https://pizza-tele.ga/api/v1/user/my_info')
+			.then(userData => {
+            console.log('userData',userData);
+            this.updateState({ userData });
+        });
 	}
 
 	render() {
-        const html = `<div>
-                        <a class="org" href="#">USER</a>
-                        <a class="map" href="#">PIZZAS</a>
-                        <a class="tel" href="tel:57778887">577-788-87</a>
-                    </div>`;
-        const user = toHtml(html);
+		const { userData } = this.state;
 
-        return user;
+		return [
+			this.header.update(),
+			this.user.update({ userData }),
+			this.footer.update(),
+		];
 	}
 }
 
-export default UserInfo;
+export default UserInfo; 

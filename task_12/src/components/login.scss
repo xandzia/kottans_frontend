@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,400i,600,700');
+
+/************************   LOGIN, SINGUP   ************************/
+body {
+    position: relative;
+    height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    color: #383838;
+    background-color: #3f8257;
+    background-image: url(texture.png);
+}
+
+#root {
+    margin: 0;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
+    border-radius: 2px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 25px;
+}
+.avatar {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+.avatar img {
+    width: 100%;
+    height: auto;
+}
+#login,
+#singUp {
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+    font-weight: 600;
+        color: white;
+    cursor: pointer;
+        background-color: #dc4130;
+    text-align: center;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+    #login:hover,
+    #login:focus,
+    #singUp:hover,
+    #singUp:focus {
+    background-color: white;
+        box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    color: #3f8257;
+    }  
+[type="text"],
+[type="password"]{
+    border: none;
+    margin-bottom: 15px;
+    padding: 10px 60px 10px 10px;
+    color: #383838;
+        background-color: rgba(63, 130, 87, 0.15);
+}
+a {
+    font-size: 0.9em;
+    color: #3f8257;
+    text-align: right;
+}
+a:hover {
+    color: #dc4130;
+}
+/************************   MAIN   ************************/
+.main {
+    padding: 25px;
+}
