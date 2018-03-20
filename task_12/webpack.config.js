@@ -10,7 +10,8 @@ const extractPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: ['./index.js'],
+    entry: ['./index.js',
+           './src/utils/login.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',

@@ -1,4 +1,3 @@
-export let animLogin =(function(){
     var email = document.querySelector("#email"),
 	password = document.querySelector("#password"),
 	mySVG = document.querySelector(".svgContainer"),
@@ -243,4 +242,3 @@ TweenMax.set(armR, {
 	rotation: -105,
 	transformOrigin: "top right"
 });
-}());

@@ -34,7 +34,7 @@ class Router extends Component {
 
   handleUrlChange(path) {
     const { routes, currentRoute } = this.state;
-    let a = AUTH_SERVICE.isAuthorized();
+    let auth = AUTH_SERVICE.isAuthorized();
       
     const nextRoute = routes.find(({ href }) =>
         isEqualPaths(href, this.path),
@@ -44,7 +44,7 @@ class Router extends Component {
       if(nextRoute && nextRoute !== currentRoute) {
           
           if (nextRoute.onEnter) {
-             nextRoute.onEnter(this.handleRedirect, a);
+             nextRoute.onEnter(this.handleRedirect, auth );
           }
           if (nextRoute.redirectTo) {
             return this.handleRedirect(nextRoute.redirectTo);

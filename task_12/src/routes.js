@@ -9,8 +9,8 @@ const routes = [
   {
     href: '',
     component: App,
-    onEnter: ( handleRedirect, a ) => {
-        if (a != true) {
+    onEnter: ( handleRedirect, auth ) => {
+        if (auth != true) {
             handleRedirect('/login');
             return;
         } else 
@@ -20,8 +20,8 @@ const routes = [
   {
     href: '/user',
     component: UserInfo,
-    onEnter: ( handleRedirect, a ) => {
-        if (a != true) {
+    onEnter: ( handleRedirect, auth ) => {
+        if (auth != true) {
             handleRedirect('/login');
             return;
         } else 

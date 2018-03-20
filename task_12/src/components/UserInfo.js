@@ -26,7 +26,6 @@ class UserInfo extends Component {
     getUserData() {
 		return AUTH_HTTP.get('https://pizza-tele.ga/api/v1/user/my_info')
 			.then(userData => {
-            console.log('userData',userData);
             this.updateState({ userData });
         });
 	}

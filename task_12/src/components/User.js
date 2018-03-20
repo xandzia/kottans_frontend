@@ -23,30 +23,31 @@ class User extends Component {
 
 	render() {
         const { userData } = this.props;
+        console.log('user info', userData);
         
-        const html = `
-                <table>
-				    <caption>User Info</caption>
-				    <tbody id="table">
-				    </tbody>
-			     </table>
-                <a class="org" href="#">USER</a>
-                <a class="map" href="#">PIZZAS</a>
-                <a href="#/login" data-action="logout">Logout</a>`;
-        const user = toHtml(html);
-        const table = user.getElementById('table');
-        
-        for (let key in userData) {
-			const row = toHtml(`
-					<tr>
-						<td>${key}:</td>
-						<td>${userData[key]}</td>
-					</tr>
-				`);
-			table.append(row);
-		}
-
-        return user;
+//        const html = `
+//                <table>
+//				    <caption>User Info</caption>
+//				    <tbody id="table">
+//				    </tbody>
+//			     </table>
+//                <a class="org" href="#">USER</a>
+//                <a class="map" href="#">PIZZAS</a>
+//                <a href="#/login" data-action="logout">Logout</a>`;
+//        const user = toHtml(html);
+//        const table = user.getElementById('table');
+//        
+//        for (let key in userData) {
+//			const row = toHtml(`
+//					<tr>
+//						<td>${key}:</td>
+//						<td>${userData[key]}</td>
+//					</tr>
+//				`);
+//			table.append(row);
+//		}
+//
+//        return user;
 	}
 }
 

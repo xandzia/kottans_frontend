@@ -1,16 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+import './login.css';
 
-<head>
-    <meta charset="UTF-8">
-    <title>Route</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+import { Component } from '../../Facepalm';
+import { bindAll, toHtml } from '../../utils';
+import { AUTH_SERVICE } from '../../auth/login.service';
 
-<body>
-    <form>
+import Header from '.././Header';
+import Footer from '.././Footer';
+
+
+class Login extends Component {
+   constructor(props) {
+       super(props);
+              
+       this.host = document.createElement('div');
+       
+       this.header = new Header();
+       this.footer = new Footer();
+       
+       bindAll(this, 'handleSubmit');
+       this.host.addEventListener('submit', this.handleSubmit );
+       this.host.addEventListener('click', this.handleFocus );
+   }
+    
+    handleSubmit(ev) {
+        ev.preventDefault();
+        
+                
+        const username = event.target.uname.value.trim();
+        const password = event.target.psw.value.trim();
+        AUTH_SERVICE.login({username, password})
+            .then(result => {
+//            V1
+//                const success = result.answer.success;
+//                this.props.user(success);
+//                console.log('success', result.answer.success);
+                window.location.hash = '#/user';
+//            V1
+                console.log(AUTH_SERVICE.token);
+                console.log(AUTH_SERVICE.claims);
+            },
+            data => {
+                if (data.status === 400) {
+                    document.querySelector('.error-text').textContent = data.answer.error;
+                }
+//            V1
+//                const success = status.answer.success;
+//                this.props.user(success);
+//                console.log('success', status.answer.success);
+//            V1
+            }
+            )
+            .catch(err => {
+                console.log("err", err);
+            })
+    }
+    
+    handleFocus(ev) {
+        document.querySelector('.error-text').textContent = '';
+    }
+    
+    render() {
+        console.log('auth-servise:', AUTH_SERVICE.isAuthorized());
+        
+//<form id="login-form" class="form"><div class="avatar"><img src="" alt="Avatar" class="avatar"</div>
+//            <input type="text" placeholder="Username" name="uname" required>
+//            <input type="password" placeholder="Password" name="psw" required>
+//
+//            <button type="submit" id="login">Login</button>
+//            <span class="error-text"></span>
+//            <a href="#/singup">Sign Up</a>
+//            </form>
+        const html = `
+<div class="form-container">
+    <form id="login-form">
         <div class="svgContainer">
             <div>
                 <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -75,22 +137,30 @@
 
         <div class="inputGroup inputGroup1">
             <label for="email1">Email</label>
-            <input type="text" id="email" class="email" maxlength="256" />
+            <input type="text" id="email" class="email" name="uname" required maxlength="50" />
             <p class="helper helper1">email@pizza.com</p>
             <span class="indicator"></span>
         </div>
         <div class="inputGroup inputGroup2">
             <label for="password">Password</label>
-            <input type="password" id="password" class="password" />
+            <input type="password" id="password" class="password" name="psw" required />
         </div>
+        <span class="error-text"></span>
+
         <div class="inputGroup inputGroup3">
             <button id="login">Log in</button>
         </div>
     </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-    <!--   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?r=182"></script>-->
-    <script src="login.js"></script>
-</body>
-
-</html>
-<!--https://codepen.io/dsenneff/pen/QajVxO-->
+</div>
+`;
+        const form = toHtml(html);
+        return [
+            this.header.update(),
+            form,
+            this.footer.update(),
+                ]
+//        <a href="#">MAIN</a>`;
+//            <label for="psw"><b>Password</b></label>
+    }
+}
+export default Login;
