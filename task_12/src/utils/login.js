@@ -1,16 +1,5 @@
-    var email = document.querySelector("#email"),
-	password = document.querySelector("#password"),
-	mySVG = document.querySelector(".svgContainer"),
-	armL = document.querySelector(".armL"),
-	armR = document.querySelector(".armR"),
-	eyeL = document.querySelector(".eyeL"),
-	eyeR = document.querySelector(".eyeR"),
-	nose = document.querySelector(".nose"),
-	mouth = document.querySelector(".mouth"),
-	mouthBG = document.querySelector(".mouthBG"),
-	chin = document.querySelector(".chin"),
-	face = document.querySelector(".face");
-var caretPos,
+export function anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face,name, pswRepeat, pswStore){
+let caretPos,
 	curEmailIndex,
 	screenCenter,
 	svgCoords,
@@ -25,7 +14,7 @@ var caretPos,
 	eyeDistR;
 
 function getCoord(e) {
-	var carPos = email.selectionEnd,
+	let carPos = email.selectionEnd,
 		div = document.createElement("div"),
 		span = document.createElement("span"),
 		copyStyle = getComputedStyle(email),
@@ -49,7 +38,7 @@ function getCoord(e) {
 	caretPos = caretCoords.x + emailCoords.x; //console.log("caretPos: " + caretPos);
 
 	dFromC = screenCenter - caretPos; //console.log("dFromC: " + dFromC);
-	var pFromC = Math.round(caretPos / screenCenter * 100) / 100;
+	let pFromC = Math.round(caretPos / screenCenter * 100) / 100;
 	if (pFromC < 1) {
 	} else if (pFromC > 1) {
 		pFromC -= 2;
@@ -63,52 +52,177 @@ function getCoord(e) {
 		eyeDistH = -eyeMaxHorizD;
 	}
 
-	var eyeLCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
-	var eyeRCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
-	var noseCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
-	var mouthCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
-	var eyeLAngle = getAngle(
+	let eyeLCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
+	let eyeRCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
+	let noseCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
+	let mouthCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
+	let eyeLAngle = getAngle(
 		eyeLCoords.x,
 		eyeLCoords.y,
 		emailCoords.x + caretCoords.x,
 		emailCoords.y + 5
 	);
-	var eyeLX = Math.cos(eyeLAngle) * eyeMaxHorizD;
-	var eyeLY = Math.sin(eyeLAngle) * eyeMaxVertD;
-	var eyeRAngle = getAngle(
+	let eyeLX = Math.cos(eyeLAngle) * eyeMaxHorizD;
+	let eyeLY = Math.sin(eyeLAngle) * eyeMaxVertD;
+	let eyeRAngle = getAngle(
 		eyeRCoords.x,
 		eyeRCoords.y,
 		emailCoords.x + caretCoords.x,
 		emailCoords.y + 5
 	);
-	var eyeRX = Math.cos(eyeRAngle) * eyeMaxHorizD;
-	var eyeRY = Math.sin(eyeRAngle) * eyeMaxVertD;
-	var noseAngle = getAngle(
+	let eyeRX = Math.cos(eyeRAngle) * eyeMaxHorizD;
+	let eyeRY = Math.sin(eyeRAngle) * eyeMaxVertD;
+	let noseAngle = getAngle(
 		noseCoords.x,
 		noseCoords.y,
 		emailCoords.x + caretCoords.x,
 		emailCoords.y
 	);
-	var noseX = Math.cos(noseAngle) * noseMaxHorizD;
-	var noseY = Math.sin(noseAngle) * noseMaxVertD;
-	var mouthAngle = getAngle(
+	let noseX = Math.cos(noseAngle) * noseMaxHorizD;
+	let noseY = Math.sin(noseAngle) * noseMaxVertD;
+	let mouthAngle = getAngle(
 		mouthCoords.x,
 		mouthCoords.y,
 		emailCoords.x + caretCoords.x,
 		emailCoords.y + 25
 	);
-	var mouthX = Math.cos(mouthAngle) * noseMaxHorizD;
-	var mouthY = Math.sin(mouthAngle) * noseMaxVertD;
-	var mouthR = Math.cos(mouthAngle) * 6;
-	var chinX = mouthX * 0.8;
-	var chinY = mouthY * 0.5;
-	var chinS = 1 - dFromC * 0.15 / 100;
+	let mouthX = Math.cos(mouthAngle) * noseMaxHorizD;
+	let mouthY = Math.sin(mouthAngle) * noseMaxVertD;
+	let mouthR = Math.cos(mouthAngle) * 6;
+	let chinX = mouthX * 0.8;
+	let chinY = mouthY * 0.5;
+	let chinS = 1 - dFromC * 0.15 / 100;
 	if (chinS > 1) {
 		chinS = 1 - (chinS - 1);
 	}
-	var faceX = mouthX * 0.3;
-	var faceY = mouthY * 0.4;
-	var faceSkew = Math.cos(mouthAngle) * 5;
+	let faceX = mouthX * 0.3;
+	let faceY = mouthY * 0.4;
+	let faceSkew = Math.cos(mouthAngle) * 5;
+
+	TweenMax.to(eyeL, 1, {
+	    x: -eyeLX,
+	    y: -eyeLY,
+	    ease: Expo.easeOut
+	});
+	TweenMax.to(eyeR, 1, {
+	    x: -eyeRX,
+	    y: -eyeRY,
+	    ease: Expo.easeOut
+	});
+	TweenMax.to(nose, 1, {
+	    x: -noseX,
+	    y: -noseY,
+	    rotation: mouthR,
+	    transformOrigin: "center center",
+	    ease: Expo.easeOut
+	});
+	TweenMax.to(mouth, 1, {
+		x: -mouthX,
+		y: -mouthY,
+		rotation: mouthR,
+		transformOrigin: "center center",
+		ease: Expo.easeOut
+	});
+	TweenMax.to(chin, 1, {
+		x: -chinX,
+		y: -chinY,
+		scaleY: chinS,
+		ease: Expo.easeOut
+	});
+	TweenMax.to(face, 1, {
+		x: -faceX,
+		y: -faceY,
+		skewX: -faceSkew,
+		transformOrigin: "center top",
+		ease: Expo.easeOut
+	});
+
+	document.body.removeChild(div);
+}
+function getCoordName(e) {
+	let carPos = name.selectionEnd,
+		div = document.createElement("div"),
+		span = document.createElement("span"),
+		copyStyle = getComputedStyle(name),
+		nameCoords = {},
+		caretCoords = {},
+		centerCoords = {};
+	[].forEach.call(copyStyle, function(prop) {
+		div.style[prop] = copyStyle[prop];
+	});
+	div.style.position = "absolute";
+	document.body.appendChild(div);
+	div.textContent = name.value.substr(0, carPos);
+	span.textContent = name.value.substr(carPos) || ".";
+	div.appendChild(span);
+
+	nameCoords = getPosition(name);
+	caretCoords = getPosition(span);
+	centerCoords = getPosition(mySVG);
+	svgCoords = getPosition(mySVG);
+	screenCenter = centerCoords.x + mySVG.offsetWidth / 2;
+	caretPos = caretCoords.x + nameCoords.x;
+	dFromC = screenCenter - caretPos;
+	let pFromC = Math.round(caretPos / screenCenter * 100) / 100;
+	if (pFromC < 1) {
+	} else if (pFromC > 1) {
+		pFromC -= 2;
+		pFromC = Math.abs(pFromC);
+	}
+
+	eyeDistH = -dFromC * 0.05;
+	if (eyeDistH > eyeMaxHorizD) {
+		eyeDistH = eyeMaxHorizD;
+	} else if (eyeDistH < -eyeMaxHorizD) {
+		eyeDistH = -eyeMaxHorizD;
+	}
+
+	let eyeLCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
+	let eyeRCoords = { x: svgCoords.x + 104, y: svgCoords.y - 106 };
+	let noseCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
+	let mouthCoords = { x: svgCoords.x + 100, y: svgCoords.y + 100 };
+	let eyeLAngle = getAngle(
+		eyeLCoords.x,
+		eyeLCoords.y,
+		nameCoords.x + caretCoords.x,
+		nameCoords.y + 5
+	);
+	let eyeLX = Math.cos(eyeLAngle) * eyeMaxHorizD;
+	let eyeLY = Math.sin(eyeLAngle) * eyeMaxVertD;
+	let eyeRAngle = getAngle(
+		eyeRCoords.x,
+		eyeRCoords.y,
+		nameCoords.x + caretCoords.x,
+		nameCoords.y + 5
+	);
+	let eyeRX = Math.cos(eyeRAngle) * eyeMaxHorizD;
+	let eyeRY = Math.sin(eyeRAngle) * eyeMaxVertD;
+	let noseAngle = getAngle(
+		noseCoords.x,
+		noseCoords.y,
+		nameCoords.x + caretCoords.x,
+		nameCoords.y
+	);
+	let noseX = Math.cos(noseAngle) * noseMaxHorizD;
+	let noseY = Math.sin(noseAngle) * noseMaxVertD;
+	let mouthAngle = getAngle(
+		mouthCoords.x,
+		mouthCoords.y,
+		nameCoords.x + caretCoords.x,
+		nameCoords.y + 25
+	);
+	let mouthX = Math.cos(mouthAngle) * noseMaxHorizD;
+	let mouthY = Math.sin(mouthAngle) * noseMaxVertD;
+	let mouthR = Math.cos(mouthAngle) * 6;
+	let chinX = mouthX * 0.8;
+	let chinY = mouthY * 0.5;
+	let chinS = 1 - dFromC * 0.15 / 100;
+	if (chinS > 1) {
+		chinS = 1 - (chinS - 1);
+	}
+	let faceX = mouthX * 0.3;
+	let faceY = mouthY * 0.4;
+	let faceSkew = Math.cos(mouthAngle) * 5;
 
 	TweenMax.to(eyeL, 1, {
 	    x: -eyeLX,
@@ -154,6 +268,10 @@ function getCoord(e) {
 function onEmailInput(e) {
 	getCoord(e);
 }
+    
+function onNameInput(e) {
+	getCoordName(e);
+}
 
 function onEmailFocus(e) {
 	e.target.parentElement.classList.add("focusWithText");
@@ -176,15 +294,15 @@ function onPasswordBlur(e) {
 }
 
 function coverEyes() {
-	TweenMax.to(armL, 0.45, { x: -63, y: 52, rotation: -15, ease: Quad.easeOut });
-	TweenMax.to(armR, 0.45, { x: 73, y: 52, rotation: 15, ease: Quad.easeOut, delay: 0.1 });
+	TweenMax.to(armL, 0.45, { x: -60, y: 55, rotation: -15, ease: Quad.easeOut });
+	TweenMax.to(armR, 0.45, { x: 83, y: 10, rotation: 15, ease: Quad.easeOut, delay: 0.1 });
 }
 
 function uncoverEyes() {
 	TweenMax.to(armL, 1.35, { y: 220, ease: Quad.easeOut });
 	TweenMax.to(armL, 1.35, { rotation: 105, ease: Quad.easeOut, delay: 0.1 });
-	TweenMax.to(armR, 1.35, { y: 220, ease: Quad.easeOut });
-	TweenMax.to(armR, 1.35, { rotation: -105, ease: Quad.easeOut, delay: 0.1 });
+	TweenMax.to(armR, 1.35, { y: 400, ease: Quad.easeOut });
+	TweenMax.to(armR, 1.35, { rotation: -85, ease: Quad.easeOut, delay: 0.1 });
 }
 
 function resetFace() {
@@ -195,19 +313,19 @@ function resetFace() {
 }
 
 function getAngle(x1, y1, x2, y2) {
-	var angle = Math.atan2(y1 - y2, x1 - x2);
+	let angle = Math.atan2(y1 - y2, x1 - x2);
 	return angle;
 }
 
 function getPosition(el) {
-	var xPos = 0;
-	var yPos = 0;
+	let xPos = 0;
+	let yPos = 0;
 
 	while (el) {
 		if (el.tagName == "BODY") {
 			// deal with browser quirks with body/window/document and page scroll
-			var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-			var yScroll = el.scrollTop || document.documentElement.scrollTop;
+			let xScroll = el.scrollLeft || document.documentElement.scrollLeft;
+			let yScroll = el.scrollTop || document.documentElement.scrollTop;
 
 			xPos += el.offsetLeft - xScroll + el.clientLeft;
 			yPos += el.offsetTop - yScroll + el.clientTop;
@@ -230,15 +348,30 @@ email.addEventListener("blur", onEmailBlur);
 email.addEventListener("input", onEmailInput);
 password.addEventListener("focus", onPasswordFocus);
 password.addEventListener("blur", onPasswordBlur);
-TweenMax.set(armL, {
-	x: -80,
-	y: 220,
-	rotation: 105,
-	transformOrigin: "top left"
-});
-TweenMax.set(armR, {
-	x: 80,
-	y: 220,
-	rotation: -105,
-	transformOrigin: "top right"
-});
+    
+  if(name, pswRepeat, pswStore){
+    name.addEventListener("focus", onEmailFocus);
+    name.addEventListener("blur", onEmailBlur);
+    name.addEventListener("input", onNameInput);
+
+    pswRepeat.addEventListener("focus", onPasswordFocus);
+    pswRepeat.addEventListener("blur", onPasswordBlur);
+
+    pswStore.addEventListener("focus", onPasswordFocus);
+    pswStore.addEventListener("blur", onPasswordBlur);
+  };
+    
+        TweenMax.set(armL, {
+            x: -120,
+            y: 220,
+            rotation: 105,
+            transformOrigin: "top left"
+        });
+        TweenMax.set(armR, {
+            x: 280,
+            y: 410,
+            rotation: -105,
+            transformOrigin: "top right"
+        });
+};
+

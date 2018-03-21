@@ -1,12 +1,12 @@
-import './login.css';
+import '../css/login.css';
 
-import { Component } from '../../Facepalm';
-import { bindAll, toHtml } from '../../utils';
-import { AUTH_SERVICE } from '../../auth/login.service';
+import { Component } from '../Facepalm';
+import { bindAll, toHtml } from '../utils';
+import { anim } from '../utils/login';
+import { AUTH_SERVICE } from '../auth/login.service';
 
-import Header from '.././Header';
-import Footer from '.././Footer';
-
+import Header from './Header';
+import Footer from './Footer';
 
 class Login extends Component {
    constructor(props) {
@@ -61,17 +61,8 @@ class Login extends Component {
     
     render() {
         console.log('auth-servise:', AUTH_SERVICE.isAuthorized());
-        
-//<form id="login-form" class="form"><div class="avatar"><img src="" alt="Avatar" class="avatar"</div>
-//            <input type="text" placeholder="Username" name="uname" required>
-//            <input type="password" placeholder="Password" name="psw" required>
-//
-//            <button type="submit" id="login">Login</button>
-//            <span class="error-text"></span>
-//            <a href="#/singup">Sign Up</a>
-//            </form>
         const html = `
-<div class="form-container">
+<main class="form-container">
     <form id="login-form">
         <div class="svgContainer">
             <div>
@@ -89,7 +80,7 @@ class Login extends Component {
                     <path fill="#3f8257" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m101.166667,24c47,1 36,37 39,44c7,3 18,10 19,20c0,13 -14,36 -56,37c-45,-1 -64,-22 -64,-34c0,-12 9,-22 16,-24c4,-9 -3,-46 46,-43z" id="svg_3" stroke="#000000" />
                     <path fill="#bc932f" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m93.5,202.800003c87,-0.512416 88,23.313751 85,-27.670496c-2,-53.984248 -166,-44.934581 -165,2.049666c2,61.984248 80,25.62083 80,25.62083z" id="svg_10" stroke="#000000" />
                     <path fill="none" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" id="svg_18" d="m56.585036,169.846772c3.880963,3.117333 47.745945,8.281167 80.6968,19.428001" transform="rotate(73.85203552246094 96.93343353271482,179.5607604980469) " stroke="#000000" />
-                    <path id="svg_1" d="m55.7,67.466666c30.5,15.5 60,16 84,1.5c1,-7.5 1.21447,-14.286511 -1.500061,-22.286511c-32.611792,-6.982082 -47.541912,-5.737666 -78.785531,-1.142795c-4.357387,9.231837 -3.714408,17.679306 -3.714408,21.929306z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" stroke="#000000" fill="#865ca4" />
+                    <path id="svg_1" d="m55.7,67.466666c30.5,15.5 60,16 84,1.5c1,-7.5 1.21447,-14.286511 -1.500061,-22.286511c-32.611792,-6.982082 -47.541912,-5.737666 -78.785531,-1.142795c-4.357387,9.231837 -3.714408,17.679306 -3.714408,21.929306z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" stroke="#000000" fill="#d89c51" />
                     <ellipse stroke="#000000" fill="#ffffff" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="80.938897" cy="60.516516" id="svg_2" rx="8.41225" ry="12.768682" transform="rotate(4.116649627685547 80.93889617919923,60.51651382446277) " />
                     <ellipse stroke="#000000" id="svg_4" fill="#ffffff" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="119.512824" cy="60.777538" rx="8.23053" ry="12.768682" transform="rotate(-1.426543116569519 119.5128250122059,60.77753829956045) " />
                 </g>  
@@ -136,14 +127,11 @@ class Login extends Component {
         </div>
 
         <div class="inputGroup inputGroup1">
-            <label for="email1">Email</label>
-            <input type="text" id="email" class="email" name="uname" required maxlength="50" />
-            <p class="helper helper1">email@pizza.com</p>
+            <input type="text" placeholder="Enter Name" id="name" name="uname" required maxlength="50" />
             <span class="indicator"></span>
         </div>
         <div class="inputGroup inputGroup2">
-            <label for="password">Password</label>
-            <input type="password" id="password" class="password" name="psw" required />
+            <input type="password" placeholder="Enter Password" id="password" class="password" name="psw" required />
         </div>
         <span class="error-text"></span>
 
@@ -151,16 +139,27 @@ class Login extends Component {
             <button id="login">Log in</button>
         </div>
     </form>
-</div>
+</main>
 `;
         const form = toHtml(html);
+        const email = form.querySelector("#name"),
+              password = form.querySelector("#password"),
+              mySVG = form.querySelector(".svgContainer"),
+                armL = form.querySelector(".armL"),
+                armR = form.querySelector(".armR"),
+                eyeL = form.querySelector(".eyeL"),
+                eyeR = form.querySelector(".eyeR"),
+                nose = form.querySelector(".nose"),
+                mouth = form.querySelector(".mouth"),
+                mouthBG = form.querySelector(".mouthBG"),
+                chin = form.querySelector(".chin"),
+                face = form.querySelector(".face");
+        anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face); 
         return [
             this.header.update(),
             form,
             this.footer.update(),
                 ]
-//        <a href="#">MAIN</a>`;
-//            <label for="psw"><b>Password</b></label>
     }
 }
 export default Login;
