@@ -37,7 +37,7 @@ class Header extends Component {
         </a>
         <a href="#/login"class="btn login">
             <span class="green-white"><img src="img/green-ninja-turtle.png" alt="ninja turtle face"></span>
-            login
+            <span class="innerLogin">login</span>
         </a>`;
         const header = toHtml(html);
         const clock = header.getElementById('clock');

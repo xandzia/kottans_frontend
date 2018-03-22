@@ -6,9 +6,18 @@ html {
 }
 body {
     position: relative;
-    min-height: 100%;
+    height: 100%;
     color: $font;
     font-family: $font-stack;
+}
+#root .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.form-container {
+    flex: 1 0 auto;
+    min-height: 200px;
 }
 /************************   HEADER   ************************/
 .hidden-header{
@@ -21,6 +30,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex: 0 0  auto;
     justify-content: space-between;
     align-items: center;
     background-color: $header-background;
@@ -32,26 +42,28 @@ body {
 }
 .btn {
     border: none;
-    border-radius: 3px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
-    color: $header-background;
+    border-radius: 4px;
+//    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+    color: white;
     font-weight: 600;
     text-transform: capitalize;
     cursor: pointer;
     text-decoration: none;
-    background-color: white;
+    background-color: $header-background;
+    border: 1px solid #ffffff;
     display: flex;
     align-items: center;
     padding: 10px 30px;
     margin-bottom: 15px;
-    &:hover,
-    &:focus{
-        background-color: $active-red;
-        box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
-        color: white;
+    transition: background-color .2s ease-out;
         .green-white img {
             right: 25px;
         }
+    &:hover,
+    &:focus{
+        background-color: #79CE97;
+//        box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+        color: white;
     }
     .green-white {
         margin-right: 10px;
@@ -142,15 +154,12 @@ main {
 /************************   FOOTER   ************************/
 .footer {
     display: flex;
+    flex: 0 0 auto;
     flex-direction: row;
     justify-content: space-between;
     padding: 2em 30px;
     background: $footer-background;
     background-image: url(../img/texture.png);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
     address {
         a {
             color: #fff;
@@ -181,29 +190,65 @@ main {
     }
 }
 /************************   MEDIA   ************************/
-@media all and (max-width: 560px) {
+@media all and (max-width: 537px) {
+    .innerLogin{
+        display: none;
+    }
     .header-top {
-        flex-direction: column-reverse;
+        flex-direction: column;
+        position: relative;
+        padding-left: 10px;
+        padding-right: 10px;
+        .login{
+            padding: 10px;
+            order: 2;
+            position: absolute;
+            right: 10px;
+        }
+        .logo{
+            order: 3;
+            width: 120px;
+            margin: 0 auto;
+        }
+    .btn .green-white {
+        margin: 0;
+    }
+    }
+    #login-form .svgContainer {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 35px;
+    }
+    main .form-container {
+        height: 300px;
+    }
+    #login-form{
+        padding: 10px;
+        transform: translate(-50%, -155px);
     }
     .clock {
         text-align: center;
+        order: 1;
+        font-size: 1.2em;
     }
     .pizzas {
         margin-bottom: 20px;
     }
     .footer {
         padding: 1.7em 10px;
-        position: relative;
+        flex-direction: column;
     }
-    address {
+    .footer address {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
         .tel {
-            position: absolute;
-            left: 35%;
-            bottom: 10%;
-            
+            margin-left: auto;
         }
     }
 }
+//@media all and (max-width: 360px) {
+//    #login-form {
+//        
+//    }
+//}

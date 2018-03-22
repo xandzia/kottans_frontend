@@ -13,6 +13,7 @@ class Login extends Component {
        super(props);
               
        this.host = document.createElement('div');
+       this.host.classList.add('wrapper');
        
        this.header = new Header();
        this.footer = new Footer();
