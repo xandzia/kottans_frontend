@@ -3,79 +3,90 @@ import { bindAll, isEqualPaths, extractUrlParams } from '../utils';
 import { AUTH_SERVICE } from '../auth/login.service';
 
 class Router extends Component {
-  constructor(props) {
-    super(props);
-      
-      const { routes, host } = this.props;
+    constructor(props) {
+        super(props);
 
-      this.state = {
-          routes,
-          currentRoute: null,
-          currentComponent: null,
-          access: null,
-      };
-      
-    this.host = host;
-      
-    bindAll(this, 'handleUrlChange');
-//    bindAll(this, 'handleLogin');
+        const {
+            routes,
+            host
+        } = this.props;
 
-    window.addEventListener('hashchange', () =>
-      this.handleUrlChange(this.path)
-    );
+        this.state = {
+            routes,
+            currentRoute: null,
+            currentComponent: null,
+            access: null,
+        };
 
-    this.handleUrlChange(this.path);
-      
-  }
+        this.host = host;
 
-  get path() {
-    return window.location.hash.slice(1);
-  }
+        bindAll(this, 'handleUrlChange');
+        //    bindAll(this, 'handleLogin');
 
-  handleUrlChange(path) {
-    const { routes, currentRoute } = this.state;
-    let auth = AUTH_SERVICE.isAuthorized();
-      
-    const nextRoute = routes.find(({ href }) =>
-        isEqualPaths(href, this.path),
-//            href === this.path
-    );
-            
-      if(nextRoute && nextRoute !== currentRoute) {
-          
-          if (nextRoute.onEnter) {
-             nextRoute.onEnter(this.handleRedirect, auth );
-          }
-          if (nextRoute.redirectTo) {
-            return this.handleRedirect(nextRoute.redirectTo);
-          }
-          
-          this.updateState({
-              activeComponent: new nextRoute.component(),
-              currentRoute: nextRoute,
-          })
-      }
-  }
+        window.addEventListener('hashchange', () =>
+            this.handleUrlChange(this.path)
+        );
 
-  handleRedirect(url) {
-    window.location.hash = url;
-  }
-    
-//  handleLogin(success) {
-//    this.updateState({ success });
-//      this.state.access = success;
-//  }
-    
-  render() {
-    const { activeComponent, currentRoute, access } = this.state;
-      
-    return activeComponent.update({
-        params: extractUrlParams(currentRoute.href, this.path),
-//        user: this.handleLogin,
-//        access: access,
-    });
-  }
+        this.handleUrlChange(this.path);
+
+    }
+
+    get path() {
+        return window.location.hash.slice(1);
+    }
+
+    handleUrlChange(path) {
+        const {
+            routes,
+            currentRoute
+        } = this.state;
+        let auth = AUTH_SERVICE.isAuthorized();
+
+        const nextRoute = routes.find(({
+                href
+            }) =>
+            isEqualPaths(href, this.path),
+            //            href === this.path
+        );
+
+        if (nextRoute && nextRoute !== currentRoute) {
+
+            if (nextRoute.onEnter) {
+                nextRoute.onEnter(this.handleRedirect, auth);
+            }
+            if (nextRoute.redirectTo) {
+                return this.handleRedirect(nextRoute.redirectTo);
+            }
+
+            this.updateState({
+                activeComponent: new nextRoute.component(),
+                currentRoute: nextRoute,
+            })
+        }
+    }
+
+    handleRedirect(url) {
+        window.location.hash = url;
+    }
+
+    //  handleLogin(success) {
+    //    this.updateState({ success });
+    //      this.state.access = success;
+    //  }
+
+    render() {
+        const {
+            activeComponent,
+            currentRoute,
+            access
+        } = this.state;
+
+        return activeComponent.update({
+            params: extractUrlParams(currentRoute.href, this.path),
+            //        user: this.handleLogin,
+            //        access: access,
+        });
+    }
 }
 
 export default Router;
-

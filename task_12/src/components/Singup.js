@@ -10,35 +10,40 @@ import Footer from './Footer';
 class Singup extends Component {
     constructor(props) {
         super(props);
-        
+        this.state = {
+            link: "login",
+            span: "login"
+        }
+
         this.host = document.createElement('div');
-        
+        this.host.classList.add('wrapper');
+
         this.header = new Header();
         this.footer = new Footer();
 
         bindAll(this, 'handleSubmit');
-        this.host.addEventListener('submit', this.handleSubmit );
-   }
-    
+        this.host.addEventListener('submit', this.handleSubmit);
+    }
+
     storeList() {
         return fetch("https://pizza-tele.ga/api/v1/store/list")
-        .then(res => {
-            return res.json()
-        })
-        .catch(e => {
-            console.log(e)
-        });
+            .then(res => {
+                return res.json()
+            })
+            .catch(e => {
+                console.log(e)
+            });
     }
-    
+
     handleSubmit(ev) {
         ev.preventDefault();
 
         const store = document.getElementById("select");
         const storeValue = document.getElementById("select").value;
         const id = store.options[store.selectedIndex].id;
-        
+
         console.log('store:', storeValue);
-//        window.location.hash = '#/user';
+        //        window.location.hash = '#/user';
         const userData = {
             username: event.target.uname.value.trim(),
             password: event.target.psw.value.trim(),
@@ -46,31 +51,32 @@ class Singup extends Component {
             email: event.target.email.value.trim(),
             store_id: Number(id),
             store_password: event.target.storePsw.value.trim(),
-            
+
         };
         console.log(userData);
-        
+
         AUTH_SERVICE.singup(userData)
             .then(result => {
-                window.location.hash = '#/user';
-                console.log(AUTH_SERVICE.token);
-            },
-            status => {
-                if (data.status === 400) {
-                    document.querySelector('.error-text').textContent = data.answer.error;
+                    window.location.hash = '#/user';
+                    console.log(AUTH_SERVICE.token);
+                },
+                status => {
+                    if (data.status === 400) {
+                        document.querySelector('.error-text').textContent = data.answer.error;
+                    }
+                    console.log(status);
                 }
-                console.log(status);
-            }
             )
             .catch(err => {
                 console.log(err);
             })
     }
-    
+
     render() {
-                const html = `
-<main class="form-container">
-    <form>
+        const { link, span } = this.state;
+        const html = `
+<main id="singup-container">
+    <form class="form">
         <div class="svgContainer">
             <div>
                 <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -152,36 +158,36 @@ class Singup extends Component {
 
         <span class="error-text"></span>
         <div class="inputGroup inputGroup3">
-            <button type="submit" class="signupbtn" id="singUp">Sign Up</button>
+            <button type="submit" class="button" id="singUp">Sign Up</button>
         </div>
     </form>
 </main>
 `;
-        
+
         const form = toHtml(html);
-        
+
         const email = form.querySelector("#email"),
-              password = form.querySelector("#pswdSingup"),
-              mySVG = form.querySelector(".svgContainer"),
-                name = form.querySelector("#name"),
-                pswRepeat = form.querySelector("#pswRepeat"),
-                pswStore = form.querySelector("#pswStore"),
-                armL = form.querySelector(".armL"),
-                armR = form.querySelector(".armR"),
-                eyeL = form.querySelector(".eyeL"),
-                eyeR = form.querySelector(".eyeR"),
-                nose = form.querySelector(".nose"),
-                mouth = form.querySelector(".mouth"),
-                mouthBG = form.querySelector(".mouthBG"),
-                chin = form.querySelector(".chin"),
-                face = form.querySelector(".face");
+            password = form.querySelector("#pswdSingup"),
+            mySVG = form.querySelector(".svgContainer"),
+            name = form.querySelector("#name"),
+            pswRepeat = form.querySelector("#pswRepeat"),
+            pswStore = form.querySelector("#pswStore"),
+            armL = form.querySelector(".armL"),
+            armR = form.querySelector(".armR"),
+            eyeL = form.querySelector(".eyeL"),
+            eyeR = form.querySelector(".eyeR"),
+            nose = form.querySelector(".nose"),
+            mouth = form.querySelector(".mouth"),
+            mouthBG = form.querySelector(".mouthBG"),
+            chin = form.querySelector(".chin"),
+            face = form.querySelector(".face");
         anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore);
-        
-        const storeList = form.getElementById('select');  
+
+        const storeList = form.getElementById('select');
         let a = this.storeList();
-        a.then (list => {
+        a.then(list => {
             const arr = [];
-            for (let i=0; i<list.length; i++) {
+            for (let i = 0; i < list.length; i++) {
                 const store = `<option id="${list[i].id}">${list[i].name}</option>`;
                 arr.push(store);
             }
@@ -189,7 +195,7 @@ class Singup extends Component {
             return storeList;
         })
         return [
-            this.header.update(),
+            this.header.update({ link, span }),
             form,
             this.footer.update(),
         ];

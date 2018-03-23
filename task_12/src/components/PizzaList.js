@@ -1,15 +1,15 @@
 import { Component } from '../Facepalm';
 
 class PizzaList extends Component {
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
 
-		this.host = document.createElement('section');
+        this.host = document.createElement('section');
         this.host.classList.add('pizzas');
 
-	}
+    }
 
-	render() {
+    render() {
         const arr = [];
         for (let i = 1; i < 13; i++) {
             const sect = `<figure class="pizza" aria-label="pizza_ninja" tabindex=0>
@@ -25,10 +25,10 @@ class PizzaList extends Component {
                         </div>
                         </figcaption>
                     </figure>`;
-        arr.push(sect);
+            arr.push(sect);
         }
         return arr;
-	}
+    }
 }
 
 export default PizzaList;

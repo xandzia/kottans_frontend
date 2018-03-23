@@ -12,30 +12,29 @@ import Footer from './Footer';
 import { bindAll } from '../utils';
 
 class App extends Component {
-   constructor(props) {
-       super(props);
-       
-       this.host = document.createElement('div');
-       this.host.classList.add('app-container');
+    constructor(props) {
+        super(props);
 
-       this.header = new Header();
-       this.main = new Main();
-       this.footer = new Footer();
+        this.host = document.createElement('div');
+        this.host.classList.add('app-container');
 
-   }
-    
-    onBeforeUpdate(nextProps) {
+        this.header = new Header();
+        this.main = new Main();
+        this.footer = new Footer();
+
     }
-    
+
+    onBeforeUpdate(nextProps) {}
+
     render() {
-//        console.log(this.props);
+        //        console.log(this.props);
         return [
             this.header.update(),
 			this.main.update(),
 			this.footer.update(),
         ];
-//                `<div class="main"><h1>Hello ${this.props.username}</h1>
-//                <a href="#login">LOG OUT</a></div>`;
+        //                `<div class="main"><h1>Hello ${this.props.username}</h1>
+        //                <a href="#login">LOG OUT</a></div>`;
     }
 
 }

@@ -9,62 +9,72 @@ import Header from './Header';
 import Footer from './Footer';
 
 class Login extends Component {
-   constructor(props) {
-       super(props);
-              
-       this.host = document.createElement('div');
-       this.host.classList.add('wrapper');
-       
-       this.header = new Header();
-       this.footer = new Footer();
-       
-       bindAll(this, 'handleSubmit');
-       this.host.addEventListener('submit', this.handleSubmit );
-       this.host.addEventListener('click', this.handleFocus );
-   }
-    
+    constructor(props) {
+        super(props);
+        this.state = {
+            link: "singup",
+            span: "singup"
+        }
+
+        this.host = document.createElement('div');
+        this.host.classList.add('wrapper');
+
+        this.header = new Header({
+//            link: this.state.link,
+        });
+        this.footer = new Footer();
+
+        bindAll(this, 'handleSubmit');
+        this.host.addEventListener('submit', this.handleSubmit);
+        this.host.addEventListener('click', this.handleFocus);
+    }
+
     handleSubmit(ev) {
         ev.preventDefault();
-        
-                
+
+
         const username = event.target.uname.value.trim();
         const password = event.target.psw.value.trim();
-        AUTH_SERVICE.login({username, password})
+        AUTH_SERVICE.login({
+                username,
+                password
+            })
             .then(result => {
-//            V1
-//                const success = result.answer.success;
-//                this.props.user(success);
-//                console.log('success', result.answer.success);
-                window.location.hash = '#/user';
-//            V1
-                console.log(AUTH_SERVICE.token);
-                console.log(AUTH_SERVICE.claims);
-            },
-            data => {
-                if (data.status === 400) {
-                    document.querySelector('.error-text').textContent = data.answer.error;
+                    //            V1
+                    //                const success = result.answer.success;
+                    //                this.props.user(success);
+                    //                console.log('success', result.answer.success);
+                    window.location.hash = '#/user';
+                    //            V1
+                    console.log(AUTH_SERVICE.token);
+                    console.log(AUTH_SERVICE.claims);
+                },
+                data => {
+                    if (data.status === 400) {
+                        document.querySelector('.error-text').textContent = data.answer.error;
+                    }
+                    //            V1
+                    //                const success = status.answer.success;
+                    //                this.props.user(success);
+                    //                console.log('success', status.answer.success);
+                    //            V1
                 }
-//            V1
-//                const success = status.answer.success;
-//                this.props.user(success);
-//                console.log('success', status.answer.success);
-//            V1
-            }
             )
             .catch(err => {
                 console.log("err", err);
             })
     }
-    
+
     handleFocus(ev) {
         document.querySelector('.error-text').textContent = '';
     }
-    
+
     render() {
         console.log('auth-servise:', AUTH_SERVICE.isAuthorized());
+        const { link, span } = this.state;
         const html = `
-<main class="form-container">
-    <form id="login-form">
+<main id="login-container">
+    <form class="form">
         <div class="svgContainer">
             <div>
                 <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -137,27 +147,28 @@ class Login extends Component {
         <span class="error-text"></span>
 
         <div class="inputGroup inputGroup3">
-            <button id="login">Log in</button>
+            <button class="button" id="login">Log in</button>
         </div>
     </form>
 </main>
 `;
         const form = toHtml(html);
         const email = form.querySelector("#name"),
-              password = form.querySelector("#password"),
-              mySVG = form.querySelector(".svgContainer"),
-                armL = form.querySelector(".armL"),
-                armR = form.querySelector(".armR"),
-                eyeL = form.querySelector(".eyeL"),
-                eyeR = form.querySelector(".eyeR"),
-                nose = form.querySelector(".nose"),
-                mouth = form.querySelector(".mouth"),
-                mouthBG = form.querySelector(".mouthBG"),
-                chin = form.querySelector(".chin"),
-                face = form.querySelector(".face");
-        anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face); 
+            password = form.querySelector("#password"),
+            mySVG = form.querySelector(".svgContainer"),
+            armL = form.querySelector(".armL"),
+            armR = form.querySelector(".armR"),
+            eyeL = form.querySelector(".eyeL"),
+            eyeR = form.querySelector(".eyeR"),
+            nose = form.querySelector(".nose"),
+            mouth = form.querySelector(".mouth"),
+            mouthBG = form.querySelector(".mouthBG"),
+            chin = form.querySelector(".chin"),
+            face = form.querySelector(".face");
+        anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face);
+        
         return [
-            this.header.update(),
+            this.header.update({ link, span }),
             form,
             this.footer.update(),
                 ]

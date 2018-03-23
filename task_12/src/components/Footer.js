@@ -2,15 +2,15 @@ import { Component } from '../Facepalm';
 import { toHtml } from '../utils/index';
 
 class Footer extends Component {
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
 
-		this.host = document.createElement('footer');
-		this.host.classList.add('footer');
-        
-	}
+        this.host = document.createElement('footer');
+        this.host.classList.add('footer');
 
-	render() {
+    }
+
+    render() {
         const html = `<address>
                         <a class="org" href="#">Kottans,</a>
                         <a class="map" href="#">Kottans Str.1</a>
@@ -20,7 +20,7 @@ class Footer extends Component {
         const footer = toHtml(html);
 
         return footer;
-	}
+    }
 }
 
 export default Footer;
