@@ -12,16 +12,14 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            link: "singup",
-            span: "singup"
+            link: "signup",
+            span: "sign up"
         }
 
         this.host = document.createElement('div');
         this.host.classList.add('wrapper');
 
-        this.header = new Header({
-//            link: this.state.link,
-        });
+        this.header = new Header();
         this.footer = new Footer();
 
         bindAll(this, 'handleSubmit');
@@ -32,7 +30,6 @@ class Login extends Component {
     handleSubmit(ev) {
         ev.preventDefault();
 
-
         const username = event.target.uname.value.trim();
         const password = event.target.psw.value.trim();
         AUTH_SERVICE.login({
@@ -40,12 +37,7 @@ class Login extends Component {
                 password
             })
             .then(result => {
-                    //            V1
-                    //                const success = result.answer.success;
-                    //                this.props.user(success);
-                    //                console.log('success', result.answer.success);
                     window.location.hash = '#/user';
-                    //            V1
                     console.log(AUTH_SERVICE.token);
                     console.log(AUTH_SERVICE.claims);
                 },
@@ -53,11 +45,6 @@ class Login extends Component {
                     if (data.status === 400) {
                         document.querySelector('.error-text').textContent = data.answer.error;
                     }
-                    //            V1
-                    //                const success = status.answer.success;
-                    //                this.props.user(success);
-                    //                console.log('success', status.answer.success);
-                    //            V1
                 }
             )
             .catch(err => {
@@ -144,9 +131,9 @@ class Login extends Component {
         <div class="inputGroup inputGroup2">
             <input type="password" placeholder="Enter Password" id="password" class="password" name="psw" required />
         </div>
-        <span class="error-text"></span>
 
         <div class="inputGroup inputGroup3">
+            <span class="error-text"></span>
             <button class="button" id="login">Log in</button>
         </div>
     </form>

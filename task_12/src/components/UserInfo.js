@@ -4,6 +4,7 @@ import Header from './Header';
 import User from './User';
 import Footer from './Footer';
 import { AUTH_HTTP } from '../auth/http.service.js'
+import { AUTH_SERVICE } from '../auth/login.service.js'
 
 class UserInfo extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class UserInfo extends Component {
         this.state = {
             userData: null,
             link: "user",
-            span: null,
+            span: "user",
         }
 
         this.host = document.createElement('div');
@@ -23,13 +24,17 @@ class UserInfo extends Component {
         this.footer = new Footer();
 
         this.getUserData();
+        this.setUserName();
+    }
+    
+    setUserName(){
+        this.state.span = AUTH_SERVICE.claims.username;
     }
 
     getUserData() {
         return AUTH_HTTP.get('https://pizza-tele.ga/api/v1/user/my_info')
             .then(userData => {
                 this.updateState({ userData });
-                this.updateState({ span: userData.username });
             });
     }
 

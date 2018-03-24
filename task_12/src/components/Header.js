@@ -7,9 +7,6 @@ class Header extends Component {
 
         this.host = document.createElement('header');
         this.host.classList.add('header-top');
-
-        //		this.clock = document.createElement('div');
-        //		this.clock.classList.add('clock');
     }
 
     clock(elem) {

@@ -63,7 +63,7 @@ class AuthService {
         })
     }
     
-    singup(userData) {
+    signup(userData) {
         return fetch("https://pizza-tele.ga/api/v1/user/create", {
             method: "POST",
             body: JSON.stringify(userData),
@@ -77,7 +77,9 @@ class AuthService {
                     return Promise.resolve({answer, status: res.status})
                 })
             } else {
-                return res.json().then(answer => Promise.reject({answer, status: res.status}))
+                console.log("no");
+                return res.json().then(answer => 
+                                       Promise.reject({answer, status: res.status}))
             }
 //            throw new Error(`${res.status}`);
         })

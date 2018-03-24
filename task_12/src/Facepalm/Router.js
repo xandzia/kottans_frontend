@@ -15,13 +15,11 @@ class Router extends Component {
             routes,
             currentRoute: null,
             currentComponent: null,
-            access: null,
         };
 
         this.host = host;
 
         bindAll(this, 'handleUrlChange');
-        //    bindAll(this, 'handleLogin');
 
         window.addEventListener('hashchange', () =>
             this.handleUrlChange(this.path)
@@ -46,7 +44,6 @@ class Router extends Component {
                 href
             }) =>
             isEqualPaths(href, this.path),
-            //            href === this.path
         );
 
         if (nextRoute && nextRoute !== currentRoute) {
@@ -69,22 +66,14 @@ class Router extends Component {
         window.location.hash = url;
     }
 
-    //  handleLogin(success) {
-    //    this.updateState({ success });
-    //      this.state.access = success;
-    //  }
-
     render() {
         const {
             activeComponent,
             currentRoute,
-            access
         } = this.state;
 
         return activeComponent.update({
             params: extractUrlParams(currentRoute.href, this.path),
-            //        user: this.handleLogin,
-            //        access: access,
         });
     }
 }

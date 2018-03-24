@@ -7,7 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 
-class Singup extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,9 +43,8 @@ class Singup extends Component {
         const id = store.options[store.selectedIndex].id;
 
         console.log('store:', storeValue);
-        //        window.location.hash = '#/user';
         const userData = {
-            username: event.target.uname.value.trim(),
+            username: event.target.username.value.trim(),
             password: event.target.psw.value.trim(),
             password_repeat: event.target.psw.value.trim(),
             email: event.target.email.value.trim(),
@@ -55,19 +54,20 @@ class Singup extends Component {
         };
         console.log(userData);
 
-        AUTH_SERVICE.singup(userData)
+        AUTH_SERVICE.signup(userData)
             .then(result => {
-                    window.location.hash = '#/user';
-                    console.log(AUTH_SERVICE.token);
+                    document.querySelector('.error-text').textContent = "Registration successful! Please, <a>login</a>";
+                    setTimeout(window.location.hash = '#/user', 3000);
                 },
                 status => {
                     if (data.status === 400) {
                         document.querySelector('.error-text').textContent = data.answer.error;
                     }
-                    console.log(status);
+                    console.log('status',status);
                 }
             )
             .catch(err => {
+                document.querySelector('.error-text').textContent = err;
                 console.log(err);
             })
     }
@@ -75,7 +75,7 @@ class Singup extends Component {
     render() {
         const { link, span } = this.state;
         const html = `
-<main id="singup-container">
+<main id="signup-container">
     <form class="form">
         <div class="svgContainer">
             <div>
@@ -140,11 +140,11 @@ class Singup extends Component {
         </div>
 
         <div class="inputGroup inputGroup1">
-            <input type="text" placeholder="Enter Name" id="name" name="uname" required maxlength="50" />
+            <input type="text" placeholder="Enter Name" id="name" name="username" required maxlength="50" />
             <span class="indicator"></span>
         </div>
         <div class="inputGroup inputGroup2">
-            <input type="password" id="pswdSingup" placeholder="Enter Password" name="psw" required />
+            <input type="password" id="pswdSignup" placeholder="Enter Password" name="psw" required />
         </div>
         <div class="inputGroup inputGroup2">
             <input type="password" id ="pswRepeat" placeholder="Repeat Password" name="pswRepeat" required />
@@ -156,9 +156,9 @@ class Singup extends Component {
         <select id="select"></select>
         <input type="password" id="pswStore" class="inputGroup inputGroup2" placeholder="Store Password" name="storePsw" required>
 
-        <span class="error-text"></span>
         <div class="inputGroup inputGroup3">
-            <button type="submit" class="button" id="singUp">Sign Up</button>
+            <span class="error-text"></span>
+            <button type="submit" class="button" id="signUp">Sign Up</button>
         </div>
     </form>
 </main>
@@ -167,7 +167,7 @@ class Singup extends Component {
         const form = toHtml(html);
 
         const email = form.querySelector("#email"),
-            password = form.querySelector("#pswdSingup"),
+            password = form.querySelector("#pswdSignup"),
             mySVG = form.querySelector(".svgContainer"),
             name = form.querySelector("#name"),
             pswRepeat = form.querySelector("#pswRepeat"),
@@ -203,4 +203,4 @@ class Singup extends Component {
 
 }
 
-export default Singup;
+export default Signup;

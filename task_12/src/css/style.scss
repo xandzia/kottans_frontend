@@ -28,10 +28,12 @@ body {
 }
 
 .header-top {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 0 0 auto;
+    height: 200px;
     justify-content: space-between;
     align-items: center;
     background-color: $header-background;
@@ -41,9 +43,15 @@ body {
         width: 100%;
     }
 }
-
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+}
 .btn {
     border: none;
+    z-index: 1;
     border-radius: 4px;
     //    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
     color: white;
@@ -226,10 +234,16 @@ table {
     }
 }
 
+/************************   ERROR   ************************/
+.error-text {
+    position: absolute;
+    top: -25px;
+    left: 10px;
+}
 /************************   MEDIA   ************************/
 
 @media screen and (orientation: landscape) {
-    #singup-container {
+    #signup-container {
         height: 500px;
     }
 }
@@ -241,6 +255,7 @@ table {
     .header-top {
         flex-direction: column;
         position: relative;
+        height: 153px;
         padding-left: 10px;
         padding-right: 10px;
         .login {
@@ -261,20 +276,20 @@ table {
     .form .svgContainer {
         width: 120px;
         height: 120px;
-        margin-bottom: 35px;
+        margin-bottom: 50px;
     }
     #login-container {
         height: 300px;
     }
-    #singup-container {
+    #signup-container {
         height: 500px;
     }
     .form {
         padding: 10px;
-        transform: translate(-50%, -155px);
+        transform: translate(-50%, -163px);
     }
     .clock {
-        text-align: center;
+        margin-right: auto;
         order: 1;
         font-size: 1.2em;
     }

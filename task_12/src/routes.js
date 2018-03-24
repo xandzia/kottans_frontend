@@ -1,6 +1,6 @@
 import App from './components/App';
 import Login from './components/Login';
-import Singup from './components/Singup';
+import Signup from './components/Signup';
 import UserInfo from './components/UserInfo';
 //import { AUTH_SERVICE } from './store/login.service';
 
@@ -34,8 +34,8 @@ const routes = [
     component: Login,
   },
   {
-    href: '/singup',
-    component: Singup,
+    href: '/signup',
+    component: Signup,
   },
 ];
 

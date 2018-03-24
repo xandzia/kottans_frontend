@@ -5,31 +5,43 @@ import { Component } from '../Facepalm';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-//import Login from './Login';
-//import Singup from './Singup';
-
+import { AUTH_SERVICE } from '../auth/login.service.js'
 
 import { bindAll } from '../utils';
 
 class App extends Component {
     constructor(props) {
         super(props);
-
+        
+        this.state = {
+            link: "user",
+            span: "user",
+        }
+        
         this.host = document.createElement('div');
         this.host.classList.add('app-container');
 
         this.header = new Header();
         this.main = new Main();
         this.footer = new Footer();
+        
+        this.setUserName();
 
     }
+    
+    setUserName(){
+        this.state.span = AUTH_SERVICE.claims.username;
+    }
+
 
     onBeforeUpdate(nextProps) {}
 
     render() {
-        //        console.log(this.props);
+        const { link, span } = this.state;
+        console.log('props',this.props);
+
         return [
-            this.header.update(),
+            this.header.update({ link, span }),
 			this.main.update(),
 			this.footer.update(),
         ];

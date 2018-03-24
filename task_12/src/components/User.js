@@ -33,7 +33,7 @@ class User extends Component {
 				    </tbody>
 			     </table>
                 <div class="btn-group">
-                    <a href="#"><button class="button">PIZZAS</button></a>
+                    <a href="#"><button class="button">Pizzas</button></a>
                     <a href="#/login"><button class="button" data-action="logout">Logout</button></a>
                 </div>`;
         const user = toHtml(html);

@@ -2,8 +2,8 @@ form {
     position: absolute;
     top: 0;
     left: 50%;
-    -webkit-transform: translate(-197px, -244px);
-    transform: translate(-197px, -244px);
+    -webkit-transform: translate(-200px, -244px);
+    transform: translate(-200px, -244px);
     display: block;
     width: 100%;
     max-width: 400px;
@@ -128,7 +128,9 @@ form .inputGroup1 .helper {
     z-index: 1;
     font-family: inherit;
 }
-
+form .inputGroup3 {
+    margin-top: 2em;
+}
 form .inputGroup1 .helper1 {
     top: -50px;
     left: 0;
