@@ -92,7 +92,7 @@ class Login extends Component {
 				</g>
 				<g class="mouth">
                   <path fill="#000000" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m69.78334,99.56667c23.76666,21.2 37.9,16.16667 56,1.66667" id="svg_4" stroke="#000000"/>
-                  <path fill="#ff0000" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" transform="rotate(2.6025829315185547 99.15302276611375,108.19057464599602) " d="m91.86957,108.22686c1.16546,-6.42523 3.28177,-4.89026 7.33333,-4.89026c4.05157,0 6.86033,0.04105 7.33333,4.89026c0.473,4.84921 -6.2976,4.61025 -7.3409,4.72377c-1.04331,0.11353 -8.49122,1.70147 -7.32576,-4.72377z" id="svg_6" stroke="#000000"/>
+                  <path fill="#ea7178" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" transform="rotate(2.6025829315185547 99.15302276611375,108.19057464599602) " d="m91.86957,108.22686c1.16546,-6.42523 3.28177,-4.89026 7.33333,-4.89026c4.05157,0 6.86033,0.04105 7.33333,4.89026c0.473,4.84921 -6.2976,4.61025 -7.3409,4.72377c-1.04331,0.11353 -8.49122,1.70147 -7.32576,-4.72377z" id="svg_6" stroke="#000000"/>
                   <path fill="#3f8257" stroke="#000000" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m56.38333,91.81098c29.9,21.5 54.95,22.8 81.8,1.1" id="svg_5"/>
                   <path stroke="#000000" fill-opacity="0" id="svg_1" d="m54.95,95.82778c0,0 -0.77778,-6.08334 5.77778,-6.11111" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#000000"/>
                   <path transform="rotate(98.99714660644531 136.60739135742188,93.7999954223633) " id="svg_2" stroke="#000000" fill-opacity="0" d="m133.73283,96.85555c0,0 -0.77778,-6.08334 5.77778,-6.11111" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#000000"/>
@@ -129,7 +129,7 @@ class Login extends Component {
             <span class="indicator"></span>
         </div>
         <div class="inputGroup inputGroup2">
-            <input type="password" placeholder="Enter Password" id="password" class="password" name="psw" required />
+            <input type="password" placeholder="Enter Password" id="pswLogin" class="pswLogin" name="psw" readonly onfocus="this.removeAttribute('readonly')" required />
         </div>
 
         <div class="inputGroup inputGroup3">
@@ -141,7 +141,7 @@ class Login extends Component {
 `;
         const form = toHtml(html);
         const email = form.querySelector("#name"),
-            password = form.querySelector("#password"),
+            pswd = form.querySelector("#pswLogin"),
             mySVG = form.querySelector(".svgContainer"),
             armL = form.querySelector(".armL"),
             armR = form.querySelector(".armR"),
@@ -152,7 +152,7 @@ class Login extends Component {
             mouthBG = form.querySelector(".mouthBG"),
             chin = form.querySelector(".chin"),
             face = form.querySelector(".face");
-        anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face);
+        anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face);
         
         return [
             this.header.update({ link, span }),

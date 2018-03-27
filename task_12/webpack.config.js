@@ -10,9 +10,7 @@ const extractPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: ['./index.js',
-//           './src/utils/tweenMax.js'
-           ],
+    entry: ['./index.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',

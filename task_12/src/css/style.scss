@@ -40,12 +40,13 @@ body {
     background-image: url(../img/texture.png);
     padding: 15px 30px 45px 30px;
     img {
-        width: 100%;
+        width: 135%;
     }
 }
 .logo {
     position: absolute;
     top: 50%;
+    margin-left: -28px;
     left: 50%;
     transform: translate(-50%, -58%);
 }
@@ -267,15 +268,18 @@ table {
         .logo {
             order: 3;
             width: 120px;
-            margin: 0 auto;
+            margin-left: -19px;
+            img {
+                width: 130%;
+            }
         }
         .btn .green-white {
             margin: 0;
         }
     }
     .form .svgContainer {
-        width: 120px;
-        height: 120px;
+        width: 145px;
+        height: 145px;
         margin-bottom: 50px;
     }
     #login-container {
@@ -286,7 +290,7 @@ table {
     }
     .form {
         padding: 10px;
-        transform: translate(-50%, -163px);
+        transform: translate(-50%, -179px);
     }
     .clock {
         margin-right: auto;
@@ -299,6 +303,10 @@ table {
     .footer {
         padding: 1.7em 10px;
         flex-direction: column;
+    }
+    a .button{
+        padding: .35em .8em;
+        height: 40px;
     }
     .footer address {
         display: flex;

@@ -31,7 +31,7 @@ class Header extends Component {
             <span id="clock"></span>
         </div>
         <a href="#" class="logo">
-            <img src="img/logo.jpg" alt="pizza and ninja turtle">
+            <img src="img/logo.svg" alt="pizza and ninja turtle">
         </a>
         <a id="link" href="#/${ link }" class="btn login">
             <span class="green-white"><img src="img/green-ninja-turtle.png" alt="ninja turtle face"></span>

@@ -167,7 +167,7 @@ class Signup extends Component {
         const form = toHtml(html);
 
         const email = form.querySelector("#email"),
-            password = form.querySelector("#pswdSignup"),
+            pswd = form.querySelector("#pswdSignup"),
             mySVG = form.querySelector(".svgContainer"),
             name = form.querySelector("#name"),
             pswRepeat = form.querySelector("#pswRepeat"),
@@ -181,7 +181,8 @@ class Signup extends Component {
             mouthBG = form.querySelector(".mouthBG"),
             chin = form.querySelector(".chin"),
             face = form.querySelector(".face");
-        anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore);
+
+        anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore);
 
         const storeList = form.getElementById('select');
         let a = this.storeList();

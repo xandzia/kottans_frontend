@@ -1,4 +1,17 @@
-export function anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore) {
+export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore) {
+    let cover = false;
+    TweenMax.set(armL, {
+        x: -50,
+        y: 220,
+        rotation: 105,
+        transformOrigin: "top left"
+    });
+    TweenMax.set(armR, {
+        x: 250,
+        y: 390,
+        rotation: -105,
+        transformOrigin: "top right"
+    });
     let caretPos,
         curEmailIndex,
         screenCenter,
@@ -317,6 +330,7 @@ export function anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth
     }
 
     function coverEyes() {
+        cover = true;
         TweenMax.to(armL, 0.45, {
             x: -60,
             y: 55,
@@ -330,27 +344,33 @@ export function anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth
             ease: Quad.easeOut,
             delay: 0.1
         });
+        console.log(cover);
     }
+        console.log(cover);
 
     function uncoverEyes() {
-        TweenMax.to(armL, 1.35, {
-            y: 220,
-            ease: Quad.easeOut
-        });
-        TweenMax.to(armL, 1.35, {
-            rotation: 105,
-            ease: Quad.easeOut,
-            delay: 0.1
-        });
-        TweenMax.to(armR, 1.35, {
-            y: 400,
-            ease: Quad.easeOut
-        });
-        TweenMax.to(armR, 1.35, {
-            rotation: -85,
-            ease: Quad.easeOut,
-            delay: 0.1
-        });
+        if (cover = true) {
+            TweenMax.to(armL, 1.35, {
+                y: 220,
+                ease: Quad.easeOut
+            });
+            TweenMax.to(armL, 1.35, {
+                rotation: 105,
+                ease: Quad.easeOut,
+                delay: 0.1
+            });
+            console.log('uncover');
+            TweenMax.to(armR, 1.35, {
+                y: 400,
+                ease: Quad.easeOut
+            });
+            TweenMax.to(armR, 1.35, {
+                rotation: -85,
+                ease: Quad.easeOut,
+                delay: 0.1
+            });
+            cover = false;
+        }
     }
 
     function resetFace() {
@@ -415,8 +435,9 @@ export function anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth
     email.addEventListener("focus", onEmailFocus);
     email.addEventListener("blur", onEmailBlur);
     email.addEventListener("input", onEmailInput);
-    password.addEventListener("focus", onPasswordFocus);
-    password.addEventListener("blur", onPasswordBlur);
+    
+    pswd.addEventListener("focus", onPasswordFocus);
+    pswd.addEventListener("blur", onPasswordBlur);
 
     if (name, pswRepeat, pswStore) {
         name.addEventListener("focus", onEmailFocus);
@@ -430,16 +451,4 @@ export function anim(email, password, mySVG, armL, armR, eyeL, eyeR, nose, mouth
         pswStore.addEventListener("blur", onPasswordBlur);
     };
 
-    TweenMax.set(armL, {
-        x: -120,
-        y: 220,
-        rotation: 105,
-        transformOrigin: "top left"
-    });
-    TweenMax.set(armR, {
-        x: 280,
-        y: 410,
-        rotation: -105,
-        transformOrigin: "top right"
-    });
 };
