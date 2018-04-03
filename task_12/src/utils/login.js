@@ -1,5 +1,4 @@
 export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore) {
-    let cover = false;
     TweenMax.set(armL, {
         x: -50,
         y: 220,
@@ -330,7 +329,6 @@ export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mo
     }
 
     function coverEyes() {
-        cover = true;
         TweenMax.to(armL, 0.45, {
             x: -60,
             y: 55,
@@ -344,12 +342,9 @@ export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mo
             ease: Quad.easeOut,
             delay: 0.1
         });
-        console.log(cover);
     }
-        console.log(cover);
 
     function uncoverEyes() {
-        if (cover = true) {
             TweenMax.to(armL, 1.35, {
                 y: 220,
                 ease: Quad.easeOut
@@ -369,8 +364,6 @@ export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mo
                 ease: Quad.easeOut,
                 delay: 0.1
             });
-            cover = false;
-        }
     }
 
     function resetFace() {
@@ -431,13 +424,13 @@ export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mo
             y: yPos
         };
     }
-
+    
     email.addEventListener("focus", onEmailFocus);
     email.addEventListener("blur", onEmailBlur);
     email.addEventListener("input", onEmailInput);
     
-    pswd.addEventListener("focus", onPasswordFocus);
-    pswd.addEventListener("blur", onPasswordBlur);
+    pswd.addEventListener("focusin", onPasswordFocus);
+    pswd.addEventListener("focusout", onPasswordBlur);
 
     if (name, pswRepeat, pswStore) {
         name.addEventListener("focus", onEmailFocus);
@@ -447,8 +440,8 @@ export function anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mo
         pswRepeat.addEventListener("focus", onPasswordFocus);
         pswRepeat.addEventListener("blur", onPasswordBlur);
 
-        pswStore.addEventListener("focus", onPasswordFocus);
-        pswStore.addEventListener("blur", onPasswordBlur);
+        pswStore.addEventListener("focusin", onPasswordFocus);
+        pswStore.addEventListener("focusout", onPasswordBlur);
     };
 
 };

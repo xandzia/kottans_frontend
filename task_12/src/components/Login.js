@@ -129,7 +129,8 @@ class Login extends Component {
             <span class="indicator"></span>
         </div>
         <div class="inputGroup inputGroup2">
-            <input type="password" placeholder="Enter Password" id="pswLogin" class="pswLogin" name="psw" readonly onfocus="this.removeAttribute('readonly')" required />
+            <input type="password" placeholder="Enter Password" id="pswLogin" class="pswLogin" name="psw" autocomplete="false"
+required />
         </div>
 
         <div class="inputGroup inputGroup3">
@@ -139,6 +140,7 @@ class Login extends Component {
     </form>
 </main>
 `;
+//readonly onfocus="this.removeAttribute('readonly')" 
         const form = toHtml(html);
         const email = form.querySelector("#name"),
             pswd = form.querySelector("#pswLogin"),
