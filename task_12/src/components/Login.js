@@ -13,7 +13,8 @@ class Login extends Component {
         super(props);
         this.state = {
             link: "signup",
-            span: "sign up"
+            span: "sign up",
+            logo: null
         }
 
         this.host = document.createElement('div');
@@ -59,6 +60,7 @@ class Login extends Component {
     render() {
         console.log('auth-servise:', AUTH_SERVICE.isAuthorized());
         const { link, span } = this.state;
+        
         const html = `
 <main id="login-container">
     <form class="form">
@@ -71,7 +73,7 @@ class Login extends Component {
 				<clipPath id="armMask">
 					<use xlink:href="#armMaskPath" overflow="visible"/>
 				</clipPath>
-				<circle cx="100" cy="100" r="100" fill="#3f825726"/>
+				<circle cx="100" cy="100" r="100" fill="white"/>
 				<g class="body">
                     <ellipse fill="#374c01" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="95.333336" cy="147.000001" id="svg_8" rx="104.499999" ry="50.000004" stroke="#000000" />
                     <path fill="#3f8257" stroke="#000000" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m-9,191c14,6 193,10 202,6c9,-4 13,-58 8,-66c-5,-8 -51,0 -60,-15c-9,-15 -14,-25 -14,-25c0,0 -46,0 -46,0c0,0 -14,3 -26,24c-9,15 -54,6 -61,20c-7,14 -3,56 -3,56z" id="svg_5" />
@@ -120,6 +122,7 @@ class Login extends Component {
                        <path stroke="#000000" fill="#e4dab6" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m93.582707,35.117693c0,0 5.665997,26.331379 -2.240045,31.973817c-6.0613,2.552532 18.052131,7.12022 18.262959,6.932139c1.660269,-0.456769 14.415352,-15.933171 3.610426,-34.875643c-11.06846,-5.508095 -18.842736,-4.567688 -19.63334,-4.030313z" id="svg_14"/>
 					</g>				
                 </g>
+            <circle cx="100" cy="100" r="100" fill="transparent" stroke-width="2px" stroke="white"/>
 			</svg>
             </div>
         </div>

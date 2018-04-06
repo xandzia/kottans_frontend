@@ -38,6 +38,10 @@ class Header extends Component {
             <span class="innerLogin">${ span }</span>
         </a>`;
         const header = toHtml(html);
+        
+        const logo = header.querySelector(".logo");
+        console.log("logo", logo);
+        
         const clock = header.getElementById('clock');
         this.clock(clock);
 

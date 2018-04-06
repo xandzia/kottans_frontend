@@ -43,8 +43,8 @@ class AuthService {
         return this.claims.exp * 1000 > Date.now();
     }
     
-    login(userData) {
-        return fetch("https://pizza-tele.ga/api/v1/user/login", {
+    auth(userData, api) {
+        return fetch(api, {
             method: "POST",
             body: JSON.stringify(userData),
             headers: new Headers().append("Content-Type", "application/json")
@@ -59,30 +59,15 @@ class AuthService {
             } else {
                 return res.json().then(answer => Promise.reject({answer, status: res.status}))
             }
-//            throw new Error(`${res.status}`);
         })
     }
     
+    login(userData) {
+        return this.auth(userData, "https://pizza-tele.ga/api/v1/user/login")
+    }
+    
     signup(userData) {
-        return fetch("https://pizza-tele.ga/api/v1/user/create", {
-            method: "POST",
-            body: JSON.stringify(userData),
-            headers: new Headers().append("Content-Type", "application/json")
-        })
-        .then(res => {
-            if(res.ok) {
-                console.log(res);
-                return res.json().then(answer => {
-                    this.token = answer.token;
-                    return Promise.resolve({answer, status: res.status})
-                })
-            } else {
-                console.log("no");
-                return res.json().then(answer => 
-                                       Promise.reject({answer, status: res.status}))
-            }
-//            throw new Error(`${res.status}`);
-        })
+        return this.auth(userData, "https://pizza-tele.ga/api/v1/user/create")
     }
     
     parseJwtClaims(jwtToken) {
