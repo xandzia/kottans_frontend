@@ -1,5 +1,7 @@
 import App from './components/App';
+import NoAuth from './components/NoAuth';
 import Login from './components/Login';
+import PizzaCreate from './components/PizzaCreate';
 import Signup from './components/Signup';
 import UserInfo from './components/UserInfo';
 //import { AUTH_SERVICE } from './store/login.service';
@@ -7,11 +9,19 @@ import UserInfo from './components/UserInfo';
 
 const routes = [
   {
+    href: '/pizzas',
+    component: NoAuth,
+  },
+  {
+    href: '/createpizza',
+    component: PizzaCreate,
+  },
+  {
     href: '',
     component: App,
     onEnter: ( handleRedirect, auth ) => {
         if (auth != true) {
-            handleRedirect('/login');
+            handleRedirect('/pizzas');
             return;
         } else 
             return false;

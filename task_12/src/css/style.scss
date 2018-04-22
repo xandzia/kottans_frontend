@@ -50,6 +50,9 @@ body {
     left: 50%;
     transform: translate(-50%, -58%);
 }
+.addBtn {
+    text-decoration: none;    
+}
 .btn {
     border: none;
     z-index: 1;
@@ -277,20 +280,20 @@ table {
             margin: 0;
         }
     }
-    .form .svgContainer {
-        width: 145px;
-        height: 145px;
-        margin-bottom: 50px;
-    }
     #login-container {
         height: 300px;
-    }
-    #signup-container {
-        height: 500px;
-    }
-    .form {
-        padding: 10px;
-        transform: translate(-50%, -179px);
+        .form .svgContainer {
+            width: 145px;
+            height: 145px;
+            margin-bottom: 50px;
+        }
+        #signup-container {
+            height: 500px;
+        }
+        .form {
+            padding: 10px;
+            transform: translate(-50%, -179px);
+        }
     }
     .clock {
         margin-right: auto;

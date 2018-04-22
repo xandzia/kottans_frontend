@@ -7,6 +7,7 @@ class AuthHttpService {
 		return fetch(url, {
             method: 'GET',
             headers: new Headers({
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${AUTH_SERVICE.token}`
             })
 		})

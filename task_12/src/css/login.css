@@ -1,4 +1,4 @@
-form {
+.form {
     position: absolute;
     top: 0;
     left: 50%;
@@ -13,7 +13,7 @@ form {
     box-sizing: border-box;
 }
 
-form .svgContainer {
+.form .svgContainer {
     position: relative;
     width: 200px;
     height: 200px;
@@ -24,7 +24,7 @@ form .svgContainer {
     pointer-events: none;
 }
 
-form .svgContainer div {
+.form .svgContainer div {
     position: relative;
     width: 100%;
     height: 0;
@@ -33,7 +33,7 @@ form .svgContainer div {
     padding-bottom: 100%;
 }
 
-form .svgContainer .mySVG {
+.form .svgContainer .mySVG {
     position: absolute;
     left: 0;
     top: 0;
@@ -42,7 +42,7 @@ form .svgContainer .mySVG {
     pointer-events: none;
 }
 
-form .inputGroup {
+.form .inputGroup {
     margin: 0 0 1em;
     padding: 0;
     position: relative;
@@ -59,9 +59,9 @@ form .inputGroup {
     border: none;
 }
 
-form input[type='email'],
-form input[type="text"],
-form input[type='password'] {
+.form input[type='email'],
+.form input[type="text"],
+.form input[type='password'] {
     display: block;
     padding: 0 1em 0;
     border: none;
@@ -82,16 +82,16 @@ form input[type='password'] {
     transition: box-shadow .2s linear, border-color .25s ease-out, -webkit-box-shadow .2s linear;
 }
 
-form input[type='email']:focus,
-form input[type="text"]:focus,
-form input[type='password']:focus {
+.form input[type='email']:focus,
+.form input[type="text"]:focus,
+.form input[type='password']:focus {
     outline: none;
     -webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border: solid 1px #3f8257;
 }
 
-form input[type='email'] {
+.form input[type='email'] {
     padding: 14px 1em 0px;
 }
 
@@ -123,15 +123,15 @@ form input[type='email'] {
     background-color: #79CE97;
 }
 
-form .inputGroup1 .helper {
+.form .inputGroup1 .helper {
     position: absolute;
     z-index: 1;
     font-family: inherit;
 }
-form .inputGroup3 {
+.form .inputGroup3 {
     margin-top: 2em;
 }
-form .inputGroup1 .helper1 {
+.form .inputGroup1 .helper1 {
     top: -50px;
     left: 0;
     -webkit-transform: translate(1.4em, 2.6em) scale(1);
@@ -149,7 +149,7 @@ form .inputGroup1 .helper1 {
     transition: transform .2s ease-out, opacity .2s linear, -webkit-transform .2s ease-out;
 }
 
-form .inputGroup1.focusWithText .helper {
+.form .inputGroup1.focusWithText .helper {
     /*input[type='email']:focus + .helper {*/
     -webkit-transform: translate(1.4em, 2em) scale(0.65);
     transform: translate(1.4em, 2em) scale(0.65);
