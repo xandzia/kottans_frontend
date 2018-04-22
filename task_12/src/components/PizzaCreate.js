@@ -14,8 +14,8 @@ class PizzaCreate extends Component {
             link: "user",
             span: "user",
 			size: '',
-			options: [],
-			ingredients: [],
+			checkedIngredient: [],
+            checkIngrId: [],
 			tags: [],
 		};
 
@@ -76,32 +76,32 @@ class PizzaCreate extends Component {
         const collect = document.querySelector('.collect')
         collect.insertAdjacentHTML('beforeend', html)
         let form = document.getElementById('create')
-        form.addEventListener('change', e => {
-            console.log('change', e)
-            this.handleClick(e)
+        form.addEventListener('change', ev => {
+            this.handleClick(ev)
         })
     }
     handleClick(ev) {
-        if (ev.target.dataset.name === 'ingredient') {
+//            console.log('change', ev)
+        if (ev.target.dataset.ingredient === 'ingredient') {
 			const ingredientsInputs = document.querySelectorAll('[data-ingredient]');
-			const newOptions = [];
-			const newIngredients = [];
+			const checkIngr = [];
+			const checkIngrId = [];
 			ingredientsInputs.forEach(ingredientInput => {
 				if (ingredientInput.checked) {
-					newOptions.push(ingredientInput.value);
-					newIngredients.push(parseInt(ingredientInput.dataset.id));
+					checkIngr.push(ingredientInput.value);
+					checkIngrId.push(parseInt(ingredientInput.dataset.id));
 				}
 			});
 
-			this.state = Object.assign({}, this.state, {
-				options: newOptions,
-			});
-			this.state = Object.assign({}, this.state, {
-				ingredients: newIngredients,
-			});
+			this.state.checkedIngredient = checkIngr,
+			this.state.checkIngrId = checkIngrId,
+
 			 console.log(this.state);
-			const { size, options } = this.state;
-			DRAW.handleClick(options, size);
+//			this.state = Object.assign({}, this.state, {
+//				ingredients: newIngredients,
+//			});
+//			const { size, options } = this.state;
+//			DRAW.handleClick(options, size);
 		}
 
     }
@@ -112,7 +112,6 @@ class PizzaCreate extends Component {
 
     render() {
         const { link, span } = this.state;
-        let canvashost = document.querySelector('.canvas')
         Promise.all([PIZZA_DATA.getIngredients(), PIZZA_DATA.getTags()])
             .then(() => {
             this.renderCollect()
@@ -129,6 +128,7 @@ class PizzaCreate extends Component {
             </main>
         `;
 		const main = toHtml(html);
+        let canvashost = main.querySelector('.canvas')
         return [
             this.header.update({ link, span }), 
             main, 

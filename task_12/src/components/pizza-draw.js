@@ -1,3 +1,5 @@
+import { Sprite } from './sprite';
+
 class PizzaDrawService {
     constructor() {
         this.crust_pizza = 'https://pizza-tele.ga/static/images/pizza.png'
@@ -14,29 +16,39 @@ class PizzaDrawService {
         this.canvas.height = this.canvasHeight
         this.sprites = {};
         this.spritesPool = [];
+        this.size = '60';
         this._loadResources().then(
             (resources) => {
                 resources.forEach(resource => this.images[resource.name] = resource.image)
-//                this.host.append(this.canvas)
-//                let pizza = new Sprite(this.images["pizza"], 160, 160, 300, 300)
-//                
-//                
-//                this.sprites["pizza"] = pizza;
-//                this.spritesPool.push(pizza)
-//                
-//                this._draw()
+                this.host.append(this.canvas)
+                
+                this._drawCorn()
+                this._createSpriteByName("cheese")
 //                setInterval(() => {
-//                    let corn = new Sprite(this.images["cheese"], random(80, 240), random(80, 240))
-//                    this.spritesPool.push(corn)
-//                    this._draw()
 //                }, 2000)
             }
         )
     }
-
     _draw() {
-        this.ctx.clearRect(0,0,this.canvasWidth, this.canvasHeight)
+        this.ctx.clearRect(0,0,this.canvasWidth, this.canvasHeight)        
         this.spritesPool.forEach(sprite => sprite.draw(this.ctx))
+    }
+
+    _drawCorn() {
+        let pizza = new Sprite(this.images["pizza"], 160, 160, 300, 300)
+        pizza.draw(this.ctx)
+        this.sprites["pizza"] = pizza;
+        this.spritesPool.push(pizza)
+    }
+    
+    checkedIngredient() {
+        
+    }
+    
+    _createSpriteByName(name) {
+        let sprite = new Sprite(this.images[name], random(80, 240), random(80, 240))
+        this.spritesPool.push(sprite)
+        this._draw() 
     }
 
     _loadResources() {
