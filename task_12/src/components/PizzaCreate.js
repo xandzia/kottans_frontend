@@ -11,12 +11,14 @@ class PizzaCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            createPizza: {
+                size: '',
+                checkedIngredient: [],
+                checkIngrId: [],
+                tags: [],
+            },
             link: "user",
             span: "user",
-			size: '',
-			checkedIngredient: [],
-            checkIngrId: [],
-			tags: [],
 		};
 
         this.host = document.createElement('div');
@@ -93,15 +95,15 @@ class PizzaCreate extends Component {
 				}
 			});
 
-			this.state.checkedIngredient = checkIngr,
-			this.state.checkIngrId = checkIngrId,
+			this.state.createPizza.checkedIngredient = checkIngr,
+			this.state.createPizza.checkIngrId = checkIngrId,
 
-			 console.log(this.state);
 //			this.state = Object.assign({}, this.state, {
 //				ingredients: newIngredients,
 //			});
-//			const { size, options } = this.state;
-//			DRAW.handleClick(options, size);
+			 console.log(this.state);
+			const { checkedIngredient } = this.state.createPizza;
+			PIZZA_DRAW.checkedIngredient(checkedIngredient);
 		}
 
     }

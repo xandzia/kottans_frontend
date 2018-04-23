@@ -23,9 +23,7 @@ class PizzaDrawService {
                 this.host.append(this.canvas)
                 
                 this._drawCorn()
-                this._createSpriteByName("cheese")
-//                setInterval(() => {
-//                }, 2000)
+                this.checkedIngredient()
             }
         )
     }
@@ -41,8 +39,13 @@ class PizzaDrawService {
         this.spritesPool.push(pizza)
     }
     
-    checkedIngredient() {
-        
+    checkedIngredient(arr) {
+        if(arr) {
+            this._drawCorn()
+            arr.forEach(item => {
+                this._createSpriteByName(item)
+            })
+        }
     }
     
     _createSpriteByName(name) {
