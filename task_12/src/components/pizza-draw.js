@@ -32,7 +32,9 @@ class PizzaDrawService {
     }
     _draw() {
         this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
-        this.spritesPool.forEach(sprite => sprite.draw(this.ctx))
+        this.spritesPool.forEach(sprite => {
+            sprite.draw(this.ctx)
+        })
     }
 
     _drawCorn() {
@@ -52,48 +54,46 @@ class PizzaDrawService {
     }
 
     _createSpriteByName(name) {
-        var canvas = document.getElementById("thecanvas");
-
-        var ctx = canvas.getContext('2d'),
-            count = 10, // number of random  points
-            cx = 150,
-            cy = 150,
-            radius = 148;
-
-
-        ctx.arc(canvas.width / 2, canvas.height / 2, radius, 0, 2 * Math.PI);
-
-        ctx.fill();
-
-        // create random points
-        ctx.fillStyle = '#999999';
-
-        while (count) {
-            var pt_angle = Math.random() * 2 * Math.PI;
-            var pt_radius_sq = Math.random() * radius * radius;
-            var pt_x = Math.sqrt(pt_radius_sq) * Math.cos(pt_angle);
-            var pt_y = Math.sqrt(pt_radius_sq) * Math.sin(pt_angle);
-            ctx.fillRect(pt_x + canvas.width / 2, pt_y + canvas.width / 2, 22, 22);
-            count--;
+        //        let mapArray1 = [
+        //            [,,'pineapple','cucumber',,],
+        //            [,,'eggplant','pineapple',,'cucumber',,'cucumber'],
+        //            [,,,'pineapple',,'cucumber',],
+        //            [,,'cucumber',,'pineapple',,'eggplant'],
+        //            [,,'eggplant',,,'cucumber',,'pineapple'],
+        //            [,,'pineapple',,'cucumber',,'eggplant',,],
+        //            [,,'cucumber',,,'pineapple','eggplant'],
+        //            [,,,,'pineapple','cucumber',]
+        //        ]
+        //        let posX=90
+        //        let posY=40
+        //        for(var i=0; i<mapArray1.length; i++) {
+        //            for(var j=0; j<mapArray1[i].length; j++) {
+        //                if(mapArray1[i][j]===name) {
+        //                    this.ctx.drawImage(this.images[name], posX, posY, 32, 32)
+        //                }
+        //                posX+=32
+        //            }
+        //            posX=0
+        //            posY+=32
+        //        }
+        const arr = []
+        for (let i = 0; i <= 10; i++) {
+            arr.push({
+                'x': random(80, 240),
+                'y': random(80, 240)
+            })
         }
-        //        const arr = []
-        //        for (let i = 0; i <= 10; i++) {
-        //            arr.push({
-        //                'x': random(80, 240),
-        //                'y': random(80, 240)
-        //            })
-        //        }
-        //        arr.forEach( item => {
-        let sprite = new Sprite(this.images[name], item.x, item.y)
-        this.spritesPool.push(sprite)
-        this._draw()
-        //        })
-        //        let a = {
-        //            name: name,
-        //            arr: arr
-        //        }
-        //        this.spritesCoords.push(a)
-        //        console.log('this.spritesCoords', this.spritesCoords)
+        arr.forEach(item => {
+            let sprite = new Sprite(this.images[name], item.x, item.y)
+            this.spritesPool.push(sprite)
+            //            this._draw()
+            sprite.rotateAndPaintImage(this.ctx, this.images[name], random(45, 180), item.x, item.y, 30, 30)
+        })
+        let a = {
+            name: name,
+            arr: arr
+        }
+        this.spritesCoords.push(a)
     }
 
     _loadResources() {

@@ -3,3 +3,4 @@ PizzaCreate:
 - увеличить кол-во нарисованых ингр
 - чекед размера в state, название - все в state
 -pizza-draw 63 slice не работает
+pizza-create 109 продолжить

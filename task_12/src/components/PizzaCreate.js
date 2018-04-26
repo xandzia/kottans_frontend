@@ -41,13 +41,13 @@ class PizzaCreate extends Component {
               </label>
                 <label for="size">Size:
               <label>30
-                <input type="radio" name="size" value="30">
+                <input type="radio" name="size" value="30" data-size="size">
               </label>
               <label>45
-                <input type="radio" name="size" value="45">
+                <input type="radio" name="size" value="45" data-size="size">
               </label>
               <label>60
-                <input type="radio" name="size" value="60">
+                <input type="radio" name="size" value="60" data-size="size">
               </label>
           </label>
           <label>Ingredients:</label>
@@ -105,6 +105,9 @@ class PizzaCreate extends Component {
 			const { checkedIngredient } = this.state.createPizza;
 			PIZZA_DRAW.checkedIngredient(checkedIngredient);
 		}
+        if (ev.target.dataset.size === 'size') {
+            
+        }
 
     }
     
