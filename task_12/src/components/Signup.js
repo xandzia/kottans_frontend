@@ -12,7 +12,8 @@ class Signup extends Component {
         super(props);
         this.state = {
             link: "login",
-            span: "login"
+            span: "login",
+            display: "none"
         }
 
         this.host = document.createElement('div');
@@ -73,7 +74,7 @@ class Signup extends Component {
     }
 
     render() {
-        const { link, span } = this.state;
+        const { link, span, display } = this.state;
         const html = `
 <main id="signup-container">
     <form class="form">
@@ -86,7 +87,7 @@ class Signup extends Component {
 				<clipPath id="armMask">
 					<use xlink:href="#armMaskPath" overflow="visible"/>
 				</clipPath>
-				<circle cx="100" cy="100" r="100" fill="#3f825726"/>
+				<circle cx="100" cy="100" r="100" fill="white"/>
 				<g class="body">
                     <ellipse fill="#374c01" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="95.333336" cy="147.000001" id="svg_8" rx="104.499999" ry="50.000004" stroke="#000000" />
                     <path fill="#3f8257" stroke="#000000" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m-9,191c14,6 193,10 202,6c9,-4 13,-58 8,-66c-5,-8 -51,0 -60,-15c-9,-15 -14,-25 -14,-25c0,0 -46,0 -46,0c0,0 -14,3 -26,24c-9,15 -54,6 -61,20c-7,14 -3,56 -3,56z" id="svg_5" />
@@ -107,7 +108,7 @@ class Signup extends Component {
 				</g>
 				<g class="mouth">
                   <path fill="#000000" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m69.78334,99.56667c23.76666,21.2 37.9,16.16667 56,1.66667" id="svg_4" stroke="#000000"/>
-                  <path fill="#ff0000" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" transform="rotate(2.6025829315185547 99.15302276611375,108.19057464599602) " d="m91.86957,108.22686c1.16546,-6.42523 3.28177,-4.89026 7.33333,-4.89026c4.05157,0 6.86033,0.04105 7.33333,4.89026c0.473,4.84921 -6.2976,4.61025 -7.3409,4.72377c-1.04331,0.11353 -8.49122,1.70147 -7.32576,-4.72377z" id="svg_6" stroke="#000000"/>
+                  <path fill="#ea7178" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" transform="rotate(2.6025829315185547 99.15302276611375,108.19057464599602) " d="m91.86957,108.22686c1.16546,-6.42523 3.28177,-4.89026 7.33333,-4.89026c4.05157,0 6.86033,0.04105 7.33333,4.89026c0.473,4.84921 -6.2976,4.61025 -7.3409,4.72377c-1.04331,0.11353 -8.49122,1.70147 -7.32576,-4.72377z" id="svg_6" stroke="#000000"/>
                   <path fill="#3f8257" stroke="#000000" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m56.38333,91.81098c29.9,21.5 54.95,22.8 81.8,1.1" id="svg_5"/>
                   <path stroke="#000000" fill-opacity="0" id="svg_1" d="m54.95,95.82778c0,0 -0.77778,-6.08334 5.77778,-6.11111" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#000000"/>
                   <path transform="rotate(98.99714660644531 136.60739135742188,93.7999954223633) " id="svg_2" stroke="#000000" fill-opacity="0" d="m133.73283,96.85555c0,0 -0.77778,-6.08334 5.77778,-6.11111" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#000000"/>
@@ -135,6 +136,7 @@ class Signup extends Component {
                        <path stroke="#000000" fill="#e4dab6" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m93.582707,35.117693c0,0 5.665997,26.331379 -2.240045,31.973817c-6.0613,2.552532 18.052131,7.12022 18.262959,6.932139c1.660269,-0.456769 14.415352,-15.933171 3.610426,-34.875643c-11.06846,-5.508095 -18.842736,-4.567688 -19.63334,-4.030313z" id="svg_14"/>
 					</g>				
                 </g>
+            <circle cx="100" cy="100" r="100" fill="transparent" stroke-width="2px" stroke="white"/>
 			</svg>
             </div>
         </div>
@@ -196,7 +198,7 @@ class Signup extends Component {
             return storeList;
         })
         return [
-            this.header.update({ link, span }),
+            this.header.update({ link, span, display }),
             form,
             this.footer.update(),
         ];

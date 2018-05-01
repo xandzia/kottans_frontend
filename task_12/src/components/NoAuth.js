@@ -10,7 +10,7 @@ class NoAuth extends Component {
         this.state = {
             link: "login",
             span: "login",
-            addBtn: 'none',
+            display: 'none',
         }
 
         this.host = document.createElement('div');
@@ -22,12 +22,12 @@ class NoAuth extends Component {
 
     }
     render() {
-        const { link, span, addBtn } = this.state;
-        console.log(this.state)
+        const { link, span, display } = this.state;
+        console.log('noauth', this.state)
         
         return [
             this.header.update({ link, span }),
-            this.main.update({ addBtn }),
+            this.main.update({ display }),
             this.footer.update(),
                 ]
     }

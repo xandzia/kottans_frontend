@@ -16,6 +16,7 @@ class App extends Component {
         this.state = {
             link: "user",
             span: "user",
+            display: "block"
         }
         
         this.host = document.createElement('div');
@@ -37,12 +38,12 @@ class App extends Component {
     onBeforeUpdate(nextProps) {}
 
     render() {
-        const { link, span } = this.state;
+        const { link, span, display } = this.state;
         console.log('props',this.props);
 
         return [
             this.header.update({ link, span }),
-			this.main.update(),
+			this.main.update({ display }),
 			this.footer.update(),
         ];
         //                `<div class="main"><h1>Hello ${this.props.username}</h1>

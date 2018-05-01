@@ -14,7 +14,8 @@ class Login extends Component {
         this.state = {
             link: "signup",
             span: "sign up",
-            logo: null
+            logo: null,
+            display: "none"
         }
 
         this.host = document.createElement('div');
@@ -59,7 +60,7 @@ class Login extends Component {
 
     render() {
         console.log('auth-servise:', AUTH_SERVICE.isAuthorized());
-        const { link, span } = this.state;
+        const { link, span, display } = this.state;
         
         const html = `
 <main id="login-container">
@@ -160,7 +161,7 @@ required />
         anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face);
         
         return [
-            this.header.update({ link, span }),
+            this.header.update({ link, span, display }),
             form,
             this.footer.update(),
                 ]

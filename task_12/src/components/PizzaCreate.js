@@ -12,7 +12,7 @@ class PizzaCreate extends Component {
         super(props);
         this.state = {
             createPizza: {
-                size: '',
+                size: '60',
                 checkedIngredient: [],
                 checkIngrId: [],
                 tags: [],
@@ -27,9 +27,6 @@ class PizzaCreate extends Component {
 		this.header = new Header();
 		this.footer = new Footer();
 		this.handleClick = this.handleClick.bind(this);
-//		this.handleResize = this.handleResize.bind(this);
-//		this.handleSubmit = this.handleSubmit.bind(this);
-//		this.renderAll();
         this.setUserName();
 
     }
@@ -47,7 +44,7 @@ class PizzaCreate extends Component {
                 <input type="radio" name="size" value="45" data-size="size">
               </label>
               <label>60
-                <input type="radio" name="size" value="60" data-size="size">
+                <input type="radio" name="size" value="60" data-size="size" checked>
               </label>
           </label>
           <label>Ingredients:</label>
@@ -83,7 +80,6 @@ class PizzaCreate extends Component {
         })
     }
     handleClick(ev) {
-//            console.log('change', ev)
         if (ev.target.dataset.ingredient === 'ingredient') {
 			const ingredientsInputs = document.querySelectorAll('[data-ingredient]');
 			const checkIngr = [];
@@ -95,18 +91,24 @@ class PizzaCreate extends Component {
 				}
 			});
 
-			this.state.createPizza.checkedIngredient = checkIngr,
-			this.state.createPizza.checkIngrId = checkIngrId,
-
-//			this.state = Object.assign({}, this.state, {
-//				ingredients: newIngredients,
-//			});
-			 console.log(this.state);
-			const { checkedIngredient } = this.state.createPizza;
-			PIZZA_DRAW.checkedIngredient(checkedIngredient);
+			this.state.createPizza.checkedIngredient = checkIngr;
+			this.state.createPizza.checkIngrId = checkIngrId;
+                
+			const { checkedIngredient, size } = this.state.createPizza;
+			PIZZA_DRAW.checkedIngredient(checkedIngredient, size);
 		}
         if (ev.target.dataset.size === 'size') {
-            
+            const sizes = document.querySelectorAll('[data-size]');
+			sizes.forEach(size => {
+				if (size.checked) {
+					const newSize = ev.target.value;
+                    this.state.createPizza.size = newSize;
+//                console.log('value', this.state.createPizza)
+                    
+                    const { checkedIngredient, size } = this.state.createPizza;
+                    PIZZA_DRAW.checkedIngredient(checkedIngredient, size);
+				}
+			});
         }
 
     }
