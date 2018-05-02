@@ -1,18 +1,20 @@
-import { Component } from '../Facepalm';
-import { bindAll, toHtml } from '../utils/index';
-import { AUTH_SERVICE } from '../auth/login.service';
-import { anim } from '../utils/login';
+import '../../css/login.css';
 
-import Header from './Header';
-import Footer from './Footer';
+import { Component } from '../../Facepalm';
+import { bindAll, toHtml } from '../../utils';
+import { anim } from '../../utils/login';
+import { AUTH_SERVICE } from '../../auth/login.service';
 
+import Header from '../Header';
+import Footer from '../Footer';
 
-class Signup extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            link: "login",
-            span: "login",
+            link: "signup",
+            span: "sign up",
+            logo: null,
             display: "none"
         }
 
@@ -24,61 +26,46 @@ class Signup extends Component {
 
         bindAll(this, 'handleSubmit');
         this.host.addEventListener('submit', this.handleSubmit);
-    }
-
-    storeList() {
-        return fetch("https://pizza-tele.ga/api/v1/store/list")
-            .then(res => {
-                return res.json()
-            })
-            .catch(e => {
-                console.log(e)
-            });
+        this.host.addEventListener('click', this.handleFocus);
     }
 
     handleSubmit(ev) {
         ev.preventDefault();
 
-        const store = document.getElementById("select");
-        const storeValue = document.getElementById("select").value;
-        const id = store.options[store.selectedIndex].id;
-
-        console.log('store:', storeValue);
-        const userData = {
-            username: event.target.username.value.trim(),
-            password: event.target.psw.value.trim(),
-            password_repeat: event.target.psw.value.trim(),
-            email: event.target.email.value.trim(),
-            store_id: Number(id),
-            store_password: event.target.storePsw.value.trim(),
-
-        };
-        console.log(userData);
-
-        AUTH_SERVICE.signup(userData)
+        const username = event.target.uname.value.trim();
+        const password = event.target.psw.value.trim();
+        AUTH_SERVICE.login({
+                username,
+                password
+            })
             .then(result => {
-                    document.querySelector('.error-text').textContent = "Registration successful! Please, <a>login</a>";
-                    setTimeout(window.location.hash = '#/user', 3000);
+                    window.location.hash = '#/user';
+                    console.log(AUTH_SERVICE.token);
+                    console.log(AUTH_SERVICE.claims);
                 },
-                status => {
+                data => {
                     if (data.status === 400) {
                         document.querySelector('.error-text').textContent = data.answer.error;
                     }
-                    console.log('status',status);
                 }
             )
             .catch(err => {
-                document.querySelector('.error-text').textContent = err;
-                console.log(err);
+                console.log("err", err);
             })
     }
 
+    handleFocus(ev) {
+        document.querySelector('.error-text').textContent = '';
+    }
+
     render() {
+        console.log('auth-servise:', AUTH_SERVICE.isAuthorized());
         const { link, span, display } = this.state;
+        
         const html = `
-<main id="signup-container">
+<main id="login-container">
     <form class="form">
-        <div class="svgContainer">
+        <a href="#"><div class="svgContainer">
             <div>
                 <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
 				<defs>
@@ -139,41 +126,29 @@ class Signup extends Component {
             <circle cx="100" cy="100" r="100" fill="transparent" stroke-width="2px" stroke="white"/>
 			</svg>
             </div>
-        </div>
+        </div></a>
 
         <div class="inputGroup inputGroup1">
-            <input type="text" placeholder="Enter Name" id="name" name="username" required maxlength="50" />
+            <input type="text" placeholder="Enter Name" id="name" name="uname" required maxlength="50" />
             <span class="indicator"></span>
         </div>
         <div class="inputGroup inputGroup2">
-            <input type="password" id="pswdSignup" placeholder="Enter Password" name="psw" required />
+            <input type="password" placeholder="Enter Password" id="pswLogin" class="pswLogin" name="psw" autocomplete="false"
+required />
         </div>
-        <div class="inputGroup inputGroup2">
-            <input type="password" id ="pswRepeat" placeholder="Repeat Password" name="pswRepeat" required />
-        </div>
-        <div class="inputGroup inputGroup1">
-            <input type="text" id="email" placeholder="Enter Email" class="email" name="uname" required maxlength="50" />
-            <span class="indicator"></span>
-        </div>
-        <select id="select"></select>
-        <input type="password" id="pswStore" class="inputGroup inputGroup2" placeholder="Store Password" name="storePsw" required>
 
         <div class="inputGroup inputGroup3">
             <span class="error-text"></span>
-            <button type="submit" class="button" id="signUp">Sign Up</button>
+            <button class="button" id="login">Log in</button>
         </div>
     </form>
 </main>
 `;
-
+//readonly onfocus="this.removeAttribute('readonly')" 
         const form = toHtml(html);
-
-        const email = form.querySelector("#email"),
-            pswd = form.querySelector("#pswdSignup"),
+        const email = form.querySelector("#name"),
+            pswd = form.querySelector("#pswLogin"),
             mySVG = form.querySelector(".svgContainer"),
-            name = form.querySelector("#name"),
-            pswRepeat = form.querySelector("#pswRepeat"),
-            pswStore = form.querySelector("#pswStore"),
             armL = form.querySelector(".armL"),
             armR = form.querySelector(".armR"),
             eyeL = form.querySelector(".eyeL"),
@@ -183,27 +158,13 @@ class Signup extends Component {
             mouthBG = form.querySelector(".mouthBG"),
             chin = form.querySelector(".chin"),
             face = form.querySelector(".face");
-
-        anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face, name, pswRepeat, pswStore);
-
-        const storeList = form.getElementById('select');
-        let a = this.storeList();
-        a.then(list => {
-            const arr = [];
-            for (let i = 0; i < list.length; i++) {
-                const store = `<option id="${list[i].id}">${list[i].name}</option>`;
-                arr.push(store);
-            }
-            storeList.innerHTML = arr.join('');
-            return storeList;
-        })
+        anim(email, pswd, mySVG, armL, armR, eyeL, eyeR, nose, mouth, mouthBG, chin, face);
+        
         return [
             this.header.update({ link, span, display }),
             form,
             this.footer.update(),
-        ];
+                ]
     }
-
 }
-
-export default Signup;
+export default Login;

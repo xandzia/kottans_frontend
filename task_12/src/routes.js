@@ -1,9 +1,9 @@
 import App from './components/App';
 import NoAuth from './components/NoAuth';
-import Login from './components/Login';
-import PizzaCreate from './components/PizzaCreate';
-import Signup from './components/Signup';
-import UserInfo from './components/UserInfo';
+import Login from './components/Auth/Login';
+import PizzaCreate from './components/PizzaCreate/PizzaCreate';
+import Signup from './components/Auth/Signup';
+import UserInfo from './components/Auth/UserInfo';
 //import { AUTH_SERVICE } from './store/login.service';
 
 

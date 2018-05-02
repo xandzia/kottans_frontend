@@ -1,11 +1,11 @@
-import { Component } from '../Facepalm';
-import { PIZZA_DATA } from '../auth/pizza-data';
-import { toHtml } from '../utils/index';
-import { AUTH_SERVICE } from '../auth/login.service.js'
+import { Component } from '../../Facepalm';
+import { PIZZA_DATA } from '../../auth/pizza-data';
+import { toHtml } from '../../utils/index';
+import { AUTH_SERVICE } from '../../auth/login.service.js'
 import { PIZZA_DRAW } from './pizza-draw'
 
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../Header';
+import Footer from '../Footer';
 
 class PizzaCreate extends Component {
     constructor(props) {
@@ -33,39 +33,46 @@ class PizzaCreate extends Component {
     
     renderCollect() {      
         let html = `<form id="create">
-            <label>Pizza Name:
+            <div class="form_create_div">Pizza Name:
               <input type="text" name="name" required min="3" max="24">
-              </label>
-                <label for="size">Size:
-              <label>30
+            </div>
+            <div class="form_create_div">
+                <label class="form_create_div-padding">Size:</label>
+              <label class="ingredient-box-radio">
+                <span>30</span>
                 <input type="radio" name="size" value="30" data-size="size">
+                <span class="checkmark"></span>
               </label>
-              <label>45
+              <label class="ingredient-box-radio">
+                <span>45</span>
                 <input type="radio" name="size" value="45" data-size="size">
+                <span class="checkmark"></span>
               </label>
-              <label>60
+              <label class="ingredient-box-radio">
+                <span>60</span>
                 <input type="radio" name="size" value="60" data-size="size" checked>
+                <span class="checkmark"></span>
               </label>
-          </label>
-          <label>Ingredients:</label>
-          <div>
+          </div>
+          <div class="form_create_div">
+            <label class="form_create_div-margin">Ingredients:</label><br>
               ${PIZZA_DATA.ingredients.reduce((html, ingr) => {
                   return html +=
                       `
-                        <label title="${ingr.name}">
+                        <input type="checkbox" value="${ingr.name}" id="${ingr.id}" data-ingredient="ingredient">
+                        <label title="${ingr.name}" class="ingredient-box" for="${ingr.id}">
                             <img src="https://pizza-tele.ga/${ingr.image_url}" alt="${ingr.name}" title="${ingr.description}">
-                            <input type="checkbox" value="${ingr.name}" data-id="${ingr.id}" data-ingredient="ingredient">
                         </label>
                       `;
               }, '')}
           </div>
-          <div>
+          <div class="form_create_div">
               ${PIZZA_DATA.tags.reduce((html, tag) => {
                   return html +=
                       `
-                        <label title="${tag.description}">
+                            <input type="checkbox" name="${tag.name}" id="tag-${tag.id}" data-tags="tags">
+                        <label title="${tag.description}" class="tags-box" for="tag-${tag.id}">
                             ${tag.name}
-                            <input type="checkbox" name="${tag.name}" data-id="${tag.id}">
                         </label>
                       `;
               }, '')}
@@ -110,6 +117,16 @@ class PizzaCreate extends Component {
 				}
 			});
         }
+        if (ev.target.dataset.size === 'tags') {
+            const tags = document.querySelectorAll('[data-tags]');
+			const checktags = [];
+			tags.forEach(tag => {
+				if (tag.checked) {
+					checktags.push(tag.value);
+				}
+			});
+			this.state.createPizza.tags = checktags;
+        }
 
     }
     
@@ -130,8 +147,10 @@ class PizzaCreate extends Component {
         const html = `
             <main>
                 <h1>Create Pizza</h1>
-                <section class='canvas'></section>
-                <section class='collect'></section>
+                <div class="create-container">
+                    <section class='canvas'></section>
+                    <section class='collect'></section>
+                </div>
             </main>
         `;
 		const main = toHtml(html);

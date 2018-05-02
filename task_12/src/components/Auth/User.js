@@ -1,8 +1,8 @@
-import { Component } from '../Facepalm';
-import { toHtml } from '../utils/index';
-import { bindAll } from '../utils';
-import { AUTH_HTTP } from '../auth/http.service';
-import { AUTH_SERVICE } from '../auth/login.service';
+import { Component } from '../../Facepalm';
+import { toHtml } from '../../utils/index';
+import { bindAll } from '../../utils';
+import { AUTH_HTTP } from '../../auth/http.service';
+import { AUTH_SERVICE } from '../../auth/login.service';
 
 class User extends Component {
     constructor(props) {

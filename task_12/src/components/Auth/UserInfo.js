@@ -1,10 +1,10 @@
-import { Component } from '../Facepalm';
+import { Component } from '../../Facepalm';
 
-import Header from './Header';
+import Header from '../Header';
 import User from './User';
-import Footer from './Footer';
-import { AUTH_HTTP } from '../auth/http.service.js'
-import { AUTH_SERVICE } from '../auth/login.service.js'
+import Footer from '../Footer';
+import { AUTH_HTTP } from '../../auth/http.service.js'
+import { AUTH_SERVICE } from '../../auth/login.service.js'
 
 class UserInfo extends Component {
     constructor() {

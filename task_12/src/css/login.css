@@ -61,6 +61,7 @@
 
 .form input[type='email'],
 .form input[type="text"],
+#create input[type="text"],
 .form input[type='password'] {
     display: block;
     padding: 0 1em 0;
