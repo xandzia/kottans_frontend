@@ -1,6 +1,6 @@
 import { Component } from '../../Facepalm';
 import { bindAll, toHtml } from '../../utils/index';
-import { AUTH_SERVICE } from '../../auth/login.service';
+import { AUTH_SERVICE } from '../../api/login.service';
 import { anim } from '../../utils/login';
 
 import Header from '../Header';

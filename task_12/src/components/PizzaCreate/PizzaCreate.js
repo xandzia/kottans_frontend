@@ -1,7 +1,7 @@
 import { Component } from '../../Facepalm';
 import { PIZZA_DATA } from '../../auth/pizza-data';
 import { toHtml } from '../../utils/index';
-import { AUTH_SERVICE } from '../../auth/login.service.js'
+import { AUTH_SERVICE } from '../../api/login.service.js'
 import { PIZZA_DRAW } from './pizza-draw'
 
 import Header from '../Header';

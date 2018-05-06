@@ -5,7 +5,7 @@ import { Component } from '../Facepalm';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import { AUTH_SERVICE } from '../auth/login.service.js'
+import { AUTH_SERVICE } from '../api/login.service.js'
 
 import { bindAll } from '../utils';
 

@@ -1,6 +1,6 @@
 import Component from './Component';
 import { bindAll, isEqualPaths, extractUrlParams } from '../utils';
-import { AUTH_SERVICE } from '../auth/login.service';
+import { AUTH_SERVICE } from '../api/login.service';
 
 class Router extends Component {
     constructor(props) {

@@ -3,7 +3,7 @@ import '../../css/login.css';
 import { Component } from '../../Facepalm';
 import { bindAll, toHtml } from '../../utils';
 import { anim } from '../../utils/login';
-import { AUTH_SERVICE } from '../../auth/login.service';
+import { AUTH_SERVICE } from '../../api/login.service';
 
 import Header from '../Header';
 import Footer from '../Footer';

@@ -1,5 +1,5 @@
 import { Component } from '../../Facepalm';
-import { PIZZA_DATA } from '../../auth/pizza-data';
+import { PIZZA_DATA } from '../../api/pizza-data';
 
 class PizzaCreate extends Component {
     constructor(props) {
