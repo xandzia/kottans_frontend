@@ -3,7 +3,9 @@ import { AUTH_HTTP } from './http.service.js';
 class PizzaDataSevise {
     constructor() {
        this.ingredients = []; 
-       this.tags = []; 
+       this.tags = [];
+        this.pizzas =[];
+        
     }
     getIngredients() {
        return AUTH_HTTP.get('https://pizza-tele.ga/api/v1/ingredient/list')

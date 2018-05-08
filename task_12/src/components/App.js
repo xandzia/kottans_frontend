@@ -46,8 +46,6 @@ class App extends Component {
 			this.main.update({ display }),
 			this.footer.update(),
         ];
-        //                `<div class="main"><h1>Hello ${this.props.username}</h1>
-        //                <a href="#login">LOG OUT</a></div>`;
     }
 
 }

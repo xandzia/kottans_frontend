@@ -1,15 +1,14 @@
 import { Component } from '../Facepalm';
 import { toHtml } from '../utils/index';
-
-//import PizzaCreate from './PizzaCreate';
+import PizzaCompon from './PizzaCreate/PizzaCompon';
 
 class Main extends Component {
     constructor(props) {
         super(props);
 
         this.host = document.createElement('main');
-
-//        this.pizza = new PizzaCreate();
+        
+        this.pizzaList = new PizzaCompon();
 
     }
 
@@ -21,7 +20,10 @@ class Main extends Component {
             add new pizza
         </button><a>`;
         const addPizza = toHtml(html);
-        return addPizza;
+        return [
+            addPizza,
+            this.pizzaList.update(),
+        ]
     }
 }
 
