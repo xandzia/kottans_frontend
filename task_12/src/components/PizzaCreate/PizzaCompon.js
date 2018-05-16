@@ -12,6 +12,9 @@ class PizzaCompon extends Component {
     }
 
     render() {
+        PIZZA_DATA
+            .getUnacceotedPizzas(true, 12, 0)
+            .then(console.log)
         const html = `
             <figure class="pizza" aria-label="pizza_ninja" tabindex=0>
                 <img src="img/pizza.png" alt="pizza with sausage">

@@ -4,8 +4,19 @@ class PizzaDataSevise {
     constructor() {
        this.ingredients = []; 
        this.tags = [];
-        this.pizzas =[];
+       this.pizzas =[];
         
+    }
+    getUnacceotedPizzas(reset, limit, offset) {
+        return AUTH_HTTP.get('https://pizza-tele.ga/api/v1/pizza/list?limit=${limit || 100}&offset=${offset || 0}')
+        .then(data => {
+            if(reset){
+                this.pizzas = data.results
+            } else {
+                this.pizzas = this.pizzas.concat(data.results)
+            }
+            return data
+        })
     }
     getIngredients() {
        return AUTH_HTTP.get('https://pizza-tele.ga/api/v1/ingredient/list')
