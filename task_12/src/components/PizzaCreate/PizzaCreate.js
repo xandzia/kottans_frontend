@@ -130,6 +130,7 @@ class PizzaCreate extends Component {
                         })
                         console.log("failed", result)
                     } else {
+                        window.location.href = "/";
                         console.log("success", result)
                     }
                 }

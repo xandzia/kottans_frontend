@@ -10,11 +10,18 @@ class PizzaCompon extends Component {
         this.host.classList.add('pizzas');
 
     }
+    
+    pizzaList() {
+
+    }
 
     render() {
         PIZZA_DATA
             .getUnacceotedPizzas(true, 12, 0)
-            .then(console.log)
+            .then(res=>{
+                console.log("PIZZA_DATA", res)
+                const a = res.results;
+            })
         const html = `
             <figure class="pizza" aria-label="pizza_ninja" tabindex=0>
                 <img src="img/pizza.png" alt="pizza with sausage">
