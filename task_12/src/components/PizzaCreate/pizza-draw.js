@@ -124,12 +124,12 @@ class PizzaDrawService {
     _loadImage(name, url) {
         return new Promise((resolve, reject) => {
             const image = new Image();
-            image.onload = () => resolve({
-                name,
-                image
-            })
-            image.onerror = (e) => reject(e)
-            image.src = url
+            image.crossOrigin = 'anonymous';
+            image.src = "https://thingproxy.freeboard.io/fetch/"+url;
+            image.width = 20;
+            image.height = 20;
+            image.onload = () => resolve({name,image});
+            image.onerror = (e) => reject(e);
         })
     }
 }

@@ -2,6 +2,7 @@ import { Component } from '../../Facepalm';
 import { PIZZA_DATA } from '../../api/pizza-data';
 import { toHtml } from '../../utils/index';
 import { AUTH_SERVICE } from '../../api/login.service.js'
+import { AUTH_HTTP } from '../../api/http.service.js'
 import { PIZZA_DRAW } from './pizza-draw'
 
 import Header from '../Header';
@@ -79,7 +80,6 @@ class PizzaCreate extends Component {
               }, '')}
           </div>
         <div class="form_create_div">
-            <button id="buttonCancel" type="button">cancel</button>
             <button id="buttonCreate" type="submit">create</button> 
         </div>
         </form>`
@@ -90,9 +90,15 @@ class PizzaCreate extends Component {
         form.addEventListener('change', ev => {
             this.handleClick(ev);
         });
-        let btnCreate = document.getElementById('buttonCancel');
         form.addEventListener('submit', ev => {
             this.handleSubmit(ev);
+        });
+        let btnCreate = document.getElementById('buttonCancel');
+        btnCreate.addEventListener('click', () => {
+            const errorSection = document.getElementById('errorMsg');
+            const errorContainer = document.getElementById('errorMsgContainer');
+            errorSection.setAttribute("style", "display:none");
+            errorContainer.innerHTML = ''
         });
     }
     
@@ -109,10 +115,25 @@ class PizzaCreate extends Component {
 		fd.append('tags', JSON.stringify(tags));
 
 		canvas.toBlob(blob => {
-            let URLObj = window.URL || window.webkitURL;
-            let a = document.createElement("a");
 			fd.append('image', blob, 'pizza-image.png');
-			return AUTH_HTTP_SERVICE.post(CREATE_PIZZA, fd).then(result => console.log(result));
+			return AUTH_HTTP.post("https://pizza-tele.ga/api/v1/pizza/create", fd).then(
+                result => {
+                    if(result.success === false) {
+                        const errorSection = document.getElementById('errorMsg');
+                        const errorContainer = document.getElementById('errorMsgContainer');
+                        errorSection.setAttribute("style", "display:block");
+                        const arr = result.validations;
+                        arr.forEach(item=>{
+                            let p = document.createElement("p");
+                            p.textContent = item;
+                            errorContainer.appendChild(p);
+                        })
+                        console.log("failed", result)
+                    } else {
+                        console.log("success", result)
+                    }
+                }
+            );
 		});
         return false;
         
@@ -189,6 +210,10 @@ class PizzaCreate extends Component {
                 <div class="create-container">
                     <section class='canvas'></section>
                     <section class='collect'></section>
+                    <section id='errorMsg'>
+                        <button id="buttonCancel" type="button">X</button>
+                        <div id="errorMsgContainer"></div>
+                    </section>
                 </div>
             </main>
         `;
