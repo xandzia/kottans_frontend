@@ -27,14 +27,15 @@ class PizzaCreate extends Component {
 		this.header = new Header();
 		this.footer = new Footer();
 		this.handleClick = this.handleClick.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
         this.setUserName();
 
     }
     
     renderCollect() {      
-        let html = `<form id="create">
+        let html = `<form id="create" action="#">
             <div class="form_create_div">Pizza Name:
-              <input type="text" name="name" required min="3" max="24">
+              <input class="create-pizza-name" type="text" name="name" required min="3" max="24">
             </div>
             <div class="form_create_div">
                 <label class="form_create_div-padding">Size:</label>
@@ -70,22 +71,54 @@ class PizzaCreate extends Component {
               ${PIZZA_DATA.tags.reduce((html, tag) => {
                   return html +=
                       `
-                            <input type="checkbox" name="${tag.name}" id="tag-${tag.id}" data-tags="tags">
-                        <label title="${tag.description}" class="tags-box" for="tag-${tag.id}">
+                            <input type="checkbox" name="${tag.name}" id="${tag.id}-tag" data-tags="tags">
+                        <label title="${tag.description}" class="tags-box" for="${tag.id}-tag">
                             ${tag.name}
                         </label>
                       `;
               }, '')}
           </div>
+        <div class="form_create_div">
+            <button id="buttonCancel" type="button">cancel</button>
+            <button id="buttonCreate" type="submit">create</button> 
+        </div>
         </form>`
 //        this.host.insertAdjacentHTML('beforeend', html)
         const collect = document.querySelector('.collect')
         collect.insertAdjacentHTML('beforeend', html)
         let form = document.getElementById('create')
         form.addEventListener('change', ev => {
-            this.handleClick(ev)
-        })
+            this.handleClick(ev);
+        });
+        let btnCreate = document.getElementById('buttonCancel');
+        form.addEventListener('submit', ev => {
+            this.handleSubmit(ev);
+        });
     }
+    
+    handleSubmit(ev) {
+        ev.preventDefault();
+        const { size, checkIngrId, checkedIngredient, tags } = this.state.createPizza;
+        const canvas = document.querySelector('canvas');
+        const name = document.querySelector('.create-pizza-name');
+        
+        const fd = new FormData();
+		fd.append('name', name.value);
+		fd.append('size', size);
+		fd.append('ingredients', JSON.stringify(checkIngrId));
+		fd.append('tags', JSON.stringify(tags));
+
+		canvas.toBlob(blob => {
+            let URLObj = window.URL || window.webkitURL;
+            let a = document.createElement("a");
+			fd.append('image', blob, 'pizza-image.png');
+			return AUTH_HTTP_SERVICE.post(CREATE_PIZZA, fd).then(result => console.log(result));
+		});
+        return false;
+        
+
+    }
+    
     handleClick(ev) {
         if (ev.target.dataset.ingredient === 'ingredient') {
 			const ingredientsInputs = document.querySelectorAll('[data-ingredient]');
@@ -94,7 +127,7 @@ class PizzaCreate extends Component {
 			ingredientsInputs.forEach(ingredientInput => {
 				if (ingredientInput.checked) {
 					checkIngr.push(ingredientInput.value);
-					checkIngrId.push(parseInt(ingredientInput.dataset.id));
+					checkIngrId.push(parseInt(ingredientInput.id));
 				}
 			});
 
@@ -117,16 +150,22 @@ class PizzaCreate extends Component {
 				}
 			});
         }
-        if (ev.target.dataset.size === 'tags') {
+        if (ev.target.dataset.tags === 'tags') {
             const tags = document.querySelectorAll('[data-tags]');
 			const checktags = [];
 			tags.forEach(tag => {
 				if (tag.checked) {
-					checktags.push(tag.value);
+					checktags.push(parseInt(tag.id));
 				}
 			});
 			this.state.createPizza.tags = checktags;
         }
+        
+        const { size, checkIngrId, checkedIngredient, tags } = this.state.createPizza;
+//        console.log("checkedIngredient", checkedIngredient);
+//        console.log("checkIngrId", checkIngrId);
+//        console.log("tags", tags);
+        
 
     }
     

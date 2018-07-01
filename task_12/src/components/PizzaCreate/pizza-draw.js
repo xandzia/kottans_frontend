@@ -1,6 +1,4 @@
-import {
-    Sprite
-} from './sprite';
+import { Sprite } from './sprite';
 
 class PizzaDrawService {
     constructor() {
@@ -9,6 +7,7 @@ class PizzaDrawService {
     init(initData) {
         this.host = initData.host
         this.canvas = document.createElement('canvas')
+        this.canvas.id = "canvas"
         this.ctx = this.canvas.getContext("2d")
         this.canvasWidth = 320
         this.canvasHeight = 320
@@ -51,7 +50,6 @@ class PizzaDrawService {
     checkedIngredient(arr, size) {
         this.size = size;
         this._drawCorn()
-        console.log(this.size)
         if (arr) {
             if(this.size === '30') {
                 arr.forEach(item => {
